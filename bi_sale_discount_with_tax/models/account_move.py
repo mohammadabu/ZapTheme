@@ -429,41 +429,41 @@ class account_move(models.Model):
 
     
 
-    # @api.model_create_multi
-    # def create(self, vals_list):
-    #     for val in vals_list:
+    @api.model_create_multi
+    def create(self, vals_list):
+        for val in vals_list:
 
-    #         if 'flag' in val:
-    #             val.pop('flag')
-    #             return super(account_move,self).create(vals_list)
+            if 'flag' in val:
+                val.pop('flag')
+                return super(account_move,self).create(vals_list)
                 
-    #         else:
-    #             res = super(account_move,self).create(vals_list)
-    #             for line in res.line_ids:
-    #                 name = line.name
-    #             if res.discount_type == 'line':
+            else:
+                res = super(account_move,self).create(vals_list)
+                for line in res.line_ids:
+                    name = line.name
+                if res.discount_type == 'line':
 
-    #                 price = res.discount_amt_line
-    #             elif res.discount_type == 'global':
-    #                 price = res.discount_amt
-    #             else:
-    #                 price = 0  
-    #             if name != 'Discount':
+                    price = res.discount_amt_line
+                elif res.discount_type == 'global':
+                    price = res.discount_amt
+                else:
+                    price = 0  
+                if name != 'Discount':
 
-    #                 if res.discount_account_id:       
-    #                     discount_vals = {
-    #                             'account_id': res.discount_account_id, 
-    #                             'quantity': 1,
-    #                             'price_unit': -price,
-    #                             'name': "Discount", 
-    #                             'exclude_from_invoice_tab': True,
-    #                             }            
-    #                     res.with_context(check_move_validity=False).write({
-    #                             'invoice_line_ids' : [(0,0,discount_vals)]
-    #                             })
-    #                 else:
-    #                     pass    
-    #             return res
+                    if res.discount_account_id:       
+                        discount_vals = {
+                                'account_id': res.discount_account_id, 
+                                'quantity': 1,
+                                'price_unit': -price,
+                                'name': "Discount", 
+                                'exclude_from_invoice_tab': True,
+                                }            
+                        res.with_context(check_move_validity=False).write({
+                                'invoice_line_ids' : [(0,0,discount_vals)]
+                                })
+                    else:
+                        pass    
+                return res
 
     @api.onchange('invoice_line_ids','discount_amount','discount_method')
     def _onchange_invoice_line_ids(self):
