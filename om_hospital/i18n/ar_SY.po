@@ -786,20 +786,13 @@ msgstr ""
 msgid "Patient Appointments"
 msgstr ""
 
-#. module: om_hospital
-#: model:ir.actions.report,name:om_hospital.report_patient_card
-msgid "Patient Card"
-msgstr ""
+
 
 #. module: om_hospital
 #: model:mail.template,subject:om_hospital.patient_card_email_template
 msgid "Patient Card (Ref ${object.name_seq})"
 msgstr ""
 
-#. module: om_hospital
-#: model:ir.actions.report,name:om_hospital.report_patient_card_xlx
-msgid "Patient Card Excel"
-msgstr ""
 
 #. module: om_hospital
 #: model:mail.template,report_name:om_hospital.patient_card_email_template
@@ -1007,8 +1000,4 @@ msgstr "رسائل الموقع"
 msgid "Website communication history"
 msgstr "سجل تواصل الموقع"
 
-#. module: om_hospital
-#: model:ir.model,name:om_hospital.model_report_om_hospital_report_patient_xls
-msgid "report.om_hospital.report_patient_xls"
-msgstr ""
 

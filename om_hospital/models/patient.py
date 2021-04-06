@@ -62,11 +62,11 @@ class HospitalPatient(models.Model):
 
     # Print PDF Report From Button Click in Form
     # https://www.youtube.com/watch?v=Dc8GDj7ygsI&list=PLqRRLx0cl0hoJhjFWkFYowveq2Zn55dhM&index=67
-    def print_report(self):
-        return self.env.ref('om_hospital.report_patient_card').report_action(self)
+    # def print_report(self):
+    #     return self.env.ref('om_hospital.report_patient_card').report_action(self)
 
-    def print_report_excel(self):
-        return self.env.ref('om_hospital.report_patient_card_xlx').report_action(self)
+    # def print_report_excel(self):
+    #     return self.env.ref('om_hospital.report_patient_card_xlx').report_action(self)
 
     # Function which is executed using the Cron Job/ Scheduled Action
     # https://www.youtube.com/watch?v=_P_AVSNr6uU&list=PLqRRLx0cl0hoJhjFWkFYowveq2Zn55dhM&index=52
