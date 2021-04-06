@@ -1,10 +1,10 @@
 <template id="adding_new_snippet_to_website_snippetsr" inherit_id="website.snippets" name="Place into building blocks bar">
-        <xpath expr="//div[@id='snippet_structure']" position="inside">
-            <div class="o_panel_body">
-                <t t-snippet="theme_zap.custom_para_with_a_redirect"
-                t-thumbnail="/theme_zap/static/src/img/backgrounds/01.png"/>
-            </div>
-        </xpath>
+    <xpath expr="//div[@id='snippet_structure']" position="inside">
+        <div class="o_panel_body">
+            <t t-snippet="theme_zap.custom_para_with_a_redirect"
+            t-thumbnail="/theme_zap/static/src/img/backgrounds/01.png"/>
+        </div>
+    </xpath>
 </template>
 <template id="custom_para_with_a_redirect" name="My Custom Snippet">
     <section>
@@ -34,7 +34,7 @@
           <li class="dropdown-submenu">
             <a href="#">Custom Option</a>
             <ul class="dropdown-menu"> 
-                      <!-- Options list -->
+                <!-- Options list -->
             </ul>
           </li>
         </div>

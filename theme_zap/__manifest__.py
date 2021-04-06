@@ -9,6 +9,7 @@
     'data': [
         'views/assets.xml',
         'views/images_content.xml',
+        'views/snippet.xml'
     ],
     'images': [
         'static/description/zap_cover.gif',
