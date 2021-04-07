@@ -6,8 +6,7 @@
         <field name="model">hr.leave.type</field>
         <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//group[last()]" position="after">
-                <!-- <field name="multi_level_validation" invisible="1"/> -->
+            <!-- <xpath expr="//group[last()]" position="after">
                 <notebook>
                     <page string="Carry Forwards">
                         <field name="carry_forwards_validators" mode="tree">
@@ -20,6 +19,29 @@
                         </field>
                     </page>
                 </notebook>
+            </xpath> -->
+            <!-- <xpath expr="/form/sheet" position="before">
+                <header>
+                    <button name="lapse_leaves" string="Carry Forward" type="object"/>
+                </header>
+            </xpath> -->
+            <xpath expr="//group[@name='notification']" position="before">
+                <group name="grp_cf" string="Carry Forward" colspan="2">
+                    <notebook>
+                        <page string="Carry Forwards">
+                            <field name="carry_forwards_validators" mode="tree">
+                                <tree string="Users" editable="bottom">
+                                    <field name="validators_type" required="1"/>
+                                    <field name="holiday_validators_user" string="Users validators" attrs="{'invisible': ['|',('validators_type','=','direct_manager'),('validators_type','=','position')],'required': [('validators_type','!=','direct_manager'),('validators_type','!=','position')]}"/>
+                                    <field name="holiday_validators_position" string="Position validators" attrs="{'invisible': ['|',('validators_type','=','direct_manager'),('validators_type','=','user')],'required': [('validators_type','!=','direct_manager'),('validators_type','!=','user')]}"/>
+                                    <field name="approval"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <!-- <field name="carry_fwd"/>
+                    <field name="cf_leaves" class="oe_inline" attrs="{'invisible':[('carry_fwd','=',False)]}"/> -->
+                </group>
             </xpath>
         </field>
     </record>
