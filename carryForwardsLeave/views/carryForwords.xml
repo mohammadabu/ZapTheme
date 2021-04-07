@@ -6,11 +6,6 @@
         <field name="model">hr.leave.type</field>
         <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
         <field name="arch" type="xml">
-            <!-- <xpath expr="/form/sheet" position="before">
-                <header>
-                    <button name="lapse_leaves" string="Carry Forward" type="object"/>
-                </header>
-            </xpath> -->
             <xpath expr="//group[@name='notification']" position="before">
                 <group name="grp_cf" string="Carry Forward">
                     <field name="carry_forwards" />
@@ -52,7 +47,7 @@
         <field name="binding_model_id" ref="model_hr_leave"/>
         <field name="state">code</field>
         <field name="code">
-           <!-- action = model._get_approval_requests() -->
+           action = model._get_approval_requests()
         </field>
     </record>
 

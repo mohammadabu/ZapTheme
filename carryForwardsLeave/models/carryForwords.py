@@ -10,6 +10,27 @@ class HrLeave(models.Model):
     _inherit = 'hr.leave'
 
 
+    def _get_approval_requests(self):
+        current_uid = self.env.uid
+        hr_holidays = self.env['hr.leave.type'].sudo().search()
+        li = []
+        for l in hr_holidays:
+            li.append(l.id)                              
+        value = {
+            'domain': str([('id', 'in', li)]),
+            'view_mode': 'tree,form',
+            'res_model': 'hr.leave.type',
+            'view_id': False,
+            'type': 'ir.actions.act_window',
+            'name': _('Carry Forwards'),
+            'res_id': self.id,
+            'target': 'current',
+            'create': False,
+            'edit': False,
+        }
+        return value
+
+
 class HrLeaveTypesCarryForwards(models.Model):
     _inherit = 'hr.leave.type'
     carry_forwards_validators = fields.One2many('hr.holidays.carry.forwards',
