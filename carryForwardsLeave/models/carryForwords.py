@@ -8,7 +8,7 @@ from odoo.tools import email_split
 
 class HrLeave(models.Model):
     _inherit = 'hr.leave'
-
+    carry_forwards = fields.Boolean()
 
 
 class HrLeaveTypesCarryForwards(models.Model):
