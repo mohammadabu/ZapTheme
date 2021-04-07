@@ -3,7 +3,7 @@
     'version': '13.0.0.0',
     'depends': ['base_setup', 'hr_holidays'],
     'data': [
-        'views/carryForwords.xml'
+        'views/carryForwords.xml',
         'security/ir.model.access.csv'
     ],
 }
