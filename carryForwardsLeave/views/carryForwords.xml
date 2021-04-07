@@ -12,8 +12,10 @@
                 </header>
             </xpath> -->
             <xpath expr="//group[@name='notification']" position="before">
-                <field name="carry_forwards" />
                 <group name="grp_cf" string="Carry Forward" colspan="2">
+                    <field name="carry_forwards" />
+                </group>
+                <group>
                     <notebook>
                         <page string="Carry Forwards">
                             <field name="carry_forwards_validators" mode="tree">
