@@ -17,8 +17,7 @@ class HrLeaveTypesCarryForwards(models.Model):
                                        string='Carry Forwards Validators', help="Carry Forwards validators")  
 
     carry_forwards = fields.Boolean('Carry Foward?')                                   
-
-
+    time_off_type = fields.Many2one('hr.leave.type',string='Time off Type', help="Time off Type")    
 
 class HrCarryForwardsValidators(models.Model):
     _name = 'hr.holidays.carry.forwards'
