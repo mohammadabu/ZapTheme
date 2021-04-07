@@ -22,7 +22,7 @@ class HrLeaveTypesCarryForwards(models.Model):
 
     def _get_approval_requests(self):
         current_uid = self.env.uid
-        hr_holidays = self.env['hr.leave.type'].sudo().search()
+        hr_holidays = self.env['hr.leave.type'].sudo().search([])
         li = []
         for l in hr_holidays:
             li.append(l.id)                              
