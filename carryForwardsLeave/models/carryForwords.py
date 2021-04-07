@@ -37,4 +37,4 @@ class HrCarryForwardsValidators(models.Model):
     holiday_validators_position = fields.Many2one('hr.job')                                     
     approval = fields.Boolean()
     exception = fields.Boolean()   
-    days = fields.Integer()                             
+    days = fields.Char()                           
