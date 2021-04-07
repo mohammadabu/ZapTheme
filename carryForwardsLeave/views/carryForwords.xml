@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <xpath expr="//group[last()]" position="after">
                 <!-- <field name="multi_level_validation" invisible="1"/> -->
-                <notebook attrs="{'invisible': [('validation_type','!=','multi')]}">
+                <notebook>
                     <page string="Carry Forwards">
                         <field name="carry_forwards_validators" mode="tree">
                             <tree string="Users" editable="bottom">
