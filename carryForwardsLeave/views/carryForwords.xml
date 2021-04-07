@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="open_carry_forwards_requests" model="ir.actions.server">
+        <field name="name">Carry Forwards Requests</field>
+        <field name="model_id" ref="model_hr_leave"/>
+        <field name="binding_model_id" ref="model_hr_leave"/>
+        <field name="state">code</field>
+        <field name="code">
+           <!-- action = model._get_approval_requests() -->
+        </field>
+    </record>
     <record id="open_carry_forwards" model="ir.actions.server">
-        <field name="name">Approvals</field>
+        <field name="name">Carry Forwards</field>
         <field name="model_id" ref="model_hr_leave"/>
         <field name="binding_model_id" ref="model_hr_leave"/>
         <field name="state">code</field>
@@ -12,14 +21,21 @@
 
     <menuitem
             id="menu_hr_carry_forwards"
-            name="Carry Forwars"
+            name="Carry Forwards"
             parent="hr_holidays.menu_hr_holidays_root"
             sequence="4"/>
 
      <menuitem
-            id="menu_open_leave_approvals"
-            name="Carry Forwars Requests"
+            id="menu_open_carry_forwards_requests"
+            name="Carry Forwards Requests"
+            parent="menu_hr_carry_forwards"
+            action="open_carry_forwards_requests"
+            sequence="1"/>
+
+    <menuitem
+            id="menu_open_carry_forwards"
+            name="Carry Forwards"
             parent="menu_hr_carry_forwards"
             action="open_carry_forwards"
-            sequence="1"/>
+            sequence="2"/>        
 </odoo>
