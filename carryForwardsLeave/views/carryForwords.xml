@@ -15,7 +15,7 @@
                 <group name="grp_cf" string="Carry Forward" colspan="2">
                     <field name="carry_forwards" />
                 </group>
-                <group colspan="2">
+                <group colspan="2" attrs="{'invisible': [('carry_forwards','!=','false')]}">
                     <notebook>
                         <page string="Carry Forwards">
                             <field name="carry_forwards_validators" mode="tree">
