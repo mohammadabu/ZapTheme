@@ -4,5 +4,6 @@
     'depends': ['base_setup', 'hr_holidays'],
     'data': [
         'views/carryForwords.xml'
+        'security/ir.model.access.csv'
     ],
 }
