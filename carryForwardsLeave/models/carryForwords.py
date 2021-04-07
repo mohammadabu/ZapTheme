@@ -8,7 +8,6 @@ from odoo.tools import email_split
 
 class HrLeave(models.Model):
     _inherit = 'hr.leave'
-    carry_forwards = fields.Boolean()
 
 
 class HrLeaveTypesCarryForwards(models.Model):
@@ -16,6 +15,8 @@ class HrLeaveTypesCarryForwards(models.Model):
     carry_forwards_validators = fields.One2many('hr.holidays.carry.forwards',
                                        'hr_holiday_status',
                                        string='Carry Forwards Validators', help="Carry Forwards validators")  
+
+    carry_forwards = fields.Boolean()                                   
 
 
 
