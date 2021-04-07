@@ -15,7 +15,7 @@
                 <group name="grp_cf" string="Carry Forward" colspan="2">
                     <field name="carry_forwards" />
                 </group>
-                <group>
+                <group colspan="2">
                     <notebook>
                         <page string="Carry Forwards">
                             <field name="carry_forwards_validators" mode="tree">
