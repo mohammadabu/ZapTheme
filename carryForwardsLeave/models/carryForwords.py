@@ -10,6 +10,16 @@ class HrLeave(models.Model):
     _inherit = 'hr.leave'
 
 
+
+class HrLeaveTypesCarryForwards(models.Model):
+    _inherit = 'hr.leave.type'
+    carry_forwards_validators = fields.One2many('hr.holidays.carry.forwards',
+                                       'hr_holiday_status',
+                                       string='Carry Forwards Validators', help="Carry Forwards validators")  
+
+    carry_forwards = fields.Boolean('Carry Foward?')                                   
+    time_off_type = fields.Many2one('hr.leave.type',string='Time off Type', help="Time off Type")  
+
     def _get_approval_requests(self):
         current_uid = self.env.uid
         hr_holidays = self.env['hr.leave.type'].sudo().search()
@@ -28,17 +38,7 @@ class HrLeave(models.Model):
             'create': False,
             'edit': False,
         }
-        return value
-
-
-class HrLeaveTypesCarryForwards(models.Model):
-    _inherit = 'hr.leave.type'
-    carry_forwards_validators = fields.One2many('hr.holidays.carry.forwards',
-                                       'hr_holiday_status',
-                                       string='Carry Forwards Validators', help="Carry Forwards validators")  
-
-    carry_forwards = fields.Boolean('Carry Foward?')                                   
-    time_off_type = fields.Many2one('hr.leave.type',string='Time off Type', help="Time off Type")    
+        return value  
 
 class HrCarryForwardsValidators(models.Model):
     _name = 'hr.holidays.carry.forwards'
