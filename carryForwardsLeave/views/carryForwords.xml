@@ -24,6 +24,8 @@
                                     <field name="holiday_validators_user" string="Users validators" attrs="{'invisible': ['|',('validators_type','=','direct_manager'),('validators_type','=','position')],'required': [('validators_type','!=','direct_manager'),('validators_type','!=','position')]}"/>
                                     <field name="holiday_validators_position" string="Position validators" attrs="{'invisible': ['|',('validators_type','=','direct_manager'),('validators_type','=','user')],'required': [('validators_type','!=','direct_manager'),('validators_type','!=','user')]}"/>
                                     <field name="approval"/>
+                                    <field name="exception" />
+                                    <field name="days" attrs="{'invisible': [('exception','=',False)]}" />
                                 </tree>
                             </field>
                         </page>
