@@ -16,7 +16,7 @@ class HrLeaveTypesCarryForwards(models.Model):
                                        'hr_holiday_status',
                                        string='Carry Forwards Validators', help="Carry Forwards validators")  
 
-    carry_forwards = fields.Boolean()                                   
+    carry_forwards = fields.Boolean('Carry Foward?')                                   
 
 
 
