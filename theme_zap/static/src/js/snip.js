@@ -21,7 +21,7 @@ odoo.define('theme_zap.for_testing', function (require) {
                         // limit: limit,
                     },
                 }).then(function (posts) {
-                    var $posts = $(posts).filter('.s_latest_posts_post');
+                    var $posts = $(posts).filter('.for_testing_1');
                     self._showLoading($posts);
                     console.log($posts)
                 }).guardedCatch(function () {
