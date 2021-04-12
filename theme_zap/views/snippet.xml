@@ -40,13 +40,22 @@
 
     <template id="custom_para_with_a_redirect_options" name="Snippet Custom Options" inherit_id="website.snippet_options">
         <xpath expr="//div[@data-js='background']" position="before">
-            <div data-selector=".custom_para_with_a_redirect_options">
-            <li class="dropdown-submenu">
-                <a href="#">Custom Option</a>
-                <ul class="dropdown-menu"> 
-                    
-                </ul>
-            </li>
+            <div data-js="js_get_posts_limit" data-selector=".custom_para_with_a_redirect" data-target=".custom_para_with_a_redirect" data-no-check="true">
+                <we-collapse-area>
+                    <we-toggler><i class="fa fa-sort-numeric-asc"/>Limit</we-toggler>
+                    <we-collapse data-no-preview="true">
+                        <we-button data-posts-limit="1">1 post max</we-button>
+                        <we-button data-posts-limit="2">2 posts max</we-button>
+                        <we-button data-posts-limit="3">3 posts max</we-button>
+                        <we-button data-posts-limit="4">4 posts max</we-button>
+                        <we-button data-posts-limit="5">5 posts max</we-button>
+                        <we-button data-posts-limit="6">6 posts max</we-button>
+                        <we-button data-posts-limit="7">7 posts max</we-button>
+                        <we-button data-posts-limit="8">8 posts max</we-button>
+                        <we-button data-posts-limit="9">9 posts max</we-button>
+                        <we-button data-posts-limit="10">10 posts max</we-button>
+                    </we-collapse>
+                </we-collapse-area>
             </div>
         </xpath>
     </template>
