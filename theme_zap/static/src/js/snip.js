@@ -4,7 +4,13 @@ odoo.define('theme_zap.for_testing', function (require) {
     var wUtils = require('website.utils');
     var publicWidget = require('web.public.widget');
     var _t = core._t;
-    console.log('yeeeeeees')
+    publicWidget.registry.for_testing = publicWidget.Widget.extend({
+        selector: '.for_testing',
+        disabledInEditableMode: false,
+        start: function () {
+            console.log('yeeeeeees')
+        }
+    })
 
 })
     
