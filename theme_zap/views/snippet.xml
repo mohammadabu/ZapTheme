@@ -13,27 +13,26 @@
         </xpath>
     </template>
     <template id="custom_para_with_a_redirect" name="My Custom Snippet 1234">
-        <section class='for_testing'
-            data-loading="true"
-            data-template="theme_zap.custom_snippet_template"
-        ></section>
+        <section >
+            <div class="container for_testing" data-loading="true" data-template="theme_zap.custom_snippet_template">
+
+            </div>
+        </section>
     </template>
     <template id="custom_snippet_template">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 mb16 mt16">
-                    <p class="text-center">
-                        <b>A Small Subtitle new new new new new new new new</b>
-                    </p>
-                    <p class="text-center">
-                        Choose a vibrant image and write an inspiring paragraph
-                        about it. It does not have to be long enough, but it should
-                        reinforce your image.
-                    </p>
-                    <p class="text-center">
-                        <a href="/contactus">Contact us</a>
-                    </p>
-                </div>
+        <div class="row for_testing_1" t-foreach="posts" t-as="p">
+            <div class="col-md-6 col-md-offset-3 mb16 mt16">
+                <p class="text-center">
+                    <b>A Small Subtitle new new new new new new new new</b>
+                </p>
+                <p class="text-center">
+                    Choose a vibrant image and write an inspiring paragraph
+                    about it. It does not have to be long enough, but it should
+                    reinforce your image.
+                </p>
+                <p class="text-center">
+                    <a href="/contactus">Contact us</a>
+                </p>
             </div>
         </div>
     </template>

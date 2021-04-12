@@ -21,7 +21,8 @@ odoo.define('theme_zap.for_testing', function (require) {
                         // limit: limit,
                     },
                 }).then(function (posts) {
-                    console.log(posts)
+                    var $posts = $(posts).filter('.s_latest_posts_post');
+                    console.log($posts)
                 }).guardedCatch(function () {
                     if (self.editableMode) {
                         self.$target.append($('<p/>', {
