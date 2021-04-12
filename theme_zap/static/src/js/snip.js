@@ -17,7 +17,7 @@ odoo.define('theme_zap.for_testing', function (require) {
                     route: '/blog/render_latest_posts',
                     params: {
                         template: template,
-                        // domain: domain,
+                        domain: [],
                         // limit: limit,
                     },
                 }).then(function (posts) {
