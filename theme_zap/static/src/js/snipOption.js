@@ -16,6 +16,13 @@ odoo.define('theme_zap.snipOption', function (require) {
             // });
 
         },
+        _setActive: function () {
+            this._super.apply(this, arguments);
+            var activeLimit = this.$target.data('postsLimit') || 3;
+    
+            this.$el.find('[data-posts-limit]').removeClass('active');
+            this.$el.find('[data-posts-limit=' + activeLimit + ']').addClass('active');
+        },
     })
 })    
     
