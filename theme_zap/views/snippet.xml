@@ -7,7 +7,7 @@
             </div>
         </xpath>
     </template>
-    <template id="custom_para_with_a_redirect" name="My Custom Snippet">
+    <template id="custom_para_with_a_redirect" name="My Custom Snippet 1234">
         <section
             data-loading="true"
             data-template="theme_zap.custom_snippet_template"
