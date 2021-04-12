@@ -8,26 +8,32 @@
         </xpath>
     </template>
     <template id="custom_para_with_a_redirect" name="My Custom Snippet">
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 mb16 mt16">
-                        <p class="text-center">
-                            <b>A Small Subtitle new new new new new new new new</b>
-                        </p>
-                        <p class="text-center">
-                            Choose a vibrant image and write an inspiring paragraph
-                            about it. It does not have to be long enough, but it should
-                            reinforce your image.
-                        </p>
-                        <p class="text-center">
-                            <a href="/contactus">Contact us</a>
-                        </p>
-                    </div>
+        <section
+            data-loading="true"
+            data-template="theme_zap.custom_snippet_template"
+        />
+    </template>
+    <template id="custom_snippet_template">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 mb16 mt16">
+                    <p class="text-center">
+                        <b>A Small Subtitle new new new new new new new new</b>
+                    </p>
+                    <p class="text-center">
+                        Choose a vibrant image and write an inspiring paragraph
+                        about it. It does not have to be long enough, but it should
+                        reinforce your image.
+                    </p>
+                    <p class="text-center">
+                        <a href="/contactus">Contact us</a>
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
     </template>
+
+
     <template id="custom_para_with_a_redirect_options" name="Snippet Custom Options" inherit_id="website.snippet_options">
         <xpath expr="//div[@data-js='background']" position="before">
             <div data-selector=".custom_para_with_a_redirect_options">
