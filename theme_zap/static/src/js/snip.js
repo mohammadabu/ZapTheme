@@ -22,6 +22,7 @@ odoo.define('theme_zap.for_testing', function (require) {
                     },
                 }).then(function (posts) {
                     var $posts = $(posts).filter('.s_latest_posts_post');
+                    self._showLoading($posts);
                     console.log($posts)
                 }).guardedCatch(function () {
                     if (self.editableMode) {
@@ -34,8 +35,14 @@ odoo.define('theme_zap.for_testing', function (require) {
                 });
             });
             return Promise.all([this._super.apply(this, arguments), prom]);
+        },
+        _showLoading: function ($posts) {
+            var self = this;
+            _.each($posts, function (post, i) {
+                var $post = $(post);
+                $post.appendTo(self.$target);
+            })
         }
     })
-
-})
+})    
     
