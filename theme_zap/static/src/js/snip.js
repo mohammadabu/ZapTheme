@@ -12,6 +12,27 @@ odoo.define('theme_zap.for_testing', function (require) {
             var template = self.$target.data('template') || 'theme_zap.custom_snippet_template';
             console.log('yeeeeeees')
             console.log(self.$target)
+            var prom = new Promise(function (resolve) {
+                self._rpc({
+                    route: '/blog/render_latest_posts',
+                    params: {
+                        template: template,
+                        // domain: domain,
+                        // limit: limit,
+                    },
+                }).then(function (posts) {
+                    console.log(posts)
+                }).guardedCatch(function () {
+                    if (self.editableMode) {
+                        self.$target.append($('<p/>', {
+                            class: 'text-danger',
+                            text: _t("An error occured with this latest posts block. If the problem persists, please consider deleting it and adding a new one"),
+                        }));
+                    }
+                    resolve();
+                });
+            });
+            return Promise.all([this._super.apply(this, arguments), prom]);
         }
     })
 
