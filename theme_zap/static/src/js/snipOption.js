@@ -4,7 +4,7 @@ odoo.define('theme_zap.snipOption', function (require) {
     var sOptions = require('web_editor.snippets.options');
     var wUtils = require('website.utils');
     var _t = core._t;
-
+    console.log('sadsadsadsadasdadsdsadasdasdasdas')
     sOptions.registry.js_get_test_limit = sOptions.Class.extend({
         postsLimit: function (previewMode, value, $opt) {
             value = parseInt(value);
