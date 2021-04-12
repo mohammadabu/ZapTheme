@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <template id="assets_frontend" inherit_id="website.assets_frontend" name="Custom Front-end assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/theme_zap/static/src/js/snip.js"/>
+        </xpath>
+    </template>
     <template id="adding_new_snippet_to_website_snippetsr" inherit_id="website.snippets" name="Place into building blocks bar">
         <xpath expr="//div[@id='snippet_structure']" position="inside">
             <div class="o_panel_body">
