@@ -8,7 +8,10 @@ odoo.define('theme_zap.for_testing', function (require) {
         selector: '.for_testing',
         disabledInEditableMode: false,
         start: function () {
+            var self = this;
+            var template = self.$target.data('template') || 'theme_zap.custom_snippet_template';
             console.log('yeeeeeees')
+            console.log(self.$target)
         }
     })
 
