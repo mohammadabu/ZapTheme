@@ -16,7 +16,7 @@
     <template id="custom_para_with_a_redirect" name="My Custom Snippet 1234">
         <section >
             <div class="container for_testing" data-loading="true" data-template="theme_zap.custom_snippet_template">
-                
+
             </div>
         </section>
     </template>
@@ -37,7 +37,7 @@
             </div>
         </div>
     </template>
-    <template id="custom_para_with_a_redirect_options" name="Snippet Custom Options" inherit_id="website.snippet_options">
+    <template id="custom_para_with_a_redirect_options" inherit_id="website.snippet_options">
         <xpath expr="//div[@data-js='background']" position="before">
             <div data-js="js_get_test_limit" data-selector=".custom_para_with_a_redirect" data-target=".custom_para_with_a_redirect" data-no-check="true">
                 <we-collapse-area>
@@ -56,6 +56,7 @@
                     </we-collapse>
                 </we-collapse-area>
             </div>
+            <div>hhhhhhhhhh</div>
         </xpath>
     </template>
 </odoo>
