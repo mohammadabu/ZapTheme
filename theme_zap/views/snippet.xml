@@ -43,16 +43,16 @@
                 <we-collapse-area>
                     <we-toggler><i class="fa fa-sort-numeric-asc"/>Limit</we-toggler>
                     <we-collapse data-no-preview="true">
-                        <we-button data-posts-limit="1">1 post max</we-button>
-                        <we-button data-posts-limit="2">2 posts max</we-button>
-                        <we-button data-posts-limit="3">3 posts max</we-button>
-                        <we-button data-posts-limit="4">4 posts max</we-button>
-                        <we-button data-posts-limit="5">5 posts max</we-button>
-                        <we-button data-posts-limit="6">6 posts max</we-button>
-                        <we-button data-posts-limit="7">7 posts max</we-button>
-                        <we-button data-posts-limit="8">8 posts max</we-button>
-                        <we-button data-posts-limit="9">9 posts max</we-button>
-                        <we-button data-posts-limit="10">10 posts max</we-button>
+                        <we-button data-posts-test-limit="1">1 post max</we-button>
+                        <we-button data-posts-test-limit="2">2 posts max</we-button>
+                        <we-button data-posts-test-limit="3">3 posts max</we-button>
+                        <we-button data-posts-test-limit="4">4 posts max</we-button>
+                        <we-button data-posts-test-limit="5">5 posts max</we-button>
+                        <we-button data-posts-test-limit="6">6 posts max</we-button>
+                        <we-button data-posts-test-limit="7">7 posts max</we-button>
+                        <we-button data-posts-test-limit="8">8 posts max</we-button>
+                        <we-button data-posts-test-limit="9">9 posts max</we-button>
+                        <we-button data-posts-test-limit="10">10 posts max</we-button>
                     </we-collapse>
                 </we-collapse-area>
             </div>

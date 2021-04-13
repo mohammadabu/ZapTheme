@@ -29,7 +29,7 @@ odoo.define('theme_zap.snipOption', function (require) {
         postsLimit: function (previewMode, value, $opt) {
             value = parseInt(value);
             console.log(value)
-            this.$target.attr('data-posts-limit', value).data('postsLimit', value);
+            this.$target.attr('data-posts-test-limit', value).data('postsLimit', value);
             // this.trigger_up('widgets_start_request', {
             //     editableMode: true,
             //     $target: this.$target,
