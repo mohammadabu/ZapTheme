@@ -9,7 +9,7 @@
             <xpath expr="//group[@name='notification']" position="before">
                 <group name="grp_cf" string="Carry Forward">
                     <field name="carry_forwards" />
-                    <field name="automatically_leave" />
+                    <field name="automatically_leave" attrs="{'invisible': [('carry_forwards','=',False)]}" />
                     <field name="time_off_type" attrs="{'invisible': ['|',('carry_forwards','=',False),('automatically_leave','=',True)],'required': [('carry_forwards','!=',False),('automatically_leave','=',False)]}" /> 
                 </group>
                 <group colspan="2" attrs="{'invisible': [('carry_forwards','=',False)]}">
