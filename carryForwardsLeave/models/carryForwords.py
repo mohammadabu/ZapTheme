@@ -17,7 +17,8 @@ class HrLeaveTypesCarryForwards(models.Model):
                                        'hr_holiday_status',
                                        string='Carry Forwards Validators', help="Carry Forwards validators")  
 
-    carry_forwards = fields.Boolean('Carry Foward?')                                   
+    carry_forwards = fields.Boolean('Carry Foward?')   
+    automatically_leave = fields.Boolean('Automatically Leave Creation?')                                 
     time_off_type = fields.Many2one('hr.leave.type',string='Time off Type', help="Time off Type")  
 
     def _get_approval_requests(self):
