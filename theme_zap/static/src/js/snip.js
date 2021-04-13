@@ -11,6 +11,7 @@ odoo.define('theme_zap.for_testing', function (require) {
             var self = this;
             var template = self.$target.data('template') || 'theme_zap.custom_snippet_template';
             var limit = self.$target.data('postsTestLimit') || 3;
+            this.$target.empty();
             // console.log('yeeeeeees')
             // console.log(self.$target)
             var prom = new Promise(function (resolve) {
