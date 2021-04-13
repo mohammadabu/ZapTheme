@@ -6,6 +6,27 @@ odoo.define('theme_zap.snipOption', function (require) {
     var _t = core._t;
     console.log(sOptions)
     sOptions.registry.js_get_test_limit = sOptions.Class.extend({
+
+        start: function () {
+            console.log('wwwwwwwwwwww')
+            // var def = this._rpc({
+            //     model: 'blog.blog',
+            //     method: 'search_read',
+            //     args: [wUtils.websiteDomain(this), ['name']],
+            // }).then(blogs => {
+            //     var allBlogsEl = this.el.querySelector('[data-filter-by-blog-id="0"]');
+            //     var menuEl = allBlogsEl.parentNode;
+            //     for (const blog of blogs) {
+            //         let el = allBlogsEl.cloneNode();
+            //         el.dataset.filterByBlogId = blog.id;
+            //         el.textContent = blog.name;
+            //         menuEl.appendChild(el);
+            //     }
+            //     this._setActive();
+            // });
+    
+            // return Promise.all([this._super.apply(this, arguments), def]);
+        },
         postsLimit: function (previewMode, value, $opt) {
             value = parseInt(value);
             console.log(value)

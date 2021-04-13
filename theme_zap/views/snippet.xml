@@ -39,7 +39,7 @@
     </template>
     <template id="custom_para_with_a_redirect_options" inherit_id="website.snippet_options">
         <xpath expr="//div[@data-js='background']" position="before">
-            <!-- <div data-js="js_get_test_limit" data-selector=".custom_para_with_a_redirect" data-target=".for_testing" data-no-check="true">
+            <div data-js="js_get_test_limit" data-selector=".custom_para_with_a_redirect" data-target=".for_testing" data-no-check="true">
                 <we-collapse-area>
                     <we-toggler><i class="fa fa-sort-numeric-asc"/>Limit</we-toggler>
                     <we-collapse data-no-preview="true">
@@ -55,17 +55,7 @@
                         <we-button data-posts-limit="10">10 posts max</we-button>
                     </we-collapse>
                 </we-collapse-area>
-            </div> -->
-            <!-- <div data-selector=".s_testimonial">
-                <div class="dropdown-submenu">
-                    <a href="#" class="dropdown-item">Your Option</a>
-                    <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item" data-select-class="opt_shadow">Shadow Images</a>
-                        <a href="#" class="dropdown-item" data-select-class="opt_grey_bg">Grey Bg</a>
-                        <a href="#" class="dropdown-item" data-select-class="">None</a>
-                    </div>
-                </div>
-            </div>     -->
+            </div>
         </xpath>
     </template>
 </odoo>
