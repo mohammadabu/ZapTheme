@@ -15,8 +15,15 @@ odoo.define('theme_zap.snipOption', function (require) {
                 editableMode: true,
                 $target: this.$target,
             });
-
         },
+        _setActive: function () {
+            console.log("dsadsadsadsadas")
+            this._super.apply(this, arguments);
+            var activeLimit = this.$target.data('postsTestLimit') || 3;
+    
+            this.$el.find('[data-posts-test-limit]').removeClass('active');
+            this.$el.find('[data-posts-test-limit=' + activeLimit + ']').addClass('active');
+        },    
     })
 })    
     
