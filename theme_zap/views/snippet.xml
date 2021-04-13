@@ -2,7 +2,7 @@
 <odoo>
     <template id="for_testing__assets_primary_variables" inherit_id="web._assets_primary_variables">
         <xpath expr="//link[last()]" position="after">
-            <link rel="stylesheet" type="text/scss" href="/website_blog/static/src/scss/for_testing.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/theme_zap/static/src/scss/for_testing.scss"/>
         </xpath>
     </template>
     <template id="assets_frontend" inherit_id="website.assets_frontend" name="Custom Front-end assets">
@@ -14,7 +14,7 @@
     <template id="adding_new_snippet_to_website_snippetsr" inherit_id="website.snippets" name="Place into building blocks bar">
         <xpath expr="//div[@id='snippet_structure']" position="inside">
             <div class="o_panel_body">
-                <t t-snippet="theme_zap.custom_para_with_a_redirect" t-thumbnail="/theme_zap/static/src/img/backgrounds/01.png"/>
+                <t t-snippet="theme_zap.custom_para_with_a_redirect" t-thumbnail="/theme_zap/static/src/img/backgrounds/01.jpg"/>
             </div>
         </xpath>
     </template>
