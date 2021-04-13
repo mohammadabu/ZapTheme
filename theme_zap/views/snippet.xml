@@ -42,7 +42,7 @@
             </div>
         </div>
     </template>
-    <!-- <template id="custom_para_with_a_redirect_options" inherit_id="website.snippet_options">
+    <template id="custom_para_with_a_redirect_options" inherit_id="website.snippet_options">
         <xpath expr="//div[@data-js='background']" position="before">
             <div data-js="js_get_test_limit" data-selector=".custom_para_with_a_redirect" data-target=".for_testing" data-no-check="true">
                 <we-collapse-area>
@@ -62,8 +62,8 @@
                 </we-collapse-area>
             </div>
         </xpath>
-    </template> -->
-    <template id="s-snippet-formula_opt" name="Idea Snippet Options" inherit_id="website.snippet_options">
+    </template>
+    <!-- <template id="s-snippet-formula_opt" name="Idea Snippet Options" inherit_id="website.snippet_options">
         <xpath expr="//div[@data-js='background']" position="after">
             <div data-selector=".for_testing">
                 <we-collapse-area>
@@ -78,6 +78,6 @@
                 </we-collapse-area>
             </div>
         </xpath>
-    </template>
+    </template> -->
 </odoo>
 
