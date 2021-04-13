@@ -17,7 +17,6 @@ odoo.define('theme_zap.snipOption', function (require) {
             });
         },
         _setActive: function () {
-            console.log("dsadsadsadsadas")
             this._super.apply(this, arguments);
             var activeLimit = this.$target.data('postsTestLimit') || 3;
     

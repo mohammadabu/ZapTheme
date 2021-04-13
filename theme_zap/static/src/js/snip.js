@@ -10,6 +10,7 @@ odoo.define('theme_zap.for_testing', function (require) {
         start: function () {
             var self = this;
             var template = self.$target.data('template') || 'theme_zap.custom_snippet_template';
+            var limit = self.$target.data('postsTestLimit') || 3;
             // console.log('yeeeeeees')
             // console.log(self.$target)
             var prom = new Promise(function (resolve) {
@@ -18,7 +19,7 @@ odoo.define('theme_zap.for_testing', function (require) {
                     params: {
                         template: template,
                         domain: [],
-                        // limit: limit,
+                        limit: limit,
                     },
                 }).then(function (posts) {
                     var $posts = $(posts).filter('.for_testing_1');
