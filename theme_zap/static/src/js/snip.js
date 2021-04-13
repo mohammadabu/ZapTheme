@@ -47,18 +47,3 @@ odoo.define('theme_zap.for_testing', function (require) {
         }
     })
 })    
- 
-odoo.define('theme_zap.for_testing_option',function(require){
-    'use strict';
-    var core = require('web.core');
-    var wUtils = require('website.utils');
-    var publicWidget = require('web.public.widget');
-    var _t = core._t;
-    publicWidget.registry.for_testing_option = publicWidget.Widget.extend({
-        start: function () {
-            var self = this;
-            console.log('self.target')
-            console.log(self.$target)
-        }
-    })
-})

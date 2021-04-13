@@ -46,7 +46,7 @@
             <div  data-js="js_get_test_limit" data-selector=".for_testing">
                 <we-collapse-area>
                     <we-toggler><i class="fa fa-sort-numeric-asc"/>Limit</we-toggler>
-                    <we-collapse data-no-preview="true" class='for_testing_option'>
+                    <we-collapse data-no-preview="true">
                         <we-button data-posts-test-limit="1">1 post max</we-button>
                         <we-button data-posts-test-limit="2">2 posts max</we-button>
                         <we-button data-posts-test-limit="3">3 posts max</we-button>

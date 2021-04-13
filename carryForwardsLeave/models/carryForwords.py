@@ -22,14 +22,14 @@ class HrLeaveTypesCarryForwards(models.Model):
 
     def _get_approval_requests(self):
         current_uid = self.env.uid
-        hr_holidays = self.env['hr.leave.type'].sudo().search([])
+        hr_holidays = self.env['hr.leave.allocation'].sudo().search([])
         li = []
         for l in hr_holidays:
             li.append(l.id)                              
         value = {
             'domain': str([('id', 'in', li)]),
             'view_mode': 'tree,form',
-            'res_model': 'hr.leave.type',
+            'res_model': 'hr.leave.allocation',
             'view_id': False,
             'type': 'ir.actions.act_window',
             'name': _('Carry Forwards'),
