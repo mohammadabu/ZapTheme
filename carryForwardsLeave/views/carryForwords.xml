@@ -30,10 +30,10 @@
             </xpath>
             <xpath expr="//group[@name='validity_start']" position="attributes">
                 <attribute name="attrs">{'required': [('is_approved_user_id', '=', True)]}</attribute> 
-            <xpath>
+            </xpath>
             <xpath expr="//group[@name='validity_stop']" position="attributes">
                 <attribute name="attrs">{'required': [('carry_forwards', '=', True)]}</attribute> 
-            <xpath>
+            </xpath>
         </field>
     </record>
 
