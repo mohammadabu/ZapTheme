@@ -10,8 +10,8 @@ odoo.define('theme_zap.for_testing', function (require) {
         start: function () {
             var self = this;
             var template = self.$target.data('template') || 'theme_zap.custom_snippet_template';
-            console.log('yeeeeeees')
-            console.log(self.$target)
+            // console.log('yeeeeeees')
+            // console.log(self.$target)
             var prom = new Promise(function (resolve) {
                 self._rpc({
                     route: '/blog/render_latest_posts',
@@ -23,7 +23,7 @@ odoo.define('theme_zap.for_testing', function (require) {
                 }).then(function (posts) {
                     var $posts = $(posts).filter('.for_testing_1');
                     self._showLoading($posts);
-                    console.log($posts)
+                    // console.log($posts)
                 }).guardedCatch(function () {
                     if (self.editableMode) {
                         self.$target.append($('<p/>', {

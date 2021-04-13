@@ -4,11 +4,10 @@ odoo.define('theme_zap.snipOption', function (require) {
     var sOptions = require('web_editor.snippets.options');
     var wUtils = require('website.utils');
     var _t = core._t;
-    console.log(sOptions)
+    console.log('test_1')
     sOptions.registry.js_get_test_limit = sOptions.Class.extend({
-
         start: function () {
-            console.log('wwwwwwwwwwww')
+            console.log('test_2')
             // var def = this._rpc({
             //     model: 'blog.blog',
             //     method: 'search_read',
