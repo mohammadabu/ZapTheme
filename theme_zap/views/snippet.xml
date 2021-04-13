@@ -39,7 +39,8 @@
     </template>
     <template id="custom_para_with_a_redirect_options" inherit_id="website.snippet_options">
         <xpath expr="//div[@data-js='background']" position="before">
-            <div data-js="js_get_test_limit" data-selector=".custom_para_with_a_redirect" data-target=".for_testing" data-no-check="true">
+            <!-- <div data-js="js_get_test_limit" data-selector=".custom_para_with_a_redirect" data-target=".for_testing" data-no-check="true"> -->
+            <div >    
                 <we-collapse-area>
                     <we-toggler><i class="fa fa-sort-numeric-asc"/>Limit</we-toggler>
                     <we-collapse data-no-preview="true">
