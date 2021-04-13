@@ -1,0 +1,8 @@
+.for_testing {
+    padding-top: 20px;
+    &.hide_extra_info {
+        .row.idea-header {
+            display: none;
+        }
+    }
+}

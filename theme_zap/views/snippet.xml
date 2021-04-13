@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <template id="for_testing__assets_primary_variables" inherit_id="web._assets_primary_variables">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/website_blog/static/src/scss/for_testing.scss"/>
+        </xpath>
+    </template>
     <template id="assets_frontend" inherit_id="website.assets_frontend" name="Custom Front-end assets">
         <xpath expr="." position="inside">
             <script type="text/javascript" src="/theme_zap/static/src/js/snip.js"/>
@@ -37,10 +42,9 @@
             </div>
         </div>
     </template>
-    <template id="custom_para_with_a_redirect_options" inherit_id="website.snippet_options">
+    <!-- <template id="custom_para_with_a_redirect_options" inherit_id="website.snippet_options">
         <xpath expr="//div[@data-js='background']" position="before">
-            <!-- <div data-js="js_get_test_limit" data-selector=".custom_para_with_a_redirect" data-target=".for_testing" data-no-check="true"> -->
-            <div >    
+            <div data-js="js_get_test_limit" data-selector=".custom_para_with_a_redirect" data-target=".for_testing" data-no-check="true">
                 <we-collapse-area>
                     <we-toggler><i class="fa fa-sort-numeric-asc"/>Limit</we-toggler>
                     <we-collapse data-no-preview="true">
@@ -54,6 +58,22 @@
                         <we-button data-posts-test-limit="8">8 posts max</we-button>
                         <we-button data-posts-test-limit="9">9 posts max</we-button>
                         <we-button data-posts-test-limit="10">10 posts max</we-button>
+                    </we-collapse>
+                </we-collapse-area>
+            </div>
+        </xpath>
+    </template> -->
+    <template id="s-snippet-formula_opt" name="Idea Snippet Options" inherit_id="website.snippet_options">
+        <xpath expr="//div[@data-js='background']" position="after">
+            <div data-selector=".for_testing">
+                <we-collapse-area>
+                    <we-toggler>
+                        <i class="fa fa-fw fa-magic"/>
+                        Show extra info
+                    </we-toggler>
+                    <we-collapse>
+                        <we-button data-select-class="">Yes</we-button>
+                        <we-button data-select-class="hide_extra_info">No</we-button>
                     </we-collapse>
                 </we-collapse-area>
             </div>
