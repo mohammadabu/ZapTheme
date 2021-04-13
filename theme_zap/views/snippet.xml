@@ -19,10 +19,8 @@
         </xpath>
     </template>
     <template id="custom_para_with_a_redirect" name="My Custom Snippet">
-        <section >
-            <div class="container for_testing" data-loading="true" data-template="theme_zap.custom_snippet_template">
+        <section class="container for_testing" data-loading="true" data-template="theme_zap.custom_snippet_template">
 
-            </div>
         </section>
     </template>
     <template id="custom_snippet_template">
