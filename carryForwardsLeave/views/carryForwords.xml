@@ -29,7 +29,7 @@
                 </group>
             </xpath>
             <xpath expr="//field[@name='validity_start']" position="attributes">
-                <attribute name="attrs">{'required': [('is_approved_user_id', '=', True)]}</attribute> 
+                <attribute name="attrs">{'required': [('carry_forwards', '=', True)]}</attribute> 
             </xpath>
             <xpath expr="//field[@name='validity_stop']" position="attributes">
                 <attribute name="attrs">{'required': [('carry_forwards', '=', True)]}</attribute> 
