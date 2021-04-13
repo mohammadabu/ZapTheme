@@ -46,7 +46,7 @@
             <div  data-js="js_get_test_limit" data-selector=".for_testing">
                 <we-collapse-area>
                     <we-toggler><i class="fa fa-sort-numeric-asc"/>Limit</we-toggler>
-                    <we-collapse data-no-preview="true">
+                    <we-collapse data-no-preview="true" class='for_testing_option'>
                         <we-button data-posts-test-limit="1">1 post max</we-button>
                         <we-button data-posts-test-limit="2">2 posts max</we-button>
                         <we-button data-posts-test-limit="3">3 posts max</we-button>
@@ -62,21 +62,5 @@
             </div>
         </xpath>
     </template>
-    <!-- <template id="s-snippet-formula_opt" name="Idea Snippet Options" inherit_id="website.snippet_options">
-        <xpath expr="//div[@data-js='background']" position="after">
-            <div data-selector=".for_testing">
-                <we-collapse-area>
-                    <we-toggler>
-                        <i class="fa fa-fw fa-magic"/>
-                        Show extra info
-                    </we-toggler>
-                    <we-collapse>
-                        <we-button data-select-class="">Yes</we-button>
-                        <we-button data-select-class="hide_extra_info">No</we-button>
-                    </we-collapse>
-                </we-collapse-area>
-            </div>
-        </xpath>
-    </template> -->
 </odoo>
 
