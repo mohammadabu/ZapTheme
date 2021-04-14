@@ -47,7 +47,10 @@ class HrLeaveTypesCarryForwards(models.Model):
             'create': False,
             'edit': False,
         }
-        return value  
+        return value 
+
+    def carryForwordsDaily(self):
+        print("123")     
 
 class HrCarryForwardsValidators(models.Model):
     _name = 'hr.holidays.carry.forwards'
