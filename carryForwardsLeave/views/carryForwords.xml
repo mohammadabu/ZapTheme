@@ -47,7 +47,7 @@
         <field name="model">hr.leave.allocation</field>
         <field name="inherit_id" ref="hr_holidays.hr_leave_allocation_view_form_manager"/>
         <field name="arch" type="xml">
-            <xpath expr="//group[@name='number_of_days_display']" position="after">
+            <xpath expr="//field[@name='number_of_days_display']" position="after">
                 <field name="check_forword" />
             </xpath>
         </field>
