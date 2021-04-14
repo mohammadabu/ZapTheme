@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import logging
+_logger = logging.getLogger(__name__)
 import re
 from datetime import datetime, timedelta
 from odoo import models, api, fields, _
@@ -51,6 +53,8 @@ class HrLeaveTypesCarryForwards(models.Model):
 
     def carryForwordsDaily(self):
         print("123")     
+        _logger.debug('yes im in yes')
+
 
 class HrCarryForwardsValidators(models.Model):
     _name = 'hr.holidays.carry.forwards'
