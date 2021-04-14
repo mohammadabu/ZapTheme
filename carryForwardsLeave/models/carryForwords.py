@@ -51,9 +51,8 @@ class HrLeaveTypesCarryForwards(models.Model):
         }
         return value 
 
-    def carryForwordsDaily(self):
-        print("123")     
-        _logger.info('yes im in yes')
+    def carryForwordsDaily(self):     
+        _logger.info(self)
 
 
 class HrCarryForwardsValidators(models.Model):
