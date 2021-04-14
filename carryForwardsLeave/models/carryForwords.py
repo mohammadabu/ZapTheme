@@ -52,6 +52,7 @@ class HrLeaveTypesCarryForwards(models.Model):
         return value 
 
     def carryForwordsDaily(self):     
+        _logger.info("---------------------------")
         _logger.info(self)
 
 
