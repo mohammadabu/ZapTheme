@@ -58,7 +58,7 @@ class HrLeaveTypesCarryForwards(models.Model):
         annual_leave_type = self.env['hr.leave.type'].sudo().search([('carry_forwards','=','True'),('finished_carry_froword','=',False)])
         for annual in annual_leave_type:
             current_date = datetime.now().date()
-            if annual.validity_stop > current_date:
+            if current_date > annual.validity_stop:
                 _logger.info(annual.validity_stop)
 
 
