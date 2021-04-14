@@ -6,9 +6,13 @@ from odoo.exceptions import UserError, AccessError, ValidationError
 from odoo.tools import email_split
 
 
-class HrLeave(models.Model):
-    _inherit = 'hr.leave'
 
+class HrLeave(models.Model):
+    _inherit = 'hr.leave'    
+
+class HrLeaveAllocation(models.Model):
+    _inherit = 'hr.leave.allocation'
+    check_forword = fields.Boolean()
 
 
 class HrLeaveTypesCarryForwards(models.Model):

@@ -41,7 +41,17 @@
         </field>
     </record>
 
-
+    
+    <record id="open_hr_leave_allocation_custom" model="ir.ui.view">
+        <field name="name">hr.leave.allocation.custom</field>
+        <field name="model">hr.leave.allocation</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_allocation_view_form_manager"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='number_of_days_display']" position="after">
+                <field name="check_forword" />
+            </xpath>
+        </field>
+    </record>
     <record id="open_carry_forwards_requests" model="ir.actions.server">
         <field name="name">Carry Forwards Requests</field>
         <field name="model_id" ref="model_hr_leave"/>
