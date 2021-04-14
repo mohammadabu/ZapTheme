@@ -20,7 +20,7 @@ class HrLeaveTypesCarryForwards(models.Model):
     carry_forwards = fields.Boolean('Carry Foward?')   
     automatically_leave = fields.Boolean('Automatically Leave Creation?')                                 
     time_off_type = fields.Many2one('hr.leave.type',string='Time off Type', help="Time off Type")  
-
+    timeoff_name = fields.Char('Time Off Name')
     def _get_approval_requests(self):
         current_uid = self.env.uid
         employees = self.env['hr.employee'].sudo().search([('user_id','=',self.env.uid)])
