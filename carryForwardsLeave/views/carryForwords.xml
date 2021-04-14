@@ -14,6 +14,7 @@
                     <field name="timeoff_name" attrs="{'invisible': ['|',('carry_forwards','=',False),('automatically_leave','=',False)],'required': [('carry_forwards','!=',False),('automatically_leave','!=',False)]}"/>
                     <field name="from_date" attrs="{'invisible': ['|',('carry_forwards','=',False),('automatically_leave','=',False)],'required': [('carry_forwards','!=',False),('automatically_leave','!=',False)]}"/>
                     <field name="to_date" attrs="{'invisible': ['|',('carry_forwards','=',False),('automatically_leave','=',False)],'required': [('carry_forwards','!=',False),('automatically_leave','!=',False)]}"/>
+                    <field name="finished_carry_froword" />
                 </group>
                 <group colspan="2" attrs="{'invisible': [('carry_forwards','=',False)]}">
                     <notebook>

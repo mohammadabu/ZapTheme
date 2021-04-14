@@ -29,6 +29,7 @@ class HrLeaveTypesCarryForwards(models.Model):
     timeoff_name = fields.Char('Time Off Name')
     from_date = fields.Date('From Date')
     to_date = fields.Date('To Date')
+    finished_carry_froword = fields.Boolean()
     def _get_approval_requests(self):
         current_uid = self.env.uid
         employees = self.env['hr.employee'].sudo().search([('user_id','=',self.env.uid)])
@@ -53,7 +54,8 @@ class HrLeaveTypesCarryForwards(models.Model):
 
     def carryForwordsDaily(self):     
         _logger.info("---------------------------")
-        annual_leave_type = self.env['hr.leave.type'].sudo().search([('carry_forwards','=','True')])
+        annual_leave_type = self.env['hr.leave.type'].sudo().search([('carry_forwards','=','True'),('finished_carry_froword','=',False),('validity_stop','>=',datetime.today())])
+
         _logger.info(annual_leave_type)
 
 
