@@ -53,7 +53,7 @@ class HrLeaveTypesCarryForwards(models.Model):
 
     def carryForwordsDaily(self):
         print("123")     
-        _logger.debug('yes im in yes')
+        _logger.info('yes im in yes')
 
 
 class HrCarryForwardsValidators(models.Model):
