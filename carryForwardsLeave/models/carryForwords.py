@@ -55,7 +55,7 @@ class HrLeaveTypesCarryForwards(models.Model):
     def carryForwordsDaily(self):     
         _logger.info("---------------------------")
         # ,'&',('validity_stop','>',datetime.strptime(str(datetime.today()),'%Y-%m-%d')
-        annual_leave_type = self.env['hr.leave.type'].sudo().search([('carry_forwards','=','True'),('finished_carry_froword','=',False))])
+        annual_leave_type = self.env['hr.leave.type'].sudo().search([('carry_forwards','=','True'),('finished_carry_froword','=',False)])
         for annual in annual_leave_type:
             _logger.info(annual.validity_stop)
 
