@@ -32,7 +32,8 @@ class HrLeaveTypesCarryForwards(models.Model):
     finished_carry_froword = fields.Boolean()
     def _get_approval_requests(self):
         current_uid = self.env.uid
-        employees = self.env['hr.employee'].sudo().search([('user_id','=',self.env.uid)])
+        # employees = self.env['hr.employee'].sudo().search([('user_id','=',self.env.uid)])
+        employees = self.env['hr.employee'].sudo().search([])
         li = []
         for employee in employees:
             hr_holidays = self.env['hr.leave.allocation'].sudo().search([('employee_id','=',employee.id)])
