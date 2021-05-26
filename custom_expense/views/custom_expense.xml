@@ -16,6 +16,9 @@
         <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
         <field name="arch" type="xml">
             <field name="can_reset" invisible="1"/>
+            <xpath expr="//form//header/field[@name='state']" position="before">
+                <field name="can_reset" invisible="1"/>
+            </xpath>
             <xpath expr="//form//header/field[@name='state']" position="replace">
                 <field name="state" widget="statusbar" statusbar_visible="draft,submit,direct,manager_of_manager,hr,approve,post,done"/>
             </xpath>
