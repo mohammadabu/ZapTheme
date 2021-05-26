@@ -9,4 +9,13 @@ from odoo.tools import email_split
 
 class CustomExpense(models.Model):
     _inherit = 'hr.expense'
-    state = fields.Selection(selection_add=[('direct', 'Direct Manager')])
+    # state = fields.Selection(selection_add=[('direct', 'Direct Manager')])
+    state = fields.Selection([
+        ('draft', 'To Submit'),
+        ('reported', 'Submitted'),
+        ('direct','Direct Manager'),
+        ('manager_of_manager','Manager of Manager'),
+        ('approved', 'Approved'),
+        ('done', 'Paid'),
+        ('refused', 'Refused')
+    ], compute='_compute_state', string='Status', copy=False, index=True, readonly=True, store=True, help="Status of the expense.")
