@@ -15,6 +15,7 @@ class CustomExpense(models.Model):
         ('reported', 'Submitted'),
         ('direct','Direct Manager'),
         ('manager_of_manager','Manager of Manager'),
+        ('hr','Hr Manager'),
         ('approved', 'Approved'),
         ('done', 'Paid'),
         ('refused', 'Refused')
