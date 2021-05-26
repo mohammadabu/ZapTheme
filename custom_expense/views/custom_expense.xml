@@ -5,10 +5,8 @@
         <field name="model">hr.expense</field>
         <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//form/header/field[@name='state']" position="attributes">
-                <attribute name="attrs">
-                    {'statusbar_visible': 'draft,reported,direct,manager_of_manager,hr,approved,done,refused'}
-                </attribute>
+            <xpath expr="//form/header/field[@name='state']" position="replace">
+                <field name="state" widget="statusbar" statusbar_visible="draft,reported,direct,manager_of_manager,hr,approved,done,refused"/>
             </xpath>
         </field>
     </record>
