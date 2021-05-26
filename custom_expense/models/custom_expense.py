@@ -9,3 +9,4 @@ from odoo.tools import email_split
 
 class CustomExpense(models.Model):
     _inherit = 'hr.expense'
+    state = fields.Selection(selection_add=[('direct', 'Direct Manager')])
