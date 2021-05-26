@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="hr_carry_forwards_validation" model="ir.ui.view">
-        <field name="name">hr.leave.type.carry.forwards</field>
-        <field name="model">hr.leave.type</field>
-        <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+    <record id="hr_custom_expense_view_form" model="ir.ui.view">
+        <field name="name">hr_custom_expense_view_form</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//group[@name='notification']" position="before">
-                <group name="grp_cf" string="Carry Forward">
-                    <field name="carry_forwards" />
-                    <field name="automatically_leave" attrs="{'invisible': [('carry_forwards','=',False)]}" />
-                    <field name="time_off_type" attrs="{'invisible': ['|',('carry_forwards','=',False),('automatically_leave','=',True)],'required': [('carry_forwards','!=',False),('automatically_leave','=',False)]}" /> 
-                    <field name="timeoff_name" attrs="{'invisible': ['|',('carry_forwards','=',False),('automatically_leave','=',False)],'required': [('carry_forwards','!=',False),('automatically_leave','!=',False)]}"/>
-                    <field name="from_date" attrs="{'invisible': ['|',('carry_forwards','=',False),('automatically_leave','=',False)],'required': [('carry_forwards','!=',False),('automatically_leave','!=',False)]}"/>
-                    <field name="to_date" attrs="{'invisible': ['|',('carry_forwards','=',False),('automatically_leave','=',False)],'required': [('carry_forwards','!=',False),('automatically_leave','!=',False)]}"/>
-                    <field name="finished_carry_froword" />
-                </group>
+            <xpath expr="//form/header/field[@name='state']" position="attributes">
+                <attribute name="attrs">
+                    {'statusbar_visible': 'draft,reported,direct,manager_of_manager,hr,approved,done,refused'}
+                </attribute>
             </xpath>
         </field>
     </record>
