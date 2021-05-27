@@ -26,7 +26,43 @@ class CustomExpense(models.Model):
     def _get_approval_requests(self):
         """ Action for Approvals menu item to show approval
         requests assigned to current user """
-        print('12321312')
+        _logger.info(employee.user_id.id)       
+        hr_expense = self.env['hr.expense.sheet'].sudo().search([('state','in',['submit','direct','manager_of_manager'])])
+        li = []
+        for l in hr_expense:
+            if l.employee_id.parent_id != False:
+                if l.employee_id.parent_id.user_id != False:
+                    if l.employee_id.parent_id.user_id.id == self.env.user.id: 
+                        li.append(l.id)
+                    
+
+            if l.employee_id.parent_id.parent_id != False:
+                if l.employee_id.parent_id.parent_id.user_id != False:
+                    if l.employee_id.parent_id.parent_id.user_id.id == self.env.user.id:
+                        li.append(l.id)
+
+
+            emp_positions = self.env['hr.job'].sudo().search([('internal_id','in',['HR Manager','HR and Administration Manager','HR Officer'])])
+            for pos in emp_positions: 
+            all_employee = self.env['hr.employee'].sudo().search([('multi_job_id','in',pos.id)])
+                for employee in all_employee:
+                    if employee.user_id != False:
+                        if employee.user_id.id == self.env.user.id:
+                            li.append(l.id)
+        value = {
+            'domain': str([('id', 'in', li)]),
+            'view_mode': 'tree,form',
+            'res_model': 'hr.expense.sheet',
+            'view_id': False,
+            'type': 'ir.actions.act_window',
+            'name': _('Approvals'),
+            'res_id': self.id,
+            'target': 'current',
+            'create': False,
+            'edit': False,
+        }
+        return value
+        
 
 
 class HrExpenseSheet(models.Model):
