@@ -40,6 +40,17 @@ class HrExpenseSheet(models.Model):
     ], string='Status', index=True, readonly=True, tracking=True, copy=False, default='draft', required=True, help='Expense Report State') 
 
 
+    # @api.model
+    # def getAllHrManager(self):
+    #     if self.parent_opportunity.id != False:
+    #         projects = self.env['project.project'].sudo().search(['&','|',('default_access_emails','like','#'+str(self.env.uid)+'#'),'|',('stage_access_emails','like','#'+str(self.env.uid)+'#'),'|',('assigned_resources_access_emails','like','#'+str(self.env.uid)+'#'),('owner_ownerManager_emails','like','#'+str(self.env.uid)+'#'),('parent_opportunity','=',self.parent_opportunity.id),('id','!=',self.id)])
+    #         self.related_project = projects
+    #     else:
+    #          self.related_project = []   
+    # hr_manager = fields.Many2many('res.users','id',compute='getAllHrManager')
+    hr_manager = fields.Many2many('res.users','id')
+
+
     def approve_expense_direct(self):
         # if not self.user_has_groups('hr_expense.group_hr_expense_team_approver'):
         #     raise UserError(_("Only Managers and HR Officers can approve expenses"))
