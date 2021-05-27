@@ -45,10 +45,10 @@ class CustomExpense(models.Model):
             emp_positions = self.env['hr.job'].sudo().search([('internal_id','in',['HR Manager','HR and Administration Manager','HR Officer'])])
             for pos in emp_positions: 
                 all_employee = self.env['hr.employee'].sudo().search([('multi_job_id','in',pos.id)])
-                    for employee in all_employee:
-                        if employee.user_id != False:
-                            if employee.user_id.id == self.env.user.id:
-                                li.append(l.id)
+                for employee in all_employee:
+                    if employee.user_id != False:
+                        if employee.user_id.id == self.env.user.id:
+                            li.append(l.id)
         value = {
             'domain': str([('id', 'in', li)]),
             'view_mode': 'tree,form',
