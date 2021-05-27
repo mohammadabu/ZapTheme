@@ -20,3 +20,21 @@ class CustomExpense(models.Model):
         ('done', 'Paid'),
         ('refused', 'Refused')
     ], compute='_compute_state', string='Status', copy=False, index=True, readonly=True, store=True, help="Status of the expense.")
+
+
+
+class HrExpenseSheet(models.Model):
+
+    _inherit = 'hr.expense.sheet'
+
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('submit', 'Submitted'),
+        ('direct','Direct Manager'),
+        ('manager_of_manager','Manager of Manager'),
+        ('hr','Hr Manager'),
+        ('approve', 'Approved'),
+        ('post', 'Posted'),
+        ('done', 'Paid'),
+        ('cancel', 'Refused')
+    ], string='Status', index=True, readonly=True, tracking=True, copy=False, default='draft', required=True, help='Expense Report State') 
