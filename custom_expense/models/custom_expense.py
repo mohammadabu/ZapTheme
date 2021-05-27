@@ -71,7 +71,6 @@ class HrExpenseSheet(models.Model):
 
 
     def approve_expense_direct(self):
-        _logger.info("------------employee_id-------------")
         accept = 1
         if self.employee_id.parent_id != False:
             if self.employee_id.parent_id.user_id != False:
@@ -104,20 +103,37 @@ class HrExpenseSheet(models.Model):
         mail_id.sudo().send()
 
     def approve_expense_manager_of_manager(self):
-        # if not self.user_has_groups('hr_expense.group_hr_expense_team_approver'):
-        #     raise UserError(_("Only Managers and HR Officers can approve expenses"))
-        # elif not self.user_has_groups('hr_expense.group_hr_expense_manager'):
-        #     current_managers = self.employee_id.expense_manager_id | self.employee_id.parent_id.user_id | self.employee_id.department_id.manager_id.user_id
+        accept = 1
+        if self.employee_id.parent_id.parent_id != False:
+            if self.employee_id.parent_id.parent_id.user_id != False:
+                if self.employee_id.parent_id.parent_id.user_id.id != self.env.user.id:
+                    accept = 0
+            else:
+                accept = 0      
+        else:
+             accept = 0   
 
-        #     if self.employee_id.user_id == self.env.user:
-        #         raise UserError(_("You cannot approve your own expenses"))
-
-        #     if not self.env.user in current_managers and not self.user_has_groups('hr_expense.group_hr_expense_user') and self.employee_id.expense_manager_id != self.env.user:
-        #         raise UserError(_("You can only approve your department expenses"))
-
+        if accept != 1:
+            raise UserError("Only Manager Of Manager can approve expenses")
         responsible_id = self.user_id.id or self.env.user.id
+        responsible_email = self.user_id.login or self.env.user.login
+        res_id = self.id
         self.write({'state': 'manager_of_manager', 'user_id': responsible_id})
-        self.activity_update()  
+        message = "The Manager Of Manager approved to this activity Expense"
+        body_html = self.create_body_for_email(message,res_id)
+        employee_id = self.employee_id.id
+        email_html = self.create_header_footer_for_email(employee_id,body_html)
+        value = {
+                'subject': 'Manager Of Manager Approval',
+                'body_html': email_html,
+                'email_to': responsible_email,
+                'email_cc': '',
+                'auto_delete': False,
+                'email_from': 'axs-sa.com',
+        }
+        mail_id = self.env['mail.mail'].sudo().create(value)
+        mail_id.sudo().send()
+ 
 
     def approve_expense_hr(self):
         # if not self.user_has_groups('hr_expense.group_hr_expense_team_approver'):
