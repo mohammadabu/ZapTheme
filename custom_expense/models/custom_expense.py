@@ -62,8 +62,9 @@ class HrExpenseSheet(models.Model):
         # for employee in all_employee:
         #         if employee.user_id != False:
         #             user_email = self.env['res.users'].sudo().search([('id','in',[7,92])])
-        all_users = self.env['res.users'].sudo().search([('id','in',[7,92])])  
-        self.hr_manager = all_users
+        # all_users = self.env['res.users'].sudo().search([('id','in',[7,92])])  
+        # self.hr_manager = all_users
+        self.hr_manager = user_list
     hr_manager = fields.Many2many('res.users','hr_manager',compute='getAllHrManager')
 
 
