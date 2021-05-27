@@ -40,15 +40,16 @@ class HrExpenseSheet(models.Model):
     ], string='Status', index=True, readonly=True, tracking=True, copy=False, default='draft', required=True, help='Expense Report State') 
 
 
-    # @api.model
-    # def getAllHrManager(self):
-    #     if self.parent_opportunity.id != False:
-    #         projects = self.env['project.project'].sudo().search(['&','|',('default_access_emails','like','#'+str(self.env.uid)+'#'),'|',('stage_access_emails','like','#'+str(self.env.uid)+'#'),'|',('assigned_resources_access_emails','like','#'+str(self.env.uid)+'#'),('owner_ownerManager_emails','like','#'+str(self.env.uid)+'#'),('parent_opportunity','=',self.parent_opportunity.id),('id','!=',self.id)])
-    #         self.related_project = projects
-    #     else:
-    #          self.related_project = []   
-    # hr_manager = fields.Many2many('res.users','id',compute='getAllHrManager')
-    hr_manager = fields.Many2many('res.users','hr_manager')
+    @api.model
+    def getAllHrManager(self):
+        # emp_positions = self.env['hr.job'].sudo().search([('internal_id','in',['','',''])])
+        # all_employee = self.env['hr.employee'].sudo().search([('multi_job_id','in',default_position.id)])
+        # for employee in all_employee:
+        #         if employee.user_id != False:
+        #             user_email = self.env['res.users'].sudo().search([('id','in',[7,92])])
+        all_users = self.env['res.users'].sudo().search([('id','in',[7,92])])  
+        self.hr_manager = all_users
+    hr_manager = fields.Many2many('res.users','hr_manager',compute='getAllHrManager')
 
 
     def approve_expense_direct(self):
