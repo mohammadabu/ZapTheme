@@ -136,19 +136,33 @@ class HrExpenseSheet(models.Model):
         self.activity_update()        
 
 
-
-
-
     def create_body_for_email(self,message,res_id):
-        body_html = ""
-        body_html += ('<p>%s<p><br/>') % (message)
-        body_html += '<p style="margin:16px 0px 16px 0px">'
-        body_html +=      ('<a style="background-color:#875A7B; padding:8px 16px 8px 16px; text-decoration:none; color:#fff; border-radius:5px" href="/mail/view?model=hr.expense.sheet&amp;res_id=%s">') % (res_id)
-        body_html +=          'View Expense Report'
-        body_html +=      '</a>'
-        body_html += '</p>'
-        return body_html    
-
+        body_html = ''
+        body_html +='<tr>'
+        body_html +=    '<td align="center" style="min-width: 590px;">'
+        body_html +=        '<table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">'
+        body_html +=            '<tr>'
+        body_html +=                '<td valign="top" style="font-size: 13px;">'
+        body_html +=                    '<p style="margin: 0px;font-size: 14px;">'
+        body_html +=                        message
+        body_html +=                    '</p>'
+        body_html +=                    '<p style="margin-top: 24px; margin-bottom: 16px;">'
+        body_html +=                        ('<a href="/mail/view?model=hr.leave&amp;res_id=%s" style="background-color:#875A7B; padding: 10px; text-decoration: none; color: #fff; border-radius: 5px;">') % (res_id)
+        body_html +=                            'View Leave'
+        body_html +=                        '</a>'
+        body_html +=                    '</p>'
+        body_html +=                    'Thanks,<br/>'
+        body_html +=                '</td>'
+        body_html +=            '</tr>'
+        body_html +=            '<tr>'
+        body_html +=                '<td style="text-align:center;">'
+        body_html +=                    '<hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>'
+        body_html +=                '</td>'
+        body_html +=            '</tr>'
+        body_html +=        '</table>'
+        body_html +=    '</td>'
+        body_html +='</tr>'
+        return body_html
 
 
 
@@ -165,9 +179,9 @@ class HrExpenseSheet(models.Model):
         header +=                       '<td align="center" style="min-width: 590px;">'
         header +=                           '<table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">'
         header +=                               '<tr><td valign="middle">'
-        header +=                                   ('<span style="font-size: 10px;">%s</span><br/>') % (self.name)
+        header +=                                   '<span style="font-size: 10px;">Your Expense Report</span><br/>'
         header +=                                   '<span style="font-size: 20px; font-weight: bold;">'
-        header +=                                       'Your Expense Report'
+        header +=                                       (self.name)
         header +=                                   '</span>'
         header +=                               '</td><td valign="middle" align="right">'
         header +=                                  ('<img src="/logo.png?company=%s" style="padding: 0px; margin: 0px; height: auto; width: 80px;" alt=""/>') % (str(company_id))
