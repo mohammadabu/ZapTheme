@@ -27,10 +27,8 @@
                 <button name="approve_expense_manager_of_manager"  states="direct"  string="Approve Manager Of Manager" type="object" class="oe_highlight o_expense_sheet_approve"/>
                 <button name="approve_expense_hr" states="manager_of_manager" string="Approve Hr Manager" type="object" class="oe_highlight o_expense_sheet_approve"/>
             </xpath>
-            <xpath expr="//form//header/button[@name='approve_expense_sheets']" position="after">
-                <attribute name="attrs">
-                    {'invisible': 1}
-                </attribute>
+            <xpath expr="//form//header/button[@name='approve_expense_sheets']" position="replace">   
+                <button name="approve_expense_sheets" invisible="1" states="submit" string="Approve" type="object" groups="hr_expense.group_hr_expense_team_approver" class="oe_highlight o_expense_sheet_approve"/>
             </xpath>
             <xpath expr="//field[@name='employee_id']" position="after">
                 <field name="hr_manager"/>
