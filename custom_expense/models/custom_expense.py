@@ -23,6 +23,10 @@ class CustomExpense(models.Model):
         ('refused', 'Refused')
     ], compute='_compute_state', string='Status', copy=False, index=True, readonly=True, store=True, help="Status of the expense.")
 
+    def _get_approval_requests(self):
+        """ Action for Approvals menu item to show approval
+        requests assigned to current user """
+        print('12321312')
 
 
 class HrExpenseSheet(models.Model):
