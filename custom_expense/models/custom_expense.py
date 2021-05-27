@@ -48,7 +48,7 @@ class HrExpenseSheet(models.Model):
     #     else:
     #          self.related_project = []   
     # hr_manager = fields.Many2many('res.users','id',compute='getAllHrManager')
-    hr_manager = fields.Many2many('res.users','id')
+    hr_manager = fields.Many2many('res.users','hr_manager')
 
 
     def approve_expense_direct(self):
