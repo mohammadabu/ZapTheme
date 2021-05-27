@@ -23,6 +23,7 @@
                 <field name="state" widget="statusbar" statusbar_visible="draft,submit,direct,manager_of_manager,hr,approve,post,done"/>
             </xpath>
             <xpath expr="//form//header/button[@name='approve_expense_sheets']" position="after">
+                <field name="employee_id" invisible="1" />
                 <button name="approve_expense_direct" states="submit" attrs="{'invisible': [('employee_id.user_id','=','user.id')]}" string="Approve Direct Manager" type="object" class="oe_highlight o_expense_sheet_approve"/>
                 <button name="approve_expense_manager_of_manager"  states="direct"  string="Approve Manager Of Manager" type="object" class="oe_highlight o_expense_sheet_approve"/>
                 <button name="approve_expense_hr" states="manager_of_manager" string="Approve Hr Manager" type="object" class="oe_highlight o_expense_sheet_approve"/>
