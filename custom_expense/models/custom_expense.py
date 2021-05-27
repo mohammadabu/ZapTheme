@@ -72,7 +72,7 @@ class HrExpenseSheet(models.Model):
         self.write({'state': 'manager_of_manager', 'user_id': responsible_id})
         self.activity_update()  
 
-    def approve_expense_manager_of_manager(self):
+    def approve_expense_hr(self):
         # if not self.user_has_groups('hr_expense.group_hr_expense_team_approver'):
         #     raise UserError(_("Only Managers and HR Officers can approve expenses"))
         # elif not self.user_has_groups('hr_expense.group_hr_expense_manager'):
