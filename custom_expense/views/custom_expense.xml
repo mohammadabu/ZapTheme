@@ -24,6 +24,8 @@
             </xpath>
             <xpath expr="//form//header/button[@name='approve_expense_sheets']" position="after">
                 <button name="approve_expense_direct" states="submit" string="Approve Direct Manager" type="object" class="oe_highlight o_expense_sheet_approve"/>
+                <button name="approve_expense_manager_of_manager" states="direct" string="Approve Manager Of Manager" type="object" class="oe_highlight o_expense_sheet_approve"/>
+                <button name="approve_expense_hr" states="manager_of_manager" string="Approve Hr Manager" type="object" class="oe_highlight o_expense_sheet_approve"/>
             </xpath>
         </field>
     </record>
