@@ -26,7 +26,7 @@ class CustomExpense(models.Model):
     def _get_approval_requests(self):
         """ Action for Approvals menu item to show approval
         requests assigned to current user """
-        _logger.info(employee.user_id.id)       
+        # _logger.info(employee.user_id.id)       
         hr_expense = self.env['hr.expense.sheet'].sudo().search([('state','in',['submit','direct','manager_of_manager'])])
         li = []
         for l in hr_expense:
@@ -44,11 +44,11 @@ class CustomExpense(models.Model):
 
             emp_positions = self.env['hr.job'].sudo().search([('internal_id','in',['HR Manager','HR and Administration Manager','HR Officer'])])
             for pos in emp_positions: 
-            all_employee = self.env['hr.employee'].sudo().search([('multi_job_id','in',pos.id)])
-                for employee in all_employee:
-                    if employee.user_id != False:
-                        if employee.user_id.id == self.env.user.id:
-                            li.append(l.id)
+                all_employee = self.env['hr.employee'].sudo().search([('multi_job_id','in',pos.id)])
+                    for employee in all_employee:
+                        if employee.user_id != False:
+                            if employee.user_id.id == self.env.user.id:
+                                li.append(l.id)
         value = {
             'domain': str([('id', 'in', li)]),
             'view_mode': 'tree,form',
