@@ -90,7 +90,7 @@ class HrExpenseSheet(models.Model):
         self.write({'state': 'direct', 'user_id': responsible_id})
         message = "The Direct Manager approved to this activity Expense"
         body_html = self.create_body_for_email(message,res_id)
-        employee_id = self.employee_id
+        employee_id = self.employee_id.id
         email_html = self.create_header_footer_for_email(employee_id,body_html)
         value = {
                 'subject': 'Manger Of Manager Approval',
