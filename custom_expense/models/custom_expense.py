@@ -45,9 +45,12 @@ class HrExpenseSheet(models.Model):
     @api.model
     def getAllHrManager(self):
         emp_positions = self.env['hr.job'].sudo().search([('internal_id','in',['HR Manager','HR and Administration Manager','HR Officer'])])
-        all_employee = self.env['hr.employee'].sudo().search([('multi_job_id','in',emp_positions)])
-        _logger.info("------------getAllHrManager-------------")
-        _logger.info(all_employee)
+        for pos in emp_positions: 
+            all_employee = self.env['hr.employee'].sudo().search([('multi_job_id','in',pos.id)])
+            for employee in all_employee:
+                if employee.user_id != False:
+                    _logger.info("------------getAllHrManager-------------")
+                    _logger.info(employee.user_id.id)
         # all_employee = self.env['hr.employee'].sudo().search([('multi_job_id','in',default_position.id)])
         # for employee in all_employee:
         #         if employee.user_id != False:
