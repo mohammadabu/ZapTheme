@@ -71,6 +71,8 @@ class HrExpenseSheet(models.Model):
 
 
     def approve_expense_direct(self):
+        _logger.info("------------employee_id-------------")
+        _logger.info(self.employee_id)
         # if not self.user_has_groups('hr_expense.group_hr_expense_team_approver'):
         #     raise UserError(_("Only Managers and HR Officers can approve expenses"))
         # elif not self.user_has_groups('hr_expense.group_hr_expense_manager'):
@@ -82,9 +84,9 @@ class HrExpenseSheet(models.Model):
         #     if not self.env.user in current_managers and not self.user_has_groups('hr_expense.group_hr_expense_user') and self.employee_id.expense_manager_id != self.env.user:
         #         raise UserError(_("You can only approve your department expenses"))
 
-        responsible_id = self.user_id.id or self.env.user.id
-        self.write({'state': 'direct', 'user_id': responsible_id})
-        self.activity_update()
+        # responsible_id = self.user_id.id or self.env.user.id
+        # self.write({'state': 'direct', 'user_id': responsible_id})
+        # self.activity_update()
 
     def approve_expense_manager_of_manager(self):
         # if not self.user_has_groups('hr_expense.group_hr_expense_team_approver'):
