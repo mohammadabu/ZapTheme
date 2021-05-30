@@ -10,7 +10,7 @@
             </xpath>
             <xpath expr="//field[@name='total_amount']" position="after">
                 <field name="exp_type" required="1"/>
-                <field name="reference" attrs="{'invisible': [('exp_type', '!=', 'Operational Orders')]}"/>
+                <field name="reference" attrs="{'invisible': [('exp_type', '!=', 'operational')]}"/>
             </xpath>
         </field>
     </record>
