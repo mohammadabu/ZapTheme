@@ -8,6 +8,10 @@
             <xpath expr="//form/header/field[@name='state']" position="replace">
                 <field name="state" widget="statusbar" statusbar_visible="draft,reported,direct,manager_of_manager,hr,approved,done,refused"/>
             </xpath>
+            <xpath expr="//field[@name='total_amount']" position="after">
+                <field name="exp_type"/>
+                <field name="reference"/>
+            </xpath>
         </field>
     </record>
     <record id="hr_view_custom_expense_view_form" model="ir.ui.view">
@@ -30,9 +34,9 @@
             <xpath expr="//form//header/button[@name='approve_expense_sheets']" position="replace">   
                 <button name="approve_expense_sheets" invisible="1" states="submit" string="Approve" type="object" groups="hr_expense.group_hr_expense_team_approver" class="oe_highlight o_expense_sheet_approve"/>
             </xpath>
-            <xpath expr="//field[@name='employee_id']" position="after">
+            <!-- <xpath expr="//field[@name='employee_id']" position="after">
                 <field name="hr_manager"/>
-            </xpath>
+            </xpath> -->
         </field>
     </record>
     <record id="open_expense_to_approve" model="ir.actions.server">

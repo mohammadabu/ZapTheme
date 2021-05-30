@@ -12,6 +12,12 @@ _logger = logging.getLogger(__name__)
 class CustomExpense(models.Model):
     _inherit = 'hr.expense'
     # state = fields.Selection(selection_add=[('direct', 'Direct Manager')])
+    exp_type = fields.Selection([
+        ('operational', 'Operational Orders'),
+        ('general', 'General Expenses Orders'),
+    ],string="Type")
+    reference = fields.Many2one('sale.order')
+
     state = fields.Selection([
         ('draft', 'To Submit'),
         ('reported', 'Submitted'),
@@ -106,7 +112,7 @@ class HrExpenseSheet(models.Model):
     #     # self.hr_manager = all_users
     #     self.hr_manager = user_list
     # hr_manager = fields.Many2many('res.users','hr_manager',compute='getAllHrManager')
-    hr_manager = fields.Many2many('res.users','hr_manager')
+    # hr_manager = fields.Many2many('res.users','hr_manager')
 
 
 
