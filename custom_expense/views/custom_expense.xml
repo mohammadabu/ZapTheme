@@ -9,8 +9,8 @@
                 <field name="state" widget="statusbar" statusbar_visible="draft,reported,direct,manager_of_manager,hr,approved,done,refused"/>
             </xpath>
             <xpath expr="//field[@name='total_amount']" position="after">
-                <field name="exp_type"/>
-                <field name="reference" attrs="{'invisible': [('exp_type', '=', 'general')]}"/>
+                <field name="exp_type" required="1"/>
+                <field name="reference" attrs="{'invisible': [('exp_type', '!=', 'Operational Orders')]}"/>
             </xpath>
         </field>
     </record>
