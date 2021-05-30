@@ -17,7 +17,7 @@ class CustomExpense(models.Model):
         ('general', 'General Expenses Orders'),
     ],string="Type")
     reference = fields.Many2one('sale.order')
-
+    
     state = fields.Selection([
         ('draft', 'To Submit'),
         ('reported', 'Submitted'),
