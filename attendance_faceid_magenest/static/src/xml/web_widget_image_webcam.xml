@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template id="template" xml:space="preserve">
+
+    <t t-extend="FieldBinaryImage">
+        <t t-jquery=".o_select_file_button" t-operation="after">
+                <span class="fa fa-eye o_form_binary_file_web_cam" title="WebCam"/>
+        </t>
+    </t>
+
+    <t t-name="BinaryImage">
+        <div class="o_hr_attendance_kiosk_mode_container o_home_menu_background">
+            <span class="o_hr_attendance_kiosk_backdrop"/>
+            <div class="o_hr_attendance_clock text-center"/>
+            <div class="o_hr_attendance_kiosk_mode">
+                <div class="o_hr_attendance_user_badge o_home_menu_background">
+                    <img class="img rounded-circle" t-attf-src="/web/image?model=hr.employee&amp;field=image_128&amp;id=#{widget.employee.id}" t-att-title="widget.employee.name" t-att-alt="widget.employee.name"/>
+                </div>
+                <h1 class="mb8"><t t-esc="widget.employee.name"/></h1>
+                <h3 class="mt8 mb24"><t t-if="!checked_in">Welcome To Attend By Using Face Detection!</t></h3>
+                <div style="font-size: 100px;">
+                    <span class="fa fas fa-camera o_form_binary_file_web_cam" title="WebCam"/>
+                </div>
+                </div>
+            </div>
+        </t>
+
+    <div t-name="WebCamDialog" id="WebCamModal">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5 live_webcam_outer_div">
+                    <div id="live_webcam"/>
+                </div>
+                <div class="col-md-2 mt64 direction_icon fa fa-angle-right fa-8x"/>
+                <div class="col-md-5 webcam_result_outer_div">
+                    <div id="webcam_result"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <t t-name='CoutndownCamera'>
+        <div class="o_hr_attendance_kiosk_mode_container o_home_menu_background">
+            <span class="o_hr_attendance_kiosk_backdrop"/>
+            <div class="o_hr_attendance_clock text-center"/>
+            <div class="o_hr_attendance_kiosk_mode">
+                <a class="fa fa-7x o_hr_attendance_sign_in_out_icon fa-sign-out btn-warning"/>
+            </div>
+        </div>
+    </t>
+
+
+</template>

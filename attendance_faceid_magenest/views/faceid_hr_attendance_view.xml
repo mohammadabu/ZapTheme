@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record id="hr_attendance_action_faceid" model="ir.actions.client">
+            <field name="name">Face ID</field>
+            <field name="tag">faceid_attendance_odoo_my_attendance</field>
+            <field name="target">main</field>
+        </record>
+
+        <menuitem id="menu_hr_attendance_faceid" name="Face ID" parent="hr_attendance.menu_hr_attendance_manage_attendances"
+                  sequence="10" action="hr_attendance_action_faceid" groups="web_widget_image_webcam.faceid_manager"/>
+
+
+    </data>
+</odoo>
