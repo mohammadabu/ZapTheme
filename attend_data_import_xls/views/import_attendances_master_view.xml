@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-         <!--Tree for Import Orders History tree view-->
-        <record id="import_part_master_tree_view" model="ir.ui.view">
-            <field name="name">import.part.master.tree.view</field>
-            <field name="model">import.part.master</field>
+        <record id="import_attendances_master_tree_view" model="ir.ui.view">
+            <field name="name">import.attendances.master.tree.view</field>
+            <field name="model">import.attendances.master</field>
             <field name="arch" type="xml">
                 <tree create="false" import="false">
                     <field name="filename"/>
@@ -15,10 +14,9 @@
             </field>
         </record>
 
-        <!--Form for Import Orders Master-->
-        <record id="import_part_master_form_view" model="ir.ui.view">
-            <field name="name">import.part.master.form.view</field>
-            <field name="model">import.part.master</field>
+        <record id="import_attendances_master_form_view" model="ir.ui.view">
+            <field name="name">import.attendances.master.form.view</field>
+            <field name="model">import.attendances.master</field>
             <field name="arch" type="xml">
                 <form create="false" import="false" edit="false">
                     <group>
@@ -39,15 +37,15 @@
         </record>
 
         <!--Action-->
-        <record id="action_import_part_master" model="ir.actions.act_window">
+        <record id="action_import_attendances_master" model="ir.actions.act_window">
             <field name="name">Imported Partner Status</field>
-            <field name="res_model">import.part.master</field>
+            <field name="res_model">import.attendances.master</field>
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem name="Partner Import Status" action="action_import_part_master" id="menu_import_part_master"
-                  sequence="2"
-                  parent="jt_import_part_data_xls.main_menu_import"/>
+        <menuitem name="Attendances Import Status" action="action_import_attendances_master" id="menu_import_attendances_master"
+                  sequence="29"
+                  parent="hr_attendance.menu_hr_attendance_manage_attendances"/>
 
     </data>
 </odoo>
