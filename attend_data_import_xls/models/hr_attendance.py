@@ -67,6 +67,7 @@ class ResPartner(models.Model):
                     #     # Sales data xlsx
                         for rownum in range(sheet.nrows):
                             _logger.info(rownum)
+                            _logger.info(sheet.row_values(rownum))
                     #         if rownum == 0:
                     #             header_list = [
                     #                 x for x in sheet.row_values(rownum)]
