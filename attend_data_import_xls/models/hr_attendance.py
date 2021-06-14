@@ -94,7 +94,7 @@ class ResPartner(models.Model):
                                 date = item_y[date_row] 
                                 check_in = item_y[check_in_row]     
                                 check_out = item_y[check_out_row] 
-                                if emp_name != "":
+                                if emp_name != "" and (check_in != "" or check_out != ""):
                                     _logger.info("------------------------")  
                                     _logger.info(emp_name)  
                                     _logger.info(date)  
