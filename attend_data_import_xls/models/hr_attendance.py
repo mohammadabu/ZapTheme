@@ -14,21 +14,21 @@ class ResPartner(models.Model):
     _inherit = 'hr.attendance'
 
     def remove_finish_import_crons(self):
-        master_partners = self.env['import.attendance.master'].search(
+        master_partners = self.env['import.attendances.master'].search(
             ['|', ('status', '=', 'imported'), ('status', '=', 'failed')])
         # Remove completed crons
         for master_part in master_partners:
             if master_part.cron_id:
                 master_part.cron_id.unlink()
         # Remove the Import status lines
-        imported_master_part = self.env['import.attendance.master'].search(
+        imported_master_part = self.env['import.attendances.master'].search(
             [('status', '=', 'imported')])
         imported_master_part.unlink()
 
     def import_data(self, part_master_id=False):
         if part_master_id:
             part_master = self.env[
-                'import.attendance.master'].browse(part_master_id)
+                'import.attendances.master'].browse(part_master_id)
             total_success_import_record = 0
             total_failed_record = 0
             list_of_failed_record = ''
