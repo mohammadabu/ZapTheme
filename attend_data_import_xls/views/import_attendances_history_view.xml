@@ -55,7 +55,7 @@
         </record>
 
         <menuitem name="Import Attendances History" action="action_import_attendances_history" id="menu_import_attendances_history"
-                  sequence="30" parent="hr_attendance.menu_hr_attendance_manage_attendances"/>
+                  sequence="30" parent="main_menu_import_attendances"/>
 
     </data>
 </odoo>
