@@ -92,7 +92,7 @@ class ResPartner(models.Model):
                                 if emp_name != "" and (check_in != "" or check_out != ""):
                                     _logger.info("------------------------")  
                                     if check_in != "":
-                                        split_check_in = check_in.split("")
+                                        split_check_in = check_in.split(" ")
                                         _logger.info(split_check_in)  
                                     _logger.info(emp_name)  
                                     _logger.info(date)  
