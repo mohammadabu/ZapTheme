@@ -65,9 +65,43 @@ class ResPartner(models.Model):
                     for sheet in wb.sheets():
                         _logger.info(sheet.nrows)
                     #     # Sales data xlsx
+                        first_row = 0
+                        emp_name_row = 0
+                        date_row = 0
+                        check_in_row = 0
+                        check_out_row = 0
                         for rownum in range(sheet.nrows):
-                            _logger.info(rownum)
-                            _logger.info(sheet.row_values(rownum))
+                            # _logger.info(rownum)
+                            # _logger.info(sheet.row_values(rownum))
+                            item = sheet.row_values(rownum)
+                            if "اسم الموظف" in item and "التاريخ" in item and "وقت دخول" in item and "وقت الخروج" in item:
+                                first_row = rownum
+                                for idx1,item1 in enumerate(item):
+                                    if item1 == "اسم الموظف":
+                                        emp_name_row = idx1
+                                    if item1 == "التاريخ":
+                                        date_row = idx1
+                                    if item1 == "وقت دخول":
+                                        check_in_row = idx1
+                                    if item1 == "وقت الخروج":
+                                        check_out_row = idx1
+                                break    
+
+                        for rownum1 in range(sheet.nrows): 
+                            item_y = sheet.row_values(rownum)           
+                            if rownum1 > first_row:
+                                if not(item_y[emp_name_row] != item_y[emp_name_row]):
+                                    emp_name =  item_y[emp_name_row]
+                                    date = item_y[date_row] 
+                                    check_in = item_y[check_in_row]     
+                                    check_out = item_y[check_out_row]   
+                                    if not(check_in != check_in and check_out != check_out):
+                                        _logger.info("------------------------")  
+                                        _logger.info(emp_name)  
+                                        _logger.info(date)  
+                                        _logger.info(check_in)  
+                                        _logger.info(check_out)  
+                                        _logger.info("------------------------") 
                     #         if rownum == 0:
                     #             header_list = [
                     #                 x for x in sheet.row_values(rownum)]
