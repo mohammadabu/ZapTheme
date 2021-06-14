@@ -94,12 +94,13 @@ class ResPartner(models.Model):
                                 date = item_y[date_row] 
                                 check_in = item_y[check_in_row]     
                                 check_out = item_y[check_out_row] 
-                                _logger.info("------------------------")  
-                                _logger.info(emp_name)  
-                                _logger.info(date)  
-                                _logger.info(check_in)  
-                                _logger.info(check_out)  
-                                _logger.info("------------------------") 
+                                if emp_name != "":
+                                    _logger.info("------------------------")  
+                                    _logger.info(emp_name)  
+                                    _logger.info(date)  
+                                    _logger.info(check_in)  
+                                    _logger.info(check_out)  
+                                    _logger.info("------------------------") 
                                 # if not(item_y[emp_name_row] != item_y[emp_name_row]):
                                 #     emp_name =  item_y[emp_name_row]
                                 #     date = item_y[date_row] 
