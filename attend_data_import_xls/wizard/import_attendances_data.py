@@ -59,7 +59,7 @@ class ImportAttendances(models.TransientModel):
             'view_type': 'form',
             'view_mode': 'form',
             'view_id': False,
-            'res_model': 'import.partner',
+            'res_model': 'import.attendances',
             'domain': [],
             'context': dict(self._context, active_ids=self.ids),
             'type': 'ir.actions.act_window',
