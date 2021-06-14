@@ -3,9 +3,9 @@
     <data>
 
          <!--Form for Import Orders History tree view-->
-        <!-- <record id="import_part_history_tree_view" model="ir.ui.view">
-            <field name="name">import.part.history.tree</field>
-            <field name="model">import.part.history</field>
+        <record id="import_attendances_history_tree_view" model="ir.ui.view">
+            <field name="name">import.attendances.history.tree</field>
+            <field name="model">import.attendances.history</field>
             <field name="arch" type="xml">
                 <tree create="false" import="false">
                     <field name="file_name" invisible="1"/>
@@ -19,12 +19,12 @@
                     <field name="type"/>
                 </tree>
             </field>
-        </record> -->
+        </record>
 
         <!--Form for Import Orders History-->
-        <!-- <record id="import_part_history_form_view" model="ir.ui.view">
-            <field name="name">import.part.history.form</field>
-            <field name="model">import.part.history</field>
+        <record id="import_attendances_history_form_view" model="ir.ui.view">
+            <field name="name">import.attendances.history.form</field>
+            <field name="model">import.attendances.history</field>
             <field name="arch" type="xml">
                 <form create="false" import="false" edit="false">
                     <group>
@@ -44,7 +44,7 @@
                     </group>
                 </form>
             </field>
-        </record> -->
+        </record>
 
         <!--Action-->
         <record id="action_import_attendances_history" model="ir.actions.act_window">
