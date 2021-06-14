@@ -27,8 +27,6 @@ class ResPartner(models.Model):
 
     def import_data(self, part_master_id=False):
         if part_master_id:
-            _logger.info("-------------import_data-------------")
-            _logger.info(part_master_id)
             part_master = self.env[
                 'import.attendances.master'].browse(part_master_id)
             total_success_import_record = 0
@@ -39,7 +37,6 @@ class ResPartner(models.Model):
             partner_obj = self.env['res.partner']
             state_obj = self.env['res.country.state']
             country_obj = self.env['res.country']
-            _logger.info(file_name)
             try:
                 if not datafile or not \
                         file_name.lower().endswith(('.xls', '.xlsx')):
@@ -51,14 +48,12 @@ class ResPartner(models.Model):
                         list_of_failed_record += "Please Select an .xls or its compatible file to Import."
                         _logger.error(
                             "Please Select an .xls or its compatible file to Import.")
-                    _logger.info("gooooooooooooo")
                     temp_path = tempfile.gettempdir()
                     file_data = base64.decodestring(datafile)
                     fp = open(temp_path + '/xsl_file.xls', 'wb+')
                     fp.write(file_data)
                     fp.close()
                     wb = open_workbook(temp_path + '/xsl_file.xls')
-                    # _logger.info(wb)
                     data_list = []
                     header_list = []
                     headers_dict = {}
@@ -96,23 +91,14 @@ class ResPartner(models.Model):
                                 check_out = item_y[check_out_row] 
                                 if emp_name != "" and (check_in != "" or check_out != ""):
                                     _logger.info("------------------------")  
+                                    if check_in != "":
+                                        split_check_in = check_in.split("")
+                                        _logger.info(split_check_in)  
                                     _logger.info(emp_name)  
                                     _logger.info(date)  
                                     _logger.info(check_in)  
                                     _logger.info(check_out)  
                                     _logger.info("------------------------") 
-                                # if not(item_y[emp_name_row] != item_y[emp_name_row]):
-                                #     emp_name =  item_y[emp_name_row]
-                                #     date = item_y[date_row] 
-                                #     check_in = item_y[check_in_row]     
-                                #     check_out = item_y[check_out_row]   
-                                #     if not(check_in != check_in and check_out != check_out or check_in == False or check_out == False ):
-                                #         _logger.info("------------------------")  
-                                #         _logger.info(emp_name)  
-                                #         _logger.info(date)  
-                                #         _logger.info(check_in)  
-                                #         _logger.info(check_out)  
-                                #         _logger.info("------------------------") 
                     #         if rownum == 0:
                     #             header_list = [
                     #                 x for x in sheet.row_values(rownum)]
