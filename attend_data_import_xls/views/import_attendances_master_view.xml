@@ -45,7 +45,7 @@
 
         <menuitem name="Attendances Import Status" action="action_import_attendances_master" id="menu_import_attendances_master"
                   sequence="29"
-                  parent="hr_attendance.menu_hr_attendance_manage_attendances"/>
+                  parent="hr_attendance.main_menu_import_attendances"/>
 
     </data>
 </odoo>
