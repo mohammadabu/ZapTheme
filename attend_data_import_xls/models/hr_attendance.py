@@ -27,6 +27,8 @@ class ResPartner(models.Model):
 
     def import_data(self, part_master_id=False):
         if part_master_id:
+            _logger.info("-------------import_data-------------")
+            _logger.info(part_master_id)
             part_master = self.env[
                 'import.attendances.master'].browse(part_master_id)
             total_success_import_record = 0
