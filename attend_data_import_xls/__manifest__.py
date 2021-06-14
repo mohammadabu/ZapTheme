@@ -1,7 +1,7 @@
 {
     'name': 'Attend Data Import - XLS',
     'version': '13.0.0.1.0',
-    'depends': ["hr_attendance", "hr_holidays_public"],
+    'depends': ["hr_attendance"],
     'data': [
         # 'wizard/import_part_data_view.xml',
         'views/import_part_history_view.xml',
