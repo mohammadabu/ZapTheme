@@ -58,14 +58,15 @@ class ResPartner(models.Model):
                     fp.write(file_data)
                     fp.close()
                     wb = open_workbook(temp_path + '/xsl_file.xls')
-                    _logger.info(wb)
+                    # _logger.info(wb)
                     data_list = []
                     header_list = []
                     headers_dict = {}
                     for sheet in wb.sheets():
-                        _logger.info(sheet)
+                        # _logger.info(sheet)
                     #     # Sales data xlsx
-                        # for rownum in range(sheet.nrows):
+                        for rownum in range(sheet.nrows):
+                            _logger.info(rownum)
                     #         if rownum == 0:
                     #             header_list = [
                     #                 x for x in sheet.row_values(rownum)]
