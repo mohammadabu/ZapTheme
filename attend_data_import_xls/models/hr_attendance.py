@@ -62,9 +62,10 @@ class ResPartner(models.Model):
                     data_list = []
                     header_list = []
                     headers_dict = {}
-                    # for sheet in wb.sheets():
+                    for sheet in wb.sheets():
+                        _logger.info(sheet)
                     #     # Sales data xlsx
-                    #     for rownum in range(sheet.nrows):
+                        # for rownum in range(sheet.nrows):
                     #         if rownum == 0:
                     #             header_list = [
                     #                 x for x in sheet.row_values(rownum)]
