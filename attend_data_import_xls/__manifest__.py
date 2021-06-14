@@ -6,7 +6,7 @@
         # 'wizard/import_part_data_view.xml',
         'views/import_part_history_view.xml',
         # 'views/import_part_master_view.xml',
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         # 'data/data.xml',
     ],
 }
