@@ -88,7 +88,7 @@ class ResPartner(models.Model):
                                 break    
 
                         for rownum1 in range(sheet.nrows): 
-                            item_y = sheet.row_values(rownum)           
+                            item_y = sheet.row_values(rownum1)           
                             if rownum1 > first_row:
                                 if not(item_y[emp_name_row] != item_y[emp_name_row]):
                                     emp_name =  item_y[emp_name_row]
