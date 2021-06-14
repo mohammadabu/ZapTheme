@@ -39,6 +39,7 @@ class ResPartner(models.Model):
             partner_obj = self.env['res.partner']
             state_obj = self.env['res.country.state']
             country_obj = self.env['res.country']
+            _logger.info(file_name)
             try:
                 if not datafile or not \
                         file_name.lower().endswith(('.xls', '.xlsx')):
