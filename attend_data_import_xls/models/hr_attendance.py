@@ -111,7 +111,7 @@ class ResPartner(models.Model):
                                             check_in_time = split_check_in[0]
                                             check_in_zone = split_check_in[1]
                                             new_time = self.pool.get("hr.attendance").convert24(self,split_check_in)
-                                            new_date = datetime.strptime(str(date), '%y-%m-%d')
+                                            new_date = datetime.strptime(str(date), '%Y-%m-%d')
                                             # full_date_time = date + " " + new_time + ":00"
                                             # full_date_time_obj = datetime.strptime(full_date_time, '%y-%m-%d %H:%M:%S')
                                             # _logger.info(emp_name)  
