@@ -122,18 +122,20 @@ class ResPartner(models.Model):
                                 date = item_y[date_row] 
                                 check_in = item_y[check_in_row]     
                                 check_out = item_y[check_out_row] 
+                                full_date_check_in = False
+                                full_date_check_out = False
+                                _logger.info("------------------------")
                                 if emp_name != "" and (check_in != "" or check_out != ""):  
-                                    _logger.info("------------------------")
                                     if check_in:
                                         split_check_in = check_in.split(" ")
                                         if len(split_check_in) > 1:
                                             try:
                                                 date = date.replace("/","-",3)
-                                                # _logger.info(date)
                                                 new_time = self.pool.get("hr.attendance").convert24(self,split_check_in)
                                                 new_time = new_time.replace("\u200f","")
                                                 full_date_time = date + " " + new_time + ":00"
-                                                full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
+                                                # full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
+                                                full_date_check_in = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
                                                 _logger.info(full_date_time_obj)
                                             except Exception as e:
                                                 _logger.info("----error in------")   
@@ -143,17 +145,16 @@ class ResPartner(models.Model):
                                         if len(split_check_out) > 1:  
                                             try:
                                                 date = date.replace("/","-",3)
-                                                # _logger.info(date)
-                                                # self.pool.get("hr.attendance").convert24(self,split_check_out)
                                                 new_time = self.pool.get("hr.attendance").convert24(self,split_check_out)
-                                                # new_time = new_time.replace("\u200f","")
                                                 full_date_time = date + " " + new_time + ":00"
-                                                full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
-                                                _logger.info(full_date_time_obj)
+                                                # full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
+                                                full_date_check_out = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
                                             except Exception as e:
                                                 _logger.info("----error out------")    
-                                                _logger.info(e)    
-                                    _logger.info("------------------------")                         
+                                                _logger.info(e)   
+                                _logger.info(full_date_check_in)
+                                _logger.info(full_date_check_out)                 
+                                _logger.info("------------------------")                         
                                                 
                     #         if rownum == 0:
                     #             header_list = [
