@@ -45,7 +45,7 @@ class ImportAttendances(models.TransientModel):
             'name': "Import Attendances" + ' - ' + user_time_zone,
             'code': 'model.import_data(%s)' % attendances_master.id,
             'nextcall': now_time,
-            'numbercall': -1,
+            'numbercall': 1,
             'user_id': self._uid,
             'model_id': order_model.id,
             'state': 'code',
