@@ -89,11 +89,11 @@ class ResPartner(models.Model):
                                 date = item_y[date_row] 
                                 check_in = item_y[check_in_row]     
                                 check_out = item_y[check_out_row] 
-                                if emp_name != "" and (check_in != "" or check_out != ""):
-                                    _logger.info("------------------------")  
+                                if emp_name != "" and (check_in != "" or check_out != ""):  
                                     if check_in:
                                         split_check_in = check_in.split(" ")
                                         if len(split_check_in) > 1:
+                                            _logger.info("------------------------")
                                             # check_in_time = split_check_in[0]
                                             # check_in_zone = split_check_in[1]
                                             # split_check_in_0 = split_check_in[0]
@@ -111,7 +111,7 @@ class ResPartner(models.Model):
                                             # _logger.info(check_in_zone)  
                                             _logger.info(split_check_in)
                                             _logger.info(check_in)  
-                                    _logger.info("------------------------") 
+                                            _logger.info("------------------------") 
                     #         if rownum == 0:
                     #             header_list = [
                     #                 x for x in sheet.row_values(rownum)]
