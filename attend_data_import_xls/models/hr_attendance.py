@@ -134,9 +134,7 @@ class ResPartner(models.Model):
                                                 new_time = self.pool.get("hr.attendance").convert24(self,split_check_in)
                                                 new_time = new_time.replace("\u200f","")
                                                 full_date_time = date + " " + new_time + ":00"
-                                                # full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
                                                 full_date_check_in = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
-                                                # _logger.info(full_date_time_obj)
                                             except Exception as e:
                                                 _logger.info("----error in------")   
                                                 _logger.info(e) 
@@ -147,14 +145,14 @@ class ResPartner(models.Model):
                                                 date = date.replace("/","-",3)
                                                 new_time = self.pool.get("hr.attendance").convert24(self,split_check_out)
                                                 full_date_time = date + " " + new_time + ":00"
-                                                # full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
                                                 full_date_check_out = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
                                             except Exception as e:
                                                 _logger.info("----error out------")    
                                                 _logger.info(e)   
                                 if  full_date_check_in != False or full_date_check_out != False:
                                     _logger.info(full_date_check_in)
-                                    _logger.info(full_date_check_out)                 
+                                    _logger.info(full_date_check_out)
+                                    _logger.info(emp_name)                 
                                 _logger.info("------------------------")                         
                                                 
                     #         if rownum == 0:
