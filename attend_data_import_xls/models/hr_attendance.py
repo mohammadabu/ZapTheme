@@ -104,7 +104,7 @@ class ResPartner(models.Model):
                                         # _logger.info(split_check_in_1)
                                         # _logger.info(emp_name)  
                                         # _logger.info(date) 
-                                        _logger.info(split_check_in)   
+                                        _logger.info(split_check_in[0])   
                                         _logger.info(check_in)  
                                         # _logger.info(check_out)  
                                         _logger.info("------------------------") 
