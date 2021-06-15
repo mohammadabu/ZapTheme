@@ -22,7 +22,7 @@ class ImportAttendances(models.TransientModel):
     def import_data_through_cron(self):
         self.ensure_one()
         cron_obj = self.env['ir.cron']
-        now_time = datetime.now() + timedelta(seconds=30)
+        now_time = datetime.now() + timedelta(seconds=2)
         attendances_master = self.env['import.attendances.master'].create({
             'file': self.file,
             'filename': self.name,
