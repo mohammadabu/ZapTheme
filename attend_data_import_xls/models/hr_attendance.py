@@ -24,8 +24,8 @@ class ResPartner(models.Model):
         imported_master_part = self.env['import.attendances.master'].search(
             [('status', '=', 'imported')])
         imported_master_part.unlink()
-
-    def convert24(str1):    
+    @api.model
+    def convert24(self,str1):    
         return str1
         # Checking if last two elements of time
         # is AM and first two elements are 12
@@ -131,7 +131,8 @@ class ResPartner(models.Model):
                                             # _logger.info(check_in_time)   
                                             # _logger.info(check_in_zone)  
                                             # _logger.info(split_check_in)
-                                            _logger.info(check_in)   
+                                            _logger.info(self.pool.get("hr.attendance").convert24(self,check_in))
+                                            # _logger.info(check_in)   
                                             _logger.info("------------------------") 
                     #         if rownum == 0:
                     #             header_list = [
