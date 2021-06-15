@@ -25,6 +25,27 @@ class ResPartner(models.Model):
             [('status', '=', 'imported')])
         imported_master_part.unlink()
 
+    def convert24(str1):    
+        return str1
+        # Checking if last two elements of time
+        # is AM and first two elements are 12
+        # if str1[-2:] == "AM" and str1[:2] == "12":
+        #     return "00" + str1[2:-2]
+            
+        # # remove the AM    
+        # elif str1[-2:] == "AM":
+        #     return str1[:-2]
+        
+        # # Checking if last two elements of time
+        # # is PM and first two elements are 12   
+        # elif str1[-2:] == "PM" and str1[:2] == "12":
+        #     return str1[:-2]
+            
+        # else:
+        #     # add 12 to hours and remove PM
+        #     return str(int(str1[:2]) + 12) + str1[2:8]
+
+
     def import_data(self, part_master_id=False):
         if part_master_id:
             part_master = self.env[
@@ -107,10 +128,10 @@ class ResPartner(models.Model):
                                             # _logger.info(split_check_in_1)
                                             # _logger.info(emp_name)  
                                             # _logger.info(date) 
-                                            _logger.info(check_in_time)   
-                                            _logger.info(check_in_zone)  
+                                            # _logger.info(check_in_time)   
+                                            # _logger.info(check_in_zone)  
                                             # _logger.info(split_check_in)
-                                            # _logger.info(check_in)  
+                                            _logger.info(self.convert24(check_in))  
                                             _logger.info("------------------------") 
                     #         if rownum == 0:
                     #             header_list = [
