@@ -91,23 +91,23 @@ class ResPartner(models.Model):
                                 check_out = item_y[check_out_row] 
                                 if emp_name != "" and (check_in != "" or check_out != ""):
                                     _logger.info("------------------------")  
-                                    if check_in != "" and check_in != False:
+                                    if check_in != "":
                                         split_check_in = check_in.split(" ")
-                                        if len(split_check_in) > 0:
-                                            # split_check_in_0 = split_check_in[0]
-                                            # split_check_in_0 = split_check_in_0.encode("ascii","ignore")
-                                            # split_check_in_0 = split_check_in_0.decode()
-                                            
-                                            # split_check_in_1 = split_check_in[1]
-                                            # split_check_in_1 = split_check_in_1.encode("ascii","ignore")
-                                            # split_check_in_1 = split_check_in_1.decode()
-                                            # _logger.info(split_check_in_0)
-                                            # _logger.info(split_check_in_1)
-                                            # _logger.info(emp_name)  
-                                            # _logger.info(date)  
-                                            _logger.info(check_in)  
-                                            # _logger.info(check_out)  
-                                            _logger.info("------------------------") 
+                                        # split_check_in_0 = split_check_in[0]
+                                        # split_check_in_0 = split_check_in_0.encode("ascii","ignore")
+                                        # split_check_in_0 = split_check_in_0.decode()
+                                        
+                                        # split_check_in_1 = split_check_in[1]
+                                        # split_check_in_1 = split_check_in_1.encode("ascii","ignore")
+                                        # split_check_in_1 = split_check_in_1.decode()
+                                        # _logger.info(split_check_in_0)
+                                        # _logger.info(split_check_in_1)
+                                        # _logger.info(emp_name)  
+                                        # _logger.info(date) 
+                                        _logger.info(split_check_in)   
+                                        _logger.info(check_in)  
+                                        # _logger.info(check_out)  
+                                        _logger.info("------------------------") 
                     #         if rownum == 0:
                     #             header_list = [
                     #                 x for x in sheet.row_values(rownum)]
