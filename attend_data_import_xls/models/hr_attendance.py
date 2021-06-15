@@ -92,7 +92,7 @@ class ResPartner(models.Model):
                                 if emp_name != "" and (check_in != "" or check_out != ""):
                                     _logger.info("------------------------")  
                                     if check_in:
-                                        # split_check_in = check_in.split(" ")
+                                        split_check_in = check_in.split(" ")
                                         # check_in_time = split_check_in[0]
                                         # check_in_zone = split_check_in[1]
                                         # split_check_in_0 = split_check_in[0]
@@ -108,6 +108,7 @@ class ResPartner(models.Model):
                                         # _logger.info(date) 
                                         # _logger.info(check_in_time)   
                                         # _logger.info(check_in_zone)  
+                                        _logger.info(split_check_in)
                                         _logger.info(check_in)  
                                     _logger.info("------------------------") 
                     #         if rownum == 0:
