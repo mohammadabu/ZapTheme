@@ -152,7 +152,9 @@ class ResPartner(models.Model):
                                 if  full_date_check_in != False or full_date_check_out != False:
                                     _logger.info(full_date_check_in)
                                     _logger.info(full_date_check_out)
-                                    _logger.info(emp_name)                 
+                                    _logger.info(emp_name)
+                                    emp_name_info = self.env['hr.employee'].sudo().search([('name','=',emp_name)])
+                                    _logger.info(emp_name_info)                 
                                 _logger.info("------------------------")                         
                                                 
                     #         if rownum == 0:
