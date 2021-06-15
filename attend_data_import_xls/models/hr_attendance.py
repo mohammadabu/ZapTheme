@@ -149,7 +149,7 @@ class ResPartner(models.Model):
                                                 _logger.info("----error out------")    
                                                 _logger.info(e)   
                                 # if  full_date_check_in != False or full_date_check_out != False:
-                                if  full_date_check_in != False and full_date_check_out != False:
+                                if  full_date_check_in != False :
                                     try:
                                         emp_name_info = self.env['hr.employee'].sudo().search([('name','=',emp_name)])
                                         attendance_vals = {
