@@ -104,30 +104,34 @@ class ResPartner(models.Model):
                                 check_in = item_y[check_in_row]     
                                 check_out = item_y[check_out_row] 
                                 if emp_name != "" and (check_in != "" or check_out != ""):  
+                                    _logger.info("------------------------")
                                     if check_in:
                                         split_check_in = check_in.split(" ")
                                         if len(split_check_in) > 1:
-                                            _logger.info("------------------------")
-                                            check_in_time = split_check_in[0]
-                                            check_in_zone = split_check_in[1]
                                             try:
                                                 date = date.replace("/","-",3)
                                                 _logger.info(date)
                                                 new_time = self.pool.get("hr.attendance").convert24(self,split_check_in)
                                                 new_time = new_time.replace("\u200f","")
-                                                # new_date = datetime.strptime(str(date), '%Y-%m-%d')
                                                 full_date_time = date + " " + new_time + ":00"
                                                 full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
-                                                # _logger.info(emp_name)  
-                                                # _logger.info(date) 
-                                                # _logger.info(check_in_time)   
-                                                # _logger.info(check_in_zone)  
-                                                # _logger.info(split_check_in)
-                                                # _logger.info(new_date) 
-                                                _logger.info(full_date_time_obj)   
-                                                _logger.info("------------------------") 
+                                                _logger.info(full_date_time_obj)
                                             except Exception as e:
-                                                _logger.info(e)        
+                                                _logger.info(e) 
+                                    if check_out:
+                                        split_check_out = check_out.split(" ")
+                                        if len(split_check_out) > 1:  
+                                            try:
+                                                date = date.replace("/","-",3)
+                                                _logger.info(date)
+                                                new_time = self.pool.get("hr.attendance").convert24(self,split_check_out)
+                                                new_time = new_time.replace("\u200f","")
+                                                full_date_time = date + " " + new_time + ":00"
+                                                full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
+                                                _logger.info(full_date_time_obj)
+                                            except Exception as e:
+                                                _logger.info(e)    
+                                    _logger.info("------------------------")                         
                                                 
                     #         if rownum == 0:
                     #             header_list = [
