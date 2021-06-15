@@ -25,9 +25,17 @@ class ResPartner(models.Model):
             [('status', '=', 'imported')])
         imported_master_part.unlink()
     @api.model
-    def convert24(self,str1):  
-        _logger.info(str1[-2:])
-        _logger.info(str1[:2])  
+    def convert24(self,str1):
+        check_in_time = str1[0]
+        check_in_time_split = check_in_time.split(":")
+        hours = check_in_time_split[0]
+        check_in_zone = str1[1]
+        _logger.info(check_in_zone)
+        _logger.info(hours)
+        # if check_in_zone == "ص" and hours == "12":
+
+        # _logger.info(str1[-2:])
+        # _logger.info(str1[:2])  
         # Checking if last two elements of time
         # is AM and first two elements are 12
         # if str1[-2:] == "ص" and str1[:2] == "12":
@@ -132,7 +140,7 @@ class ResPartner(models.Model):
                                             # _logger.info(check_in_time)   
                                             # _logger.info(check_in_zone)  
                                             # _logger.info(split_check_in)
-                                            self.pool.get("hr.attendance").convert24(self,check_in)
+                                            self.pool.get("hr.attendance").convert24(self,split_check_in)
                                             # _logger.info(check_in)   
                                             _logger.info("------------------------") 
                     #         if rownum == 0:
