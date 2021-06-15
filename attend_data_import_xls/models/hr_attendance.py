@@ -136,7 +136,7 @@ class ResPartner(models.Model):
                                                 full_date_time = date + " " + new_time + ":00"
                                                 # full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
                                                 full_date_check_in = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
-                                                _logger.info(full_date_time_obj)
+                                                # _logger.info(full_date_time_obj)
                                             except Exception as e:
                                                 _logger.info("----error in------")   
                                                 _logger.info(e) 
@@ -152,8 +152,9 @@ class ResPartner(models.Model):
                                             except Exception as e:
                                                 _logger.info("----error out------")    
                                                 _logger.info(e)   
-                                _logger.info(full_date_check_in)
-                                _logger.info(full_date_check_out)                 
+                                if  full_date_check_in != False or full_date_check_out != False:
+                                    _logger.info(full_date_check_in)
+                                    _logger.info(full_date_check_out)                 
                                 _logger.info("------------------------")                         
                                                 
                     #         if rownum == 0:
