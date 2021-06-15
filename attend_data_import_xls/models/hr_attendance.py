@@ -200,13 +200,13 @@ class ResPartner(models.Model):
                     'end_date': end_date_in_user_tz,
                     'operation': part_master.operation,
                 })
-                # if part_master.user_id:
-                #     message = "Import process is completed. Check in Imported partner History if all the partners have" \
-                #               " been imported correctly. </br></br> Imported File: %s </br>" \
-                #               "Imported by: %s" % (
-                #                   part_master.filename, part_master.user_id.name)
-                #     part_master.user_id.notify_partner_info(
-                #         message, part_master.user_id, sticky=True)
+                if part_master.user_id:
+                    message = "Import process is completed. Check in Imported partner History if all the partners have" \
+                              " been imported correctly. </br></br> Imported File: %s </br>" \
+                              "Imported by: %s" % (
+                                  part_master.filename, part_master.user_id.name)
+                    part_master.user_id.notify_partner_info(
+                        message, part_master.user_id, sticky=True)
                 self._cr.commit()
             except Exception as e:
                 part_master.status = 'failed'
