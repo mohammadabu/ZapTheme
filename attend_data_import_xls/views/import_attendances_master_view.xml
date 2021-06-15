@@ -38,7 +38,7 @@
 
         <!--Action-->
         <record id="action_import_attendances_master" model="ir.actions.act_window">
-            <field name="name">Imported Partner Status</field>
+            <field name="name">Imported Attendances Status</field>
             <field name="res_model">import.attendances.master</field>
             <field name="view_mode">tree,form</field>
         </record>
