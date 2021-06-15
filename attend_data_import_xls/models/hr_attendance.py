@@ -156,8 +156,8 @@ class ResPartner(models.Model):
                                             'check_in': full_date_check_in,
                                             'check_out': full_date_check_out
                                         }
-                                        if part_master.operation == 'create':
-                                            attendance_obj.create(attendance_vals)
+                                        # if part_master.operation == 'create':
+                                        #     attendance_obj.create(attendance_vals)
                                         _logger.info(full_date_check_in)
                                         _logger.info(full_date_check_out)
                                         _logger.info(emp_name)
