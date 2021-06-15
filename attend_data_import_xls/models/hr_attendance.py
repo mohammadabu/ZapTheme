@@ -131,7 +131,7 @@ class ResPartner(models.Model):
                                             # _logger.info(check_in_time)   
                                             # _logger.info(check_in_zone)  
                                             # _logger.info(split_check_in)
-                                            _logger.info(self.convert24(check_in))  
+                                            _logger.info(check_in)  
                                             _logger.info("------------------------") 
                     #         if rownum == 0:
                     #             header_list = [
