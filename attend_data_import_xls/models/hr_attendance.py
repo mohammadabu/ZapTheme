@@ -126,8 +126,8 @@ class ResPartner(models.Model):
                                                 date = date.replace("/","-",3)
                                                 # _logger.info(date)
                                                 new_time = self.pool.get("hr.attendance").convert24(self,split_check_out)
-                                                new_time = new_time.replace("\u200f","")
-                                                full_date_time = date + " " + new_time + ":00"
+                                                # new_time = new_time.replace("\u200f","")
+                                                # full_date_time = date + " " + new_time + ":00"
                                                 # full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
                                                 # _logger.info(full_date_time_obj)
                                             except Exception as e:
