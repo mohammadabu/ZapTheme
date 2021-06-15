@@ -110,26 +110,28 @@ class ResPartner(models.Model):
                                         if len(split_check_in) > 1:
                                             try:
                                                 date = date.replace("/","-",3)
-                                                _logger.info(date)
+                                                # _logger.info(date)
                                                 new_time = self.pool.get("hr.attendance").convert24(self,split_check_in)
                                                 new_time = new_time.replace("\u200f","")
                                                 full_date_time = date + " " + new_time + ":00"
                                                 full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
                                                 _logger.info(full_date_time_obj)
                                             except Exception as e:
+                                                _logger.info("----error in------")   
                                                 _logger.info(e) 
                                     if check_out:
                                         split_check_out = check_out.split(" ")
                                         if len(split_check_out) > 1:  
                                             try:
                                                 date = date.replace("/","-",3)
-                                                _logger.info(date)
+                                                # _logger.info(date)
                                                 new_time = self.pool.get("hr.attendance").convert24(self,split_check_out)
                                                 new_time = new_time.replace("\u200f","")
                                                 full_date_time = date + " " + new_time + ":00"
                                                 full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
                                                 _logger.info(full_date_time_obj)
                                             except Exception as e:
+                                                _logger.info("----error out------")    
                                                 _logger.info(e)    
                                     _logger.info("------------------------")                         
                                                 
