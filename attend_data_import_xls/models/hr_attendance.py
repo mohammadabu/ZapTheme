@@ -54,7 +54,7 @@ class ResPartner(models.Model):
             return "12"+":"+ minutes
         else:
             
-            _logger.info(hours)
+            _logger.info(time_arr[hours])
             # _logger.info(minutes)
             # return str(int(hours + 12)) + ":" + minutes          
     def import_data(self, part_master_id=False):
