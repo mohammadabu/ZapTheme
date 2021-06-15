@@ -40,7 +40,7 @@ class ResPartner(models.Model):
         else:
             if hours != "00" and hours != "10":
                 hours = hours.replace("0","")
-            _logger.info(int(hours + 12))
+            _logger.info(int(hours + "12"))
             _logger.info(minutes)
             # return str(int(hours + 12)) + ":" + minutes          
     def import_data(self, part_master_id=False):
