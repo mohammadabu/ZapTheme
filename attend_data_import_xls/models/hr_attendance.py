@@ -38,6 +38,8 @@ class ResPartner(models.Model):
         elif check_in_zone == "م" and hours == "12":
             return "12"+":"+ minutes
         else:
+            if hours != "00" and hours != "10":
+                hours = hours.replace("0","")
             _logger.info(int(hours))
             _logger.info(minutes)
             # return str(int(hours + 12)) + ":" + minutes          
