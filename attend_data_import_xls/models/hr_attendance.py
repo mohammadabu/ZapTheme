@@ -93,23 +93,24 @@ class ResPartner(models.Model):
                                     _logger.info("------------------------")  
                                     if check_in:
                                         split_check_in = check_in.split(" ")
-                                        # check_in_time = split_check_in[0]
-                                        # check_in_zone = split_check_in[1]
-                                        # split_check_in_0 = split_check_in[0]
-                                        # split_check_in_0 = split_check_in_0.encode("ascii","ignore")
-                                        # split_check_in_0 = split_check_in_0.decode()
-                                        
-                                        # split_check_in_1 = split_check_in[1]
-                                        # split_check_in_1 = split_check_in_1.encode("ascii","ignore")
-                                        # split_check_in_1 = split_check_in_1.decode()
-                                        # _logger.info(split_check_in_0)
-                                        # _logger.info(split_check_in_1)
-                                        # _logger.info(emp_name)  
-                                        # _logger.info(date) 
-                                        # _logger.info(check_in_time)   
-                                        # _logger.info(check_in_zone)  
-                                        _logger.info(split_check_in)
-                                        _logger.info(check_in)  
+                                        if len(split_check_in) > 1:
+                                            # check_in_time = split_check_in[0]
+                                            # check_in_zone = split_check_in[1]
+                                            # split_check_in_0 = split_check_in[0]
+                                            # split_check_in_0 = split_check_in_0.encode("ascii","ignore")
+                                            # split_check_in_0 = split_check_in_0.decode()
+                                            
+                                            # split_check_in_1 = split_check_in[1]
+                                            # split_check_in_1 = split_check_in_1.encode("ascii","ignore")
+                                            # split_check_in_1 = split_check_in_1.decode()
+                                            # _logger.info(split_check_in_0)
+                                            # _logger.info(split_check_in_1)
+                                            # _logger.info(emp_name)  
+                                            # _logger.info(date) 
+                                            # _logger.info(check_in_time)   
+                                            # _logger.info(check_in_zone)  
+                                            _logger.info(split_check_in)
+                                            _logger.info(check_in)  
                                     _logger.info("------------------------") 
                     #         if rownum == 0:
                     #             header_list = [
