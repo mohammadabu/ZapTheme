@@ -38,7 +38,7 @@ class ResPartner(models.Model):
         elif check_in_zone == "م" and hours == "12":
             return "12"+":"+ minutes
         else:
-            return str(int(hours + 12)) + ":" + minutes          
+            return str(int(int(hours) + 12)) + ":" + minutes          
     def import_data(self, part_master_id=False):
         if part_master_id:
             part_master = self.env[
@@ -125,7 +125,7 @@ class ResPartner(models.Model):
                                             try:
                                                 date = date.replace("/","-",3)
                                                 # _logger.info(date)
-                                                # new_time = self.pool.get("hr.attendance").convert24(self,split_check_out)
+                                                new_time = self.pool.get("hr.attendance").convert24(self,split_check_out)
                                                 # new_time = new_time.replace("\u200f","")
                                                 # full_date_time = date + " " + new_time + ":00"
                                                 # full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
