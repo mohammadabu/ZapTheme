@@ -168,9 +168,10 @@ class ResPartner(models.Model):
                                         list_of_failed_record += str(rownum1)
                                         _logger.error("Error at %s" % str(rownum1))    
                                 else:
-                                    total_failed_record += 1
-                                    list_of_failed_record += str(rownum1)
-                                    _logger.error("Error at %s" % str(rownum1))                         
+                                    if emp_name != "":
+                                        total_failed_record += 1
+                                        list_of_failed_record += str(rownum1)
+                                        _logger.error("Error at %s" % str(rownum1))                         
             except Exception as e:
                 list_of_failed_record += str(e)
             _logger.info("list_of_failed_record")
