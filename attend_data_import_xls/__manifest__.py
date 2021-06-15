@@ -7,6 +7,6 @@
         'views/import_attendances_history_view.xml',
         'views/import_attendances_master_view.xml',
         'security/ir.model.access.csv',
-        # 'data/data.xml',
+        # 'data/data.xml', 
     ],
 }
