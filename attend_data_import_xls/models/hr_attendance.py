@@ -67,7 +67,7 @@ class ResPartner(models.Model):
             list_of_failed_record = ''
             datafile = part_master.file
             file_name = str(part_master.filename)
-            partner_obj = self.env['res.partner']
+            attendance_obj = self.env['hr.attendance']
             state_obj = self.env['res.country.state']
             country_obj = self.env['res.country']
             try:
@@ -124,7 +124,6 @@ class ResPartner(models.Model):
                                 check_out = item_y[check_out_row] 
                                 full_date_check_in = False
                                 full_date_check_out = False
-                                _logger.info("------------------------")
                                 if emp_name != "" and (check_in != "" or check_out != ""):  
                                     if check_in:
                                         split_check_in = check_in.split(" ")
@@ -150,74 +149,24 @@ class ResPartner(models.Model):
                                                 _logger.info("----error out------")    
                                                 _logger.info(e)   
                                 if  full_date_check_in != False or full_date_check_out != False:
-                                    _logger.info(full_date_check_in)
-                                    _logger.info(full_date_check_out)
-                                    _logger.info(emp_name)
-                                    emp_name_info = self.env['hr.employee'].sudo().search([('name','=',emp_name)])
-                                    _logger.info(emp_name_info)                 
-                                _logger.info("------------------------")                         
-                                                
-                    #         if rownum == 0:
-                    #             header_list = [
-                    #                 x for x in sheet.row_values(rownum)]
-                    #             headers_dict = {
-                    #                 'name': header_list.index('Name'),
-                    #                 'mobile': header_list.index('Mobile'),
-                    #                 'phone': header_list.index('Phone'),
-                    #                 'email': header_list.index('Email'),
-                    #                 'vat': header_list.index('Vat'),
-                    #                 'street': header_list.index('Street'),
-                    #                 'street2': header_list.index('Street2'),
-                    #                 'city': header_list.index('City'),
-                    #                 'company_type': header_list.index('Company Type'),
-                    #                 'website': header_list.index('Website'),
-                    #                 'state': header_list.index('State'),
-                    #                 'country': header_list.index('Country'),
-                    #                 'zip': header_list.index('ZIP')
-                    #             }
-                    #         if rownum >= 1:
-                    #             data_list.append(sheet.row_values(rownum))
-                    #     count = 1
-                    #     for row in data_list:
-                    #         try:
-                    #             count += 1
-
-                    #             state = state_obj.search(
-                    #                 [('name', '=', row[headers_dict['state']])])
-                    #             country = country_obj.search(
-                    #                 [('name', '=', row[headers_dict['country']])])
-
-                    #             partner_vals = {
-                    #                 'name': row[headers_dict['name']],
-                    #                 'phone': row[headers_dict['phone']] or '',
-                    #                 'mobile': row[headers_dict['mobile']] or '',
-                    #                 'email': row[headers_dict['email']] or '',
-                    #                 'vat': row[headers_dict['vat']] or '',
-                    #                 'street': row[headers_dict['street']] or '',
-                    #                 'street2': row[headers_dict['street2']] or '',
-                    #                 'city': row[headers_dict['city']] or '',
-                    #                 'state_id': state.id or '',
-                    #                 'country_id': country.id or '',
-                    #                 'company_type': row[headers_dict['company_type']],
-                    #                 'website': row[headers_dict['website']] or '',
-                    #                 'zip': row[headers_dict['zip']] or '',
-                    #             }
-                    #             if part_master.operation == 'create':
-                    #                 order_id = partner_obj.create(
-                    #                     partner_vals)
-                    #             else:
-                    #                 order_id = self.env['res.partner'].search(
-                    #                     [('name', '=', row[headers_dict['name']])], limit=1)
-                    #                 if not order_id:
-                    #                     order_id = partner_obj.create(
-                    #                         partner_vals)
-                    #                 else:
-                    #                     order_id.write(partner_vals)
-                    #             total_success_import_record += 1
-                    #         except Exception as e:
-                    #             total_failed_record += 1
-                    #             list_of_failed_record += row
-                    #             _logger.error("Error at %s" % str(row))
+                                    try:
+                                        emp_name_info = self.env['hr.employee'].sudo().search([('name','=',emp_name)])
+                                        attendance_vals = {
+                                            'employee_id': emp_name_info.id,
+                                            'check_in': full_date_check_in,
+                                            'check_out': full_date_check_out
+                                        }
+                                        if part_master.operation == 'create':
+                                            attendance_obj.create(attendance_vals)
+                                        _logger.info(full_date_check_in)
+                                        _logger.info(full_date_check_out)
+                                        _logger.info(emp_name)
+                                        _logger.info(emp_name_info)  
+                                        total_success_import_record += 1  
+                                    except Exception as e:
+                                        total_failed_record += 1
+                                        list_of_failed_record += rownum1
+                                        _logger.error("Error at %s" % str(rownum1))                 
             except Exception as e:
                 list_of_failed_record += str(e)
             # try:
