@@ -173,7 +173,7 @@ class ResPartner(models.Model):
                                     _logger.error("Error at %s" % str(rownum1))                         
             except Exception as e:
                 list_of_failed_record += str(e)
-
+            _logger.info("list_of_failed_record")
             _logger.info(list_of_failed_record)
 
 
