@@ -55,9 +55,9 @@ class ResPartner(models.Model):
             return "12"+":"+ minutes
         else:
             
-            _logger.info(time_arr[hours])
+            # _logger.info(time_arr[hours])
             # _logger.info(minutes)
-            # return str(int(hours + 12)) + ":" + minutes          
+            return str(time_arr[hours]) + ":" + minutes          
     def import_data(self, part_master_id=False):
         if part_master_id:
             part_master = self.env[
@@ -144,12 +144,12 @@ class ResPartner(models.Model):
                                             try:
                                                 date = date.replace("/","-",3)
                                                 # _logger.info(date)
-                                                self.pool.get("hr.attendance").convert24(self,split_check_out)
-                                                # new_time = self.pool.get("hr.attendance").convert24(self,split_check_out)
+                                                # self.pool.get("hr.attendance").convert24(self,split_check_out)
+                                                new_time = self.pool.get("hr.attendance").convert24(self,split_check_out)
                                                 # new_time = new_time.replace("\u200f","")
-                                                # full_date_time = date + " " + new_time + ":00"
-                                                # full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
-                                                # _logger.info(full_date_time_obj)
+                                                full_date_time = date + " " + new_time + ":00"
+                                                full_date_time_obj = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
+                                                _logger.info(full_date_time_obj)
                                             except Exception as e:
                                                 _logger.info("----error out------")    
                                                 _logger.info(e)    
