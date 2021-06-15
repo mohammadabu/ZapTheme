@@ -42,6 +42,7 @@ class ResPartner(models.Model):
             "12":00
         }
         check_in_time = str1[0]
+        check_in_time = check_in_time.replace("\u200f","")
         check_in_time_split = check_in_time.split(":")
         hours = check_in_time_split[0]
         minutes = check_in_time_split[1]
