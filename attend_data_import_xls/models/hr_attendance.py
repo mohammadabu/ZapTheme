@@ -26,6 +26,21 @@ class ResPartner(models.Model):
         imported_master_part.unlink()
     @api.model
     def convert24(self,str1):
+        time_arr = {
+            "00":12,
+            "01":13,
+            "02":14,
+            "03":15,
+            "04":16,
+            "05":17,
+            "06":18,
+            "07":19,
+            "08":20,
+            "09":21,
+            "10":22,
+            "11":23,
+            "12":00
+        }
         check_in_time = str1[0]
         check_in_time_split = check_in_time.split(":")
         hours = check_in_time_split[0]
@@ -38,10 +53,9 @@ class ResPartner(models.Model):
         elif check_in_zone == "م" and hours == "12":
             return "12"+":"+ minutes
         else:
-            if hours != "00" and hours != "10":
-                hours = hours.replace("0","")
-            _logger.info(int(hours + "12"))
-            _logger.info(minutes)
+            
+            _logger.info(hours)
+            # _logger.info(minutes)
             # return str(int(hours + 12)) + ":" + minutes          
     def import_data(self, part_master_id=False):
         if part_master_id:
