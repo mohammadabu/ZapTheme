@@ -29,32 +29,16 @@ class ResPartner(models.Model):
         check_in_time = str1[0]
         check_in_time_split = check_in_time.split(":")
         hours = check_in_time_split[0]
+        minutes = check_in_time_split[1]
         check_in_zone = str1[1]
-        _logger.info(check_in_zone)
-        _logger.info(hours)
-        # if check_in_zone == "ص" and hours == "12":
-
-        # _logger.info(str1[-2:])
-        # _logger.info(str1[:2])  
-        # Checking if last two elements of time
-        # is AM and first two elements are 12
-        # if str1[-2:] == "ص" and str1[:2] == "12":
-        #     return "00" + str1[2:-2]
-            
-        # # remove the AM    
-        # elif str1[-2:] == "AM":
-        #     return str1[:-2]
-        
-        # # Checking if last two elements of time
-        # # is PM and first two elements are 12   
-        # elif str1[-2:] == "PM" and str1[:2] == "12":
-        #     return str1[:-2]
-            
-        # else:
-        #     # add 12 to hours and remove PM
-        #     return str(int(str1[:2]) + 12) + str1[2:8]
-
-
+        if check_in_zone == "ص" and hours == "12":
+            return "00:"+minutes
+        elif check_in_zone == "ص":
+            return hours+":"+ minutes
+        elif check_in_zone == "م" and hours == "12":
+            return "12"+":"+ minutes
+        else:
+            return str(int(hours + 12)) + ":" + minutes          
     def import_data(self, part_master_id=False):
         if part_master_id:
             part_master = self.env[
@@ -140,8 +124,8 @@ class ResPartner(models.Model):
                                             # _logger.info(check_in_time)   
                                             # _logger.info(check_in_zone)  
                                             # _logger.info(split_check_in)
-                                            self.pool.get("hr.attendance").convert24(self,split_check_in)
-                                            # _logger.info(check_in)   
+                                            _logger.info(self.pool.get("hr.attendance").convert24(self,split_check_in))
+                                            _logger.info(check_in)   
                                             _logger.info("------------------------") 
                     #         if rownum == 0:
                     #             header_list = [
