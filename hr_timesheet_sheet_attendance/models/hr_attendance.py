@@ -63,7 +63,6 @@ class HrAttendance(models.Model):
                 "You cannot modify an entry in a confirmed timesheet"
             ))
 
-    @api.multi
     def unlink(self):
         # Restrict to delete attendance from confirmed timesheet-sheet
         for attendance in self:
