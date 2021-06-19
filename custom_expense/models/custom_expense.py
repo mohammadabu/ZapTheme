@@ -2,7 +2,7 @@
 import logging
 _logger = logging.getLogger(__name__)
 import re
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta,date
 from odoo import models, api, fields, _
 from odoo.exceptions import UserError, AccessError, ValidationError
 from odoo.tools import email_split
@@ -28,6 +28,62 @@ class CustomExpense(models.Model):
         ('done', 'Paid'),
         ('refused', 'Refused')
     ], compute='_compute_state', string='Status', copy=False, index=True, readonly=True, store=True, help="Status of the expense.")
+    expense_type = fields.Selection([
+        ('expense', 'Expense'),
+        ('business_trip', 'Business Trip')
+    ], string='Expenses Type',default="expense")
+
+    expected_arrival = fields.Date(string='Expected of arrival') 
+    expected_departure = fields.Date(string='Expected date of departure') 
+    expected_duration = fields.Char(readonly=True) 
+    travel_by = fields.Selection([
+        ('plane', 'Plane'),
+        ('train', 'Train'),
+        ('bus', 'Bus'),
+        ('car', 'Car')
+    ],default="plane")
+
+    project_name = fields.Text()
+    customer_name = fields.Many2one('res.partner')
+    employee_department = fields.Many2one('hr.department')
+    place_visit = fields.Char(string="Place of visit")
+    attachment = fields.Binary()
+    is_billable = fields.Selection([
+        ('yes ', 'yes'),
+        ('no', 'no')
+    ]) 
+    purpose_visit = fields.Text(string="Purpose of visit")
+
+    @api.onchange('expected_arrival','expected_departure')
+    def _compute_expected_duration(self):
+        for rec in self:
+            expected_arrival = rec.expected_arrival
+            expected_departure = rec.expected_departure
+            if expected_arrival != False and expected_departure != False:
+                # f_date = date(2014, 7, 2)
+                # l_date = date(2014, 7, 11)
+                expected_duration = expected_departure - expected_arrival
+                expected_duration = expected_duration.days
+                if expected_duration >= 0:
+                    expected_duration = expected_duration + 1
+                rec.expected_duration = expected_duration
+            else:
+                rec.expected_duration = "0"                
+
+    # @api.depends('expected_arrival','expected_departure')
+    # def _compute_expected_duration(self):
+    #     for expenses in self:
+    #         expected_arrival = expenses.expected_arrival
+    #         expected_departure = expenses.expected_departure
+    #         expenses.expected_duration = "21321321"
+            # if (task.planned_hours > 0.0):
+            #     task_total_hours = task.effective_hours + task.subtask_effective_hours
+            #     if task_total_hours > task.planned_hours:
+            #         task.progress = 100
+            #     else:
+            #         task.progress = round(100.0 * task_total_hours / task.planned_hours, 2)
+            # else:
+            #     task.progress = 0.0
 
     def _get_approval_requests(self):
         """ Action for Approvals menu item to show approval

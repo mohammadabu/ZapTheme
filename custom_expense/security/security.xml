@@ -1,0 +1,10 @@
+<odoo>
+    <record id='custom_expenses_hr_manager' model='res.groups'>
+        <field name="name">Expenses - Hr manager</field>
+        <field name="category_id" ref="base.module_category_hidden" />
+    </record>
+    <!-- <record id='custom_expenses_finance' model='res.groups'>
+        <field name="name">Expenses - Finance</field>
+        <field name="category_id" ref="base.module_category_hidden" />
+    </record> -->
+</odoo>

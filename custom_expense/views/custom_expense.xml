@@ -8,10 +8,62 @@
             <xpath expr="//form/header/field[@name='state']" position="replace">
                 <field name="state" widget="statusbar" statusbar_visible="draft,reported,direct,manager_of_manager,hr,approved,done,refused"/>
             </xpath>
+            <xpath expr="//field[@name='reference']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
             <xpath expr="//field[@name='total_amount']" position="after">
                 <field name="exp_type" required="1"/>
-                <field name="reference" attrs="{'invisible': [('exp_type', '!=', 'operational')]}"/>
+                <field name="reference" attrs="{'invisible': [('exp_type', '!=', 'operational')],'required':[('exp_type', '=', 'operational')]}"/>
+                <field name="expected_arrival"  attrs="{'invisible': [('expense_type', '!=', 'business_trip')],'required':[('expense_type', '=', 'business_trip')]}" />
+                <field name="expected_departure" attrs="{'invisible': [('expense_type', '!=', 'business_trip')],'required':[('expense_type', '=', 'business_trip')]}"/>
+                <field name="expected_duration" attrs="{'invisible': [('expense_type', '!=', 'business_trip')]}" />
+                <field name="travel_by" attrs="{'invisible': [('expense_type', '!=', 'business_trip')],'required':[('expense_type', '=', 'business_trip')]}"/>
             </xpath>
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="project_name"  />
+                <field name="customer_name" attrs="{'invisible': [('expense_type', '!=', 'business_trip')],'required':[('expense_type', '=', 'business_trip')]}"/>
+                <field name="employee_department" attrs="{'invisible': [('expense_type', '!=', 'business_trip')],'required':[('expense_type', '=', 'business_trip')]}"/>
+                <field name="place_visit" attrs="{'invisible': [('expense_type', '!=', 'business_trip')],'required':[('expense_type', '=', 'business_trip')]}"/>
+                <field name="attachment" attrs="{'invisible': [('expense_type', '!=', 'business_trip')],'required':[('expense_type', '=', 'business_trip')]}"/>
+                <field name="is_billable" attrs="{'invisible': [('expense_type', '!=', 'business_trip')],'required':[('expense_type', '=', 'business_trip')]}"/>
+                <field name="purpose_visit" attrs="{'invisible': [('expense_type', '!=', 'business_trip')],'required':[('expense_type', '=', 'business_trip')]}"/>
+            </xpath>
+            <!-- <xpath expr="//field[@name='unit_amount']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> -->
+            <xpath expr="//field[@name='quantity']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//label[@for='quantity']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//label[@for='quantity']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_id']" position="before">
+                <field name="expense_type" required="1"/>
+            </xpath>
+            <!-- <xpath expr="//field[@name='total_amount']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> -->
+            <xpath expr="//field[@name='unit_amount']" position="attributes">
+                <attribute name="groups">custom_expense.custom_expenses_hr_manager,hr_expense.group_hr_expense_team_approver,hr_expense.group_hr_expense_user,hr_expense.group_hr_expense_manager</attribute>
+            </xpath>
+            <xpath expr="//field[@name='total_amount']" position="attributes">
+                <attribute name="groups">custom_expense.custom_expenses_hr_manager,hr_expense.group_hr_expense_team_approver,hr_expense.group_hr_expense_user,hr_expense.group_hr_expense_manager</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='analytic_account_id']" position="attributes">
+                <attribute name="groups">hr_expense.group_hr_expense_team_approver,hr_expense.group_hr_expense_user,hr_expense.group_hr_expense_manager</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='analytic_tag_ids']" position="attributes">
+                <attribute name="groups">hr_expense.group_hr_expense_team_approver,hr_expense.group_hr_expense_user,hr_expense.group_hr_expense_manager</attribute>
+            </xpath>	
+
+            <!-- <xpath expr="//field[@name='product_id']" position="after">
+                <field name="unit_amount"  required="1" groups="base.group_user" />
+            </xpath> -->
         </field>
     </record>
     <record id="hr_view_custom_expense_view_form" model="ir.ui.view">

@@ -4,5 +4,6 @@
     'depends': ['base_setup', 'hr_expense'],
     'data': [
         'views/custom_expense.xml',
+        'security/security.xml',
     ],
 }
