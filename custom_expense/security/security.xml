@@ -1,7 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <record id='custom_expenses_hr_manager' model='res.groups'>
         <field name="name">Expenses - Hr manager</field>
         <field name="category_id" ref="base.module_category_hidden" />
+    </record>
+    <record id="property_rule_holidays_employee_expense" model="ir.rule">
+        <field name="name">Expenses Leaves</field>
+        <field name="model_id" ref="model_hr_expense_sheet"/>
+        <field name="domain_force">[]</field>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="groups" eval="[(4,ref('base.group_user'))]"/>
     </record>
     <!-- <record id='custom_expenses_finance' model='res.groups'>
         <field name="name">Expenses - Finance</field>
