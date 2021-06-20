@@ -18,14 +18,14 @@ class AttendanceReportExcel(models.TransientModel):
 
     from_date = fields.Date()
     to_date = fields.Date()
-    employees = fields.Many2many('hr.employee', 'id', required=True)
+    employees = fields.Many2many('hr.employee', required=True)
     def export_xls(self):
         data = {
             'ids': self.ids,
             'model': self._name,
             'from_date': self.from_date,
             'from_date': self.to_date,
-            # 'employees': self.employees.ids,
+            'employees': self.employees.ids,
         }
         return {
             'type': 'ir_actions_xlsx_download',
