@@ -5,7 +5,9 @@ import json
 import datetime
 import io
 from odoo import api, fields, models, _
+import logging
 from odoo.tools import date_utils
+_logger = logging.getLogger(__name__)
 try:
     from odoo.tools.misc import xlsxwriter
 except ImportError:
@@ -24,7 +26,7 @@ class AttendanceReportExcel(models.TransientModel):
             'ids': self.ids,
             'model': self._name,
             'from_date': self.from_date,
-            'from_date': self.to_date,
+            'to_date': self.to_date,
             'employees': self.employees.ids,
         }
         return {
@@ -103,11 +105,17 @@ class AttendanceReportExcel(models.TransientModel):
     #         lines.append(vals)
     #     return lines
 
-    # def get_xlsx_report(self, data, response):
-    #     output = io.BytesIO()
-    #     workbook = xlsxwriter.Workbook(output, {'in_memory': True})
-    #     lines = self.browse(data['ids'])
-    #     d = lines.category
+    def get_xlsx_report(self, data, response):
+        output = io.BytesIO()
+        workbook = xlsxwriter.Workbook(output, {'in_memory': True})
+        lines = self.browse(data['ids'])
+        employees = lines.employees
+        from_date = lines.from_date
+        to_date = lines.to_date
+        _logger.info('--------------------')
+        _logger.info(employees)
+        _logger.info(from_date)
+        _logger.info(to_date)
     #     get_warehouse = self.get_warehouse(lines)
     #     count = len(get_warehouse[0]) * 11 + 6
     #     comp = self.env.user.company_id.name
