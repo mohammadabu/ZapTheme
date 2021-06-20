@@ -25,7 +25,7 @@ class AttendanceReportExcel(models.TransientModel):
             'model': self._name,
             'from_date': self.from_date,
             'from_date': self.to_date,
-            'employees': self.employees.ids,
+            # 'employees': self.employees.ids,
         }
         return {
             'type': 'ir_actions_xlsx_download',
