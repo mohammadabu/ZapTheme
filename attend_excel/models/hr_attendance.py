@@ -119,14 +119,14 @@ class AttendanceReportExcel(models.TransientModel):
     #     get_warehouse = self.get_warehouse(lines)
     #     count = len(get_warehouse[0]) * 11 + 6
     #     comp = self.env.user.company_id.name
-    #     sheet = workbook.add_worksheet('Stock Info')
-    #     format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
-    #     format1 = workbook.add_format({'font_size': 14, 'align': 'vcenter', 'bold': True})
-    #     format11 = workbook.add_format({'font_size': 12, 'align': 'center', 'bold': True})
-    #     format21 = workbook.add_format({'font_size': 10, 'align': 'center', 'bold': True})
-    #     format3 = workbook.add_format({'bottom': True, 'top': True, 'font_size': 12})
-    #     format4 = workbook.add_format({'font_size': 12, 'align': 'left', 'bold': True})
-    #     font_size_8 = workbook.add_format({'font_size': 8, 'align': 'center'})
+        sheet = workbook.add_worksheet('Attendance Info')
+        format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
+        format1 = workbook.add_format({'font_size': 14, 'align': 'vcenter', 'bold': True})
+        format11 = workbook.add_format({'font_size': 12, 'align': 'center', 'bold': True})
+        format21 = workbook.add_format({'font_size': 10, 'align': 'center', 'bold': True})
+        format3 = workbook.add_format({'bottom': True, 'top': True, 'font_size': 12})
+        format4 = workbook.add_format({'font_size': 12, 'align': 'left', 'bold': True})
+        # font_size_8 = workbook.add_format({'font_size': 8, 'align': 'center'})
     #     font_size_8_l = workbook.add_format({'font_size': 8, 'align': 'left'})
     #     font_size_8_r = workbook.add_format({'font_size': 8, 'align': 'right'})
     #     red_mark = workbook.add_format({'font_size': 8, 'bg_color': 'red'})
@@ -229,7 +229,7 @@ class AttendanceReportExcel(models.TransientModel):
     #             prod_row = prod_row + 1
     #         prod_row = 10
     #         prod_col = prod_col + 11
-    #     workbook.close()
-    #     output.seek(0)
-    #     response.stream.write(output.read())
-    #     output.close()
+        workbook.close()
+        output.seek(0)
+        response.stream.write(output.read())
+        output.close()
