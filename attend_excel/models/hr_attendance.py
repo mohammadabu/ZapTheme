@@ -19,22 +19,22 @@ class AttendanceReportExcel(models.TransientModel):
     from_date = fields.Date()
     to_date = fields.Date()
     employees = fields.Many2many('hr.employee', 'id', required=True)
-    # def export_xls(self):
-    #     data = {
-    #         'ids': self.ids,
-    #         'model': self._name,
-    #         'warehouse': self.warehouse.ids,
-    #         'category': self.category.ids,
-
-    #     }
-    #     return {
-    #         'type': 'ir_actions_xlsx_download',
-    #         'data': {'model': 'wizard.stock.history',
-    #                  'options': json.dumps(data, default=date_utils.json_default),
-    #                  'output_format': 'xlsx',
-    #                  'report_name': 'Current Stock History',
-    #                  }
-    #     }
+    def export_xls(self):
+        data = {
+            'ids': self.ids,
+            'model': self._name,
+            'from_date': self.from_date,
+            'from_date': self.to_date,
+            'employees': self.employees.ids,
+        }
+        return {
+            'type': 'ir_actions_xlsx_download',
+            'data': {'model': 'wizard.attendance.history.excel',
+                     'options': json.dumps(data, default=date_utils.json_default),
+                     'output_format': 'xlsx',
+                     'report_name': 'Current Attendance History',
+                    }
+        }
 
     # def get_warehouse(self, data):
     #     wh = data.warehouse.mapped('id')
