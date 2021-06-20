@@ -26,7 +26,7 @@
             <field name="res_model">wizard.attendance.history.excel</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">form</field>
-            <field name="view_id" ref="wizard_form"/>
+            <field name="view_id" ref="wizard_attendance_history_excel_form"/>
             <field name="target">new</field>
         </record>
 
