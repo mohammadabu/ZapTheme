@@ -18,9 +18,7 @@ class AttendanceReportExcel(models.TransientModel):
 
     from_date = fields.Date()
     to_date = fields.Date()
-    # warehouse = fields.Many2many('stock.warehouse', 'wh_wiz_rel', 'wh', 'wiz', string='Warehouse', required=True)
-    # category = fields.Many2many('product.category', 'categ_wiz_rel', 'categ', 'wiz', string='Warehouse')
-
+    employees = fields.Many2many('hr.employee', 'id', required=True)
     # def export_xls(self):
     #     data = {
     #         'ids': self.ids,
