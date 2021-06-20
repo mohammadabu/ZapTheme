@@ -10,7 +10,7 @@
                         <group>
                             <field name="from_date" />
                             <field name="to_date" />
-                            <field name="employees"/>
+                            <field name="employees" widget="many2many_tags"/>
                         </group>
                     <footer>
                         <button name="export_xls" type="object" default_focus="1"
