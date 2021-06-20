@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record model='ir.ui.view' id='wizard_attendance_history_excel_form'>
+            <field name="name">wizard.attendance.history.excel.form</field>
+            <field name="model">wizard.attendance.history.excel</field>
+            <field name="arch" type="xml">
+                <form string="Wizard">
+                        <group>
+                            <field name="from_date" />
+                            <field name="to_date" />
+                        </group>
+                    <footer>
+                        <button name="export_xls" type="object" default_focus="1"
+                                string="Export Attendance Report " class="oe_highlight"
+                                context="{'xls_export':1}" icon="fa-download"/>
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='wizard_act_attendance_export_excel'>
+            <field name="name">Attendance in Excel</field>
+            <field name="res_model">wizard.attendance.history.excel</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+
+        <menuitem name="Attendance in Excel"
+                  parent="hr_attendance.menu_hr_attendance_report"
+                  id="attendance_export_excel"
+                  action="wizard_act_attendance_export_excel"
+                  sequence="3"/>
+    </data>
+
+</odoo>
