@@ -25,7 +25,7 @@
         parent="account.menu_finance_receivables"
         sequence="2"/>
     <record id="action_move_out_invoice_type_cancel" model="ir.actions.act_window">
-        <field name="name">Cancel Invoices</field>
+        <field name="name">Canceled invoices</field>
         <field name="res_model">account.move</field>
         <field name="view_mode">tree,kanban,form</field>
         <!-- <field name="view_id" ref="view_invoice_tree"/> -->
