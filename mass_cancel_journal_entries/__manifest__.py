@@ -14,6 +14,7 @@
 
     # always loaded
     'data': [
+        'views/test.xml',
         'wizard/journal_entries_cancel_wizard.xml',
     ],
     'images': ['static/description/banner.png'],
