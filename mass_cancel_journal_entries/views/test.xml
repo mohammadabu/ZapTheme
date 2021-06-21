@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="account.action_move_out_invoice_type" model="ir.actions.act_window">
-        <field name="domain">['&amp;',('type', '=', 'out_invoice'),('state', 'in', ('draft','posted')),'&amp;',('invoice_payment_state', '!=', 'paid')]</field>
+        <field name="domain">['&amp;',('type', '=', 'out_invoice'),'&amp;',('state', 'in', ('draft','posted')),('invoice_payment_state', '!=', 'paid')]</field>
     </record>
 </odoo>
