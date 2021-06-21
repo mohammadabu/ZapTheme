@@ -3,4 +3,25 @@
     <record id="account.action_move_out_invoice_type" model="ir.actions.act_window">
         <field name="domain">['&amp;',('type', '=', 'out_invoice'),'&amp;',('state', 'in', ('draft','posted')),('invoice_payment_state', '!=', 'paid')]</field>
     </record>
+    <record id="action_move_out_invoice_type_paid" model="ir.actions.act_window">
+        <field name="name">Invoices</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_id" ref="view_invoice_tree"/>
+        <field name="search_view_id" ref="view_account_invoice_filter"/>
+        <field name="domain">['&amp;',('type', '=', 'out_invoice'),('invoice_payment_state', '!=', 'paid')]</field>
+        <field name="context">{'default_type': 'out_invoice'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Create a customer invoice
+            </p><p>
+            Create invoices, register payments and keep track of the discussions with your customers.
+            </p>
+        </field>
+    </record>
+    <menuitem
+        id="menu_action_move_out_invoice_type_paid"
+        action="action_move_out_invoice_type_paid"
+        parent="account.menu_finance_receivables"
+        sequence="2"/>
 </odoo>
