@@ -25,7 +25,7 @@
                             <field name='summary'/>
                         </group>
                         <group>
-                            <field name='form_date'/>
+                            <field name='from_date'/>
                             <field name='to_date'/>
                             <field name='attachment'/>
                         </group>
@@ -41,7 +41,7 @@
             <tree string="Practical Experiences" >
                 <field name='name'/>
                 <field name='practical_experiences'/>
-                <field name='form_date'/>
+                <field name='from_date'/>
                 <field name='to_date'/>
                 <field name='employee_id'/>
             </tree>             
@@ -56,11 +56,6 @@
                 <button id="practical_experiences_iden" name="open_practical_experiences" type="object" class="oe_start_button" icon="fa-certificate" >
                     <field name="practical_experiences" string="Practical Experiences" widget="statinfo"/>
                 </button>
-            </xpath>
-            <xpath expr="//button[@id='practical_experiences_iden']" position="attributes">
-                <attribute name="attrs">
-                    {'invisible': 0}
-                </attribute>
             </xpath>
         </field> 
     </record>       

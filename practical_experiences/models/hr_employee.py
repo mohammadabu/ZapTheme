@@ -19,7 +19,7 @@ class PracticalExperiences(models.Model):
             ("experiences","Experiences")
         ]
     )
-    form_date = fields.Date()
+    from_date = fields.Date()
     to_date = fields.Date()
     attachment = fields.Binary()
     summary = fields.Html()
@@ -32,7 +32,7 @@ class CustomHrEmployee(models.Model):
     def get_practical_experiences(self):
         count_value = self.env['hr.employee.practical.experiences'].search_count([('employee_id','=',self.id)])
         self.practical_experiences = count_value
-    practical_experiences = fields.Integer(string="risk count",compute="get_practical_experiences")
+    practical_experiences = fields.Integer(string="practical experiences",compute="get_practical_experiences")
 
     def open_practical_experiences(self):
         return{
