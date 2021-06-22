@@ -1,78 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
-        <!-- <record id="project_risk_action" model="ir.actions.act_window">
-            <field name="name">Project Risks</field>
-            <field name="res_model">project.project.risk</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-              <p class="o_view_nocontent_smiling_face">
-                Define a new on Project Risks
-              </p>
-            </field>
-        </record>
-        <record id='custom_project_risk_action_form' model='ir.ui.view'>
-            <field name='name'>custom project Risk action form</field>
-            <field name='model'>project.project.risk</field>
-            <field name='arch' type='xml'>
-                <form>
-                    <sheet>
-                        <group>
-                            <group>
-                                <field name='issueID'/>
-                                <field name='name'/>
-                                <field name='owner'/>
-                                <field name='project_id' required="1" attrs="{'invisible':[('active_id', '!=', False),('active_id', '!=', 0)]}"/>
-                                <field name="active_id" invisible="1" />
-                                <field name="hide_report"/>
-                            </group>
-                            <group>
-                                <field name='due_date'/>
-                                <field name='status'/>
-                                <field name='resolution'/>
-                                <field name='date_of_resolution'/>
-                            </group>
-                        </group>
-                    </sheet>
-                </form>            
-            </field>
-        </record>
-        <record id='custom_project_risk_action_tree' model='ir.ui.view'>
-            <field name='name'>custom project Risk action tree</field>
-            <field name='model'>project.project.risk</field>
-            <field name='arch' type='xml'>
-                <tree string="Risk" decoration-success="status=='Resolved'" decoration-danger="status=='Not resolved'" >
-                    <field name='issueID'/>
-                    <field name='name'/>
-                    <field name='owner'/>
-                    <field name='project_id'/>
-                    <field name='due_date'/>
-                    <field name='status'/>
-                    <field name='resolution'/>
-                    <field name='date_of_resolution'/>
-                </tree>             
-            </field>
-        </record>  
-        <menuitem
-                id="custom_menu_project_risk"
-                action="project_risk_action"
-                parent="project.menu_project_config"
-                sequence="11"
-                name="Project Risks"
-        /> -->
-        <record id="custom_add_smart_button_practical_experiences" model="ir.ui.view">
-            <field name="name">Custom Add Smart Button Practical Experiences</field>
-            <field name="model">hr.employee</field>
-            <field name="inherit_id" ref="project.edit_project"/>
-            <field name="arch" type="xml">
-                <xpath expr="//sheet/div[1]/button[1]" position="after">
-                    <button name="open_practical_experiences" type="object" class="oe_start_button" icon="fa-exclamation" >
-                        <field name="practical_experiences" string="Practical Experiences" widget="statinfo"/>
-                    </button>
-                </xpath>
-            </field> 
-        </record>       
-    </data>
+    <record id="custom_add_smart_button_practical_experiences" model="ir.ui.view">
+        <field name="name">Custom Add Smart Button Practical Experiences</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/div[1]/button[1]" position="after">
+                <button name="open_practical_experiences" type="object" class="oe_start_button" icon="fa-exclamation" >
+                    <field name="practical_experiences" string="Practical Experiences" widget="statinfo"/>
+                </button>
+            </xpath>
+        </field> 
+    </record>       
 </odoo>    
 
 
