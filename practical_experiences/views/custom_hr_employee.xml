@@ -22,12 +22,12 @@
                             <field name='name'/>
                             <field name='practical_experiences'/>
                             <field name='employee_id'/>
+                            <field name='summary'/>
                         </group>
                         <group>
                             <field name='form_date'/>
                             <field name='to_date'/>
                             <field name='attachment'/>
-                            <field name='summary'/>
                         </group>
                     </group>
                 </sheet>
