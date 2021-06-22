@@ -28,3 +28,8 @@ class PracticalExperiences(models.Model):
 
 class CustomHrEmployee(models.Model):
     _inherit = 'hr.employee'
+
+    def get_practical_experiences(self):
+        count_value = self.env['hr.employee.practical.experiences'].search_count([('employee_id','=',self.id)])
+        self.practical_experiences = count_value
+    practical_experiences = fields.Integer(string="risk count",compute="get_practical_experiences")
