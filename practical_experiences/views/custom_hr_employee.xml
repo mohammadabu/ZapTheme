@@ -53,9 +53,14 @@
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
             <xpath expr="//sheet/div[1]/button[1]" position="after">
-                <button name="open_practical_experiences" type="object" class="oe_start_button" icon="fa-certificate" >
+                <button id="practical_experiences_iden" name="open_practical_experiences" type="object" class="oe_start_button" icon="fa-certificate" >
                     <field name="practical_experiences" string="Practical Experiences" widget="statinfo"/>
                 </button>
+            </xpath>
+            <xpath expr="//button[@id='practical_experiences_iden']" position="attributes">
+                <attribute name="attrs">
+                    {'invisible': 0}
+                </attribute>
             </xpath>
         </field> 
     </record>       
