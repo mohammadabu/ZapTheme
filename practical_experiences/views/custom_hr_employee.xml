@@ -1,12 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+
+    <record id="practical_experiences_action" model="ir.actions.act_window">
+        <field name="name">Practical Experiences</field>
+        <field name="res_model">hr.employee.practical.experiences</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Define a new on Practical Experiences
+            </p>
+        </field>
+    </record>
+    <record id='custom_practical_experiences_action_form' model='ir.ui.view'>
+        <field name='name'>custom practical_experiences action form</field>
+        <field name='model'>hr.employee.practical.experiences</field>
+        <field name='arch' type='xml'>
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='name'/>
+                            <field name='practical_experiences'/>
+                            <field name='employee_id'/>
+                        </group>
+                        <group>
+                            <field name='form_date'/>
+                            <field name='to_date'/>
+                            <field name='attachment'/>
+                            <field name='summary'/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>            
+        </field>
+    </record>
+    <record id='custom_practical_experiences_action_tree' model='ir.ui.view'>
+        <field name='name'>custom practical_experiences action tree</field>
+        <field name='model'>hr.employee.practical.experiences</field>
+        <field name='arch' type='xml'>
+            <tree string="Practical Experiences" >
+                <field name='name'/>
+                <field name='practical_experiences'/>
+                <field name='form_date'/>
+                <field name='to_date'/>
+                <field name='employee_id'/>
+            </tree>             
+        </field>
+    </record>  
     <record id="custom_add_smart_button_practical_experiences" model="ir.ui.view">
         <field name="name">Custom Add Smart Button Practical Experiences</field>
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
             <xpath expr="//sheet/div[1]/button[1]" position="after">
-                <button name="open_practical_experiences" type="object" class="oe_start_button" icon="fa-exclamation" >
+                <button name="open_practical_experiences" type="object" class="oe_start_button" icon="fa-certificate" >
                     <field name="practical_experiences" string="Practical Experiences" widget="statinfo"/>
                 </button>
             </xpath>

@@ -33,3 +33,15 @@ class CustomHrEmployee(models.Model):
         count_value = self.env['hr.employee.practical.experiences'].search_count([('employee_id','=',self.id)])
         self.practical_experiences = count_value
     practical_experiences = fields.Integer(string="risk count",compute="get_practical_experiences")
+
+    def open_practical_experiences(self):
+        return{
+            'name':"Practical Experiences",
+            'domain':[('employee_id','=',self.id)],
+            'type':'form',
+            'res_model':'hr.employee.practical.experiences',
+            'view_id':False,
+            'view_mode':'tree,form',
+            'type':'ir.actions.act_window',
+            'target':'list'
+        }
