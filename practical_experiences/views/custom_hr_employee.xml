@@ -21,7 +21,7 @@
                         <group>
                             <field name='name'/>
                             <field name='practical_experiences'/>
-                            <field name='employee_id'/>
+                            <field name='employee_id' invisible="1"/>
                             <field name='summary'/>
                         </group>
                         <group>
