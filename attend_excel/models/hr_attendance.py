@@ -40,20 +40,37 @@ class AttendanceReportExcel(models.TransientModel):
         #             }
         # }
     @api.model
-    def get_employee_attendance(self):
+    def get_employee_attendance(self,index = 0):
         table_excel = {}
         employees = 125
-        from_date = '2021-06-01'
+        from_date = '2021-06-23'
         to_date = '2021-06-30'
-        _logger.info('--------------------')
+        # _logger.info('--------------------')
         _logger.info(employees)
         _logger.info(from_date)
         _logger.info(to_date)
         employee_info = self.env['hr.employee'].sudo().search([('id', '=', employees)])
-        _logger.info(employee_info)
-        _logger.info(employee_info.employee_id)
+        id_number = employee_info.employee_id
+        employee_name = employee_info.employee_id
         resource_calendar_ids = employee_info.resource_calendar_id
-        _logger.info(employee_info.resource_calendar_id)
+        all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_absent_days(self,resource_calendar_ids)
+        # table_excel[index] = {}
+        # table_excel[index]['id_number'] = id_number
+        # table_excel[index]['employee_name'] = employee_name
+        # table_excel[index]['employee_name'] = employee_name
+        # _logger.info(employee_info)
+        # _logger.info(employee_info.employee_id)
+        # _logger.info(employee_info.resource_calendar_id)
+        # for resource_calendar_id in resource_calendar_ids.attendance_ids:
+        #     _logger.info(resource_calendar_id.dayofweek)
+        #     _logger.info(resource_calendar_id.day_period)
+        #     _logger.info(resource_calendar_id.hour_from)
+        #     _logger.info(resource_calendar_id.hour_to)
+        # _logger.info('--------------------')
+
+    @api.model
+    def get_absent_days(self,resource_calendar_ids):
+        _logger.info('--------------------')
         for resource_calendar_id in resource_calendar_ids.attendance_ids:
             _logger.info(resource_calendar_id.dayofweek)
             _logger.info(resource_calendar_id.day_period)
