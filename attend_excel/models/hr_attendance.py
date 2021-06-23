@@ -108,7 +108,7 @@ class CustomAttendanceModel(models.Model):
 
     def _compute_insert_date(self):
         try:
-            check_in =  self.check_in
-            self.insert_date = check_in
+            check_in = self.check_in
+            self.insert_date = check_in.strftime("%Y-%m-%d")
         except:
             print("An exception occurred") 
