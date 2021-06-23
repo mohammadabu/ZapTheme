@@ -115,34 +115,34 @@ class AttendanceReportExcel(models.TransientModel):
         _logger.info(employees)
         _logger.info(from_date)
         _logger.info(to_date)
-        workbook = xlsxwriter.Workbook(output, {'in_memory': True})
-        sheet = workbook.add_worksheet('Attendance Info')
-        red = workbook.add_format({'color': 'red'})
-        blue = workbook.add_format({'color': 'blue'})
-        cell_format = workbook.add_format({'align': 'center',
-                                   'valign': 'vcenter',
-                                   'border': 1})
-        sheet.merge_range('C1:I3', "", cell_format)
-        sheet.write('C1',""" التقرير الشامل - أيام الغياب وساعات العمل
-من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31
-‏  """,cell_format)
-        sheet.set_column('A:A', 1)
-        sheet.set_column('B:B', 1)
-        sheet.set_column('C:C', 9)
-        sheet.set_column('D:D', 9)
-        sheet.set_column('E:E', 18)
-        sheet.set_column('F:F', 18)
-        sheet.set_column('G:G', 18)
-        sheet.set_column('H:H', 18)
-        sheet.set_column('I:I', 5)
+#         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
+#         sheet = workbook.add_worksheet('Attendance Info')
+#         red = workbook.add_format({'color': 'red'})
+#         blue = workbook.add_format({'color': 'blue'})
+#         cell_format = workbook.add_format({'align': 'center',
+#                                    'valign': 'vcenter',
+#                                    'border': 1})
+#         sheet.merge_range('C1:I3', "", cell_format)
+#         sheet.write('C1',""" التقرير الشامل - أيام الغياب وساعات العمل
+# من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31
+# ‏  """,cell_format)
+#         sheet.set_column('A:A', 1)
+#         sheet.set_column('B:B', 1)
+#         sheet.set_column('C:C', 9)
+#         sheet.set_column('D:D', 9)
+#         sheet.set_column('E:E', 18)
+#         sheet.set_column('F:F', 18)
+#         sheet.set_column('G:G', 18)
+#         sheet.set_column('H:H', 18)
+#         sheet.set_column('I:I', 5)
 
-        sheet.write(3, 2, 'ساعات التأخر النهائية')
-        sheet.write(3, 3, 'ساعات التأخر')
-        sheet.write(3, 4, 'أيام الخروج بدون اذن')
-        sheet.write(3, 5, 'أيام الغياب')
-        sheet.write(3, 6, 'اسم الموظف')
-        sheet.write(3, 7, 'رقم الهوية')
-        sheet.write(3, 8, 'م')
+#         sheet.write(3, 2, 'ساعات التأخر النهائية')
+#         sheet.write(3, 3, 'ساعات التأخر')
+#         sheet.write(3, 4, 'أيام الخروج بدون اذن')
+#         sheet.write(3, 5, 'أيام الغياب')
+#         sheet.write(3, 6, 'اسم الموظف')
+#         sheet.write(3, 7, 'رقم الهوية')
+#         sheet.write(3, 8, 'م')
 
 
 
@@ -274,7 +274,7 @@ class AttendanceReportExcel(models.TransientModel):
     #             prod_row = prod_row + 1
     #         prod_row = 10
     #         prod_col = prod_col + 11
-        workbook.close()
-        output.seek(0)
-        response.stream.write(output.read())
-        output.close()
+        # workbook.close()
+        # output.seek(0)
+        # response.stream.write(output.read())
+        # output.close()
