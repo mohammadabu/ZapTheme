@@ -78,9 +78,14 @@ class AttendanceReportExcel(models.TransientModel):
             5 : "Friday",
             6 : "Saturday"
         }
+        day_exist = []
         employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
         resource_calendar_ids = employee_info.resource_calendar_id
-        
+        for resource_calendar_id in resource_calendar_ids.attendance_ids:
+            days_title = day[resource_calendar_id.dayofweek]
+            if days_title not in day_exist:
+                day_exist.append(days_title)
+        _logger.info(day_exist)
         _logger.info('--------------------')
         from_date =  datetime.strptime('2021-06-23', '%Y-%m-%d')
         to_date =  datetime.strptime('2021-06-30', '%Y-%m-%d')
