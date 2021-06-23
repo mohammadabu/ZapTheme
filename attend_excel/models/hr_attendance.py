@@ -106,6 +106,6 @@ class CustomAttendanceModel(models.Model):
     _inherit = 'hr.attendance'
     insert_date = fields.Date(compute="_compute_insert_date")
 
-    def _compute_insert_date(self):
-        check_in = self.check_in
-        self.insert_date = check_in.strftime("%Y-%m-%d")
+    # def _compute_insert_date(self):
+    #     check_in = self.check_in
+    #     self.insert_date = check_in.strftime("%Y-%m-%d")
