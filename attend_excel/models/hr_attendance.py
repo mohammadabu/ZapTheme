@@ -29,7 +29,7 @@ class AttendanceReportExcel(models.TransientModel):
             'to_date': self.to_date,
             'employees': self.employees.ids,
         }
-        all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,data)
+        all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self)
         
         # return {
         #     'type': 'ir_actions_xlsx_download',
@@ -40,10 +40,10 @@ class AttendanceReportExcel(models.TransientModel):
         #             }
         # }
     @api.model
-    def get_employee_attendance(self,data):
-        employees = data.employees
-        from_date = data.from_date
-        to_date = data.to_date
+    def get_employee_attendance(self):
+        employees = 125
+        from_date = '2021-06-01'
+        to_date = '2021-06-30'
         _logger.info('--------------------')
         _logger.info(employees)
         _logger.info(from_date)
