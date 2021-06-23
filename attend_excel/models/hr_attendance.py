@@ -118,8 +118,18 @@ class AttendanceReportExcel(models.TransientModel):
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
         sheet = workbook.add_worksheet('Attendance Info')
         format1 = workbook.add_format({'font_size': 14, 'align': 'vcenter', 'bold': True,'bg_color':'red'})
-        sheet.insert_textbox('C2', """التقرير الشامل - أيام الغياب وساعات العمل
-                                # من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31""",{'object_position': 8})
+        sheet.write_comment(2, 2, 'ساعات التأخر النهائية')
+        sheet.write_comment(2, 3, 'ساعات التأخر')
+        sheet.write_comment(2, 4, 'أيام الخروج بدون اذن')
+        sheet.write_comment(2, 5, 'أيام الغياب')
+        sheet.write_comment(2, 6, 'اسم الموظف')
+        sheet.write_comment(2, 7, 'رقم الهوية')
+        sheet.write_comment(2, 8, 'م')
+
+        # sheet.insert_textbox('C2', """التقرير الشامل - أيام الغياب وساعات العمل
+        #                         # من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31""",{'object_position': 8})
+
+
 
         # font_size_8 = workbook.add_format({'font_size': 8, 'align': 'center'})
     #     font_size_8_l = workbook.add_format({'font_size': 8, 'align': 'left'})
