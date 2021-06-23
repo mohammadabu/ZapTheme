@@ -136,6 +136,14 @@ class AttendanceReportExcel(models.TransientModel):
         sheet.set_column('H:H', 18)
         sheet.set_column('I:I', 5)
 
+        sheet.write(3, 2, 'ساعات التأخر النهائية')
+        sheet.write(3, 3, 'ساعات التأخر')
+        sheet.write(3, 4, 'أيام الخروج بدون اذن')
+        sheet.write(3, 5, 'أيام الغياب')
+        sheet.write(3, 6, 'اسم الموظف')
+        sheet.write(3, 7, 'رقم الهوية')
+        sheet.write(3, 8, 'م')
+
 
 
 
