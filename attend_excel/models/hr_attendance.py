@@ -123,7 +123,7 @@ class AttendanceReportExcel(models.TransientModel):
                                    'valign': 'vcenter',
                                    'border': 1})
         sheet.merge_range('C1:I2', "", cell_format)
-        sheet.write_rich_string('C1',"sadsadsadsa dsadsa ",cell_format)
+        sheet.write('C1',"sadsadsadsa dsadsa ",cell_format)
 
                            
 
