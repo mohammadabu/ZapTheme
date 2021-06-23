@@ -123,9 +123,10 @@ class AttendanceReportExcel(models.TransientModel):
                                    'valign': 'vcenter',
                                    'border': 1})
         sheet.merge_range('C1:I2', "", cell_format)
-        sheet.write('C1',""" التقرير الشامل - أيام الغياب وساعات العمل
-من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31
-‏  """,cell_format)
+        sheet.write('C1',""" 
+‏               hi <br> hi2
+
+""",cell_format)
 
                            
 
