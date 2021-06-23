@@ -87,8 +87,9 @@ class AttendanceReportExcel(models.TransientModel):
             day = from_date + timedelta(days=i)
             date = day.strftime("%Y-%m-%d")
             day = day.strftime("%A")
-            _logger.info(day)
-            _logger.info(date)
+            if day in day_exist:
+                _logger.info(day)
+                _logger.info(date)
         # for resource_calendar_id in resource_calendar_ids.attendance_ids:
         #     _logger.info(resource_calendar_id.dayofweek)
         #     _logger.info(resource_calendar_id.day_period)
