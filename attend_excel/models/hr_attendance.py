@@ -29,16 +29,18 @@ class AttendanceReportExcel(models.TransientModel):
             'to_date': self.to_date,
             'employees': self.employees.ids,
         }
-        return {
-            'type': 'ir_actions_xlsx_download',
-            'data': {'model': 'wizard.attendance.history.excel',
-                     'options': json.dumps(data, default=date_utils.json_default),
-                     'output_format': 'xlsx',
-                     'report_name': 'Current Attendance History',
-                    }
-        }
+        all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,data)
+        
+        # return {
+        #     'type': 'ir_actions_xlsx_download',
+        #     'data': {'model': 'wizard.attendance.history.excel',
+        #              'options': json.dumps(data, default=date_utils.json_default),
+        #              'output_format': 'xlsx',
+        #              'report_name': 'Current Attendance History',
+        #             }
+        # }
     @api.model
-    def get_employee_attendance(self, data):
+    def get_employee_attendance(self,data):
         employees = data.employees
         from_date = data.from_date
         to_date = data.to_date
@@ -50,8 +52,8 @@ class AttendanceReportExcel(models.TransientModel):
 
     def get_xlsx_report(self, data, response):
         # output = io.BytesIO()
-        lines = self.browse(data['ids'])
-        all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,lines)
+        # lines = self.browse(data['ids'])
+        # all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,lines)
 #         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
 #         sheet = workbook.add_worksheet('Attendance Info')
 #         red = workbook.add_format({'color': 'red'})
