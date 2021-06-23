@@ -125,7 +125,7 @@ class AttendanceReportExcel(models.TransientModel):
 #         sheet.write(0,2,"""التقرير الشامل - أيام الغياب وساعات العمل
 # من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31""")
         sheet.insert_textbox('C2', """التقرير الشامل - أيام الغياب وساعات العمل
-# من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31""",{'x_scale': 2.3})
+# من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31""",{'x_offset': 7})
 
         # font_size_8 = workbook.add_format({'font_size': 8, 'align': 'center'})
     #     font_size_8_l = workbook.add_format({'font_size': 8, 'align': 'left'})
