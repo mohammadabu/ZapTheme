@@ -117,6 +117,18 @@ class AttendanceReportExcel(models.TransientModel):
         _logger.info(to_date)
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
         sheet = workbook.add_worksheet('Attendance Info')
+        red = workbook.add_format({'color': 'red'})
+        blue = workbook.add_format({'color': 'blue'})
+        cell_format = workbook.add_format({'align': 'center',
+                                   'valign': 'vcenter',
+                                   'border': 1})
+        sheet.merge_range('C1:I2', "", cell_format)
+        sheet.write_rich_string('C1',""" التقرير الشامل - أيام الغياب وساعات العمل
+من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31
+‏  """,cell_format)
+
+                           
+
         # format1 = workbook.add_format({'font_size': 14, 'align': 'vcenter', 'bold': True,'bg_color':'red','valign':'vcenter'})
         # format1 = workbook.add_format({'bg_color':'red'})
         # sheet.set_row(2, 2, format1)
@@ -124,13 +136,13 @@ class AttendanceReportExcel(models.TransientModel):
         # sheet.set_row(2, 4, format1)
         # sheet.set_row(2, 5, format1)
         # sheet.set_row(2, 6, format1)
-        sheet.write(2, 2, 'ساعات التأخر النهائية')
-        sheet.write(2, 3, 'ساعات التأخر')
-        sheet.write(2, 4, 'أيام الخروج بدون اذن')
-        sheet.write(2, 5, 'أيام الغياب')
-        sheet.write(2, 6, 'اسم الموظف')
-        sheet.write(2, 7, 'رقم الهوية')
-        sheet.write(2, 8, 'م')
+        # sheet.write(2, 2, 'ساعات التأخر النهائية')
+        # sheet.write(2, 3, 'ساعات التأخر')
+        # sheet.write(2, 4, 'أيام الخروج بدون اذن')
+        # sheet.write(2, 5, 'أيام الغياب')
+        # sheet.write(2, 6, 'اسم الموظف')
+        # sheet.write(2, 7, 'رقم الهوية')
+        # sheet.write(2, 8, 'م')
 
         # sheet.insert_textbox('C2', """التقرير الشامل - أيام الغياب وساعات العمل
         #                         # من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31""",{'object_position': 8})
