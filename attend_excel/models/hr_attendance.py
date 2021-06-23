@@ -91,7 +91,7 @@ class AttendanceReportExcel(models.TransientModel):
                 attendance_info = self.env['hr.attendance'].sudo().search([('insert_date', '=', date)])
                 _logger.info(day)
                 _logger.info(date)
-                _logger.info(date)
+                _logger.info(attendance_info)
         # for resource_calendar_id in resource_calendar_ids.attendance_ids:
         #     _logger.info(resource_calendar_id.dayofweek)
         #     _logger.info(resource_calendar_id.day_period)
