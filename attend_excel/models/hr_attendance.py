@@ -107,7 +107,6 @@ class AttendanceReportExcel(models.TransientModel):
 
     def get_xlsx_report(self, data, response):
         output = io.BytesIO()
-        workbook = xlsxwriter.Workbook(output, {'in_memory': True})
         lines = self.browse(data['ids'])
         employees = lines.employees
         from_date = lines.from_date
@@ -116,20 +115,15 @@ class AttendanceReportExcel(models.TransientModel):
         _logger.info(employees)
         _logger.info(from_date)
         _logger.info(to_date)
-    #     get_warehouse = self.get_warehouse(lines)
-    #     count = len(get_warehouse[0]) * 11 + 6
-    #     comp = self.env.user.company_id.name
+        workbook = xlsxwriter.Workbook(output, {'in_memory': True})
         sheet = workbook.add_worksheet('Attendance Info')
-        # format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
-        format1 = workbook.add_format({'font_size': 14, 'align': 'vcenter', 'bold': True})
-        format2 = workbook.add_format({'font_size': 12, 'align': 'center', 'bold': True})
-        # format21 = workbook.add_format({'font_size': 10, 'align': 'center', 'bold': True})
-        # format3 = workbook.add_format({'bottom': True, 'top': True, 'font_size': 12})
-        # format4 = workbook.add_format({'font_size': 12, 'align': 'left', 'bold': True})
-        sheet.set_column('A:A', None, format1)  # Col 1 has format1.
-        sheet.write('A1', 'Hello')              # Cell A1 defaults to format1.
-        sheet.write('A2', 'Hello', format2)     
-
+        format1 = workbook.add_format({'font_size': 14, 'align': 'vcenter', 'bold': True,'bg_color':'red'})
+        sheet.set_column(
+            "E:E",
+            30
+        )
+        sheet.write(3,4,"""التقرير الشامل - أيام الغياب وساعات العمل
+من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31""")
         # font_size_8 = workbook.add_format({'font_size': 8, 'align': 'center'})
     #     font_size_8_l = workbook.add_format({'font_size': 8, 'align': 'left'})
     #     font_size_8_r = workbook.add_format({'font_size': 8, 'align': 'right'})
