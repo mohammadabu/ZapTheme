@@ -126,11 +126,17 @@ class AttendanceReportExcel(models.TransientModel):
         sheet.write('C1',""" التقرير الشامل - أيام الغياب وساعات العمل
 من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31
 ‏  """,cell_format)
-        sheet.set_column('A:A', 2)
-        sheet.set_column('B:B', 2)
-        sheet.set_column('C:C', 18)
-        sheet.set_column('C:C', 18)
-        sheet.set_column('C:C', 18)
+        sheet.set_column('A:A', 1)
+        sheet.set_column('B:B', 1)
+        sheet.set_column('C:C', 9)
+        sheet.set_column('D:D', 9)
+        sheet.set_column('E:E', 18)
+        sheet.set_column('F:F', 18)
+        sheet.set_column('G:G', 18)
+        sheet.set_column('H:H', 18)
+        sheet.set_column('I:I', 5)
+
+
 
 
 
