@@ -104,7 +104,7 @@ class AttendanceReportExcel(models.TransientModel):
 
 class CustomAttendanceModel(models.Model):
     _inherit = 'hr.attendance'
-    insert_date = fields.Date(compute="_compute_insert_date")
+    insert_date = fields.Date()
 
     # def _compute_insert_date(self):
     #     check_in = self.check_in
