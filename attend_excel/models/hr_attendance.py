@@ -96,3 +96,14 @@ class AttendanceReportExcel(models.TransientModel):
         #     _logger.info(resource_calendar_id.hour_from)
         #     _logger.info(resource_calendar_id.hour_to)
         _logger.info('--------------------')
+
+
+
+class AttendanceModel(models.TransientModel):
+    _inherit = 'hr.attendance'
+    insert_date = fields.Date(readonly="1")
+    @api.onchange('insert_date')
+    def _compute_insert_date(self):
+        for rec in self:
+            check_in = rec.check_in
+            rec.insert_date = check_in.strftime("%Y-%m-%d")
