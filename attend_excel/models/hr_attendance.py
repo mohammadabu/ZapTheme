@@ -85,12 +85,13 @@ class AttendanceReportExcel(models.TransientModel):
         _logger.info(delta.days) 
         for i in range(delta.days + 1):
             day = from_date + timedelta(days=i)
-            date_to = from_date + timedelta(hours=23)
+            date_from = day
+            date_to = date_from + timedelta(hours=23)
             day = day.strftime("%A")
             if day in day_exist:
                 attendance_info = self.env['hr.attendance'].sudo().search([('check_in', '>=', from_date),('check_in', '<=', date_to)])
                 _logger.info(day)
-                _logger.info(from_date)
+                _logger.info(date_from)
                 _logger.info(date_to)
                 _logger.info(attendance_info)
         # for resource_calendar_id in resource_calendar_ids.attendance_ids:
