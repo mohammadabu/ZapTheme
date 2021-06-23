@@ -104,9 +104,11 @@ class AttendanceReportExcel(models.TransientModel):
 
 class CustomAttendanceModel(models.Model):
     _inherit = 'hr.attendance'
-    insert_date = fields.Date()
-    @api.depends('check_in')
+    insert_date = fields.Date(compute="_compute_insert_date")
+
     def _compute_insert_date(self):
-        for task in self:
-            check_in = rec.check_in
-            rec.insert_date = check_in.strftime("%Y-%m-%d")
+        try:
+            check_in =  self.check_in
+            self.insert_date = check_in
+        except:
+            print("An exception occurred") 
