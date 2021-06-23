@@ -104,9 +104,9 @@ class AttendanceReportExcel(models.TransientModel):
 
 class CustomAttendanceModel(models.Model):
     _inherit = 'hr.attendance'
-    insert_date = fields.Date(readonly="1")
-    @api.onchange('insert_date')
+    insert_date = fields.Date()
+    @api.depends('check_in')
     def _compute_insert_date(self):
-        for rec in self:
+        for task in self:
             check_in = rec.check_in
             rec.insert_date = check_in.strftime("%Y-%m-%d")
