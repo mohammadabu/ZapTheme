@@ -42,18 +42,18 @@ class AttendanceReportExcel(models.TransientModel):
     @api.model
     def get_employee_attendance(self,index = 0):
         table_excel = {}
-        employees = 125
+        employee_id = 125
         from_date = '2021-06-23'
         to_date = '2021-06-30'
         # _logger.info('--------------------')
         _logger.info(employees)
         _logger.info(from_date)
         _logger.info(to_date)
-        employee_info = self.env['hr.employee'].sudo().search([('id', '=', employees)])
+        employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
         id_number = employee_info.employee_id
         employee_name = employee_info.employee_id
         resource_calendar_ids = employee_info.resource_calendar_id
-        all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_absent_days(self,resource_calendar_ids)
+        all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_absent_days(self,employee_id,from_date,to_date)
         # table_excel[index] = {}
         # table_excel[index]['id_number'] = id_number
         # table_excel[index]['employee_name'] = employee_name
@@ -69,11 +69,27 @@ class AttendanceReportExcel(models.TransientModel):
         # _logger.info('--------------------')
 
     @api.model
-    def get_absent_days(self,resource_calendar_ids):
+    def get_absent_days(self,employee_id,from_date,to_date):
+        days = {
+            0 : "Sunday",
+            1 : "Monday",
+            2 : "Tuesday",
+            3 : "Wednesday",
+            4 : "Thursday",
+            5 : "Friday",
+            6 : "Saturday"
+        }
+        employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
+        resource_calendar_ids = employee_info.resource_calendar_id
+        
         _logger.info('--------------------')
-        for resource_calendar_id in resource_calendar_ids.attendance_ids:
-            _logger.info(resource_calendar_id.dayofweek)
-            _logger.info(resource_calendar_id.day_period)
-            _logger.info(resource_calendar_id.hour_from)
-            _logger.info(resource_calendar_id.hour_to)
+        delta = from_date - to_date       
+        for i in range(delta.days + 1):
+            day = from_date + timedelta(days=i)
+            _logger.info(day)
+        # for resource_calendar_id in resource_calendar_ids.attendance_ids:
+        #     _logger.info(resource_calendar_id.dayofweek)
+        #     _logger.info(resource_calendar_id.day_period)
+        #     _logger.info(resource_calendar_id.hour_from)
+        #     _logger.info(resource_calendar_id.hour_to)
         _logger.info('--------------------')
