@@ -119,10 +119,10 @@ class AttendanceReportExcel(models.TransientModel):
         sheet = workbook.add_worksheet('Attendance Info')
         format1 = workbook.add_format({'font_size': 14, 'align': 'vcenter', 'bold': True,'bg_color':'red'})
         sheet.set_column(
-            "E:E",
+            "C:S",
             30
         )
-        sheet.write(3,4,"""التقرير الشامل - أيام الغياب وساعات العمل
+        sheet.write(0,2,"""التقرير الشامل - أيام الغياب وساعات العمل
 من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31""")
         # font_size_8 = workbook.add_format({'font_size': 8, 'align': 'center'})
     #     font_size_8_l = workbook.add_format({'font_size': 8, 'align': 'left'})
