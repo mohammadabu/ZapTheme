@@ -93,9 +93,9 @@ class AttendanceReportExcel(models.TransientModel):
                 attendance_info = self.env['hr.attendance'].sudo().search([('check_in', '>=', date_from),('check_in', '<=', date_to)])
                 if len(attendance_info) <= 0 :
                     if absent_days != False:
-                        absent_days = absent_days + ',' + str(from_date.strftime("%m/%d"))
+                        absent_days = absent_days + ',' + str(date_from.strftime("%m/%d"))
                     else:
-                        absent_days = str(from_date.strftime("%m/%d"))   
+                        absent_days = str(date_from.strftime("%m/%d"))   
                 _logger.info(day)
                 _logger.info(date_from)
                 _logger.info(date_to)
