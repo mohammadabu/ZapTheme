@@ -69,20 +69,12 @@ class AttendanceReportExcel(models.TransientModel):
 
     @api.model
     def get_absent_days(self,employee_id,from_date,to_date):
-        days = {
-            0 : "Sunday",
-            1 : "Monday",
-            2 : "Tuesday",
-            3 : "Wednesday",
-            4 : "Thursday",
-            5 : "Friday",
-            6 : "Saturday"
-        }
+        days = ["Sunday", "Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday"]
         day_exist = []
         employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
         resource_calendar_ids = employee_info.resource_calendar_id
         for resource_calendar_id in resource_calendar_ids.attendance_ids:
-            days_title = days[str(resource_calendar_id.dayofweek)]
+            days_title = days[resource_calendar_id.dayofweek]
             if days_title not in day_exist:
                 day_exist.append(days_title)
         _logger.info(day_exist)
