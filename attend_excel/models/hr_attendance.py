@@ -50,5 +50,6 @@ class AttendanceReportExcel(models.TransientModel):
         _logger.info(from_date)
         _logger.info(to_date)
         employee_info = self.env['hr.employee'].sudo().search([('id', '=', employees)])
-        _logger.info(to_date)
+        _logger.info(employee_info)
+        _logger.info(employee_info.employee_id)
         _logger.info('--------------------')
