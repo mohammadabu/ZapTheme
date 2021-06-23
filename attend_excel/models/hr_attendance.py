@@ -99,7 +99,7 @@ class AttendanceReportExcel(models.TransientModel):
 
 
 
-class AttendanceModel(models.TransientModel):
+class CustomAttendanceModel(models.TransientModel):
     _inherit = 'hr.attendance'
     insert_date = fields.Date(readonly="1")
     @api.onchange('insert_date')
