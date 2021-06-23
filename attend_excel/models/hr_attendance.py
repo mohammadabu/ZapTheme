@@ -37,84 +37,21 @@ class AttendanceReportExcel(models.TransientModel):
                      'report_name': 'Current Attendance History',
                     }
         }
-
-    # def get_warehouse(self, data):
-    #     wh = data.warehouse.mapped('id')
-    #     obj = self.env['stock.warehouse'].search([('id', 'in', wh)])
-    #     l1 = []
-    #     l2 = []
-    #     for j in obj:
-    #         l1.append(j.name)
-    #         l2.append(j.id)
-    #     return l1, l2
-
-    # def get_lines(self, data, warehouse):
-    #     lines = []
-    #     categ_id = data.mapped('id')
-    #     if categ_id:
-    #         categ_products = self.env['product.product'].search([('categ_id', 'in', categ_id)])
-
-    #     else:
-    #         categ_products = self.env['product.product'].search([])
-    #     product_ids = tuple([pro_id.id for pro_id in categ_products])
-    #     sale_query = """
-    #            SELECT sum(s_o_l.product_uom_qty) AS product_uom_qty, s_o_l.product_id FROM sale_order_line AS s_o_l
-    #            JOIN sale_order AS s_o ON s_o_l.order_id = s_o.id
-    #            WHERE s_o.state IN ('sale','done')
-    #            AND s_o.warehouse_id = %s
-    #            AND s_o_l.product_id in %s group by s_o_l.product_id"""
-    #     purchase_query = """
-    #            SELECT sum(p_o_l.product_qty) AS product_qty, p_o_l.product_id FROM purchase_order_line AS p_o_l
-    #            JOIN purchase_order AS p_o ON p_o_l.order_id = p_o.id
-    #            INNER JOIN stock_picking_type AS s_p_t ON p_o.picking_type_id = s_p_t.id
-    #            WHERE p_o.state IN ('purchase','done')
-    #            AND s_p_t.warehouse_id = %s AND p_o_l.product_id in %s group by p_o_l.product_id"""
-    #     params = warehouse, product_ids if product_ids else (0, 0)
-    #     self._cr.execute(sale_query, params)
-    #     sol_query_obj = self._cr.dictfetchall()
-    #     self._cr.execute(purchase_query, params)
-    #     pol_query_obj = self._cr.dictfetchall()
-    #     for obj in categ_products:
-    #         sale_value = 0
-    #         purchase_value = 0
-    #         for sol_product in sol_query_obj:
-    #             if sol_product['product_id'] == obj.id:
-    #                 sale_value = sol_product['product_uom_qty']
-    #         for pol_product in pol_query_obj:
-    #             if pol_product['product_id'] == obj.id:
-    #                 purchase_value = pol_product['product_qty']
-    #         virtual_available = obj.with_context({'warehouse': warehouse}).virtual_available
-    #         outgoing_qty = obj.with_context({'warehouse': warehouse}).outgoing_qty
-    #         incoming_qty = obj.with_context({'warehouse': warehouse}).incoming_qty
-    #         available_qty = virtual_available + outgoing_qty - incoming_qty
-    #         value = available_qty * obj.standard_price
-    #         vals = {
-    #             'sku': obj.default_code,
-    #             'name': obj.name,
-    #             'category': obj.categ_id.name,
-    #             'cost_price': obj.standard_price,
-    #             'available': available_qty,
-    #             'virtual': virtual_available,
-    #             'incoming': incoming_qty,
-    #             'outgoing': outgoing_qty,
-    #             'net_on_hand': obj.with_context({'warehouse': warehouse}).qty_available,
-    #             'total_value': value,
-    #             'sale_value': sale_value,
-    #             'purchase_value': purchase_value,
-    #         }
-    #         lines.append(vals)
-    #     return lines
-
-    def get_xlsx_report(self, data, response):
-        output = io.BytesIO()
-        lines = self.browse(data['ids'])
-        employees = lines.employees
-        from_date = lines.from_date
-        to_date = lines.to_date
+    @api.model
+    def get_employee_attendance(self, data):
+        employees = data.employees
+        from_date = data.from_date
+        to_date = data.to_date
         _logger.info('--------------------')
         _logger.info(employees)
         _logger.info(from_date)
         _logger.info(to_date)
+        _logger.info('--------------------')
+
+    def get_xlsx_report(self, data, response):
+        # output = io.BytesIO()
+        lines = self.browse(data['ids'])
+        all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,lines)
 #         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
 #         sheet = workbook.add_worksheet('Attendance Info')
 #         red = workbook.add_format({'color': 'red'})
@@ -150,24 +87,6 @@ class AttendanceReportExcel(models.TransientModel):
 
 
                            
-
-        # format1 = workbook.add_format({'font_size': 14, 'align': 'vcenter', 'bold': True,'bg_color':'red','valign':'vcenter'})
-        # format1 = workbook.add_format({'bg_color':'red'})
-        # sheet.set_row(2, 2, format1)
-        # sheet.set_row(2, 3, format1)
-        # sheet.set_row(2, 4, format1)
-        # sheet.set_row(2, 5, format1)
-        # sheet.set_row(2, 6, format1)
-        # sheet.write(2, 2, 'ساعات التأخر النهائية')
-        # sheet.write(2, 3, 'ساعات التأخر')
-        # sheet.write(2, 4, 'أيام الخروج بدون اذن')
-        # sheet.write(2, 5, 'أيام الغياب')
-        # sheet.write(2, 6, 'اسم الموظف')
-        # sheet.write(2, 7, 'رقم الهوية')
-        # sheet.write(2, 8, 'م')
-
-        # sheet.insert_textbox('C2', """التقرير الشامل - أيام الغياب وساعات العمل
-        #                         # من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31""",{'object_position': 8})
 
 
 
