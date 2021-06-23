@@ -83,6 +83,8 @@ class AttendanceReportExcel(models.TransientModel):
         resource_calendar_ids = employee_info.resource_calendar_id
         
         _logger.info('--------------------')
+        from_date =  datetime.strptime('2021-06-23', '%Y-%m-%d')
+        to_date =  datetime.strptime('2021-06-30', '%Y-%m-%d')
         delta = from_date - to_date       
         for i in range(delta.days + 1):
             day = from_date + timedelta(days=i)
