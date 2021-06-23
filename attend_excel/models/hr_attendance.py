@@ -120,12 +120,16 @@ class AttendanceReportExcel(models.TransientModel):
     #     count = len(get_warehouse[0]) * 11 + 6
     #     comp = self.env.user.company_id.name
         sheet = workbook.add_worksheet('Attendance Info')
-        format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
+        # format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
         format1 = workbook.add_format({'font_size': 14, 'align': 'vcenter', 'bold': True})
-        format11 = workbook.add_format({'font_size': 12, 'align': 'center', 'bold': True})
-        format21 = workbook.add_format({'font_size': 10, 'align': 'center', 'bold': True})
-        format3 = workbook.add_format({'bottom': True, 'top': True, 'font_size': 12})
-        format4 = workbook.add_format({'font_size': 12, 'align': 'left', 'bold': True})
+        format2 = workbook.add_format({'font_size': 12, 'align': 'center', 'bold': True})
+        # format21 = workbook.add_format({'font_size': 10, 'align': 'center', 'bold': True})
+        # format3 = workbook.add_format({'bottom': True, 'top': True, 'font_size': 12})
+        # format4 = workbook.add_format({'font_size': 12, 'align': 'left', 'bold': True})
+        sheet.set_column('A:A', None, format1)  # Col 1 has format1.
+        sheet.write('A1', 'Hello')              # Cell A1 defaults to format1.
+        sheet.write('A2', 'Hello', format2)     
+
         # font_size_8 = workbook.add_format({'font_size': 8, 'align': 'center'})
     #     font_size_8_l = workbook.add_format({'font_size': 8, 'align': 'left'})
     #     font_size_8_r = workbook.add_format({'font_size': 8, 'align': 'right'})
