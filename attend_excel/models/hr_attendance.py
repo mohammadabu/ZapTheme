@@ -41,6 +41,7 @@ class AttendanceReportExcel(models.TransientModel):
         # }
     @api.model
     def get_employee_attendance(self):
+        table_excel = {}
         employees = 125
         from_date = '2021-06-01'
         to_date = '2021-06-30'
@@ -48,5 +49,6 @@ class AttendanceReportExcel(models.TransientModel):
         _logger.info(employees)
         _logger.info(from_date)
         _logger.info(to_date)
+        employee_info = self.env['hr.employee'].sudo.search([('id', '=', employees)])
+        _logger.info(to_date)
         _logger.info('--------------------')
-
