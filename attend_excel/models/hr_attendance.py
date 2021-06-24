@@ -45,7 +45,8 @@ class AttendanceReportExcel(models.TransientModel):
         resource_calendar_ids = employee_info.resource_calendar_id
         for resource_calendar_id in resource_calendar_ids.attendance_ids:
             days_title = days[int(resource_calendar_id.dayofweek)]
-            _logger.info(days_title)
+            if days_title == day:
+                _logger.info(days_title)
         _logger.info('----------------')
 
 
