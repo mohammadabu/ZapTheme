@@ -80,8 +80,8 @@ class AttendanceReportExcel(models.TransientModel):
             day = day.strftime("%A")
             if day in day_exist:
                 attendance_info = self.env['hr.attendance'].sudo().search([('check_in', '>=', date_from),('check_in', '<=', date_to)])
-                if len(attendance_info) <= 0 :
-                    leave_info = self.env['hr.leave'].sudo().search(['&',('request_date_from', '=', date_from),'&',('state','=','validate'),('employee_id','=',employee_id)])
+                leave_info = self.env['hr.leave'].sudo().search(['&',('request_date_from', '=', date_from),'&',('state','=','validate'),('employee_id','=',employee_id)])
+                if len(attendance_info) <= 0:
                     if len(leave_info) > 0:
                         if absent_days != False:
                             absent_days = absent_days + ',' + str(date_from.strftime("%m/%d"))
@@ -91,16 +91,25 @@ class AttendanceReportExcel(models.TransientModel):
                         if absent_days_without_leave != False:
                             absent_days_without_leave = absent_days_without_leave + ',' + str(date_from.strftime("%m/%d"))
                         else:
-                            absent_days_without_leave = str(date_from.strftime("%m/%d"))   
-        _logger.info('--------------------')
-        _logger.info(absent_days)
-        _logger.info(absent_days_without_leave)        
+                            absent_days_without_leave = str(date_from.strftime("%m/%d"))  
+                else:
+                    if len(leave_info) < 0:
+                        _logger.info('----------------')
+                        _logger.info(attendance_info)
+                        _logger.info(date_from)
+                        _logger.info(date_to)
+                        _logger.info(attendance_info)
+                        _logger.info('----------------')
+
+        # _logger.info('--------------------')
+        # _logger.info(absent_days)
+        # _logger.info(absent_days_without_leave)        
         # for resource_calendar_id in resource_calendar_ids.attendance_ids:
         #     _logger.info(resource_calendar_id.dayofweek)
         #     _logger.info(resource_calendar_id.day_period)
         #     _logger.info(resource_calendar_id.hour_from)
         #     _logger.info(resource_calendar_id.hour_to)
-        _logger.info('--------------------')
+        # _logger.info('--------------------')
 
     
 
