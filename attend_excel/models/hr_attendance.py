@@ -51,13 +51,17 @@ class AttendanceReportExcel(models.TransientModel):
                 hour_from = float_to_time(resource_calendar_id.hour_from)
                 hour_to = float_to_time(resource_calendar_id.hour_to)
                 tdelta = datetime.strptime(str(hour_to), '%H:%M:%S') - datetime.strptime(str(hour_from), '%H:%M:%S')
+                str_tdelta = str(tdelta)
+                str_tdelta = str_tdelta.split(':')
+                tdelta_hour = str_tdelta[0]
+                tdelta_min = str_tdelta[1]
                 _logger.info('###############')
                 _logger.info(resource_calendar_id.dayofweek)
                 _logger.info(resource_calendar_id.day_period)
                 _logger.info(hour_from)
                 _logger.info(hour_to)
-                _logger.info(tdelta)
-                _logger.info(datetime.strptime(str(tdelta), '%H:%M:%S'))
+                _logger.info(tdelta_hour)
+                _logger.info(tdelta_min)
                 _logger.info('###############')
                 # if total_hours != False:
                 #     total_hours = datetime.strptime(str(total_hours), '%Y-%m-%d %H:%M:%S') + datetime.strptime("1970-01-01 "+str(tdelta), '%Y-%m-%d %H:%M:%S')
