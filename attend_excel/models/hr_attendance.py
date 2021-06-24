@@ -38,7 +38,7 @@ class AttendanceReportExcel(models.TransientModel):
         }
 
     @api.model
-    def get_employee_attendance(self,count_employee = 0,employee_id,from_date,to_date):
+    def get_employee_attendance(self,count_employee,employee_id,from_date,to_date):
         table_excel = {}
         # employee_id = 125
         # from_date = '2021-06-23'
