@@ -59,7 +59,7 @@ class AttendanceReportExcel(models.TransientModel):
     @api.model
     def get_absent_days(self,employee_id,from_date,to_date):
         absent_days = False
-        absent_days_without_permission = False
+        absent_days_without_leave = False
         days = ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
         day_exist = []
         employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
@@ -68,12 +68,11 @@ class AttendanceReportExcel(models.TransientModel):
             days_title = days[int(resource_calendar_id.dayofweek)]
             if days_title not in day_exist:
                 day_exist.append(days_title)
-        _logger.info(day_exist)
-        _logger.info('--------------------')
+        # _logger.info(day_exist)
         from_date =  datetime.strptime('2021-06-23', '%Y-%m-%d')
         to_date =  datetime.strptime('2021-06-30', '%Y-%m-%d')
         delta = to_date - from_date       
-        _logger.info(delta.days) 
+        # _logger.info(delta.days) 
         for i in range(delta.days + 1):
             day = from_date + timedelta(days=i)
             date_from = day
@@ -83,20 +82,19 @@ class AttendanceReportExcel(models.TransientModel):
                 attendance_info = self.env['hr.attendance'].sudo().search([('check_in', '>=', date_from),('check_in', '<=', date_to)])
                 if len(attendance_info) <= 0 :
                     leave_info = self.env['hr.leave'].sudo().search(['&',('request_date_from', '=', date_from),'&',('state','=','validate'),('employee_id','=',employee_id)])
-                    _logger.info(leave_info)
-                    _logger.info(date_from)
-                    _logger.info(date_to)
-                    _logger.info(attendance_info)
-
-                    # if absent_days != False:
-                    #     absent_days = absent_days + ',' + str(date_from.strftime("%m/%d"))
-                    # else:
-                    #     absent_days = str(date_from.strftime("%m/%d"))   
-                # _logger.info(day)
-                # _logger.info(date_from)
-                # _logger.info(date_to)
-                # _logger.info(attendance_info)
-        _logger.info(absent_days)        
+                    if len(leave_info) > 0:
+                        if absent_days != False:
+                            absent_days = absent_days + ',' + str(date_from.strftime("%m/%d"))
+                        else:
+                            absent_days = str(date_from.strftime("%m/%d"))   
+                    else:
+                        if absent_days_without_leave != False:
+                            absent_days_without_leave = absent_days_without_leave + ',' + str(date_from.strftime("%m/%d"))
+                        else:
+                            absent_days_without_leave = str(date_from.strftime("%m/%d"))   
+        _logger.info('--------------------')
+        _logger.info(absent_days)
+        _logger.info(absent_days_without_leave)        
         # for resource_calendar_id in resource_calendar_ids.attendance_ids:
         #     _logger.info(resource_calendar_id.dayofweek)
         #     _logger.info(resource_calendar_id.day_period)
