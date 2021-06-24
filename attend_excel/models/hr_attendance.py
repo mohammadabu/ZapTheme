@@ -38,23 +38,23 @@ class AttendanceReportExcel(models.TransientModel):
         }
 
     @api.model
-    def get_employee_attendance(self,index = 0):
+    def get_employee_attendance(self,count_employee = 0,employee_id,from_date,to_date):
         table_excel = {}
-        employee_id = 125
-        from_date = '2021-06-23'
-        to_date = '2021-06-30'
+        # employee_id = 125
+        # from_date = '2021-06-23'
+        # to_date = '2021-06-30'
         _logger.info(employee_id)
         _logger.info(from_date)
         _logger.info(to_date)
-        employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
-        id_number = employee_info.employee_id
-        employee_name = employee_info.employee_id
-        resource_calendar_ids = employee_info.resource_calendar_id
-        all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_absent_days(self,employee_id,from_date,to_date)
-        # table_excel[index] = {}
-        # table_excel[index]['id_number'] = id_number
-        # table_excel[index]['employee_name'] = employee_name
-        # table_excel[index]['employee_name'] = employee_name
+        # employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
+        # id_number = employee_info.employee_id
+        # employee_name = employee_info.employee_id
+        # resource_calendar_ids = employee_info.resource_calendar_id
+        # all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_absent_days(self,employee_id,from_date,to_date)
+        # table_excel[count_employee] = {}
+        # table_excel[count_employee]['id_number'] = id_number
+        # table_excel[count_employee]['employee_name'] = employee_name
+        # table_excel[count_employee]['employee_name'] = employee_name
 
     @api.model
     def get_absent_days(self,employee_id,from_date,to_date):
@@ -139,11 +139,13 @@ class AttendanceReportExcel(models.TransientModel):
         employees = lines.employees
         from_date = lines.from_date
         to_date = lines.to_date
+        count_employee = 0
         for employee in employees:
-            # all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,lines)
-            _logger.info(employee.id)
-            _logger.info(from_date)
-            _logger.info(to_date)
+            all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,count_employee,employee.id,from_date,to_date)
+            count_employee = count_employee + 1
+            # _logger.info(employee.id)
+            # _logger.info(from_date)
+            # _logger.info(to_date)
 
 
         workbook.close()
