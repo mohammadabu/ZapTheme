@@ -134,7 +134,7 @@ class AttendanceReportExcel(models.TransientModel):
         sheet.write(3, 4, 'أيام الخروج بدون اذن')
         sheet.write(3, 5, 'أيام الغياب')
         sheet.write(3, 6, 'اسم الموظف')
-        sheet.write(3, 7, 'رقم الهوية')
+        sheet.write(3, 7, 'رقم الهوية',blue)
         sheet.write(3, 8, 'م')
 
 
