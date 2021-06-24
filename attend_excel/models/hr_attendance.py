@@ -1,5 +1,6 @@
 import time
 from datetime import date, datetime,timedelta
+from odoo.addons.resource.models.resource import float_to_time, HOURS_PER_DAY
 import pytz
 import json
 import io
@@ -46,10 +47,12 @@ class AttendanceReportExcel(models.TransientModel):
         for resource_calendar_id in resource_calendar_ids.attendance_ids:
             days_title = days[int(resource_calendar_id.dayofweek)]
             if days_title == day:
+                hour_from = float_to_time(resource_calendar_id.hour_from)
+                hour_to = float_to_time(resource_calendar_id.hour_to)
                 _logger.info(resource_calendar_id.dayofweek)
                 _logger.info(resource_calendar_id.day_period)
-                _logger.info(resource_calendar_id.hour_from)
-                _logger.info(resource_calendar_id.hour_to)
+                _logger.info(hour_from)
+                _logger.info(hour_to)
 
         _logger.info('----------------')
 
