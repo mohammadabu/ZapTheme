@@ -112,8 +112,10 @@ class AttendanceReportExcel(models.TransientModel):
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
         sheet = workbook.add_worksheet('Attendance Info')
         red = workbook.add_format({'color': 'red'})
-        column_format = workbook.add_format({'color': 'blue','bg_color':'green','border': 1,'font_size':14,'align':'center','valign':'center'})
+        column_format = workbook.add_format({'color': 'blue','bg_color':'green','border': 1,'font_size':14})
         column_format.set_text_wrap()
+        column_format.set_align('center')
+        column_format.set_align('vcenter')
         cell_format = workbook.add_format({'align': 'center',
                                    'valign': 'vcenter',
                                    'border': 1})
