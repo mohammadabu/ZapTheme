@@ -112,13 +112,13 @@ class AttendanceReportExcel(models.TransientModel):
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
         sheet = workbook.add_worksheet('Attendance Info')
         red = workbook.add_format({'color': 'red'})
-        column_format = workbook.add_format({'color': 'blue','bg_color':'green','border': 1,'font_size':14})
+        column_format = workbook.add_format({'color': 'white','bg_color':'green','border': 1,'font_size':14})
         column_format.set_text_wrap()
         column_format.set_align('center')
         column_format.set_align('vcenter')
-        cell_format = workbook.add_format({'align': 'center',
-                                   'valign': 'vcenter',
-                                   'border': 1})
+        cell_format = workbook.add_format({'border': 1})
+        cell_format.set_align('center')
+        cell_format.set_align('vcenter')
         sheet.merge_range('C1:I3', "", cell_format)
         sheet.write('C1',""" التقرير الشامل - أيام الغياب وساعات العمل
 من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31
