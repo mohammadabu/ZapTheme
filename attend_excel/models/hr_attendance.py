@@ -139,10 +139,11 @@ class AttendanceReportExcel(models.TransientModel):
         employees = lines.employees
         from_date = lines.from_date
         to_date = lines.to_date
-        # all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,lines)
-        _logger.info(employees)
-        _logger.info(from_date)
-        _logger.info(to_date)
+        for employee in employees:
+            # all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,lines)
+            _logger.info(employee.id)
+            _logger.info(from_date)
+            _logger.info(to_date)
 
 
         workbook.close()
