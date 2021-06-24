@@ -81,13 +81,13 @@ class AttendanceReportExcel(models.TransientModel):
             if day in day_exist:
                 attendance_info = self.env['hr.attendance'].sudo().search([('check_in', '>=', date_from),('check_in', '<=', date_to)])
                 leave_info = self.env['hr.leave'].sudo().search(['&',('request_date_from', '=', date_from),'&',('state','=','validate'),('employee_id','=',employee_id)])
-                _logger.info('----------------')
-                _logger.info(day)
-                _logger.info(date_from)
-                _logger.info(date_to)
-                _logger.info(attendance_info)
-                _logger.info(leave_info)
-                _logger.info('----------------')
+                # _logger.info('----------------')
+                # _logger.info(day)
+                # _logger.info(date_from)
+                # _logger.info(date_to)
+                # _logger.info(attendance_info)
+                # _logger.info(leave_info)
+                # _logger.info('----------------')
                 if len(attendance_info) <= 0:
                     if len(leave_info) > 0:
                         if absent_days != False:
@@ -99,14 +99,14 @@ class AttendanceReportExcel(models.TransientModel):
                             absent_days_without_leave = absent_days_without_leave + ',' + str(date_from.strftime("%m/%d"))
                         else:
                             absent_days_without_leave = str(date_from.strftime("%m/%d"))  
-                # else:
-                #     if len(leave_info) < 0:
-                #         _logger.info('----------------')
-                #         _logger.info(attendance_info)
-                #         _logger.info(date_from)
-                #         _logger.info(date_to)
-                #         _logger.info(attendance_info)
-                #         _logger.info('----------------')
+                else:
+                    if len(leave_info) <= 0:
+                        _logger.info('----------------')
+                        _logger.info(attendance_info)
+                        _logger.info(date_from)
+                        _logger.info(date_to)
+                        _logger.info(attendance_info)
+                        _logger.info('----------------')
 
         # _logger.info('--------------------')
         # _logger.info(absent_days)
