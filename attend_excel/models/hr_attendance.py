@@ -49,7 +49,7 @@ class AttendanceReportExcel(models.TransientModel):
             if days_title == day:
                 hour_from = float_to_time(resource_calendar_id.hour_from)
                 hour_to = float_to_time(resource_calendar_id.hour_to)
-                tdelta = datetime.strptime(str(hour_to), '%H:%M') - datetime.strptime(str(hour_from), '%H:%M')
+                tdelta = datetime.strptime(str(hour_to), '%H:%M:%S') - datetime.strptime(str(hour_from), '%H:%M:%S')
                 _logger.info(resource_calendar_id.dayofweek)
                 _logger.info(resource_calendar_id.day_period)
                 _logger.info(hour_from)
