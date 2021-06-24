@@ -38,6 +38,15 @@ class AttendanceReportExcel(models.TransientModel):
         }
 
     @api.model
+    def get_total_hours(self,employee_id,day):
+        _logger.info('-------after total hours---------')
+        _logger.info(employee_id)
+        _logger.info(day)
+        _logger.info('----------------')
+
+
+
+    @api.model
     def get_employee_attendance(self,count_employee,employee_id,from_date,to_date):
         table_excel = {}
         # employee_id = 125
@@ -101,12 +110,12 @@ class AttendanceReportExcel(models.TransientModel):
                             absent_days_without_leave = str(date_from.strftime("%m/%d"))  
                 else:
                     if len(leave_info) <= 0:
-                        _logger.info('----------------')
-                        _logger.info(attendance_info)
+                        _logger.info('-------before total hours---------')
                         _logger.info(date_from)
                         _logger.info(date_to)
                         _logger.info(attendance_info)
                         _logger.info('----------------')
+                        total_hours =  self.pool.get("wizard.attendance.history.excel").get_total_hours(self,employee_id,day)
 
         # _logger.info('--------------------')
         # _logger.info(absent_days)
