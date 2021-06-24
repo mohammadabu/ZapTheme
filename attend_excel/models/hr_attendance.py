@@ -120,8 +120,9 @@ class AttendanceReportExcel(models.TransientModel):
                 else:
                     if len(leave_info) <= 0:
                         _logger.info('-------before total hours---------')
-                        _logger.info(date_from)
-                        _logger.info(date_to)
+                        # _logger.info(date_from)
+                        # _logger.info(date_to)
+                        _logger.info(day)
                         _logger.info(attendance_info)
                         _logger.info('----------------')
                         total_hours =  self.pool.get("wizard.attendance.history.excel").get_total_hours(self,employee_id,day)
