@@ -57,7 +57,7 @@ class AttendanceReportExcel(models.TransientModel):
                 _logger.info(hour_to)
                 _logger.info(tdelta)
                 if total_hours != False:
-                    total_hours = datetime.strptime(total_hours, '%H:%M:%S') - datetime.strptime(str(tdelta), '%H:%M:%S')
+                    total_hours = datetime.strptime(str(total_hours), '%H:%M:%S') - datetime.strptime(str(tdelta), '%H:%M:%S')
                 else:
                     total_hours = datetime.strptime(str(tdelta), '%H:%M:%S')
         _logger.info(total_hours)            
