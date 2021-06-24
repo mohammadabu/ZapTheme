@@ -55,19 +55,20 @@ class AttendanceReportExcel(models.TransientModel):
                 str_tdelta = str_tdelta.split(':')
                 tdelta_hour = str_tdelta[0]
                 tdelta_min = str_tdelta[1]
-                _logger.info('###############')
-                _logger.info(resource_calendar_id.dayofweek)
-                _logger.info(resource_calendar_id.day_period)
-                _logger.info(hour_from)
-                _logger.info(hour_to)
-                _logger.info(tdelta_hour)
-                _logger.info(tdelta_min)
-                _logger.info('###############')
-                # if total_hours != False:
-                #     total_hours = datetime.strptime(str(total_hours), '%Y-%m-%d %H:%M:%S') + datetime.strptime("1970-01-01 "+str(tdelta), '%Y-%m-%d %H:%M:%S')
-                # else:
-                #     total_hours = datetime.strptime(str(tdelta), '%H:%M:%S')
-        # _logger.info(total_hours)            
+                # _logger.info('###############')
+                # _logger.info(resource_calendar_id.dayofweek)
+                # _logger.info(resource_calendar_id.day_period)
+                # _logger.info(hour_from)
+                # _logger.info(hour_to)
+                # _logger.info(tdelta_hour)
+                # _logger.info(tdelta_min)
+                # _logger.info('###############')
+                if total_hours != False:
+                    total_hours = total_hours + "  !!!!!  " +  tdelta_hour + ":" + tdelta_min
+                    # total_hours = datetime.strptime(str(total_hours), '%Y-%m-%d %H:%M:%S') + datetime.strptime("1970-01-01 "+str(tdelta), '%Y-%m-%d %H:%M:%S')
+                else:
+                    total_hours = tdelta_hour + ":" + tdelta_min
+        _logger.info(total_hours)            
         _logger.info('----------------')
 
 
