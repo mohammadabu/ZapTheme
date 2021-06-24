@@ -112,8 +112,8 @@ class AttendanceReportExcel(models.TransientModel):
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
         sheet = workbook.add_worksheet('Attendance Info')
         red = workbook.add_format({'color': 'red'})
-        blue = workbook.add_format({'color': 'blue'})
-        blue.set_text_wrap()
+        column_format = workbook.add_format({'color': 'blue','bg_color':'green'})
+        column_format.set_text_wrap()
         cell_format = workbook.add_format({'align': 'center',
                                    'valign': 'vcenter',
                                    'border': 1})
@@ -130,13 +130,13 @@ class AttendanceReportExcel(models.TransientModel):
         sheet.set_column('G:G', 18)
         sheet.set_column('H:H', 18)
         sheet.set_column('I:I', 5)
-        sheet.write(3, 2, 'ساعات التأخر النهائية',blue)
-        sheet.write(3, 3, 'ساعات التأخر')
-        sheet.write(3, 4, 'أيام الخروج بدون اذن')
-        sheet.write(3, 5, 'أيام الغياب')
-        sheet.write(3, 6, 'اسم الموظف')
-        sheet.write(3, 7, 'رقم الهوية',blue)
-        sheet.write(3, 8, 'م')
+        sheet.write(3, 2, 'ساعات التأخر النهائية',column_format)
+        sheet.write(3, 3, 'ساعات التأخر',column_format)
+        sheet.write(3, 4, 'أيام الخروج بدون اذن',column_format)
+        sheet.write(3, 5, 'أيام الغياب',column_format)
+        sheet.write(3, 6, 'اسم الموظف',column_format)
+        sheet.write(3, 7, 'رقم الهوية',column_format)
+        sheet.write(3, 8, 'م',column_format)
 
 
 
