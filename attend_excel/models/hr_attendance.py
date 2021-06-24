@@ -46,11 +46,11 @@ class AttendanceReportExcel(models.TransientModel):
         _logger.info(employee_id)
         _logger.info(from_date)
         _logger.info(to_date)
-        # employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
-        # id_number = employee_info.employee_id
-        # employee_name = employee_info.employee_id
-        # resource_calendar_ids = employee_info.resource_calendar_id
-        # all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_absent_days(self,employee_id,from_date,to_date)
+        employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
+        id_number = employee_info.employee_id
+        employee_name = employee_info.employee_id
+        resource_calendar_ids = employee_info.resource_calendar_id
+        all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_absent_days(self,employee_id,from_date,to_date)
         # table_excel[count_employee] = {}
         # table_excel[count_employee]['id_number'] = id_number
         # table_excel[count_employee]['employee_name'] = employee_name
