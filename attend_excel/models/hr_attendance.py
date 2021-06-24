@@ -41,6 +41,7 @@ class AttendanceReportExcel(models.TransientModel):
     @api.model
     def get_total_hours(self,employee_id,day):
         _logger.info('-------after total hours---------')
+        total_hours = False
         days = ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
         employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
         resource_calendar_ids = employee_info.resource_calendar_id
@@ -55,7 +56,11 @@ class AttendanceReportExcel(models.TransientModel):
                 _logger.info(hour_from)
                 _logger.info(hour_to)
                 _logger.info(tdelta)
-
+                if total_hours != False:
+                    total_hours = datetime.strptime(total_hours, '%H:%M:%S') - datetime.strptime(str(tdelta), '%H:%M:%S')
+                else:
+                    total_hours = datetime.strptime(str(tdelta), '%H:%M:%S')
+        _logger.info(total_hours)            
         _logger.info('----------------')
 
 
