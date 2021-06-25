@@ -239,8 +239,10 @@ class AttendanceReportExcel(models.TransientModel):
         sheet.merge_range('C1:I4', "", cell_format)
         header_excel = "التقرير الشامل - أيام الغياب وساعات العمل"
         header_excel += " \n"
-        date_from_hijri = "1442/09/20"
+        # date_from_hijri = "1442/09/20"
         date_from =  str(from_date).replace('-','/')
+        date_from_split = str(from_date).split('-')
+        date_from_hijri = convert.Gregorian(date_from_split[0], date_from_split[1], date_from_split[2]).to_hijri()
         header_excel += (u'من  %s') % (date_from_hijri + " - " + date_from)
         header_excel += " \n"
         date_to_hijri = "1442/09/20"
