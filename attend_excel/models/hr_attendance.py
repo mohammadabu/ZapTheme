@@ -107,9 +107,9 @@ class AttendanceReportExcel(models.TransientModel):
         table_excel = {}
         table_excel['id_number'] = id_number
         table_excel['employee_name'] = employee_name
-        table_excel['absent_days'] = absent_days
-        table_excel['absent_days_without_leave'] = absent_days_without_leave
-        table_excel['late_hours'] = late_hours
+        table_excel['absent_days'] = all_employee_attendance.absent_days
+        table_excel['absent_days_without_leave'] = all_employee_attendance.absent_days_without_leave
+        table_excel['late_hours'] = all_employee_attendance.late_hours
         return table_excel
 
     @api.model
