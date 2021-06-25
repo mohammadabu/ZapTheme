@@ -40,7 +40,6 @@ class AttendanceReportExcel(models.TransientModel):
 
     @api.model
     def addHourToHour(self,total_hours,hour):
-
         total_hours = total_hours.split(':')
         tdelta_total_hours = int(total_hours[0])
         tdelta_total_min = int(total_hours[1])
@@ -53,9 +52,7 @@ class AttendanceReportExcel(models.TransientModel):
             final_total_hour = final_total_hour + 1
             final_total_min = final_total_min - 60            
 
-        _logger.info(str(tdelta_total_hours) + ":" + str(tdelta_total_min))
-        _logger.info(str(tdelta_hour) + ":" + str(tdelta_min))
-        _logger.info(str(final_total_hour) + ":" + str(final_total_min))
+        return str(final_total_hour) + ":" + str(final_total_min)
 
 
     @api.model
@@ -85,11 +82,9 @@ class AttendanceReportExcel(models.TransientModel):
                 # _logger.info('###############')
                 if total_hours != False:
                     total_hours =  self.pool.get("wizard.attendance.history.excel").addHourToHour(self,total_hours,str_tdelta)
-                    # total_hours = total_hours + "  !!!!!  " +  tdelta_hour + ":" + tdelta_min
-                    # total_hours = datetime.strptime(str(total_hours), '%Y-%m-%d %H:%M:%S') + datetime.strptime("1970-01-01 "+str(tdelta), '%Y-%m-%d %H:%M:%S')
                 else:
                     total_hours = str_tdelta
-        # _logger.info(total_hours)            
+        _logger.info(total_hours)            
         _logger.info('----------------')
 
 
