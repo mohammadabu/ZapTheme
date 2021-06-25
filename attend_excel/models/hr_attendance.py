@@ -158,7 +158,7 @@ class AttendanceReportExcel(models.TransientModel):
                                 _logger.info('------------------')
                                 _logger.info(attendance.check_in)
                                 _logger.info(attendance.check_out)
-                                _logger.info(tdelta_check.strftime("%H:%M"))
+                                _logger.info(str(tdelta_check).strftime("%H:%M"))
                                 _logger.info('------------------')
                         _logger.info('-------attendance_info---------')    
                         _logger.info(total_hours)
