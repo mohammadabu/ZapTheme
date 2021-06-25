@@ -1,0 +1,102 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_absence_working_hours
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e-20210503\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-25 16:20+0000\n"
+"PO-Revision-Date: 2021-06-25 16:20+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_absence_working_hours
+#: model:ir.actions.act_window,name:report_absence_working_hours.wizard_act_attendance_export_excel
+msgid "Attendance in Excel"
+msgstr "الحضور في Excel"
+
+#. module: report_absence_working_hours
+#: model_terms:ir.ui.view,arch_db:report_absence_working_hours.wizard_attendance_history_excel_form
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: report_absence_working_hours
+#: model:ir.model.fields,field_description:report_absence_working_hours.field_wizard_attendance_history_excel__create_uid
+msgid "Created by"
+msgstr "انشأ من قبل"
+
+#. module: report_absence_working_hours
+#: model:ir.model.fields,field_description:report_absence_working_hours.field_wizard_attendance_history_excel__create_date
+msgid "Created on"
+msgstr "تم إنشاؤها على"
+
+#. module: report_absence_working_hours
+#: model:ir.model,name:report_absence_working_hours.model_wizard_attendance_history_excel
+msgid "Current Attendance History in Excel"
+msgstr "سجل الحضور الحالي في Excel"
+
+#. module: report_absence_working_hours
+#: model:ir.model.fields,field_description:report_absence_working_hours.field_wizard_attendance_history_excel__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: report_absence_working_hours
+#: model:ir.model.fields,field_description:report_absence_working_hours.field_wizard_attendance_history_excel__employees
+msgid "Employees"
+msgstr "الموظفين"
+
+#. module: report_absence_working_hours
+#: model_terms:ir.ui.view,arch_db:report_absence_working_hours.wizard_attendance_history_excel_form
+msgid "Export Attendance Report"
+msgstr "تصدير تقرير الحضور"
+
+#. module: report_absence_working_hours
+#: model:ir.model.fields,field_description:report_absence_working_hours.field_wizard_attendance_history_excel__from_date
+msgid "From Date"
+msgstr "من التاريخ"
+
+#. module: report_absence_working_hours
+#: model:ir.model.fields,field_description:report_absence_working_hours.field_wizard_attendance_history_excel__id
+msgid "ID"
+msgstr "هوية شخصية"
+
+
+#. module: report_absence_working_hours
+#: model:ir.model.fields,field_description:report_absence_working_hours.field_wizard_attendance_history_excel____last_update
+msgid "Last Modified on"
+msgstr "تاريخ آخر تعديل"
+
+#. module: report_absence_working_hours
+#: model:ir.model.fields,field_description:report_absence_working_hours.field_wizard_attendance_history_excel__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: report_absence_working_hours
+#: model:ir.model.fields,field_description:report_absence_working_hours.field_wizard_attendance_history_excel__write_date
+msgid "Lآخر تحديث فيast Updated on"
+msgstr ""
+
+#. module: report_absence_working_hours
+#: model:ir.ui.menu,name:report_absence_working_hours.menu_report_absence_attendances
+msgid "Report for absence and working hours"
+msgstr "تقرير عن الغياب وساعات العمل"
+
+#. module: report_absence_working_hours
+#: model:ir.ui.menu,name:report_absence_working_hours.menu_custom_reports_attendances
+msgid "Reports"
+msgstr "التقارير"
+
+#. module: report_absence_working_hours
+#: model:ir.model.fields,field_description:report_absence_working_hours.field_wizard_attendance_history_excel__to_date
+msgid "To Date"
+msgstr "حتى تاريخه"
+
+#. module: report_absence_working_hours
+#: model_terms:ir.ui.view,arch_db:report_absence_working_hours.wizard_attendance_history_excel_form
+msgid "Wizard"
+msgstr " عرض"
