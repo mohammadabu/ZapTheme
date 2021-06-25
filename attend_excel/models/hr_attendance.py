@@ -242,11 +242,12 @@ class AttendanceReportExcel(models.TransientModel):
         date_from =  str(from_date).replace('-','/')
         date_from_split = str(from_date).split('-')
         date_from_hijri = convert.Gregorian(int(date_from_split[0]), int(date_from_split[1]), int(date_from_split[2])).to_hijri()
-        header_excel += (u'من  %s') % (str(date_from_hijri) + " - " + date_from)
+        header_excel += (u'من  %s') % (str(date_from_hijri).replace('-','/') + " - " + date_from)
         header_excel += " \n"
-        date_to_hijri = "1442/09/20"
         date_to = str(to_date).replace('-','/')
-        header_excel += (u'الى  %s') % (date_to_hijri + " - " + date_to)
+        date_to_split = str(date_to).split('-')
+        date_to_hijri = convert.Gregorian(int(date_to_split[0]), int(date_to_split[1]), int(date_to_split[2])).to_hijri()
+        header_excel += (u'الى  %s') % (str(date_to_hijri).replace('-','/') + " - " + date_to)
         sheet.write('C1',header_excel,cell_format)
         sheet.set_column('A:A', 1)
         sheet.set_column('B:B', 1)
