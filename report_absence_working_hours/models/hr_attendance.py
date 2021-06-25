@@ -231,7 +231,7 @@ class AttendanceReportExcel(models.TransientModel):
         # get final_late_hours
         from_date_final =  datetime.strptime(str(from_date_final), '%Y-%m-%d')
         to_date_final =  datetime.strptime(str(to_date_final), '%Y-%m-%d')
-        delta_final = from_date_final - to_date_final
+        delta_final = to_date_final - from_date_final
         _logger.info(from_date_final)
         _logger.info(to_date_final)
         _logger.info(delta_final)
