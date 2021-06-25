@@ -266,7 +266,7 @@ class AttendanceReportExcel(models.TransientModel):
                 sheet.write(3 + count_rows, 5, all_employee_attendance['absent_days'],row_format)
                 sheet.write(3 + count_rows, 4, all_employee_attendance['absent_days_without_leave'],row_format)
                 sheet.write(3 + count_rows, 3, all_employee_attendance['late_hours'],row_format)
-                sheet.write(3 + count_rows, 2, '',column_format)
+                sheet.write(3 + count_rows, 2, '',row_format)
                 count_rows = count_rows + 1
             except:
                 _logger.info(all_employee_attendance)
