@@ -234,7 +234,10 @@ class AttendanceReportExcel(models.TransientModel):
         cell_format.set_text_wrap()
         sheet.merge_range('C1:I3', "", cell_format)
         header_excel = "التقرير الشامل - أيام الغياب وساعات العمل"
-        header_excel += " \n من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31"
+        header_excel += " \n"
+        date_from_hijri = "1442/09/20"
+        date_from = "2021/05/02"
+        header_excel += (u'من  %s') % (date_from_hijri + " - " + date_from)
         sheet.write('C1',header_excel,cell_format)
         sheet.set_column('A:A', 1)
         sheet.set_column('B:B', 1)
