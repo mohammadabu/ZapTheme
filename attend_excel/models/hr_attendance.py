@@ -57,7 +57,7 @@ class AttendanceReportExcel(models.TransientModel):
 
     @api.model
     def get_total_hours(self,employee_id,day):
-        _logger.info('-------after total hours---------')
+        # _logger.info('-------after total hours---------')
         total_hours = False
         days = ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
         employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
@@ -82,9 +82,9 @@ class AttendanceReportExcel(models.TransientModel):
         # employee_id = 125
         # from_date = '2021-06-23'
         # to_date = '2021-06-30'
-        _logger.info(employee_id)
-        _logger.info(from_date)
-        _logger.info(to_date)
+        # _logger.info(employee_id)
+        # _logger.info(from_date)
+        # _logger.info(to_date)
         employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
         id_number = employee_info.employee_id
         employee_name = employee_info.employee_id
@@ -146,6 +146,7 @@ class AttendanceReportExcel(models.TransientModel):
                         _logger.info(day)
                         _logger.info(attendance_info)
                         total_hours =  self.pool.get("wizard.attendance.history.excel").get_total_hours(self,employee_id,day)
+                        _logger.info(total_hours)
                         _logger.info('----------------')
 
 
