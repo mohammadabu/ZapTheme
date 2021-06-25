@@ -144,8 +144,13 @@ class AttendanceReportExcel(models.TransientModel):
                         # _logger.info(date_from)
                         # _logger.info(date_to)
                         _logger.info(day)
-                        _logger.info(attendance_info)
+                        # _logger.info(attendance_info)
                         total_hours =  self.pool.get("wizard.attendance.history.excel").get_total_hours(self,employee_id,day)
+                        _logger.info('-------attendance_info---------')
+                        for attendance in attendance_info:
+                            _logger.info(attendance.check_in)
+                            _logger.info(attendance.check_out)
+                        _logger.info('-------attendance_info---------')    
                         _logger.info(total_hours)
                         _logger.info('----------------')
 
