@@ -149,7 +149,7 @@ class AttendanceReportExcel(models.TransientModel):
                         _logger.info('-------attendance_info---------')
                         for attendance in attendance_info:
                             if attendance.check_out != False:
-                                tdelta_check = datetime.strptime(str(attendance.check_out), '%H:%M:%S') - datetime.strptime(str(attendance.check_in), '%H:%M:%S')
+                                tdelta_check = datetime.strptime(str(attendance.check_out), '%Y-%m-%d %H:%M:%S') - datetime.strptime(str(attendance.check_in), '%Y-%m-%d %H:%M:%S')
                                 _logger.info('------------------')
                                 _logger.info(attendance.check_in)
                                 _logger.info(attendance.check_out)
