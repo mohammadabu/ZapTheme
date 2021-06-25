@@ -57,8 +57,6 @@ class AttendanceReportExcel(models.TransientModel):
             _logger.info(total_exist_hours)   
             _logger.info(total_hours)
 
-    
-
     @api.model
     def addHourToHour(self,total_hours,hour):
         total_hours = total_hours.split(':')
@@ -214,7 +212,12 @@ class AttendanceReportExcel(models.TransientModel):
         lines = self.browse(data['ids'])
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
         sheet = workbook.add_worksheet('Attendance Info')
-        red = workbook.add_format({'color': 'red'})
+
+        row_format = workbook.add_format({'black': 'white','border': 1,'font_size':12})
+        row_format.set_text_wrap()
+        row_format.set_align('center')
+        row_format.set_align('vcenter')
+
         column_format = workbook.add_format({'color': 'white','bg_color':'green','border': 1,'font_size':14})
         column_format.set_text_wrap()
         column_format.set_align('center')
@@ -247,12 +250,21 @@ class AttendanceReportExcel(models.TransientModel):
         to_date = lines.to_date
         if len(employees) <= 0:
             employees = self.env['hr.employee'].sudo().search([])
+        count_rows = 1
         for employee in employees:
             all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,employee.id,from_date,to_date)
             _logger.info(all_employee_attendance)
-        _logger.info(from_date)
-        _logger.info(to_date)
-        _logger.info(employees)
+            sheet.write(3 + count_rows, 8, count_rows,column_format)
+            sheet.write(3 + count_rows, 7, all_employee_attendance['id_number'],column_format)
+            sheet.write(3 + count_rows, 6, all_employee_attendance['employee_name'],column_format)
+            sheet.write(3 + count_rows, 5, all_employee_attendance['absent_days'],column_format)
+            sheet.write(3 + count_rows, 4, all_employee_attendance['absent_days_without_leave'],column_format)
+            sheet.write(3 + count_rows, 3, all_employee_attendance['late_hours'],column_format)
+            sheet.write(3 + count_rows, 2, '',column_format)
+            count_rows = count_rows + 1
+        # _logger.info(from_date)
+        # _logger.info(to_date)
+        # _logger.info(employees)
 
 
         workbook.close()
