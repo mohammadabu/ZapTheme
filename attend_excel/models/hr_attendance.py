@@ -42,7 +42,7 @@ class AttendanceReportExcel(models.TransientModel):
     def getTotal_diff_hours(self,total_exist_hours,total_hours):
         tdelta = datetime.strptime(total_hours, '%H:%M') - datetime.strptime(total_exist_hours, '%H:%M')
         if '-1 day' in str(tdelta):
-            return '00:00' 
+            return False 
         else:
             tdelta_split = str(tdelta).split(':')
             return tdelta_split[0] + ":" + tdelta_split[1]      
@@ -111,6 +111,7 @@ class AttendanceReportExcel(models.TransientModel):
     def get_absent_days(self,employee_id,from_date,to_date):
         absent_days = False
         absent_days_without_leave = False
+        late_hours = False
         days = ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
         day_exist = []
         employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
@@ -176,7 +177,12 @@ class AttendanceReportExcel(models.TransientModel):
                         _logger.info(total_exist_hours)   
                         _logger.info(total_hours)    
                         total_diff_hours =  self.pool.get("wizard.attendance.history.excel").getTotal_diff_hours(self,total_exist_hours,total_hours) 
-                        _logger.info(total_diff_hours) 
+                        if total_diff_hours != False: #Not OverTime
+                            # if late_hours != False:
+
+                            # else:
+
+                            _logger.info(total_diff_hours) 
                         _logger.info('-------attendance_info---------')    
                         # _logger.info('----------------')
 
