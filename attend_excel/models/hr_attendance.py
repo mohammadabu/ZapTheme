@@ -216,6 +216,9 @@ class AttendanceReportExcel(models.TransientModel):
     def get_xlsx_report(self, data, response):
         output = io.BytesIO()
         lines = self.browse(data['ids'])
+        employees = lines.employees
+        from_date = lines.from_date
+        to_date = lines.to_date
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
         sheet = workbook.add_worksheet('Attendance Info')
 
@@ -236,7 +239,7 @@ class AttendanceReportExcel(models.TransientModel):
         header_excel = "التقرير الشامل - أيام الغياب وساعات العمل"
         header_excel += " \n"
         date_from_hijri = "1442/09/20"
-        date_from = "2021/05/02"
+        date_from = datetime.strptime(from_date, '%Y/%m/%d')
         header_excel += (u'من  %s') % (date_from_hijri + " - " + date_from)
         header_excel += " \n"
         date_to_hijri = "1442/09/20"
@@ -259,9 +262,6 @@ class AttendanceReportExcel(models.TransientModel):
         sheet.write(4, 6, 'اسم الموظف',column_format)
         sheet.write(4, 7, 'رقم الهوية',column_format)
         sheet.write(4, 8, 'م',column_format)
-        employees = lines.employees
-        from_date = lines.from_date
-        to_date = lines.to_date
         if len(employees) <= 0:
             employees = self.env['hr.employee'].sudo().search([])
         count_rows = 1
