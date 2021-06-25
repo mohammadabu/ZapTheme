@@ -1,5 +1,6 @@
 import time
 from datetime import date, datetime,timedelta
+from calendar import monthrange
 from odoo.addons.resource.models.resource import float_to_time, HOURS_PER_DAY
 import pytz
 import json
@@ -38,6 +39,10 @@ class AttendanceReportExcel(models.TransientModel):
                      'report_name': 'التقرير الشامل لأيام الغياب وساعات العمل',
                     }
         }
+    
+    @api.model
+    def last_day_of_month(self,date_value):
+        return date_value.replace(day = monthrange(date_value.year, date_value.month)[1])
 
     @api.model
     def getTotal_diff_hours(self,total_exist_hours,total_hours):
@@ -123,6 +128,20 @@ class AttendanceReportExcel(models.TransientModel):
         absent_days = False
         absent_days_without_leave = False
         late_hours = False
+        final_late_hours = False
+
+        from_date_final = str(from_date).split("-")
+        from_date_final = from_date_final[0] + "-" + from_date_final[1] + "-01" 
+        to_date_final =  self.pool.get("wizard.attendance.history.excel").last_day_of_month(self,to_date)
+        to_date_final = str(to_date_final)
+        _logger.info('----------------')
+        _logger.info(from_date)
+        _logger.info(from_date_final)
+        _logger.info(to_date)
+        _logger.info(to_date_final)
+        _logger.info('----------------')
+
+
         days = ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
         day_exist = []
         employee_info = self.env['hr.employee'].sudo().search([('id', '=', employee_id)])
