@@ -40,7 +40,7 @@ class AttendanceReportExcel(models.TransientModel):
 
     @api.model
     def getTotal_diff_hours(self,total_exist_hours,total_hours):
-        tdelta = datetime.strptime(total_hours, '%H:%M') - datetime.strptime(total_hours, '%H:%M')
+        tdelta = datetime.strptime(total_hours, '%H:%M') - datetime.strptime(total_exist_hours, '%H:%M')
         _logger.info(total_exist_hours)   
         _logger.info(total_hours)
         _logger.info(tdelta)
