@@ -42,15 +42,20 @@ class AttendanceReportExcel(models.TransientModel):
     def addHourToHour(self,total_hours,hour):
 
         total_hours = total_hours.split(':')
-        tdelta_total_hours = total_hours[0]
-        tdelta_total_min = total_hours[1]
-
+        tdelta_total_hours = int(total_hours[0])
+        tdelta_total_min = int(total_hours[1])
         hour = hour.split(':')
-        tdelta_hour = hour[0]
-        tdelta_min = hour[1]
+        tdelta_hour = int(hour[0])
+        tdelta_min = int(hour[1])
+        final_total_hour = tdelta_total_hours + tdelta_hour
+        final_total_min = tdelta_total_min + tdelta_min
+        if final_total_min >= 60:
+            final_total_hour = final_total_hour + 1
+            final_total_min = final_total_min - 60            
 
         _logger.info(tdelta_total_hours + ":" + tdelta_total_min)
         _logger.info(tdelta_hour + ":" + tdelta_min)
+        _logger.info(final_total_hour + ":" + final_total_min)
 
 
     @api.model
