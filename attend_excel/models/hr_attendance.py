@@ -151,7 +151,7 @@ class AttendanceReportExcel(models.TransientModel):
                         for attendance in attendance_info:
                             if attendance.check_out != False:
                                 tdelta_check = datetime.strptime(str(attendance.check_out), '%Y-%m-%d %H:%M:%S') - datetime.strptime(str(attendance.check_in), '%Y-%m-%d %H:%M:%S')
-                                tdelta_check = str(tdelta_check)
+                                
                                 # if total_exist_hours != False:
 
                                 # else:
@@ -159,7 +159,7 @@ class AttendanceReportExcel(models.TransientModel):
                                 _logger.info('------------------')
                                 _logger.info(attendance.check_in)
                                 _logger.info(attendance.check_out)
-                                _logger.info(tdelta_check.strftime("%H:%M"))
+                                _logger.info(str(tdelta_check))
                                 _logger.info('------------------')
                         _logger.info('-------attendance_info---------')    
                         _logger.info(total_hours)
