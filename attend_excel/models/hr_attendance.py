@@ -228,7 +228,7 @@ class AttendanceReportExcel(models.TransientModel):
         column_format.set_text_wrap()
         column_format.set_align('center')
         column_format.set_align('vcenter')
-        cell_format = workbook.add_format({'border': 1})
+        cell_format = workbook.add_format({'font_size':15})
         cell_format.set_align('center')
         cell_format.set_align('vcenter')
         sheet.merge_range('C1:I3', "", cell_format)
