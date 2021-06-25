@@ -102,12 +102,15 @@ class AttendanceReportExcel(models.TransientModel):
         employee_name = employee_info.employee_id
         resource_calendar_ids = employee_info.resource_calendar_id
         all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_absent_days(self,employee_id,from_date,to_date)
-        _logger.info('all_employee_attendance')
-        _logger.info(all_employee_attendance)
-        # table_excel[count_employee] = {}
-        # table_excel[count_employee]['id_number'] = id_number
-        # table_excel[count_employee]['employee_name'] = employee_name
-        # table_excel[count_employee]['employee_name'] = employee_name
+        # _logger.info('all_employee_attendance')
+        # _logger.info(all_employee_attendance)
+        table_excel[count_employee] = {}
+        table_excel[count_employee]['id_number'] = id_number
+        table_excel[count_employee]['employee_name'] = employee_name
+        table_excel[count_employee]['absent_days'] = employee_name
+        table_excel[count_employee]['absent_days_without_leave'] = employee_name
+        table_excel[count_employee]['late_hours'] = employee_name
+        return table_excel
 
     @api.model
     def get_absent_days(self,employee_id,from_date,to_date):
@@ -254,7 +257,7 @@ class AttendanceReportExcel(models.TransientModel):
         for employee in employees:
             all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,count_employee,employee.id,from_date,to_date)
             count_employee = count_employee + 1
-            # _logger.info(employee.id)
+            _logger.info(all_employee_attendance)
             # _logger.info(from_date)
             # _logger.info(to_date)
 
