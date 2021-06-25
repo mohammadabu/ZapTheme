@@ -140,13 +140,13 @@ class AttendanceReportExcel(models.TransientModel):
                             absent_days_without_leave = str(date_from.strftime("%m/%d"))  
                 else:
                     if len(leave_info) <= 0:
-                        _logger.info('-------total hours---------')
+                        # _logger.info('-------total hours---------')
                         # _logger.info(date_from)
                         # _logger.info(date_to)
-                        _logger.info(day)
                         # _logger.info(attendance_info)
                         total_hours =  self.pool.get("wizard.attendance.history.excel").get_total_hours(self,employee_id,day)
                         _logger.info('-------attendance_info---------')
+                        _logger.info(day)
                         total_exist_hours = False
                         for attendance in attendance_info:
                             if attendance.check_out != False:
@@ -156,15 +156,15 @@ class AttendanceReportExcel(models.TransientModel):
                                 else:
                                     tdelta_check_split = str(tdelta_check).split(':') 
                                     total_exist_hours = tdelta_check_split[0] + ":" + tdelta_check_split[1]
-                                _logger.info('------------------')
-                                _logger.info(attendance.check_in)
-                                _logger.info(attendance.check_out)
+                                # _logger.info('------------------')
+                                # _logger.info(attendance.check_in)
+                                # _logger.info(attendance.check_out)
                                 # _logger.info(str(tdelta_check))
-                                _logger.info('------------------')
-                        _logger.info(total_exist_hours)        
+                                # _logger.info('------------------')
+                        _logger.info(total_exist_hours)   
+                        _logger.info(total_hours)     
                         _logger.info('-------attendance_info---------')    
-                        _logger.info(total_hours)
-                        _logger.info('----------------')
+                        # _logger.info('----------------')
 
 
     
