@@ -39,6 +39,21 @@ class AttendanceReportExcel(models.TransientModel):
         }
 
     @api.model
+    def addHourToHour(self,total_hours,hour):
+
+        total_hours = total_hours.split(':')
+        tdelta_total_hours = total_hours[0]
+        tdelta_total_min = total_hours[1]
+
+        hour = str_tdelta.split(':')
+        tdelta_hour = str_tdelta[0]
+        tdelta_min = str_tdelta[1]
+
+        _logger.info(tdelta_total_hours + ":" + tdelta_total_min)
+        _logger.info(tdelta_hour + ":" + tdelta_min)
+
+
+    @api.model
     def get_total_hours(self,employee_id,day):
         _logger.info('-------after total hours---------')
         total_hours = False
@@ -52,9 +67,9 @@ class AttendanceReportExcel(models.TransientModel):
                 hour_to = float_to_time(resource_calendar_id.hour_to)
                 tdelta = datetime.strptime(str(hour_to), '%H:%M:%S') - datetime.strptime(str(hour_from), '%H:%M:%S')
                 str_tdelta = str(tdelta)
-                str_tdelta = str_tdelta.split(':')
-                tdelta_hour = str_tdelta[0]
-                tdelta_min = str_tdelta[1]
+                # str_tdelta = str_tdelta.split(':')
+                # tdelta_hour = str_tdelta[0]
+                # tdelta_min = str_tdelta[1]
                 # _logger.info('###############')
                 # _logger.info(resource_calendar_id.dayofweek)
                 # _logger.info(resource_calendar_id.day_period)
@@ -64,11 +79,12 @@ class AttendanceReportExcel(models.TransientModel):
                 # _logger.info(tdelta_min)
                 # _logger.info('###############')
                 if total_hours != False:
-                    total_hours = total_hours + "  !!!!!  " +  tdelta_hour + ":" + tdelta_min
+                    total_hours =  self.pool.get("wizard.attendance.history.excel").addHourToHour(self,total_hours,str_tdelta)
+                    # total_hours = total_hours + "  !!!!!  " +  tdelta_hour + ":" + tdelta_min
                     # total_hours = datetime.strptime(str(total_hours), '%Y-%m-%d %H:%M:%S') + datetime.strptime("1970-01-01 "+str(tdelta), '%Y-%m-%d %H:%M:%S')
                 else:
-                    total_hours = tdelta_hour + ":" + tdelta_min
-        _logger.info(total_hours)            
+                    total_hours = str_tdelta
+        # _logger.info(total_hours)            
         _logger.info('----------------')
 
 
