@@ -182,8 +182,17 @@ class AttendanceReportExcel(models.TransientModel):
                                 late_hours =  self.pool.get("wizard.attendance.history.excel").addHourToHour(self,late_hours,total_diff_hours)
                             else:
                                 late_hours = total_diff_hours
-                            _logger.info(total_diff_hours) 
+                            _logger.info(total_diff_hours)
                         _logger.info('-------attendance_info---------')    
+        if  late_hours != False:
+            late_hours_split = late_hours.split(':')     
+            late_hours_min = late_hours_split[1]
+            if len(late_hours_min) <= 1:
+                if late_hours_min == "0":
+                    late_hours = late_hours_split[0] + ":00"
+                else:
+                    late_hours = late_hours_split[0] + ":0"+ late_hours_min   
+
         _logger.info(late_hours)
 
 
