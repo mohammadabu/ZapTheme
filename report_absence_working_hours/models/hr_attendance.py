@@ -237,6 +237,7 @@ class AttendanceReportExcel(models.TransientModel):
             date_from = day
             date_to = date_from + timedelta(hours=23)
             day = day.strftime("%A")
+            _logger.info(day)
             if day in day_exist:
                 attendance_info = self.env['hr.attendance'].sudo().search(['&',('check_in', '>=', date_from),'&',('check_in', '<=', date_to),('employee_id','=',employee_id)])
                 leave_info = self.env['hr.leave'].sudo().search(['&',('request_date_from', '=', date_from),'&',('state','=','validate'),('employee_id','=',employee_id)])
