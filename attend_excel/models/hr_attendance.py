@@ -7,6 +7,7 @@ import io
 from odoo import api, fields, models, _
 import logging
 from odoo.tools import date_utils
+from hijri_converter import convert
 _logger = logging.getLogger(__name__)
 try:
     from odoo.tools.misc import xlsxwriter
