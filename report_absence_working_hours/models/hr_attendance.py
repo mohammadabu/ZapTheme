@@ -114,7 +114,9 @@ class AttendanceReportExcel(models.TransientModel):
         if all_employee_attendance['absent_days_without_leave'] == False:
             all_employee_attendance['absent_days_without_leave'] = 0
         if all_employee_attendance['late_hours'] == False:
-            all_employee_attendance['late_hours'] = 0        
+            all_employee_attendance['late_hours'] = 0 
+        if all_employee_attendance['final_late_hours'] == False:
+            all_employee_attendance['final_late_hours'] = 0           
         table_excel = {}
         table_excel['id_number'] = id_number
         table_excel['employee_name'] = employee_name
@@ -224,10 +226,49 @@ class AttendanceReportExcel(models.TransientModel):
                     late_hours = late_hours_split[0] + ":00"
                 else:
                     late_hours = late_hours_split[0] + ":0"+ late_hours_min
+        
+        # get final_late_hours
+        delta_final = from_date_final - to_date_final
+        for i in range(delta_final.days + 1):
+            day = from_date_final + timedelta(days=i)
+            date_from = day
+            date_to = date_from + timedelta(hours=23)
+            day = day.strftime("%A")
+            if day in day_exist:
+                attendance_info = self.env['hr.attendance'].sudo().search(['&',('check_in', '>=', date_from),'&',('check_in', '<=', date_to),('employee_id','=',employee_id)])
+                leave_info = self.env['hr.leave'].sudo().search(['&',('request_date_from', '=', date_from),'&',('state','=','validate'),('employee_id','=',employee_id)])
+                if len(attendance_info) > 0:
+                    if len(leave_info) <= 0:
+                        total_hours =  self.pool.get("wizard.attendance.history.excel").get_total_hours(self,employee_id,day)
+                        total_exist_hours = False
+                        for attendance in attendance_info:
+                            if attendance.check_out != False:
+                                tdelta_check = datetime.strptime(str(attendance.check_out), '%Y-%m-%d %H:%M:%S') - datetime.strptime(str(attendance.check_in), '%Y-%m-%d %H:%M:%S')
+                                if total_exist_hours != False:
+                                    total_exist_hours =  self.pool.get("wizard.attendance.history.excel").addHourToHour(self,total_exist_hours,str(tdelta_check))
+                                else:
+                                    tdelta_check_split = str(tdelta_check).split(':') 
+                                    total_exist_hours = tdelta_check_split[0] + ":" + tdelta_check_split[1]
+                        total_diff_hours =  self.pool.get("wizard.attendance.history.excel").getTotal_diff_hours(self,total_exist_hours,total_hours) 
+                        if total_diff_hours != False: #Not OverTime
+                            if final_late_hours != False:
+                                final_late_hours =  self.pool.get("wizard.attendance.history.excel").addHourToHour(self,late_hours,total_diff_hours)
+                            else:
+                                final_late_hours = total_diff_hours
+        
+        if  final_late_hours != False:
+            final_late_hours_split = final_late_hours.split(':')     
+            final_late_hours_min = final_late_hours_split[1]
+            if len(final_late_hours_min) <= 1:
+                if final_late_hours_min == "0":
+                    final_late_hours = final_late_hours_split[0] + ":00"
+                else:
+                    final_late_hours = final_late_hours_split[0] + ":0"+ final_late_hours_min
         absent_days_arr =  {}
         absent_days_arr['absent_days'] = absent_days
         absent_days_arr['absent_days_without_leave'] = absent_days_without_leave
-        absent_days_arr['late_hours'] = late_hours               
+        absent_days_arr['late_hours'] = late_hours
+        absent_days_arr['final_late_hours'] = final_late_hours               
         # _logger.info(absent_days)
         # _logger.info(absent_days_without_leave)
         # _logger.info(late_hours) 
