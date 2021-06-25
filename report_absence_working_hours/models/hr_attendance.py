@@ -228,6 +228,8 @@ class AttendanceReportExcel(models.TransientModel):
                     late_hours = late_hours_split[0] + ":0"+ late_hours_min
         
         # get final_late_hours
+        from_date_final =  datetime.strptime(str(from_date_final), '%Y-%m-%d')
+        to_date_final =  datetime.strptime(str(to_date_final), '%Y-%m-%d')
         delta_final = from_date_final - to_date_final
         for i in range(delta_final.days + 1):
             day = from_date_final + timedelta(days=i)
