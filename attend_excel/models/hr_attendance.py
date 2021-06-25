@@ -102,6 +102,8 @@ class AttendanceReportExcel(models.TransientModel):
         employee_name = employee_info.employee_id
         resource_calendar_ids = employee_info.resource_calendar_id
         all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_absent_days(self,employee_id,from_date,to_date)
+        _logger.info('all_employee_attendance')
+        _logger.info(all_employee_attendance)
         # table_excel[count_employee] = {}
         # table_excel[count_employee]['id_number'] = id_number
         # table_excel[count_employee]['employee_name'] = employee_name
@@ -121,10 +123,10 @@ class AttendanceReportExcel(models.TransientModel):
             if days_title not in day_exist:
                 day_exist.append(days_title)
         # _logger.info(day_exist)
-        from_date =  datetime.strptime('2021-06-23', '%Y-%m-%d')
-        to_date =  datetime.strptime('2021-06-30', '%Y-%m-%d')
-        # from_date =  datetime.strptime(str(from_date), '%Y-%m-%d')
-        # to_date =  datetime.strptime(str(to_date), '%Y-%m-%d')
+        # from_date =  datetime.strptime('2021-06-23', '%Y-%m-%d')
+        # to_date =  datetime.strptime('2021-06-30', '%Y-%m-%d')
+        from_date =  datetime.strptime(str(from_date), '%Y-%m-%d')
+        to_date =  datetime.strptime(str(to_date), '%Y-%m-%d')
         delta = to_date - from_date       
         # _logger.info(delta.days) 
         for i in range(delta.days + 1):
@@ -193,10 +195,15 @@ class AttendanceReportExcel(models.TransientModel):
                 if late_hours_min == "0":
                     late_hours = late_hours_split[0] + ":00"
                 else:
-                    late_hours = late_hours_split[0] + ":0"+ late_hours_min   
-        _logger.info(absent_days)
-        _logger.info(absent_days_without_leave)
-        _logger.info(late_hours) 
+                    late_hours = late_hours_split[0] + ":0"+ late_hours_min
+        absent_days_arr =  {}
+        absent_days_arr['absent_days'] = absent_days
+        absent_days_arr['absent_days_without_leave'] = absent_days_without_leave
+        absent_days_arr['late_hours'] = late_hours               
+        # _logger.info(absent_days)
+        # _logger.info(absent_days_without_leave)
+        # _logger.info(late_hours) 
+        return absent_days_arr
 
 
 
