@@ -69,24 +69,11 @@ class AttendanceReportExcel(models.TransientModel):
                 hour_to = float_to_time(resource_calendar_id.hour_to)
                 tdelta = datetime.strptime(str(hour_to), '%H:%M:%S') - datetime.strptime(str(hour_from), '%H:%M:%S')
                 str_tdelta = str(tdelta)
-                # str_tdelta = str_tdelta.split(':')
-                # tdelta_hour = str_tdelta[0]
-                # tdelta_min = str_tdelta[1]
-                # _logger.info('###############')
-                # _logger.info(resource_calendar_id.dayofweek)
-                # _logger.info(resource_calendar_id.day_period)
-                # _logger.info(hour_from)
-                # _logger.info(hour_to)
-                # _logger.info(tdelta_hour)
-                # _logger.info(tdelta_min)
-                # _logger.info('###############')
                 if total_hours != False:
                     total_hours =  self.pool.get("wizard.attendance.history.excel").addHourToHour(self,total_hours,str_tdelta)
                 else:
                     total_hours = str_tdelta
-        _logger.info(total_hours)            
-        _logger.info('----------------')
-
+        return total_hours
 
 
     @api.model
@@ -153,23 +140,14 @@ class AttendanceReportExcel(models.TransientModel):
                             absent_days_without_leave = str(date_from.strftime("%m/%d"))  
                 else:
                     if len(leave_info) <= 0:
-                        _logger.info('-------before total hours---------')
+                        _logger.info('-------total hours---------')
                         # _logger.info(date_from)
                         # _logger.info(date_to)
                         _logger.info(day)
                         _logger.info(attendance_info)
-                        _logger.info('----------------')
                         total_hours =  self.pool.get("wizard.attendance.history.excel").get_total_hours(self,employee_id,day)
+                        _logger.info('----------------')
 
-        # _logger.info('--------------------')
-        # _logger.info(absent_days)
-        # _logger.info(absent_days_without_leave)        
-        # for resource_calendar_id in resource_calendar_ids.attendance_ids:
-        #     _logger.info(resource_calendar_id.dayofweek)
-        #     _logger.info(resource_calendar_id.day_period)
-        #     _logger.info(resource_calendar_id.hour_from)
-        #     _logger.info(resource_calendar_id.hour_to)
-        # _logger.info('--------------------')
 
     
 
