@@ -35,7 +35,7 @@ class AttendanceReportExcel(models.TransientModel):
             'data': {'model': 'wizard.attendance.history.excel',
                      'options': json.dumps(data, default=date_utils.json_default),
                      'output_format': 'xlsx',
-                     'report_name': 'Current Attendance History',
+                     'report_name': 'التقرير الشامل لأيام الغياب وساعات العمل',
                     }
         }
 
