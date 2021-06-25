@@ -53,9 +53,9 @@ class AttendanceReportExcel(models.TransientModel):
             final_total_hour = final_total_hour + 1
             final_total_min = final_total_min - 60            
 
-        _logger.info(tdelta_total_hours + ":" + tdelta_total_min)
-        _logger.info(tdelta_hour + ":" + tdelta_min)
-        _logger.info(final_total_hour + ":" + final_total_min)
+        _logger.info(str(tdelta_total_hours) + ":" + str(tdelta_total_min))
+        _logger.info(str(tdelta_hour) + ":" + str(tdelta_min))
+        _logger.info(str(final_total_hour) + ":" + str(final_total_min))
 
 
     @api.model
