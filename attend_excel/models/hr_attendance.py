@@ -39,6 +39,11 @@ class AttendanceReportExcel(models.TransientModel):
         }
 
     @api.model
+    def getTotal_diff_hours(self,total_exist_hours,total_hours):
+        _logger.info(total_exist_hours)   
+        _logger.info(total_hours)
+
+    @api.model
     def addHourToHour(self,total_hours,hour):
         total_hours = total_hours.split(':')
         tdelta_total_hours = int(total_hours[0])
@@ -161,8 +166,9 @@ class AttendanceReportExcel(models.TransientModel):
                                 # _logger.info(attendance.check_out)
                                 # _logger.info(str(tdelta_check))
                                 # _logger.info('------------------')
-                        _logger.info(total_exist_hours)   
-                        _logger.info(total_hours)     
+                        # _logger.info(total_exist_hours)   
+                        # _logger.info(total_hours)    
+                        total_diff_hours =  self.pool.get("wizard.attendance.history.excel").getTotal_diff_hours(self,total_exist_hours,total_hours) 
                         _logger.info('-------attendance_info---------')    
                         # _logger.info('----------------')
 
