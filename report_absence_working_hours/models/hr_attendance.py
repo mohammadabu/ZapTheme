@@ -137,12 +137,12 @@ class AttendanceReportExcel(models.TransientModel):
         from_date_final = from_date_final[0] + "-" + from_date_final[1] + "-01" 
         to_date_final =  self.pool.get("wizard.attendance.history.excel").last_day_of_month(self,to_date)
         to_date_final = str(to_date_final)
-        _logger.info('----------------')
-        _logger.info(from_date)
-        _logger.info(from_date_final)
-        _logger.info(to_date)
-        _logger.info(to_date_final)
-        _logger.info('----------------')
+        # _logger.info('----------------')
+        # _logger.info(from_date)
+        # _logger.info(from_date_final)
+        # _logger.info(to_date)
+        # _logger.info(to_date_final)
+        # _logger.info('----------------')
 
 
         days = ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
