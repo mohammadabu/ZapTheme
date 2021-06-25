@@ -31,12 +31,10 @@
             <field name="target">new</field>
         </record>
 
+        <menuitem id="menu_custom_reports_attendances" name="Reports" parent="hr_attendance.menu_hr_attendance_root" sequence="101"/>
+          
+        <menuitem id="menu_report_absence_attendances" name="Report for absence and working hours"  parent="menu_custom_reports_attendances"  action="wizard_act_attendance_export_excel" sequence="1"/>
 
-        <menuitem name="Attendance in Excel"
-                  parent="hr_attendance.menu_hr_attendance_report"
-                  id="attendance_export_excel"
-                  action="wizard_act_attendance_export_excel"
-                  sequence="3"/>
     </data>
 
 </odoo>
