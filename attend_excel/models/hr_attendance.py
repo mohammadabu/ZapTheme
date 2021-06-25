@@ -40,6 +40,8 @@ class AttendanceReportExcel(models.TransientModel):
 
     @api.model
     def getTotal_diff_hours(self,total_exist_hours,total_hours):
+        total_hours_split = total_hours.split(':')
+        total_hours = total_hours_split[0] + ":" + total_hours_split[1]
         try:
             tdelta = datetime.strptime(total_hours, '%H:%M') - datetime.strptime(total_exist_hours, '%H:%M')
             if '-1 day' in str(tdelta):
