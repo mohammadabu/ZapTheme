@@ -259,7 +259,7 @@ class AttendanceReportExcel(models.TransientModel):
                         total_diff_hours =  self.pool.get("wizard.attendance.history.excel").getTotal_diff_hours(self,total_exist_hours,total_hours) 
                         if total_diff_hours != False: #Not OverTime
                             if final_late_hours != False:
-                                final_late_hours =  self.pool.get("wizard.attendance.history.excel").addHourToHour(self,late_hours,total_diff_hours)
+                                final_late_hours =  self.pool.get("wizard.attendance.history.excel").addHourToHour(self,final_late_hours,total_diff_hours)
                             else:
                                 final_late_hours = total_diff_hours
         
