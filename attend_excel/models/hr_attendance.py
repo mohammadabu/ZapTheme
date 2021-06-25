@@ -194,6 +194,10 @@ class AttendanceReportExcel(models.TransientModel):
                     late_hours = late_hours_split[0] + ":00"
                 else:
                     late_hours = late_hours_split[0] + ":0"+ late_hours_min   
+        _logger.info(absent_days)
+        _logger.info(absent_days_without_leave)
+        _logger.info(late_hours) 
+
 
 
 
