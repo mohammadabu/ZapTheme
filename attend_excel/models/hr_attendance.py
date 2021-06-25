@@ -147,13 +147,18 @@ class AttendanceReportExcel(models.TransientModel):
                         # _logger.info(attendance_info)
                         total_hours =  self.pool.get("wizard.attendance.history.excel").get_total_hours(self,employee_id,day)
                         _logger.info('-------attendance_info---------')
+                        total_exist_hours = False
                         for attendance in attendance_info:
                             if attendance.check_out != False:
                                 tdelta_check = datetime.strptime(str(attendance.check_out), '%Y-%m-%d %H:%M:%S') - datetime.strptime(str(attendance.check_in), '%Y-%m-%d %H:%M:%S')
+                                # if total_exist_hours != False:
+
+                                # else:
+
                                 _logger.info('------------------')
                                 _logger.info(attendance.check_in)
                                 _logger.info(attendance.check_out)
-                                _logger.info(tdelta_check)
+                                _logger.info(tdelta_check.strftime("%H:%M"))
                                 _logger.info('------------------')
                         _logger.info('-------attendance_info---------')    
                         _logger.info(total_hours)
