@@ -239,7 +239,7 @@ class AttendanceReportExcel(models.TransientModel):
         header_excel = "التقرير الشامل - أيام الغياب وساعات العمل"
         header_excel += " \n"
         date_from_hijri = "1442/09/20"
-        date_from = datetime.strptime(from_date, '%Y/%m/%d')
+        date_from = datetime.strptime(str(from_date), '%Y/%m/%d')
         header_excel += (u'من  %s') % (date_from_hijri + " - " + date_from)
         header_excel += " \n"
         date_to_hijri = "1442/09/20"
