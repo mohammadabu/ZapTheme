@@ -236,13 +236,13 @@ class AttendanceReportExcel(models.TransientModel):
         employees = lines.employees
         from_date = lines.from_date
         to_date = lines.to_date
-        # for employee in employees:
-        #     all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,employee.id,from_date,to_date)
-        #     _logger.info(all_employee_attendance)
+        if len(employees) <= 0:
+            employees = self.env['hr.employee'].sudo().search([])
+        for employee in employees:
+            all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,employee.id,from_date,to_date)
+            _logger.info(all_employee_attendance)
         _logger.info(from_date)
         _logger.info(to_date)
-        if len(employees) <= 0:
-            _logger.info('no employee')
         _logger.info(employees)
 
 
