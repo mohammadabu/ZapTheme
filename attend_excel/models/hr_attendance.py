@@ -184,6 +184,7 @@ class AttendanceReportExcel(models.TransientModel):
                                 late_hours = total_diff_hours
                             _logger.info(total_diff_hours)
                         _logger.info('-------attendance_info---------')    
+        late_hours = "2:3"                
         if  late_hours != False:
             late_hours_split = late_hours.split(':')     
             late_hours_min = late_hours_split[1]
