@@ -121,10 +121,10 @@ class AttendanceReportExcel(models.TransientModel):
             if days_title not in day_exist:
                 day_exist.append(days_title)
         # _logger.info(day_exist)
-        # from_date =  datetime.strptime('2021-06-23', '%Y-%m-%d')
-        # to_date =  datetime.strptime('2021-06-30', '%Y-%m-%d')
-        from_date =  datetime.strptime(str(from_date), '%Y-%m-%d')
-        to_date =  datetime.strptime(str(to_date), '%Y-%m-%d')
+        from_date =  datetime.strptime('2021-06-23', '%Y-%m-%d')
+        to_date =  datetime.strptime('2021-06-30', '%Y-%m-%d')
+        # from_date =  datetime.strptime(str(from_date), '%Y-%m-%d')
+        # to_date =  datetime.strptime(str(to_date), '%Y-%m-%d')
         delta = to_date - from_date       
         # _logger.info(delta.days) 
         for i in range(delta.days + 1):
