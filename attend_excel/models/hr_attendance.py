@@ -232,7 +232,7 @@ class AttendanceReportExcel(models.TransientModel):
         cell_format.set_align('center')
         cell_format.set_align('vcenter')
         cell_format.set_text_wrap()
-        sheet.merge_range('C1:I3', "", cell_format)
+        sheet.merge_range('C1:I4', "", cell_format)
         header_excel = "التقرير الشامل - أيام الغياب وساعات العمل"
         header_excel += " \n"
         date_from_hijri = "1442/09/20"
@@ -252,13 +252,13 @@ class AttendanceReportExcel(models.TransientModel):
         sheet.set_column('G:G', 18)
         sheet.set_column('H:H', 18)
         sheet.set_column('I:I', 5)
-        sheet.write(3, 2, 'ساعات التأخر النهائية',column_format)
-        sheet.write(3, 3, 'ساعات التأخر',column_format)
-        sheet.write(3, 4, 'أيام الخروج بدون اذن',column_format)
-        sheet.write(3, 5, 'أيام الغياب',column_format)
-        sheet.write(3, 6, 'اسم الموظف',column_format)
-        sheet.write(3, 7, 'رقم الهوية',column_format)
-        sheet.write(3, 8, 'م',column_format)
+        sheet.write(4, 2, 'ساعات التأخر النهائية',column_format)
+        sheet.write(4, 3, 'ساعات التأخر',column_format)
+        sheet.write(4, 4, 'أيام الخروج بدون اذن',column_format)
+        sheet.write(4, 5, 'أيام الغياب',column_format)
+        sheet.write(4, 6, 'اسم الموظف',column_format)
+        sheet.write(4, 7, 'رقم الهوية',column_format)
+        sheet.write(4, 8, 'م',column_format)
         employees = lines.employees
         from_date = lines.from_date
         to_date = lines.to_date
