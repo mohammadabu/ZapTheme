@@ -261,12 +261,12 @@ class AttendanceReportExcel(models.TransientModel):
             all_employee_attendance =  self.pool.get("wizard.attendance.history.excel").get_employee_attendance(self,employee.id,from_date,to_date)
             try:
                 sheet.write(3 + count_rows, 8, count_rows,column_format)
-                sheet.write(3 + count_rows, 7, all_employee_attendance['id_number'],column_format)
-                sheet.write(3 + count_rows, 6, all_employee_attendance['employee_name'],column_format)
-                sheet.write(3 + count_rows, 5, all_employee_attendance['absent_days'],column_format)
-                sheet.write(3 + count_rows, 4, all_employee_attendance['absent_days_without_leave'],column_format)
-                sheet.write(3 + count_rows, 3, all_employee_attendance['late_hours'],column_format)
-                sheet.write(3 + count_rows, 2, '',column_format)
+                # sheet.write(3 + count_rows, 7, all_employee_attendance['id_number'],column_format)
+                # sheet.write(3 + count_rows, 6, all_employee_attendance['employee_name'],column_format)
+                # sheet.write(3 + count_rows, 5, all_employee_attendance['absent_days'],column_format)
+                # sheet.write(3 + count_rows, 4, all_employee_attendance['absent_days_without_leave'],column_format)
+                # sheet.write(3 + count_rows, 3, all_employee_attendance['late_hours'],column_format)
+                # sheet.write(3 + count_rows, 2, '',column_format)
                 count_rows = count_rows + 1
             except:
                 _logger.info(all_employee_attendance)
