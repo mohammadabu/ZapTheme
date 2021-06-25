@@ -123,6 +123,7 @@ class AttendanceReportExcel(models.TransientModel):
         table_excel['absent_days'] = all_employee_attendance['absent_days']
         table_excel['absent_days_without_leave'] = all_employee_attendance['absent_days_without_leave']
         table_excel['late_hours'] = all_employee_attendance['late_hours']
+        table_excel['final_late_hours'] = all_employee_attendance['final_late_hours']
         return table_excel
 
     @api.model
@@ -339,7 +340,7 @@ class AttendanceReportExcel(models.TransientModel):
                 sheet.write(4 + count_rows, 5, all_employee_attendance['absent_days'],row_format)
                 sheet.write(4 + count_rows, 4, all_employee_attendance['absent_days_without_leave'],row_format)
                 sheet.write(4 + count_rows, 3, all_employee_attendance['late_hours'],row_format)
-                sheet.write(4 + count_rows, 2, '',row_format)
+                sheet.write(4 + count_rows, 2, all_employee_attendance['final_late_hours'],row_format)
                 count_rows = count_rows + 1
             except:
                 _logger.info(all_employee_attendance)
