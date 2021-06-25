@@ -45,9 +45,9 @@ class AttendanceReportExcel(models.TransientModel):
         tdelta_total_hours = total_hours[0]
         tdelta_total_min = total_hours[1]
 
-        hour = str_tdelta.split(':')
-        tdelta_hour = str_tdelta[0]
-        tdelta_min = str_tdelta[1]
+        hour = hour.split(':')
+        tdelta_hour = hour[0]
+        tdelta_min = hour[1]
 
         _logger.info(tdelta_total_hours + ":" + tdelta_total_min)
         _logger.info(tdelta_hour + ":" + tdelta_min)
