@@ -232,9 +232,9 @@ class AttendanceReportExcel(models.TransientModel):
         cell_format.set_align('center')
         cell_format.set_align('vcenter')
         sheet.merge_range('C1:I3', "", cell_format)
-        sheet.write('C1',""" التقرير الشامل - أيام الغياب وساعات العمل
-            من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31
-            ‏  """,cell_format)
+        header_excel = "التقرير الشامل - أيام الغياب وساعات العمل"
+        header_excel += "\ من 1442/09/20-2021/05/02 الى 1442/10/19-2021/05/31"
+        sheet.write('C1',header_excel,cell_format)
         sheet.set_column('A:A', 1)
         sheet.set_column('B:B', 1)
         sheet.set_column('C:C', 9)
