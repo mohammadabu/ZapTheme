@@ -232,6 +232,9 @@ class AttendanceReportExcel(models.TransientModel):
         from_date_final =  datetime.strptime(str(from_date_final), '%Y-%m-%d')
         to_date_final =  datetime.strptime(str(to_date_final), '%Y-%m-%d')
         delta_final = from_date_final - to_date_final
+        _logger.info(from_date_final)
+        _logger.info(to_date_final)
+        _logger.info(delta_final)
         for i in range(delta_final.days + 1):
             day = from_date_final + timedelta(days=i)
             date_from = day
