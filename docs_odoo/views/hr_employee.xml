@@ -13,7 +13,7 @@
                                 <label for="salary_definition"/>
                                 <div class="o_row">
                                     <field name="salary_definition"/>
-                                    <button string="Salary Definition Form" class="btn btn-link" type="object" name="generate_salary_definition_form" />
+                                    <button string="Salary Definition Form" class="btn btn-link" type="object" name="export_xls" />
                                 </div>
                                 <label for="job_definition"/>
                                 <div class="o_row">

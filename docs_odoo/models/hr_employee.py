@@ -27,7 +27,7 @@ class HrEmployeeDocuments(models.Model):
     #     _logger.info('test test ')
 
 
-    def generate_salary_definition_form(self):
+    def export_xls(self):
         data = {
             'ids': self.ids,
             'model': self._name
