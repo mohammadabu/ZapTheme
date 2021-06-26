@@ -25,7 +25,8 @@ from odoo import http
 from odoo.http import content_disposition, request
 from odoo.addons.web.controllers.main import _serialize_exception
 from odoo.tools import html_escape
-
+import logging
+_logger = logging.getLogger(__name__)
 
 class DOCSReportController(http.Controller):
 
@@ -35,6 +36,7 @@ class DOCSReportController(http.Controller):
         report_obj = request.env[model].with_user(uid)
         options = json.loads(options)
         try:
+            _logger.info('get_report_docs route')
             if output_format == 'docx':
                 response = request.make_response(
                     None,
