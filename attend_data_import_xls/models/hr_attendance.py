@@ -12,6 +12,8 @@ _logger = logging.getLogger(__name__)
 class ResPartner(models.Model):
 
     _inherit = 'hr.attendance'
+
+    notes = fields.Char()
     def remove_finish_import_crons(self):
         master_partners = self.env['import.attendances.master'].search(
             ['|', ('status', '=', 'imported'), ('status', '=', 'failed')])
