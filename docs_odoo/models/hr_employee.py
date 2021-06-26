@@ -33,7 +33,7 @@ class HrEmployeeDocuments(models.Model):
             'model': self._name
         }
         return {
-            'type': 'ir_actions_xlsx_download',
+            'type': 'ir_actions_docs_download',
             'data': {'model': 'wizard.attendance.history.excel',
                      'options': json.dumps(data, default=date_utils.json_default),
                      'output_format': 'docx',
