@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+                id="sale_order_export_docx"
+                model="sale.order.export.docx.wizard"
+                string="Export Docx"
+                report_type="docx"
+                name="sale_export_docx.sale_order_export_docx"
+                file="sale_order_docx"
+                print_report_name="sale_order_docx"
+                attachment_use="False"
+        />
+    </data>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="sale_order_export_docx_wizard_view_form" model="ir.ui.view">
+        <field name="name">sale_order_export_docx_wizard_view_form</field>
+        <field name="model">sale.order.export.docx.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Export As Doc File">
+                <group class="oe_title">
+                    <field name="report_template_id" domain="[('res_model', '=', context.get('active_model')),
+                     ('access_token', '=', context.get('active_model')), ('public', '=', True), ('active', '=', True)]"
+                           options="{'no_create': True}"/>
+                    <field name="sale_order_id" readonly="1"/>
+                </group>
+                <footer>
+                    <button name="action_export_docx_report" string="Export As Docx" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_order_export_docx_wizard_action" model="ir.actions.act_window">
+        <field name="name">Export Docx</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order.export.docx.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="sale_order_export_docx_wizard_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

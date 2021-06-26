@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="key_template_view_tree" model="ir.ui.view">
+            <field name="name">Key Template Tree View</field>
+            <field name="model">key.template</field>
+            <field name="arch" type="xml">
+                <tree string="Key Template" create="false" edit="false" delete="false">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="key_template_view_form" model="ir.ui.view">
+            <field name="name">Key Template Form View</field>
+            <field name="model">key.template</field>
+            <field name="arch" type="xml">
+                <form string="Key Template" create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="ir_model"/>
+                            <field name="description"/>
+                        </group>
+                        <notebook>
+                            <page string="Key Words">
+                               <field name="body_html"/>
+                            </page>
+                            <page string="Table Structure" attrs="{'invisible': [('table_guide_html', '=', False)]}">
+                               <field name="table_guide_html"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_key_template_sale_order" model="ir.actions.act_window">
+            <field name="name">Key Templates</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">key.template</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('sale_export_docx.key_template_view_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('sale_export_docx.key_template_view_form')})]"/>
+            <field name="domain">[('ir_model','=', 'sale_order')]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new document
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

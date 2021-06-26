@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem
+                id="sale_docx_template_attachment"
+                name="Document Template"
+                parent="sale.menu_sale_config"
+                action="action_sale_docx_template_attachment"
+                sequence="5"
+        />
+        <menuitem
+                id="sale_docx_key_template"
+                name="Key Templates"
+                parent="sale.menu_sale_config"
+                action="action_key_template_sale_order"
+                sequence="6"
+        />
+
+
+    </data>
+</odoo>

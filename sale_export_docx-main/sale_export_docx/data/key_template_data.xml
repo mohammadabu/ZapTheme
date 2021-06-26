@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="key_template_sale_order" model="key.template">
+            <field name="name">Sale Order Template Key</field>
+            <field name="description">List of keys in sale order records</field>
+            <field name="ir_model">sale_order</field>
+            <field name="table_guide_html"><![CDATA[
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr class="table-primary">
+                        <th scope="col" class="text-center align-middle">No.</th>
+                        <th scope="col" class="text-center align-middle">Product name</th>
+                        <th scope="col" class="text-center align-middle">Description</th>
+                        <th scope="col" class="text-center align-middle">Quanity</th>
+                        <th scope="col" class="text-center align-middle">Unit Price</th>
+                        <th scope="col" class="text-center align-middle">Taxes</th>
+                        <th scope="col" class="text-center align-middle">Line Price Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" colspan="7" class="align-middle">{%tr for item in tbl_contents %}</th>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-center align-middle">{{item.line_index}}</th>
+                        <td class="text-center align-middle">{{item.product_name}}</td>
+                        <td class="text-center align-middle">{{item.line_description}}</td>
+                        <td class="text-center align-middle">{{item.product_qty}}</td>
+                        <td class="text-center align-middle">{{item.line_unit_price}}</td>
+                        <td class="text-center align-middle">{{item.tax_name}}</td>
+                        <td class="text-center align-middle">{{item.line_price_subtotal}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" colspan="7" class="align-middle">{%tr endfor %}</th>
+                    </tr>
+                    <tr>
+                        <th scope="row" colspan="6" class="text-right align-middle">Untaxed Amount:</th>
+                        <td class="text-center align-middle">{{amount_untaxed}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" colspan="6" class="text-right align-middle">Taxes:</th>
+                        <td class="text-center align-middle">{{amount_tax}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" colspan="6" class="text-right align-middle">Total Amount:</th>
+                        <td class="text-center align-middle">{{total_price}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            ]]></field>
+        </record>
+    </data>
+</odoo>

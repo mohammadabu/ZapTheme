@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_attachment_inherit_form" model="ir.ui.view">
+            <field name="name">Attachment Form</field>
+            <field name="model">ir.attachment</field>
+            <field name="inherit_id" ref="base.view_attachment_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='url']" position="after">
+                    <field name="res_model" readonly="1"/>
+                    <field name="active"/>
+                </xpath>
+
+                <xpath expr="//field[@name='type']" position="attributes">
+                    <attribute name="attrs">
+                        {'readonly': ['|', '|', ('res_model', '=', 'purchase.order'), ('res_model', '=', 'sale.order'),
+                        ('res_model', '=', 'stock.picking')]}
+                    </attribute>
+                </xpath>
+
+
+            </field>
+        </record>
+
+        <record id="action_sale_docx_template_attachment" model="ir.actions.act_window">
+            <field name="name">Attachments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ir.attachment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('base.view_attachment_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('base.view_attachment_form')})]"/>
+            <field name="context">{'default_public': True, 'default_res_model': 'sale.order', 'default_access_token':'sale.order'}</field>
+            <field name="domain">[('res_model','=', 'sale.order'),('public','=',True),('access_token','=','sale.order')]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new document
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

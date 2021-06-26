@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record id="sale_order_inherit_form_view" model="ir.ui.view">
+            <field name="name">Sale Order Inherit View</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form//header//button[@name='action_draft']" position="after">
+                   <button name="%(sale_order_export_docx_wizard_action)d" type="action"
+                           class="oe_stat_button" string="Export Docx" attrs="{'invisible': [('state', 'in', ('done', 'cancel'))]}"/>
+                </xpath>
+            </field>
+         </record>
+
+    </data>
+</odoo>
