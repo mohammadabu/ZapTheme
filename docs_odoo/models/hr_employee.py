@@ -51,10 +51,10 @@ class StockReport(models.TransientModel):
 
     def get_docs_report(self, data, response):
         output = io.BytesIO()
-        lines = self.browse(data['ids'])
-        workbook = xlsxwriter.Workbook(output, {'in_memory': True})
-
-        workbook.close()
+        # lines = self.browse(data['ids'])
+        # workbook = xlsxwriter.Workbook(output, {'in_memory': True})
+        _logger.info('test test tes n3 n32 n32')
+        # workbook.close()
         output.seek(0)
         response.stream.write(output.read())
         output.close()    
