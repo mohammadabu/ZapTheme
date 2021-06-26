@@ -35,12 +35,12 @@ class DOCSReportController(http.Controller):
         report_obj = request.env[model].with_user(uid)
         options = json.loads(options)
         try:
-            if output_format == 'docs':
+            if output_format == 'docx':
                 response = request.make_response(
                     None,
                     headers=[
                         ('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'),
-                        ('Content-Disposition', content_disposition(report_name + '.docs'))
+                        ('Content-Disposition', content_disposition(report_name + '.docx'))
                     ]
                 )
                 report_obj.get_docs_report(options, response)
