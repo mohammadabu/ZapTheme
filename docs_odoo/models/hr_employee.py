@@ -8,6 +8,7 @@ import io
 from odoo import api, fields, models, _
 import logging
 from docx import Document
+from docx.shared import Inches
 from odoo.tools import date_utils
 from hijri_converter import convert
 _logger = logging.getLogger(__name__)
@@ -25,7 +26,10 @@ class HrEmployeeDocuments(models.Model):
 
 
     def generate_salary_definition_form(self):
-        _logger.info('dsadasdads')
+        document = Document()
+        document.add_heading('Document Title',0)
+        document.save('demo.docx')
+        _logger.info('dsadasdads`')
         # self.pool.get("wizard.hr.employee.history.docs").generate_salary_definition_form(self)
 
 
