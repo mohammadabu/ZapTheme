@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="add_custom_hr_documents" model="ir.ui.view">
+            <field name="name">add.custom.hr.documents</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/notebook" position="inside">
+                    <page name="hr_documents" string="HR Documents" groups="hr.group_hr_user">
+                        <group>
+                            <group string="Documents" name="identification_group">
+                                <label for="barcode"/>
+                                <div class="o_row">
+                                    <field name="barcode"/>
+                                    <button string="Generate" class="btn btn-link" type="object" name="generate_random_barcode" attrs="{'invisible': [('barcode', '!=', False)]}"/>
+                                    <button name="363" string="Print Badge" class="btn btn-link" type="action" attrs="{'invisible': [('barcode', '=', False)]}"/>
+                                </div>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
