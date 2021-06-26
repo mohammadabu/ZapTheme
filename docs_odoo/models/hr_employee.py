@@ -23,5 +23,30 @@ class HrEmployeeDocuments(models.Model):
     job_definition = fields.Char()
 
 
+    # def generate_salary_definition_form(self):
+    #     _logger.info('test test ')
+
+
     def generate_salary_definition_form(self):
-        _logger.info('test test ')
+        data = {
+            'ids': self.ids,
+            'model': self._name
+        }
+        return {
+            'type': 'ir_actions_xlsx_download',
+            'data': {'model': 'wizard.attendance.history.excel',
+                     'options': json.dumps(data, default=date_utils.json_default),
+                     'output_format': 'docx',
+                     'report_name': 'التقرير الشامل لأيام الغياب وساعات العمل',
+                    }
+        }    
+
+    def get_xlsx_report(self, data, response):
+        output = io.BytesIO()
+        lines = self.browse(data['ids'])
+        # workbook = xlsxwriter.Workbook(output, {'in_memory': True})
+
+        # workbook.close()
+        output.seek(0)
+        response.stream.write(output.read())
+        output.close()    
