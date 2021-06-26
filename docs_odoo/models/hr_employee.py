@@ -27,7 +27,7 @@ class HrEmployeeDocuments(models.Model):
     #     _logger.info('test test ')
 
 
-    def export_xls(self):
+    def generate_salary_definition_form(self):
         data = {
             'ids': self.ids,
             'model': self._name
@@ -41,7 +41,7 @@ class HrEmployeeDocuments(models.Model):
                     }
         }    
 
-    def get_xlsx_report(self, data, response):
+    def get_docs_report(self, data, response):
         output = io.BytesIO()
         lines = self.browse(data['ids'])
         # workbook = xlsxwriter.Workbook(output, {'in_memory': True})
