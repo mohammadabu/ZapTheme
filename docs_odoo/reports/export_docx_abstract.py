@@ -47,7 +47,7 @@ class ExportDocxAbstract(models.AbstractModel):
     def create_docx_report(self, docids, data):
         objs = self._get_objs_for_report(docids, data)
 
-        return self.generate_docx_report( data, objs), 'docx'
+        return self.generate_docx_report(data, objs), 'docx'
 
 
     def generate_docx_report(self, data, objs):
@@ -55,51 +55,53 @@ class ExportDocxAbstract(models.AbstractModel):
         template_folder_path = tools.config.get('data_dir', os.path.dirname(template.__file__))
         _logger.info('template_folder_path')
         _logger.info(template_folder_path)
-        docx_template_name = f'template_{objs.report_template_id.id}_{timestamp}'
-        report_name = self.get_report_name(objs)
+        _logger.info(data)
+        _logger.info(objs)
+    #     docx_template_name = f'template_{objs.report_template_id.id}_{timestamp}'
+    #     report_name = self.get_report_name(objs)
 
-        template_path = os.path.join(template_folder_path, docx_template_name)
-        report_doxc_path = os.path.join(template_folder_path, report_name)
+    #     template_path = os.path.join(template_folder_path, docx_template_name)
+    #     report_doxc_path = os.path.join(template_folder_path, report_name)
 
-        # Function to create docx template
-        self._save_file(
-            template_path, base64.b64decode(objs.report_template_id.datas))
+    #     # Function to create docx template
+    #     self._save_file(
+    #         template_path, base64.b64decode(objs.report_template_id.datas))
 
-        # Open a document base on template
-        document = DocxTemplate(template_path)
+    #     # Open a document base on template
+    #     document = DocxTemplate(template_path)
 
-        # Define variables
-        context = self.generate_variables(objs)
+    #     # Define variables
+    #     context = self.generate_variables(objs)
 
-        # Render data to template
-        document.render(context)
+    #     # Render data to template
+    #     document.render(context)
 
-        # Save Report as docx file
-        document.save(report_doxc_path)
+    #     # Save Report as docx file
+    #     document.save(report_doxc_path)
 
-        # Read Docx report by binary
-        with open(report_doxc_path, mode='rb') as file:
-            fileContent = file.read()
+    #     # Read Docx report by binary
+    #     with open(report_doxc_path, mode='rb') as file:
+    #         fileContent = file.read()
 
-        # Delete docx template
-        try:
-            os.remove(template_path)
-        except Exception as e:
-            _logger.warning(repr(e))
+    #     # Delete docx template
+    #     try:
+    #         os.remove(template_path)
+    #     except Exception as e:
+    #         _logger.warning(repr(e))
 
-        # Delete docx report
-        try:
-            os.remove(report_doxc_path)
-        except Exception as e:
-            _logger.warning(repr(e))
+    #     # Delete docx report
+    #     try:
+    #         os.remove(report_doxc_path)
+    #     except Exception as e:
+    #         _logger.warning(repr(e))
 
-        return fileContent
+    #     return fileContent
 
-    def generate_variables(self, objs):
-        raise NotImplementedError()
+    # def generate_variables(self, objs):
+    #     raise NotImplementedError()
 
-    def get_report_name(self, objs):
-        raise NotImplementedError()
+    # def get_report_name(self, objs):
+    #     raise NotImplementedError()
 
     def _save_file(self, template_path, data):
         out_stream = open(template_path, 'wb')
