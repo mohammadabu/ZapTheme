@@ -3,7 +3,7 @@
     <data>
         <report
                 id="sale_order_export_docx"
-                model="sale.order.export.docx.wizard"
+                model="hr.empaloyee.export.docx.wizard"
                 string="Export Docx"
                 report_type="docx"
                 name="docs_odoo.sale_order_export_docx"
