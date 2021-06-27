@@ -57,7 +57,7 @@ class ExportDocxAbstract(models.AbstractModel):
         document = Document()
         document.add_heading('Document Title',0)
         p = document.add_paragraph('Test Test')
-        document.save('demo.docx')
+        document.save('/var/lib/odoo/ZapTheme/odoo_docx/demo.docx')
 
         # timestamp = str(int(datetime.timestamp(datetime.now())))
         # template_folder_path = tools.config.get('data_dir', os.path.dirname(template.__file__))
