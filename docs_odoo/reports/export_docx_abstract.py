@@ -53,6 +53,8 @@ class ExportDocxAbstract(models.AbstractModel):
     def generate_docx_report(self, data, objs):
         timestamp = str(int(datetime.timestamp(datetime.now())))
         template_folder_path = tools.config.get('data_dir', os.path.dirname(template.__file__))
+        _logger.info('template_folder_path')
+        _logger.info(template_folder_path)
         docx_template_name = f'template_{objs.report_template_id.id}_{timestamp}'
         report_name = self.get_report_name(objs)
 
