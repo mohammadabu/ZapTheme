@@ -3,6 +3,8 @@
 from sys import platform
 from subprocess import Popen
 from docx2pdf import convert
+from docx import Document
+from docx.shared import Inches
 from datetime import datetime, date
 import os
 import base64
@@ -51,57 +53,63 @@ class ExportDocxAbstract(models.AbstractModel):
 
 
     def generate_docx_report(self, data, objs):
-        timestamp = str(int(datetime.timestamp(datetime.now())))
-        template_folder_path = tools.config.get('data_dir', os.path.dirname(template.__file__))
-        _logger.info('template_folder_path')
-        _logger.info(template_folder_path)
-        _logger.info(data)
-        _logger.info(objs)
-    #     docx_template_name = f'template_{objs.report_template_id.id}_{timestamp}'
-    #     report_name = self.get_report_name(objs)
 
-    #     template_path = os.path.join(template_folder_path, docx_template_name)
-    #     report_doxc_path = os.path.join(template_folder_path, report_name)
+        document = Document()
+        document.add_heading('Document Title',0)
+        p = document.add_paragraph('Test Test')
+        document.save('demo.docx')
 
-    #     # Function to create docx template
-    #     self._save_file(
-    #         template_path, base64.b64decode(objs.report_template_id.datas))
+        # timestamp = str(int(datetime.timestamp(datetime.now())))
+        # template_folder_path = tools.config.get('data_dir', os.path.dirname(template.__file__))
+        # _logger.info('template_folder_path')
+        # _logger.info(template_folder_path)
+        # _logger.info(data)
+        # _logger.info(objs)
+        # docx_template_name = f'template_{objs.report_template_id.id}_{timestamp}'
+        # report_name = self.get_report_name(objs)
 
-    #     # Open a document base on template
-    #     document = DocxTemplate(template_path)
+        # template_path = os.path.join(template_folder_path, docx_template_name)
+        # report_doxc_path = os.path.join(template_folder_path, report_name)
 
-    #     # Define variables
-    #     context = self.generate_variables(objs)
+        # # Function to create docx template
+        # self._save_file(
+        #     template_path, base64.b64decode(objs.report_template_id.datas))
 
-    #     # Render data to template
-    #     document.render(context)
+        # # Open a document base on template
+        # document = DocxTemplate(template_path)
 
-    #     # Save Report as docx file
-    #     document.save(report_doxc_path)
+        # # Define variables
+        # context = self.generate_variables(objs)
 
-    #     # Read Docx report by binary
-    #     with open(report_doxc_path, mode='rb') as file:
-    #         fileContent = file.read()
+        # # Render data to template
+        # document.render(context)
 
-    #     # Delete docx template
-    #     try:
-    #         os.remove(template_path)
-    #     except Exception as e:
-    #         _logger.warning(repr(e))
+        # # Save Report as docx file
+        # document.save(report_doxc_path)
 
-    #     # Delete docx report
-    #     try:
-    #         os.remove(report_doxc_path)
-    #     except Exception as e:
-    #         _logger.warning(repr(e))
+        # # Read Docx report by binary
+        # with open(report_doxc_path, mode='rb') as file:
+        #     fileContent = file.read()
 
-    #     return fileContent
+        # # Delete docx template
+        # try:
+        #     os.remove(template_path)
+        # except Exception as e:
+        #     _logger.warning(repr(e))
 
-    # def generate_variables(self, objs):
-    #     raise NotImplementedError()
+        # # Delete docx report
+        # try:
+        #     os.remove(report_doxc_path)
+        # except Exception as e:
+        #     _logger.warning(repr(e))
 
-    # def get_report_name(self, objs):
-    #     raise NotImplementedError()
+        # return fileContent
+
+    def generate_variables(self, objs):
+        raise NotImplementedError()
+
+    def get_report_name(self, objs):
+        raise NotImplementedError()
 
     def _save_file(self, template_path, data):
         out_stream = open(template_path, 'wb')
