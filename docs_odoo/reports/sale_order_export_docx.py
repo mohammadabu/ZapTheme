@@ -5,7 +5,7 @@ from num2words import num2words
 from datetime import datetime, date
 
 class SaleOrderExportDocx(models.AbstractModel):
-    _name = 'report.sale_export_docx.sale_order_export_docx'
+    _name = 'report.docs_odoo.sale_order_export_docx'
     _inherit = 'export.docx.abstract'
     _description = 'Sale Order Export Docx'
 
