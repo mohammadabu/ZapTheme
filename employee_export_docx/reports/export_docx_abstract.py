@@ -116,11 +116,10 @@ class ExportDocxAbstract(models.AbstractModel):
         hdr_Cells[0].text = ''
         hdr_Cells[1].text = ''
 
-        for ID, nameOfMeal, price in records:
+        for ID, nameOfMeal in records:
             row_Cells = menuTable.add_row().cells
             row_Cells[0].text= str(ID)
             row_Cells[1].text = nameOfMeal
-            row_Cells[2].text = price
 
 
 
