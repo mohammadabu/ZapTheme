@@ -106,16 +106,15 @@ class ExportDocxAbstract(models.AbstractModel):
         document.add_heading('Table Document',0)
 
         records = [
-            [1, 'Chicken Pasta Bake', '£4.50'],
-            [2, 'Starfish Cakes', '£5.00'],
-            [3, 'Cod Confit', '£2.75']
-                ]
-        menuTable = document.add_table(rows=1,cols=3)
-        menuTable.style= 'Medium Shading 2 Accent 3'
+            [1, 'Chicken Pasta Bake'],
+            [2, 'Starfish Cakes'],
+            [3, 'Cod Confit']
+        ]
+        menuTable = document.add_table(rows=1,cols=2)
+        # menuTable.style= 'Medium Shading 2 Accent 3'
         hdr_Cells = menuTable.rows[0].cells
-        hdr_Cells[0].text = 'ID'
-        hdr_Cells[1].text = 'Meal Name'
-        hdr_Cells[2].text = 'Price'
+        hdr_Cells[0].text = ''
+        hdr_Cells[1].text = ''
 
         for ID, nameOfMeal, price in records:
             row_Cells = menuTable.add_row().cells
