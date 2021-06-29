@@ -107,8 +107,13 @@ class ExportDocxAbstract(models.AbstractModel):
 
         records = [
             ['To :','الى : '],
-            ['We, Axelerated Solutions Company for Information and Communication Technology certify that (Mr. Name by Odoo) Employed as (Iqama Number by Odoo ID) #: ********* is an active employee Iqama  job from Odoo since 0000/00 with breakdown.', """السلام عليكم ورحمة الله وبركاته	وبعد
-فإننا شركة الحلول المتسارعة للاتصالات وتقنية المعلومات نشهد بأن (Arabic Name from Odoo) رقم بطاقه (Iqama Number from Odoo) على وظيفة (Iqama Job from Odoo) المعلومات لدى الشركة منذ 00/0000  ."""],
+            ['We, Axelerated Solutions Company  :','السلام عليكم ورحمة الله وبركاته	وبعد'],
+            ['for Information and Communication ', 'فإننا شركة الحلول المتسارعة للاتصالات وتقنية المعلومات '],
+            ['Technology certify that (Mr. Name by ', 'نشهد بأن (Arabic Name from Odoo) رقم بطاقه (Iqama'],
+            ['Odoo) Employed as (Iqama Number ', 'Number from Odoo) على وظيفة (Iqama Job from Odoo)'],
+            ['by Odoo ID) #: ********* is an active  ', 'المعلومات لدى الشركة منذ 00/0000  '],
+            ['employee Iqama  job from Odoo ', 'وبراتب تفصيلي كالآتي:'],
+            ['since 0000/00 with breakdown ', ''],
         ]
         menuTable = document.add_table(rows=1,cols=2)
         # menuTable.style= 'Medium Shading 2 Accent 3'
