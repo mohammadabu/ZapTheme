@@ -106,9 +106,8 @@ class ExportDocxAbstract(models.AbstractModel):
         # document.add_heading('Table Document',0)
 
         records = [
-            [1, 'Chicken Pasta Bake'],
-            [2, 'Starfish Cakes'],
-            [3, 'Cod Confit']
+            ['To :','Chicken Pasta Bake'],
+            ['We, Axelerated Solutions Company for Information and Communication Technology certify that (Mr. Name by Odoo) Employed as (Iqama Number by Odoo ID) #: ********* is an active employee Iqama  job from Odoo since 0000/00 with breakdown.', 'Starfish Cakes'],
         ]
         menuTable = document.add_table(rows=1,cols=2)
         # menuTable.style= 'Medium Shading 2 Accent 3'
