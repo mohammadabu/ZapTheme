@@ -113,8 +113,8 @@ class ExportDocxAbstract(models.AbstractModel):
         menuTable = document.add_table(rows=1,cols=2)
         # menuTable.style= 'Medium Shading 2 Accent 3'
         hdr_Cells = menuTable.rows[0].cells
-        hdr_Cells[0].text = ''
-        hdr_Cells[1].text = ''
+        hdr_Cells[0].text = 'Salary Certificate'
+        hdr_Cells[1].text = 'شهادة تعريف بالراتب'
 
         for ID, nameOfMeal in records:
             row_Cells = menuTable.add_row().cells
