@@ -45,7 +45,7 @@ class ExportDocxAbstract(models.AbstractModel):
         path_docx = '/var/lib/odoo/.local/share/Odoo/'
 
         document = Document()
-        paragraph = paragraph.add_paragraph('Python is cool')
+        paragraph = document.add_paragraph('Python is cool')
         paragraph.style = document.styles.add_style('', WD_STYLE_TYPE.PARAGRAPH)
         font = paragraph.style.font
         font.name = 'Times New Roman'
