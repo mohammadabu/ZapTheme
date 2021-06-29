@@ -14,7 +14,7 @@ class SaleOrderExportDocx(models.AbstractModel):
         user_lang = self.env.user.lang or 'en_US'
         count = 1
         table_line = []
-        for order_line in objs.sale_order_id.order_line:
+        for order_line in objs.hr_employee_id.order_line:
             table_line.append({
                 'line_index': str(count),
                 'product_name': order_line.product_id.name,
@@ -33,26 +33,26 @@ class SaleOrderExportDocx(models.AbstractModel):
             'today_date': datetime.now().strftime('%d'),
             'today_month': datetime.now().strftime('%m'),
             'today_year': datetime.now().strftime('%Y'),
-            'sale_name': objs.sale_order_id.name or '',
-            'user_name': objs.sale_order_id.user_id.name if objs.sale_order_id.user_id else '',
-            'partner_name': objs.sale_order_id.partner_id.name  or '',
-            'partner_address': self.get_partner_address(objs.sale_order_id.partner_id),
-            'partner_phone': objs.sale_order_id.partner_id.phone or '',
-            'partner_email': objs.sale_order_id.partner_id.email or '',
-            'partner_vat': objs.sale_order_id.partner_id.vat or '',
-            'date_order': objs.sale_order_id.date_order.strftime('%d/%m/%Y') if objs.sale_order_id.date_order else '',
-            'validity_date': objs.sale_order_id.validity_date.strftime('%d/%m/%Y') if objs.sale_order_id.validity_date else '',
-            'payment_term': objs.sale_order_id.payment_term_id.name if objs.sale_order_id.payment_term_id else '',
-            'amount_untaxed': f'{objs.sale_order_id.amount_untaxed:,.0f} {objs.sale_order_id.currency_id.symbol}',
-            'amount_tax': f'{objs.sale_order_id.amount_tax:,.0f} {objs.sale_order_id.currency_id.symbol}',
-            'total_price': f'{objs.sale_order_id.amount_total:,.0f} {objs.sale_order_id.currency_id.symbol}',
-            'amount_in_words': f"{num2words(round(objs.sale_order_id.amount_total), lang=user_lang).capitalize()}"
-                               f" {objs.sale_order_id.currency_id.name}.",
+            'sale_name': objs.hr_employee_id.name or '',
+            'user_name': objs.hr_employee_id.user_id.name if objs.hr_employee_id.user_id else '',
+            'partner_name': objs.hr_employee_id.partner_id.name  or '',
+            'partner_address': self.get_partner_address(objs.hr_employee_id.partner_id),
+            'partner_phone': objs.hr_employee_id.partner_id.phone or '',
+            'partner_email': objs.hr_employee_id.partner_id.email or '',
+            'partner_vat': objs.hr_employee_id.partner_id.vat or '',
+            'date_order': objs.hr_employee_id.date_order.strftime('%d/%m/%Y') if objs.hr_employee_id.date_order else '',
+            'validity_date': objs.hr_employee_id.validity_date.strftime('%d/%m/%Y') if objs.hr_employee_id.validity_date else '',
+            'payment_term': objs.hr_employee_id.payment_term_id.name if objs.hr_employee_id.payment_term_id else '',
+            'amount_untaxed': f'{objs.hr_employee_id.amount_untaxed:,.0f} {objs.hr_employee_id.currency_id.symbol}',
+            'amount_tax': f'{objs.hr_employee_id.amount_tax:,.0f} {objs.hr_employee_id.currency_id.symbol}',
+            'total_price': f'{objs.hr_employee_id.amount_total:,.0f} {objs.hr_employee_id.currency_id.symbol}',
+            'amount_in_words': f"{num2words(round(objs.hr_employee_id.amount_total), lang=user_lang).capitalize()}"
+                               f" {objs.hr_employee_id.currency_id.name}.",
             'tbl_contents': table_line,
         }
         return context
 
     def get_report_name(self, objs):
         timestamp = str(int(datetime.timestamp(datetime.now())))
-        report_name = f'{objs.sale_order_id.id}_{objs.report_template_id.id}_{timestamp}_report.docx'
+        report_name = f'{objs.hr_employee_id.id}_{objs.report_template_id.id}_{timestamp}_report.docx'
         return report_name
