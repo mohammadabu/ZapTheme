@@ -19,5 +19,5 @@ class SaleOrderExportDocxWizard(models.TransientModel):
                                     default=lambda self: self.env.context.get('active_id'))
 
     def action_export_docx_report(self):
-        return self.env.ref('hr_export_docx.hr_employee_export_docx').report_action(self)
+        return self.env.ref('employee_export_docx.hr_employee_export_docx').report_action(self)
 
