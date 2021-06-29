@@ -71,7 +71,7 @@ class ExportDocxAbstract(models.AbstractModel):
             'first item in ordered list', style='List Number'
         )
 
-        document.add_picture('monty-truth.png', width=Inches(1.25))
+        # document.add_picture('monty-truth.png', width=Inches(1.25))
 
         records = (
             (3, '101', 'Spam'),
