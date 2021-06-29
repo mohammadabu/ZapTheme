@@ -63,10 +63,9 @@ class ExportDocxAbstract(models.AbstractModel):
         # menuTable.style= 'Medium Shading 2 Accent 3'
         hdr_Cells = menuTable.rows[0].cells
         hdr_Cells[0].add_paragraph('Salary Certificate')
-        # font_hdr_0 = hdr_Cells_0_parag.style.font
-        hdr_Cells[0].name = 'Times New Roman'
-        hdr_Cells[0].size = Pt(16)
-        hdr_Cells[0].bold = True
+        hdr_Cells[0].style.font.name = 'Times New Roman'
+        hdr_Cells[0].style.font.size = Pt(16)
+        hdr_Cells[0].style.font.bold = True
         # hdr_Cells[1].add_paragraph('شهادة تعريف بالراتب')
 
         # for ID, nameOfMeal in records:
