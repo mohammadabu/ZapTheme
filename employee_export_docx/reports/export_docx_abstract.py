@@ -123,8 +123,8 @@ class ExportDocxAbstract(models.AbstractModel):
 
         for ID, nameOfMeal in records:
             row_Cells = menuTable.add_row().cells
-            row_Cells[0].text= str(ID)
-            row_Cells[1].text = nameOfMeal
+            row_Cells[0].add_paragraph(str(ID))
+            row_Cells[1].add_paragraph(nameOfMeal)
 
 
 
