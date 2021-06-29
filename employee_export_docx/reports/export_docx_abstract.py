@@ -53,16 +53,18 @@ class ExportDocxAbstract(models.AbstractModel):
 
     def generate_docx_report(self, data, objs):
         timestamp = str(int(datetime.timestamp(datetime.now())))
-        template_folder_path = tools.config.get('data_dir', os.path.dirname(template.__file__))
-        docx_template_name = f'template_{objs.report_template_id.id}_{timestamp}'
-        report_name = self.get_report_name(objs)
+        path_docx = '/var/lib/odoo/.local/share/Odoo/'
+        # template_folder_path = tools.config.get('data_dir', os.path.dirname(template.__file__))
+        # docx_template_name = f'template_{objs.report_template_id.id}_{timestamp}'
+        # report_name = self.get_report_name(objs)
 
-        template_path = os.path.join(template_folder_path, docx_template_name)
-        report_doxc_path = os.path.join(template_folder_path, report_name)
+        # template_path = os.path.join(template_folder_path, docx_template_name)
+        # report_doxc_path = os.path.join(template_folder_path, report_name)
 
-        # document = Document()
-        # document.add_heading('Document Title',0)
-        # document.save('/var/lib/odoo/.local/share/Odoo/new.docx')
+        document = Document()
+        document.add_heading('Document Title',0)
+        path_docx = path_docx + '/EmployeeDocx_' + timestamp + ".docx"
+        document.save(path_docx)
 
         # Function to create docx template
         # self._save_file(
@@ -77,9 +79,9 @@ class ExportDocxAbstract(models.AbstractModel):
         # # Render data to template
         # document.render(context)
 
-        _logger.info('report_doxc_path')
-        _logger.info(report_doxc_path)
-        report_doxc_path = '/var/lib/odoo/.local/share/Odoo/new.docx'
+        # _logger.info('report_doxc_path')
+        # _logger.info(report_doxc_path)
+        report_doxc_path = path_docx
         # # Save Report as docx file
         # document.save(report_doxc_path)
 
@@ -88,10 +90,10 @@ class ExportDocxAbstract(models.AbstractModel):
             fileContent = file.read()
 
         # Delete docx template
-        # try:
-        #     os.remove(template_path)
-        # except Exception as e:
-        #     _logger.warning(repr(e))
+        try:
+            os.remove(report_doxc_path)
+        except Exception as e:
+            _logger.warning(repr(e))
 
         # # Delete docx report
         # try:
