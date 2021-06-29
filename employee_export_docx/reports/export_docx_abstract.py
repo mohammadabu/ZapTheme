@@ -49,7 +49,7 @@ class ExportDocxAbstract(models.AbstractModel):
         paragraph.style = document.styles.add_style('', WD_STYLE_TYPE.PARAGRAPH)
         font = paragraph.style.font
         font.name = 'Times New Roman'
-
+        font.size = Pt(18)
 
 
         path_docx = path_docx + '/EmployeeDocx_' + timestamp + ".docx"
