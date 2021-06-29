@@ -62,23 +62,23 @@ class ExportDocxAbstract(models.AbstractModel):
 
 
         # Function to create docx template
-        self._save_file(
-            template_path, base64.b64decode(objs.report_template_id.datas))
+        # self._save_file(
+        #     template_path, base64.b64decode(objs.report_template_id.datas))
 
-        # Open a document base on template
-        document = DocxTemplate(template_path)
+        # # Open a document base on template
+        # document = DocxTemplate(template_path)
 
-        # Define variables
-        context = self.generate_variables(objs)
+        # # Define variables
+        # context = self.generate_variables(objs)
 
-        # Render data to template
-        document.render(context)
+        # # Render data to template
+        # document.render(context)
 
-        _logger.info('report_doxc_path')
-        _logger.info(report_doxc_path)
+        # _logger.info('report_doxc_path')
+        # _logger.info(report_doxc_path)
 
-        # Save Report as docx file
-        document.save(report_doxc_path)
+        # # Save Report as docx file
+        # document.save(report_doxc_path)
 
         # Read Docx report by binary
         with open(report_doxc_path, mode='rb') as file:
