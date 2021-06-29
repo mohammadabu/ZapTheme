@@ -10,7 +10,11 @@ import logging
 from odoo import models, tools
 from odoo.addons.sale_export_docx.reports import template
 from docx import Document
-from docx.shared import Inches
+from docx.enum.style import WD_STYLE_TYPE
+from docx.shared import Pt, RGBColor, Inches
+from docx.oxml.ns import qn
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+import docx
 _logger = logging.getLogger(__name__)
 
 try:
@@ -24,19 +28,6 @@ class ExportDocxAbstract(models.AbstractModel):
     _description = 'Export Docx Abstract Model'
 
     def _get_objs_for_report(self, docids, data):
-        """
-        Returns objects for xlx report.  From WebUI these
-        are either as docids taken from context.active_ids or
-        in the case of wizard are in data.  Manual calls may rely
-        on regular context, setting docids, or setting data.
-
-        :param docids: list of integers, typically provided by
-            qwebactionmanager for regular Models.
-        :param data: dictionary of data, if present typically provided
-            by qwebactionmanager for TransientModels.
-        :param ids: list of integers, provided by overrides.
-        :return: recordset of active model for ids.
-        """
         if docids:
             ids = docids
         elif data and 'context' in data:
@@ -47,19 +38,25 @@ class ExportDocxAbstract(models.AbstractModel):
 
     def create_docx_report(self, docids, data):
         objs = self._get_objs_for_report(docids, data)
-
         return self.generate_docx_report( data, objs), 'docx'
-
 
     def generate_docx_report(self, data, objs):
         timestamp = str(int(datetime.timestamp(datetime.now())))
         path_docx = '/var/lib/odoo/.local/share/Odoo/'
 
         document = Document()
-        document.add_heading('Document Title',0)
-        document.add_paragraph('Python is cool')
+        paragraph.add_paragraph('Python is cool')
+        paragraph.style = document.styles.add_style('', WD_STYLE_TYPE.PARAGRAPH)
+        font = paragraph.style.font
+        font.name = 'Times New Roman'
+
+
+
         path_docx = path_docx + '/EmployeeDocx_' + timestamp + ".docx"
         document.save(path_docx)
+
+
+        
         report_doxc_path = path_docx
         with open(report_doxc_path, mode='rb') as file:
             fileContent = file.read()
