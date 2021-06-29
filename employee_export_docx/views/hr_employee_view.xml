@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record id="hr_employee_inherit_form_view" model="ir.ui.view">
+            <field name="name">Hr Employee Inherit View</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form//header" position="inside">
+                   <button name="%(hr_employee_export_docx_wizard_action)d" type="action"
+                           class="oe_stat_button" string="Export Docx" attrs="{'invisible': [('state', 'in', ('done', 'cancel'))]}"/>
+                </xpath>
+            </field>
+         </record>
+
+    </data>
+</odoo>

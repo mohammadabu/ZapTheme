@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+                id="hr_employee_export_docx"
+                model="hr.employee.export.docx.wizard"
+                string="Export Docx"
+                report_type="docx"
+                name="hr_export_docx.hr_employee_export_docx"
+                file="hr_employee_docx"
+                print_report_name="hr_employee_docx"
+                attachment_use="False"
+        />
+    </data>
+</odoo>
