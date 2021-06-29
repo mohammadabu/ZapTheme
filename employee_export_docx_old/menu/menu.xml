@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem
+                id="hr_docx_template_attachment"
+                name="Document Template"
+                parent="hr.menu_human_resources_configuration"
+                action="action_hr_docx_template_attachment"
+                sequence="100"
+        />
+        <menuitem
+                id="hr_docx_key_template"
+                name="Key Templates"
+                parent="hr.menu_human_resources_configuration"
+                action="action_key_template_hr_employee"
+                sequence="101"
+        />
+
+
+    </data>
+</odoo>

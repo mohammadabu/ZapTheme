@@ -70,7 +70,7 @@ class ExportDocxAbstract(models.AbstractModel):
         context = self.generate_variables(objs)
 
         # Render data to template
-        document.render("hi")
+        document.render(context)
 
         # Save Report as docx file
         document.save(report_doxc_path)
