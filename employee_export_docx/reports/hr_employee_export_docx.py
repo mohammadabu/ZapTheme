@@ -14,18 +14,28 @@ class SaleOrderExportDocx(models.AbstractModel):
         user_lang = self.env.user.lang or 'en_US'
         count = 1
         table_line = []
-        for order_line in objs.hr_employee_id.order_line:
-            table_line.append({
-                'line_index': str(count),
-                'product_name': order_line.product_id.name,
-                'line_description': order_line.name or '',
-                'product_unit': order_line.product_uom.with_context(lang=user_lang).name,
-                'product_qty': f'{order_line.product_uom_qty:,.0f}',
-                'line_unit_price': f'{order_line.price_unit:,.0f}',
-                'tax_name': ', '.join(order_line.tax_id.mapped('name')) if order_line.tax_id else '',
-                'line_price_subtotal': f'{order_line.price_subtotal:,.0f}',
+        # for order_line in objs.hr_employee_id.order_line:
+        #     table_line.append({
+        #         'line_index': str(count),
+        #         'product_name': order_line.product_id.name,
+        #         'line_description': order_line.name or '',
+        #         'product_unit': order_line.product_uom.with_context(lang=user_lang).name,
+        #         'product_qty': f'{order_line.product_uom_qty:,.0f}',
+        #         'line_unit_price': f'{order_line.price_unit:,.0f}',
+        #         'tax_name': ', '.join(order_line.tax_id.mapped('name')) if order_line.tax_id else '',
+        #         'line_price_subtotal': f'{order_line.price_subtotal:,.0f}',
+        #     })
+        #     count += 1
+        table_line.append({
+                'line_index': "1",
+                'product_name': "product_name",
+                'line_description': "line_description",
+                'product_unit': "product_unit",
+                'product_qty': "product_qty",
+                'line_unit_price': "line_unit_price",
+                'tax_name': '',
+                'line_price_subtotal': '',
             })
-            count += 1
 
         # Data for Variable of template
         context = {
