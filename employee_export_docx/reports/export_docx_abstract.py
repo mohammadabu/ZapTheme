@@ -60,9 +60,9 @@ class ExportDocxAbstract(models.AbstractModel):
         template_path = os.path.join(template_folder_path, docx_template_name)
         report_doxc_path = os.path.join(template_folder_path, report_name)
 
-        document = Document()
-        document.add_heading('Document Title',0)
-        document.save('/var/lib/odoo/.local/share/Odoo/new.docx')
+        # document = Document()
+        # document.add_heading('Document Title',0)
+        # document.save('/var/lib/odoo/.local/share/Odoo/new.docx')
 
         # Function to create docx template
         # self._save_file(
@@ -79,13 +79,13 @@ class ExportDocxAbstract(models.AbstractModel):
 
         _logger.info('report_doxc_path')
         _logger.info(report_doxc_path)
-
+        report_doxc_path = '/var/lib/odoo/.local/share/Odoo/new.docx'
         # # Save Report as docx file
-        # document.save(report_doxc_path)
+        document.save(report_doxc_path)
 
         # Read Docx report by binary
-        # with open(report_doxc_path, mode='rb') as file:
-        #     fileContent = file.read()
+        with open(report_doxc_path, mode='rb') as file:
+            fileContent = file.read()
 
         # Delete docx template
         # try:
