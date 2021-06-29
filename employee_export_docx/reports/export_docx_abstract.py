@@ -81,8 +81,8 @@ class ExportDocxAbstract(models.AbstractModel):
         # document.save(report_doxc_path)
 
         # Read Docx report by binary
-        with open(report_doxc_path, mode='rb') as file:
-            fileContent = file.read()
+        # with open(report_doxc_path, mode='rb') as file:
+        #     fileContent = file.read()
 
         # Delete docx template
         try:
