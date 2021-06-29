@@ -106,8 +106,9 @@ class ExportDocxAbstract(models.AbstractModel):
         # document.add_heading('Table Document',0)
 
         records = [
-            ['To :','Chicken Pasta Bake'],
-            ['We, Axelerated Solutions Company for Information and Communication Technology certify that (Mr. Name by Odoo) Employed as (Iqama Number by Odoo ID) #: ********* is an active employee Iqama  job from Odoo since 0000/00 with breakdown.', 'Starfish Cakes'],
+            ['To :','الى : '],
+            ['We, Axelerated Solutions Company for Information and Communication Technology certify that (Mr. Name by Odoo) Employed as (Iqama Number by Odoo ID) #: ********* is an active employee Iqama  job from Odoo since 0000/00 with breakdown.', """السلام عليكم ورحمة الله وبركاته	وبعد
+فإننا شركة الحلول المتسارعة للاتصالات وتقنية المعلومات نشهد بأن (Arabic Name from Odoo) رقم بطاقه (Iqama Number from Odoo) على وظيفة (Iqama Job from Odoo) المعلومات لدى الشركة منذ 00/0000  ."""],
         ]
         menuTable = document.add_table(rows=1,cols=2)
         # menuTable.style= 'Medium Shading 2 Accent 3'
