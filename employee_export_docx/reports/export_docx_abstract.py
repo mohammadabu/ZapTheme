@@ -85,18 +85,18 @@ class ExportDocxAbstract(models.AbstractModel):
         #     fileContent = file.read()
 
         # Delete docx template
-        try:
-            os.remove(template_path)
-        except Exception as e:
-            _logger.warning(repr(e))
+        # try:
+        #     os.remove(template_path)
+        # except Exception as e:
+        #     _logger.warning(repr(e))
 
-        # Delete docx report
-        try:
-            os.remove(report_doxc_path)
-        except Exception as e:
-            _logger.warning(repr(e))
+        # # Delete docx report
+        # try:
+        #     os.remove(report_doxc_path)
+        # except Exception as e:
+        #     _logger.warning(repr(e))
 
-        return fileContent
+        # return fileContent
 
     def generate_variables(self, objs):
         raise NotImplementedError()
