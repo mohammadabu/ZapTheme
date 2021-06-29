@@ -62,17 +62,17 @@ class ExportDocxAbstract(models.AbstractModel):
         menuTable = document.add_table(rows=1,cols=2)
         # menuTable.style= 'Medium Shading 2 Accent 3'
         hdr_Cells = menuTable.rows[0].cells
-        hdr_Cells_0_parag = hdr_Cells[0].add_paragraph('Salary Certificate')
-        font_hdr_0 = hdr_Cells_0_parag.style.font
-        font_hdr_0.name = 'Times New Roman'
-        font_hdr_0.size = Pt(16)
-        font_hdr_0.bold = True
-        hdr_Cells[1].add_paragraph('شهادة تعريف بالراتب')
+        hdr_Cells[0].add_paragraph('Salary Certificate')
+        # font_hdr_0 = hdr_Cells_0_parag.style.font
+        hdr_Cells[0].name = 'Times New Roman'
+        hdr_Cells[0].size = Pt(16)
+        hdr_Cells[0].bold = True
+        # hdr_Cells[1].add_paragraph('شهادة تعريف بالراتب')
 
-        for ID, nameOfMeal in records:
-            row_Cells = menuTable.add_row().cells
-            row_Cells[0].add_paragraph(str(ID))
-            row_Cells[1].add_paragraph(nameOfMeal)
+        # for ID, nameOfMeal in records:
+        #     row_Cells = menuTable.add_row().cells
+        #     row_Cells[0].add_paragraph(str(ID))
+        #     row_Cells[1].add_paragraph(nameOfMeal)
 
 
 
