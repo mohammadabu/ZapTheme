@@ -81,7 +81,7 @@ class ExportDocxAbstract(models.AbstractModel):
         _logger.info(report_doxc_path)
         report_doxc_path = '/var/lib/odoo/.local/share/Odoo/new.docx'
         # # Save Report as docx file
-        document.save(report_doxc_path)
+        # document.save(report_doxc_path)
 
         # Read Docx report by binary
         with open(report_doxc_path, mode='rb') as file:
@@ -99,7 +99,7 @@ class ExportDocxAbstract(models.AbstractModel):
         # except Exception as e:
         #     _logger.warning(repr(e))
 
-        # return fileContent
+        return fileContent
 
     def generate_variables(self, objs):
         raise NotImplementedError()
