@@ -67,10 +67,10 @@ class ReportController(report.ReportController):
 
             docxhttpheaders = [
                 ('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'),
-                # ('Content-Length', len(docx)),
+                ('Content-Length', len(docx)),
                 ('Content-Length', 1),
                 ('Content-Disposition', content_disposition("mohammad" + '.docx'))]
-            return request.make_response("sadsadssda", headers=docxhttpheaders)
+            return request.make_response(docx, headers=docxhttpheaders)
         else:
             raise werkzeug.exceptions.HTTPException(description='Converter %s not implemented.' % converter)
         return super(ReportController, self).report_routes(
