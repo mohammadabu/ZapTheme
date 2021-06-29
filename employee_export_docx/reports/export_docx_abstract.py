@@ -54,52 +54,20 @@ class ExportDocxAbstract(models.AbstractModel):
     def generate_docx_report(self, data, objs):
         timestamp = str(int(datetime.timestamp(datetime.now())))
         path_docx = '/var/lib/odoo/.local/share/Odoo/'
-        # template_folder_path = tools.config.get('data_dir', os.path.dirname(template.__file__))
-        # docx_template_name = f'template_{objs.report_template_id.id}_{timestamp}'
-        # report_name = self.get_report_name(objs)
-
-        # template_path = os.path.join(template_folder_path, docx_template_name)
-        # report_doxc_path = os.path.join(template_folder_path, report_name)
 
         document = Document()
         document.add_heading('Document Title',0)
+        document.add_paragraph('Python is cool')
         path_docx = path_docx + '/EmployeeDocx_' + timestamp + ".docx"
         document.save(path_docx)
-
-        # Function to create docx template
-        # self._save_file(
-        #     template_path, base64.b64decode(objs.report_template_id.datas))
-
-        # # Open a document base on template
-        # document = DocxTemplate(template_path)
-
-        # # Define variables
-        # context = self.generate_variables(objs)
-
-        # # Render data to template
-        # document.render(context)
-
-        # _logger.info('report_doxc_path')
-        # _logger.info(report_doxc_path)
         report_doxc_path = path_docx
-        # # Save Report as docx file
-        # document.save(report_doxc_path)
-
-        # Read Docx report by binary
         with open(report_doxc_path, mode='rb') as file:
             fileContent = file.read()
 
-        # Delete docx template
         try:
             os.remove(report_doxc_path)
         except Exception as e:
             _logger.warning(repr(e))
-
-        # # Delete docx report
-        # try:
-        #     os.remove(report_doxc_path)
-        # except Exception as e:
-        #     _logger.warning(repr(e))
 
         return fileContent
 
