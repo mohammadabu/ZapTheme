@@ -9,7 +9,8 @@ import base64
 import logging
 from odoo import models, tools
 from odoo.addons.sale_export_docx.reports import template
-
+from docx import Document
+from docx.shared import Inches
 _logger = logging.getLogger(__name__)
 
 try:
@@ -52,14 +53,16 @@ class ExportDocxAbstract(models.AbstractModel):
 
     def generate_docx_report(self, data, objs):
         timestamp = str(int(datetime.timestamp(datetime.now())))
-        # template_folder_path = tools.config.get('data_dir', os.path.dirname(template.__file__))
-        # docx_template_name = f'template_{objs.report_template_id.id}_{timestamp}'
-        # report_name = self.get_report_name(objs)
+        template_folder_path = tools.config.get('data_dir', os.path.dirname(template.__file__))
+        docx_template_name = f'template_{objs.report_template_id.id}_{timestamp}'
+        report_name = self.get_report_name(objs)
 
-        # template_path = os.path.join(template_folder_path, docx_template_name)
-        # report_doxc_path = os.path.join(template_folder_path, report_name)
+        template_path = os.path.join(template_folder_path, docx_template_name)
+        report_doxc_path = os.path.join(template_folder_path, report_name)
 
-
+        # document = Document()
+        # document.add_heading('Document Title',0)
+        # document.save('')
 
         # Function to create docx template
         # self._save_file(
@@ -74,8 +77,8 @@ class ExportDocxAbstract(models.AbstractModel):
         # # Render data to template
         # document.render(context)
 
-        # _logger.info('report_doxc_path')
-        # _logger.info(report_doxc_path)
+        _logger.info('report_doxc_path')
+        _logger.info(report_doxc_path)
 
         # # Save Report as docx file
         # document.save(report_doxc_path)
