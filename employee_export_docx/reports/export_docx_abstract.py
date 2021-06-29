@@ -59,6 +59,8 @@ class ExportDocxAbstract(models.AbstractModel):
         template_path = os.path.join(template_folder_path, docx_template_name)
         report_doxc_path = os.path.join(template_folder_path, report_name)
 
+
+
         # Function to create docx template
         self._save_file(
             template_path, base64.b64decode(objs.report_template_id.datas))
@@ -70,7 +72,10 @@ class ExportDocxAbstract(models.AbstractModel):
         context = self.generate_variables(objs)
 
         # Render data to template
-        document.render("hi")
+        document.render(context)
+
+        _logger.info('report_doxc_path')
+        _logger.info(report_doxc_path)
 
         # Save Report as docx file
         document.save(report_doxc_path)
