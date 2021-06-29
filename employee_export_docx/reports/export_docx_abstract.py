@@ -103,7 +103,7 @@ class ExportDocxAbstract(models.AbstractModel):
 
         document = docx.Document()
 
-        document.add_heading('Table Document',0)
+        # document.add_heading('Table Document',0)
 
         records = [
             [1, 'Chicken Pasta Bake'],
