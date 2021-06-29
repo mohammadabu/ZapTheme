@@ -42,8 +42,8 @@
             <field name="res_model">key.template</field>
             <field name="view_mode">tree,form</field>
             <field name="view_ids" eval="[(5, 0, 0),
-                (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_export_docx.key_template_view_tree')}),
-                (0, 0, {'view_mode': 'form', 'view_id': ref('hr_export_docx.key_template_view_form')})]"/>
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('employee_export_docx.key_template_view_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('employee_export_docx.key_template_view_form')})]"/>
             <field name="domain">[('ir_model','=', 'hr_employee')]</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
