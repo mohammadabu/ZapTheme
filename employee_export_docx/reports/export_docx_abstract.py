@@ -60,9 +60,9 @@ class ExportDocxAbstract(models.AbstractModel):
         template_path = os.path.join(template_folder_path, docx_template_name)
         report_doxc_path = os.path.join(template_folder_path, report_name)
 
-        # document = Document()
-        # document.add_heading('Document Title',0)
-        # document.save('')
+        document = Document()
+        document.add_heading('Document Title',0)
+        document.save('/var/lib/odoo/.local/share/Odoo/new.docx')
 
         # Function to create docx template
         # self._save_file(
