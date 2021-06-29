@@ -44,88 +44,30 @@ class ExportDocxAbstract(models.AbstractModel):
         timestamp = str(int(datetime.timestamp(datetime.now())))
         path_docx = '/var/lib/odoo/.local/share/Odoo/'
 
-        # document = Document()
-        # paragraph = document.add_paragraph('Python is cool')
-        # paragraph.style = document.styles.add_style('', WD_STYLE_TYPE.PARAGRAPH)
-        # font = paragraph.style.font
-        # font.name = 'Times New Roman'
-        # font.size = Pt(18)
 
 
-        # document = Document()
 
-        # document.add_heading('Document Title', 0)
-
-        # p = document.add_paragraph('A plain paragraph having some ')
-        # p.add_run('bold').bold = True
-        # p.add_run(' and some ')
-        # p.add_run('italic.').italic = True
-
-        # document.add_heading('Heading, level 1', level=1)
-        # document.add_paragraph('Intense quote', style='Intense Quote')
-
-        # document.add_paragraph(
-        #     'first item in unordered list', style='List Bullet'
-        # )
-        # document.add_paragraph(
-        #     'first item in ordered list', style='List Number'
-        # )
-
-        # # document.add_picture('monty-truth.png', width=Inches(1.25))
-
-        # records = (
-        #     (3, '101', 'Spam'),
-        #     (7, '422', 'Eggs'),
-        #     (4, '631', 'Spam, spam, eggs, and spam')
-        # )
-
-        # table = document.add_table(rows=1, cols=3)
-        # hdr_cells = table.rows[0].cells
-        # hdr_cells[0].text = 'Qty'
-        # hdr_cells[1].text = 'Id'
-        # hdr_cells[2].text = 'Desc'
-        # for qty, id, desc in records:
-        #     row_cells = table.add_row().cells
-        #     row_cells[0].text = str(qty)
-        #     row_cells[1].text = id
-        #     row_cells[2].text = desc
-
-        # document.add_page_break()
-
-
-        # document = Document()
-        # section = document.sections[0]
-
-        # sectPr = section._sectPr
-        # cols = sectPr.xpath('./w:cols')[0]
-        # cols.set(qn('w:num'),'2')
 
 
         document = docx.Document()
-
-        # document.add_heading('Table Document',0)
-
         sections = document.sections
         for section in sections:
-            section.top_margin = Cm(0.5)
-            section.bottom_margin = Cm(1)
-            section.left_margin = Cm(1)
-            section.right_margin = Cm(1)
+            section.top_margin = Cm(3.3)
+            section.bottom_margin = Cm(2)
+            section.left_margin = Cm(2)
+            section.right_margin = Cm(2)
         records = [
-            ['To :','الى : '],
-            ['We, Axelerated Solutions Company  :','السلام عليكم ورحمة الله وبركاته	وبعد'],
-            ['for Information and Communication ', 'فإننا شركة الحلول المتسارعة للاتصالات وتقنية المعلومات '],
-            ['Technology certify that (Mr. Name by ', 'نشهد بأن (Arabic Name from Odoo) رقم بطاقه (Iqama'],
-            ['Odoo) Employed as (Iqama Number ', 'Number from Odoo) على وظيفة (Iqama Job from Odoo)'],
-            ['by Odoo ID) #: ********* is an active  ', 'المعلومات لدى الشركة منذ 00/0000  '],
-            ['employee Iqama  job from Odoo ', 'وبراتب تفصيلي كالآتي:'],
-            ['since 0000/00 with breakdown ', ''],
+            ['To :','الى : ']
         ]
         menuTable = document.add_table(rows=1,cols=2)
         # menuTable.style= 'Medium Shading 2 Accent 3'
         hdr_Cells = menuTable.rows[0].cells
-        hdr_Cells[0].text = 'Salary Certificate'
-        hdr_Cells[1].text = 'شهادة تعريف بالراتب'
+        hdr_Cells_0_parag = hdr_Cells[0].add_paragraph('Salary Certificate')
+        font_hdr_0 = hdr_Cells_0_parag.style.font
+        font_hdr_0.name = 'Times New Roman'
+        font_hdr_0.size = Pt(16)
+        font_hdr_0.bold = True
+        hdr_Cells[1].add_paragraph('شهادة تعريف بالراتب')
 
         for ID, nameOfMeal in records:
             row_Cells = menuTable.add_row().cells
