@@ -11,7 +11,7 @@ from odoo import models, tools
 from odoo.addons.sale_export_docx.reports import template
 from docx import Document
 from docx.enum.style import WD_STYLE_TYPE
-from docx.shared import Pt, RGBColor, Inches
+from docx.shared import Pt, RGBColor, Inches , Cm
 from docx.oxml.ns import qn
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 import docx
@@ -105,6 +105,12 @@ class ExportDocxAbstract(models.AbstractModel):
 
         # document.add_heading('Table Document',0)
 
+        sections = document.sections
+        for section in sections:
+            section.top_margin = Cm(0.5)
+            section.bottom_margin = Cm(1)
+            section.left_margin = Cm(1)
+            section.right_margin = Cm(1)
         records = [
             ['To :','الى : '],
             ['We, Axelerated Solutions Company  :','السلام عليكم ورحمة الله وبركاته	وبعد'],
