@@ -60,9 +60,9 @@ class ExportDocxAbstract(models.AbstractModel):
         hdr_Cells = menuTable.rows[0].cells
         hdr_Cells_text_0 = hdr_Cells[0].text = 'Salary Certificate'
         paragraph_0 = hdr_Cells_text_0.paragraphs[0]
-        run_0 = paragraph_0.runs
-        font_0 = run_0[0].font
-        font_0.size= Pt(30)
+        # run_0 = paragraph_0.runs
+        # font_0 = run_0[0].font
+        # font_0.size= Pt(30)
         # font_hdr_0 = hdr_Cells_0_parag.style.font
         # font_hdr_0.name = 'Times New Roman'
         # font_hdr_0.size = Pt(16)
