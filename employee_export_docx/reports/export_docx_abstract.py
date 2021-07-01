@@ -61,8 +61,9 @@ class ExportDocxAbstract(models.AbstractModel):
         paragraph_0 = hdr_Cells[0].add_paragraph('')
         run = paragraph_0.add_run('Salary Certificate')
         run.bold = True
-        run.name = 'Times New Roman'
         run.size = Pt(16)
+        run_font = run.style.font
+        run_font.name = 'Times New Roman'
         paragraph_1 = hdr_Cells[1].add_paragraph('شهادة تعريف بالراتب')
         # paragraph.add_run(' sit amet.')
         # hdr_Cells_text_0 = hdr_Cells[0].text = 'Salary Certificate'
