@@ -68,11 +68,11 @@ class ExportDocxAbstract(models.AbstractModel):
         font_0.size = Pt(16)
 
 
-        paragraph_1 = hdr_Cells[1].add_paragraph('شهادة تعريف بالراتب')
-        font_paragraph_1 = paragraph_1.style.font
-        font_paragraph_1.name = 'Calibri'
-        font_paragraph_1.size = Pt(12)
-        font_paragraph_1.bold = True
+        # paragraph_1 = hdr_Cells[1].add_paragraph('شهادة تعريف بالراتب')
+        # font_paragraph_1 = paragraph_1.style.font
+        # font_paragraph_1.name = 'Calibri'
+        # font_paragraph_1.size = Pt(12)
+        # font_paragraph_1.bold = True
         # run = paragraph_0.add_run('Salary Certificate')
         # run.bold = True
         # run.size = Pt(16)
