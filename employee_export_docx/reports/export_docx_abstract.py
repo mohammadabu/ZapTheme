@@ -61,7 +61,7 @@ class ExportDocxAbstract(models.AbstractModel):
         paragraph_0 = hdr_Cells[0].add_paragraph('')
         run = paragraph_0.add_run('Salary Certificate')
         run.bold = True
-        run.name = 'Calibri (Body)'
+        run.name = 'Calibri'
         run.size = Pt(16)
         paragraph_1 = hdr_Cells[1].add_paragraph('شهادة تعريف بالراتب')
         # paragraph.add_run(' sit amet.')
