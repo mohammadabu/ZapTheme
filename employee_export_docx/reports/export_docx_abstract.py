@@ -59,7 +59,7 @@ class ExportDocxAbstract(models.AbstractModel):
         menuTable = document.add_table(rows=1,cols=2)
         hdr_Cells = menuTable.rows[0].cells
         hdr_Cells_text_0 = hdr_Cells[0].text = 'Salary Certificate'
-        paragraph_0 = hdr_Cells_text_0[0].paragraphs[0]
+        paragraph_0 = hdr_Cells_text_0.paragraphs[0]
         run_0 = paragraph_0.runs
         font_0 = run_0[0].font
         font_0.size= Pt(30)
