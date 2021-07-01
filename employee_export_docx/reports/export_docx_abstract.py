@@ -64,7 +64,8 @@ class ExportDocxAbstract(models.AbstractModel):
         paragraph = hdr_cells[0].paragraphs[0]
         run = paragraph.runs
         font = run[0].font
-        font.size= Pt(30)
+        font.size= Pt(16)
+        font.bold = True
 
 
         hdr_cells[1].text = 'شهادة تعريف بالراتب'
