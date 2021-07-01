@@ -99,9 +99,9 @@ class ExportDocxAbstract(models.AbstractModel):
         
 
         row_Cells[2].width = Cm(9.55)
-        row_Cells[2].text = """الى : 
+        row_Cells[2].text = u"""الى : 
 
-        
+
 السلام عليكم ورحمة الله وبركاته	وبعد
 فإننا شركة الحلول المتسارعة للاتصالات وتقنية المعلومات نشهد بأن (Arabic Name from Odoo) رقم بطاقه (Iqama Number from Odoo) على وظيفة (Iqama Job from Odoo) المعلومات لدى الشركة منذ 00/0000  .
 وبراتب تفصيلي كالآتي:
