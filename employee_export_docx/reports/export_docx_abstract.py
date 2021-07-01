@@ -93,7 +93,7 @@ class ExportDocxAbstract(models.AbstractModel):
         font_row_0 = run_row_0[0].font
         font_row_0.size= Pt(14)
         font_row_0.name = 'Calibri (Body)'
-        paragraph_row_0.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+        # paragraph_row_0.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
         row_Cells[1].width = Cm(0.44)
         row_Cells[1].text = ""
         
