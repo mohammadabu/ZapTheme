@@ -99,13 +99,7 @@ class ExportDocxAbstract(models.AbstractModel):
         
 
         row_Cells[2].width = Cm(9.55)
-        row_Cells[2].text = u"""الى : 
-
-
-السلام عليكم ورحمة الله وبركاته	وبعد
-فإننا شركة الحلول المتسارعة للاتصالات وتقنية المعلومات نشهد بأن (Arabic Name from Odoo) رقم بطاقه (Iqama Number from Odoo) على وظيفة (Iqama Job from Odoo) المعلومات لدى الشركة منذ 00/0000  .
-وبراتب تفصيلي كالآتي:
-"""
+        row_Cells[2].text = ": الى"
         paragraph_row_2 = row_Cells[2].paragraphs[0]
         run_row_2 = paragraph_row_2.runs
         font_row_2 = run_row_2[0].font
@@ -114,34 +108,6 @@ class ExportDocxAbstract(models.AbstractModel):
         paragraph_row_2.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
         
 
-        # row_Cells = menuTable.add_row().cells
-        # row_Cells[0].width = Cm(7.82)
-        # row_Cells[0].text = "We, Axelerated Solutions Company for Information and Communication Technology certify that (Mr. Name by Odoo) Employed as (Iqama Number by Odoo ID) #: ********* is an active employee Iqama  job from Odoo since 0000/00 with breakdown."
-        # paragraph_row_0 = row_Cells[0].paragraphs[0]
-        # run_row_0 = paragraph_row_0.runs
-        # font_row_0 = run_row_0[0].font
-        # font_row_0.size= Pt(14)
-        # font_row_0.name = 'Calibri (Body)'
-        # paragraph_row_0.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-        
-
-
-
-
-
-
-        # row_Cells = menuTable.add_row().cells
-        # row_Cells[0].text = "We, Axelerated Solutions Company "
-        # row_Cells[1].text = ""
-        # row_Cells[2].text = "السلام عليكم ورحمة الله وبركاته وبعد"
-
-        # records = [
-        #     ['To :','الى : ']
-        # ]
-        # for ID, nameOfMeal in records:
-        #     row_Cells = menuTable.add_row().cells
-        #     row_Cells[0].add_paragraph(str(ID))
-        #     row_Cells[1].add_paragraph(nameOfMeal)
 
 
 
