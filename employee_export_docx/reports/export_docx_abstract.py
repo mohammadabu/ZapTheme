@@ -59,7 +59,7 @@ class ExportDocxAbstract(models.AbstractModel):
         menuTable = document.add_table(rows=1,cols=3)
         hdr_cells = menuTable.rows[0].cells
 
-        hdr_cells[0].width = Inches(2)
+        hdr_cells[0].width = Cm(7.82)
         hdr_cells[0].text = 'Salary Certificate'
         paragraph = hdr_cells[0].paragraphs[0]
         run = paragraph.runs
@@ -71,10 +71,10 @@ class ExportDocxAbstract(models.AbstractModel):
 
 
 
-        hdr_cells[1].width = Inches(0.1)
+        hdr_cells[1].width = Cm(0.44)
 
 
-        hdr_cells[2].width = Inches(3)
+        hdr_cells[2].width = Cm(9.73)
         hdr_cells[2].text = 'شهادة تعريف بالراتب'
         paragraph_1 = hdr_cells[2].paragraphs[0]
         run_1 = paragraph_1.runs
