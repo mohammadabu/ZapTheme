@@ -66,13 +66,14 @@ class ExportDocxAbstract(models.AbstractModel):
         font = run[0].font
         font.size= Pt(16)
         font.bold = True
-
+        paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
         hdr_cells[1].text = 'شهادة تعريف بالراتب'
         paragraph_1 = hdr_cells[1].paragraphs[0]
         run_1 = paragraph_1.runs
         font_1 = run_1[0].font
-        font_1.size= Pt(20)
+        font_1.size= Pt(16)
+        paragraph_1.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
         # par_0 = hdr_Cells[0].paragraphs[0] = 'Salary Certificate'
         # run_0 = par_0.runs
