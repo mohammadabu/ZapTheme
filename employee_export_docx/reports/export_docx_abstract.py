@@ -85,7 +85,8 @@ class ExportDocxAbstract(models.AbstractModel):
 
         
         row_Cells = menuTable.add_row().cells
-        
+
+        row_Cells[0].width = Cm(7.82)
         row_Cells[0].text = "To :"
         # paragraph_row_0 = row_Cells[0].paragraphs[0]
         # run_row_0 = paragraph_row_0.runs
@@ -93,9 +94,11 @@ class ExportDocxAbstract(models.AbstractModel):
         # font_row_0.size= Pt(14)
         # font_row_0.name = 'Calibri (Body)'
         # paragraph_row_0.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-
+        row_Cells[1].width = Cm(0.44)
         row_Cells[1].text = ""
         
+
+        row_Cells[2].width = Cm(9.73)
         row_Cells[2].text = ": الى"
         # paragraph_row_2 = row_Cells[2].paragraphs[0]
         # run_row_2 = paragraph_row_2.runs
