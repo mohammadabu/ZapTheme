@@ -57,12 +57,14 @@ class ExportDocxAbstract(models.AbstractModel):
             section.left_margin = Cm(2)
             section.right_margin = Cm(2)
         menuTable = document.add_table(rows=1,cols=2)
-        hdr_Cells = menuTable.rows[0].cells
+        hdr_cells = menuTable.rows[0].cells
         hdr_cells[0].text = 'Salary Certificate'
-        paragraph =hdr_cells[0].paragraphs[0]
+
+
+        paragraph = hdr_cells[0].paragraphs[0]
         run = paragraph.runs
         font = run[0].font
-        font.size= Pt(30) # font size = 30
+        font.size= Pt(30)
 
         # par_0 = hdr_Cells[0].paragraphs[0] = 'Salary Certificate'
         # run_0 = par_0.runs
