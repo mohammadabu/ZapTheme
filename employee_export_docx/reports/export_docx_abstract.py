@@ -59,14 +59,14 @@ class ExportDocxAbstract(models.AbstractModel):
         menuTable = document.add_table(rows=1,cols=2)
         hdr_Cells = menuTable.rows[0].cells
         paragraph_0 = hdr_Cells[0].add_paragraph('Salary Certificate')
-        font_paragraph_0 = paragraph_0.style.font
+        font_paragraph_0 = hdr_Cells[0].style.font
         font_paragraph_0.name = 'Times New Roman'
         font_paragraph_0.size = Pt(16)
         font_paragraph_0.bold = True
         
 
         paragraph_1 = hdr_Cells[1].add_paragraph('شهادة تعريف بالراتب')
-        font_paragraph_1 = paragraph_1.style.font
+        font_paragraph_1 = hdr_Cells[1].style.font
         font_paragraph_1.name = 'Calibri'
         font_paragraph_1.size = Pt(12)
         font_paragraph_1.bold = True
