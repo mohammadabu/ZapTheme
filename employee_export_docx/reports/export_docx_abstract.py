@@ -58,9 +58,11 @@ class ExportDocxAbstract(models.AbstractModel):
             section.right_margin = Cm(2)
         menuTable = document.add_table(rows=1,cols=2)
         hdr_Cells = menuTable.rows[0].cells
-        paragraph = hdr_Cells[0].add_paragraph('')
-        run = paragraph.add_run('loreasmnsm nsjabjas jnjsab njsa ')
+        paragraph_0 = hdr_Cells[0].add_paragraph('')
+        run = paragraph_0.add_run('loreasmnsm nsjabjas jnjsab njsa ')
         run.bold = True
+
+        paragraph_1 = hdr_Cells[1].add_paragraph('sadsadsadsadsasda')
         # paragraph.add_run(' sit amet.')
         # hdr_Cells_text_0 = hdr_Cells[0].text = 'Salary Certificate'
         # paragraph_0 = hdr_Cells_text_0.paragraphs[0]
