@@ -59,10 +59,10 @@ class ExportDocxAbstract(models.AbstractModel):
         menuTable = document.add_table(rows=1,cols=2)
         hdr_Cells = menuTable.rows[0].cells
         paragraph_0 = hdr_Cells[0].add_paragraph('')
-        run = paragraph_0.add_run('loreasmnsm nsjabjas jnjsab njsa ')
+        run = paragraph_0.add_run('Salary Certificate')
         run.bold = True
 
-        paragraph_1 = hdr_Cells[1].add_paragraph('sadsadsadsadsasda')
+        paragraph_1 = hdr_Cells[1].add_paragraph('شهادة تعريف بالراتب')
         # paragraph.add_run(' sit amet.')
         # hdr_Cells_text_0 = hdr_Cells[0].text = 'Salary Certificate'
         # paragraph_0 = hdr_Cells_text_0.paragraphs[0]
