@@ -85,9 +85,31 @@ class ExportDocxAbstract(models.AbstractModel):
 
         
         row_Cells = menuTable.add_row().cells
+        
         row_Cells[0].text = "To :"
+        paragraph_row_0 = row_Cells[0].paragraphs[0]
+        run_row_0 = paragraph_row_0.runs
+        font_row_0 = run_row_0[0].font
+        font_row_0.size= Pt(14)
+        font_row_0.name = 'Calibri (Body)'
+        paragraph_row_0.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
+
         row_Cells[1].text = ""
+        
         row_Cells[2].text = "الى : "
+        paragraph_row_2 = row_Cells[2].paragraphs[0]
+        run_row_2 = paragraph_row_2.runs
+        font_row_2 = run_row_2[0].font
+        font_row_2.size= Pt(14)
+        font_row_2.name = 'Calibri (Body)'
+        paragraph_row_2.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
+
+
+
+
+
+
+
 
         row_Cells = menuTable.add_row().cells
         row_Cells[0].text = "We, Axelerated Solutions Company "
