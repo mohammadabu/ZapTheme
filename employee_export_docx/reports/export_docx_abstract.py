@@ -83,48 +83,17 @@ class ExportDocxAbstract(models.AbstractModel):
         font_1.name = 'Al-Mateen'
         paragraph_1.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
-        # par_0 = hdr_Cells[0].paragraphs[0] = 'Salary Certificate'
-        # run_0 = par_0.runs
-        # font_0 = run_0[0].font
-        # font_0.size= Pt(30)
-
-        # font_paragraph_0 = paragraph_0.style.font
-        # font_paragraph_0.name = 'Times New Roman'
-        # font_paragraph_0.size = Pt(16)
-        # font_paragraph_0.bold = True
-        # font_0 = run_0.font
-        # font_0.name = 'Times New Roman'
-        # font_0.size = Pt(16)
-
-
-        # paragraph_1 = hdr_Cells[1].add_paragraph('شهادة تعريف بالراتب')
-        # font_paragraph_1 = paragraph_1.style.font
-        # font_paragraph_1.name = 'Calibri'
-        # font_paragraph_1.size = Pt(12)
-        # font_paragraph_1.bold = True
-        # run = paragraph_0.add_run('Salary Certificate')
-        # run.bold = True
-        # run.size = Pt(16)
-        # run_font = run.style.font
-        # run_font.name = 'Times New Roman'
-        # paragraph_1 = hdr_Cells[1].add_paragraph('شهادة تعريف بالراتب')
-        # paragraph.add_run(' sit amet.')
-        # hdr_Cells_text_0 = hdr_Cells[0].text = 'Salary Certificate'
-        # paragraph_0 = hdr_Cells_text_0.paragraphs[0]
-        # run_0 = paragraph_0.runs
-        # font_0 = run_0[0].font
-        # font_0.size= Pt(30)
-        # font_hdr_0 = hdr_Cells_0_parag.style.font
-        # font_hdr_0.name = 'Times New Roman'
-        # font_hdr_0.size = Pt(16)
-        # font_hdr_0.bold = True
-
-
-
-
-
         
-        # hdr_Cells[1].add_paragraph('شهادة تعريف بالراتب')
+        row_Cells = menuTable.add_row().cells
+        row_Cells[0].text = "To :"
+        row_Cells[1].text = ""
+        row_Cells[2].text = "الى : "
+
+        row_Cells = menuTable.add_row().cells
+        row_Cells[0].text = "We, Axelerated Solutions Company "
+        row_Cells[1].text = ""
+        row_Cells[2].text = "السلام عليكم ورحمة الله وبركاته وبعد"
+
         # records = [
         #     ['To :','الى : ']
         # ]
