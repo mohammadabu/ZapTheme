@@ -58,10 +58,16 @@ class ExportDocxAbstract(models.AbstractModel):
             section.right_margin = Cm(2)
         menuTable = document.add_table(rows=1,cols=2)
         hdr_Cells = menuTable.rows[0].cells
-        par_0 = hdr_Cells[0].paragraphs[0] = 'Salary Certificate'
-        run_0 = par_0.runs
-        font_0 = run_0[0].font
-        font_0.size= Pt(30)
+        hdr_cells[0].text = 'Salary Certificate'
+        paragraph =hdr_cells[0].paragraphs[0]
+        run = paragraph.runs
+        font = run[0].font
+        font.size= Pt(30) # font size = 30
+
+        # par_0 = hdr_Cells[0].paragraphs[0] = 'Salary Certificate'
+        # run_0 = par_0.runs
+        # font_0 = run_0[0].font
+        # font_0.size= Pt(30)
 
         # font_paragraph_0 = paragraph_0.style.font
         # font_paragraph_0.name = 'Times New Roman'
