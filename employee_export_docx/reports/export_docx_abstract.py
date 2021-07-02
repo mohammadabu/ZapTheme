@@ -99,9 +99,10 @@ class ExportDocxAbstract(models.AbstractModel):
         
 
         row_Cells[2].width = Cm(9.55)
-        row_Cells[2].text = "الى" + ": "
+        row_Cells[2].text = ": الى"
         paragraph_row_2 = row_Cells[2].paragraphs[0]
         run_row_2 = paragraph_row_2.runs
+        run_row_2.font.rtl = True
         font_row_2 = run_row_2[0].font
         font_row_2.size= Pt(16)
         font_row_2.name = 'Sakkal Majalla'
