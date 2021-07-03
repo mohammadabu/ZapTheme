@@ -168,13 +168,13 @@ class ExportDocxAbstract(models.AbstractModel):
 
 
         row_Cells = menuTable.add_row().cells
-        row_Cells[0].width = Cm(6.42)
-        row_Cells[1].width = Cm(0.27)
-        row_Cells[2].width = Cm(10.3)
+        # row_Cells[0].width = Cm(6.42)
+        # row_Cells[1].width = Cm(0.27)
+        row_Cells[0].width = Cm(16)
         msg_text_final = "\n\n"
         msg_text_final = msg_text_final + "عبدالعزيز بن حسن العجيري"
-        row_Cells[2].text = msg_text_final
-        paragraph_row_2 = row_Cells[2].paragraphs[0]
+        row_Cells[0].text = msg_text_final
+        paragraph_row_2 = row_Cells[0].paragraphs[0]
         run_row_2 = paragraph_row_2.runs
         font_row_2 = run_row_2[0].font
         font_row_2.size= Pt(16)
