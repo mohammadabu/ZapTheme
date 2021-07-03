@@ -87,7 +87,7 @@ class ExportDocxAbstract(models.AbstractModel):
         row_Cells = menuTable.add_row().cells
 
         row_Cells[0].width = Cm(7.82)
-        row_Cells[0].text = "To :\nWe, Axelerated Solutions Company for Information and Communication Technology certify that (Mr. Name by Odoo) Employed as (Iqama Number by Odoo ID) #: ********* is an active employee Iqama  job from Odoo since 0000/00 with breakdown."
+        row_Cells[0].text = "To :\nWe, Axelerated Solutions Company for Information and Communication Technology certify that (Mr. Mohammad abusubhia) Employed as 9951012579 is an active employee Iqama  job from Odoo since 0000/00 with breakdown."
         paragraph_row_0 = row_Cells[0].paragraphs[0]
         run_row_0 = paragraph_row_0.runs
         font_row_0 = run_row_0[0].font
@@ -113,7 +113,12 @@ class ExportDocxAbstract(models.AbstractModel):
         msg_text_ar  = msg_text_ar + "\n"
         msg_text_ar = msg_text_ar + "المعلومات لدى الشركة منذ "
         msg_text_ar = msg_text_ar + "٢٠٢٠/٠٦"
-        msg_text_ar = msg_text_ar + "."
+        msg_text_ar = msg_text_ar + "\n"
+        msg_text_ar = msg_text_ar + "وبراتب تفصيلي كالآتي:"
+        msg_text_ar = msg_text_ar + "\n"
+        msg_text_ar = msg_text_ar + "راتب أساسي :"
+        msg_text_ar = msg_text_ar + "٢٠٠٠ "
+        msg_text_ar = msg_text_ar + "ريال"
         row_Cells[2].text = msg_text_ar
         paragraph_row_2 = row_Cells[2].paragraphs[0]
         run_row_2 = paragraph_row_2.runs
