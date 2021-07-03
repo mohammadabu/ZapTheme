@@ -162,7 +162,7 @@ class ExportDocxAbstract(models.AbstractModel):
         font_row_2.size= Pt(16)
         font_row_2.bold = True
         font_row_2.name = 'Sakkal Majalla'
-        paragraph_row_2.alignment = WD_PARAGRAPH_ALIGNMENT.LIFT
+        paragraph_row_2.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
 
         path_docx = path_docx + '/EmployeeDocx_' + timestamp + ".docx"
