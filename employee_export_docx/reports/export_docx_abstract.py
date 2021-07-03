@@ -112,7 +112,7 @@ class ExportDocxAbstract(models.AbstractModel):
         msg_text_ar  = msg_text_ar + "مبرمج حاسوب "
         msg_text_ar  = msg_text_ar + "\n"
         msg_text_ar = msg_text_ar + "المعلومات لدى الشركة منذ "
-        msg_text_ar = msg_text_ar + "٢٠٢٠/٠٦ :"
+        msg_text_ar = msg_text_ar + ". ٢٠٢٠/٠٦"
         row_Cells[2].text = msg_text_ar
         paragraph_row_2 = row_Cells[2].paragraphs[0]
         run_row_2 = paragraph_row_2.runs
