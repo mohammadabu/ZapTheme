@@ -87,7 +87,7 @@ class ExportDocxAbstract(models.AbstractModel):
         row_Cells = menuTable.add_row().cells
 
         row_Cells[0].width = Cm(7.82)
-        row_Cells[0].text = "To :\nWe, Axelerated Solutions Company for Information and Communication Technology certify that (Mr. Mohammad abusubhia) Employed as 9951012579 is an active employee Iqama  job from Odoo since 0000/00 with breakdown.\n\nBasic Salary: 0000 SAR\n\nHousing Allowance: 0000 SAR\n\nTransportation Allowance: 000 SAR\n\nOther Allowance: 0000 SAR\n\nThis certificate has been issued upon\nhis request no liability on the\ncompany.\n\nBest Regards,"
+        row_Cells[0].text = "To :\nWe, Axelerated Solutions Company for Information and Communication Technology certify that (Mr. Mohammad abusubhia) Employed as 9951012579 is an active employee Iqama  job from Odoo since 0000/00 with breakdown.\n\nBasic Salary: 0000 SAR\nHousing Allowance: 0000 SAR\nTransportation Allowance: 000 SAR\nOther Allowance: 0000 SAR\n\nThis certificate has been issued upon\nhis request no liability on the\ncompany.\n\nBest Regards,"
         paragraph_row_0 = row_Cells[0].paragraphs[0]
         run_row_0 = paragraph_row_0.runs
         font_row_0 = run_row_0[0].font
