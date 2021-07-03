@@ -165,6 +165,21 @@ class ExportDocxAbstract(models.AbstractModel):
         font_row_2.name = 'Sakkal Majalla'
         paragraph_row_2.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
+        row_Cells = menuTable.add_row().cells
+        row_Cells[0].width = Cm(7.82)
+        row_Cells[1].width = Cm(0.67)
+        row_Cells[2].width = Cm(9.5)
+        msg_text_final = "\n"
+        msg_text_final = msg_text_final + "عبدالعزيز بن حسن العجيري"
+        row_Cells[2].text = msg_text_final
+        paragraph_row_2 = row_Cells[2].paragraphs[0]
+        run_row_2 = paragraph_row_2.runs
+        font_row_2 = run_row_2[0].font
+        font_row_2.size= Pt(16)
+        font_row_2.bold = True
+        font_row_2.name = 'Sakkal Majalla'
+        paragraph_row_2.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+
 
 
         # row_Cells_final = menuTable.add_row().cells
