@@ -53,7 +53,7 @@ class ExportDocxAbstract(models.AbstractModel):
         sections = document.sections
         for section in sections:
             section.top_margin = Cm(3.3)
-            section.bottom_margin = Cm(2)
+            section.bottom_margin = Cm(1)
             section.left_margin = Cm(2)
             section.right_margin = Cm(2)
         menuTable = document.add_table(rows=1,cols=3)
@@ -171,7 +171,7 @@ class ExportDocxAbstract(models.AbstractModel):
         row_Cells[0].width = Cm(7.82)
         row_Cells[1].width = Cm(0.57)
         row_Cells[2].width = Cm(9.6)
-        msg_text_final = "\n\n\n"
+        msg_text_final = "\n\n"
         msg_text_final = msg_text_final + "عبدالعزيز بن حسن العجيري"
         row_Cells[2].text = msg_text_final
         paragraph_row_2 = row_Cells[2].paragraphs[0]
