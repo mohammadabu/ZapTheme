@@ -177,7 +177,7 @@ class ExportDocxAbstract(models.AbstractModel):
         row_Cells_final[1].text = msg_text_final
         paragraph_row_2_final = row_Cells_final[1].paragraphs[0]
         run_row_2_final = paragraph_row_2_final.runs
-        font_row_2_final = row_Cells_final[0].font
+        font_row_2_final = row_Cells_final[1].font
         font_row_2_final.size= Pt(16)
         font_row_2_final.bold = True
         font_row_2_final.name = 'Sakkal Majalla'
