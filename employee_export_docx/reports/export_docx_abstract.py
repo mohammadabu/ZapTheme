@@ -155,7 +155,7 @@ class ExportDocxAbstract(models.AbstractModel):
         row_Cells[1].width = Cm(0.67)
         row_Cells[2].width = Cm(9.5)
         msg_text_final = "\n"
-        msg_text_final = msg_text_final + "           "
+        msg_text_final = msg_text_final + "         "
         msg_text_final = msg_text_final + "مدير الموارد البشرية"
         # msg_text_final = msg_text_final + ""
         row_Cells[2].text = msg_text_final
