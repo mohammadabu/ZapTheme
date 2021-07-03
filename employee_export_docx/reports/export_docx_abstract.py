@@ -132,6 +132,14 @@ class ExportDocxAbstract(models.AbstractModel):
         msg_text_ar = msg_text_ar + "بدلات أخرى :"
         msg_text_ar = msg_text_ar + "٢٠٠٠ "
         msg_text_ar = msg_text_ar + "ريال"
+        msg_text_ar = msg_text_ar + "\n\n"
+        msg_text_ar = msg_text_ar + "وأنه بناء على طلبه، أصدرت هذه الشهادة دون أي مسؤولية أو "
+        msg_text_ar = msg_text_ar + "\n"
+        msg_text_ar = msg_text_ar + "."
+        msg_text_ar = msg_text_ar + "التزام تجاه الشركة"
+        msg_text_ar = msg_text_ar + "\n"
+        msg_text_ar = msg_text_ar + "..."
+        msg_text_ar = msg_text_ar + "مع أطيب التحايا"
         row_Cells[2].text = msg_text_ar
         paragraph_row_2 = row_Cells[2].paragraphs[0]
         run_row_2 = paragraph_row_2.runs
