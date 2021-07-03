@@ -167,24 +167,24 @@ class ExportDocxAbstract(models.AbstractModel):
 
 
 
-        row_Cells_final = menuTable.add_row().cells
-        row_Cells_final[0].width = Cm(2)
+        # row_Cells_final = menuTable.add_row().cells
+        # row_Cells_final[0].width = Cm(2)
 
 
-        row_Cells_final[1].width = Cm(10.3)
-        msg_text_final = "\n\n"
-        msg_text_final = msg_text_final + "عبدالعزيز بن حسن العجيري"
-        row_Cells_final[1].text = msg_text_final
-        paragraph_row_2_final = row_Cells_final[1].paragraphs[0]
-        run_row_2_final = paragraph_row_2_final.runs
-        font_row_2_final = run_row_2_final[0].font
-        font_row_2_final.size= Pt(16)
-        font_row_2_final.bold = True
-        font_row_2_final.name = 'Sakkal Majalla'
-        paragraph_row_2_final.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+        # row_Cells_final[1].width = Cm(10.3)
+        # msg_text_final = "\n\n"
+        # msg_text_final = msg_text_final + "عبدالعزيز بن حسن العجيري"
+        # row_Cells_final[1].text = msg_text_final
+        # paragraph_row_2_final = row_Cells_final[1].paragraphs[0]
+        # run_row_2_final = paragraph_row_2_final.runs
+        # font_row_2_final = run_row_2_final[0].font
+        # font_row_2_final.size= Pt(16)
+        # font_row_2_final.bold = True
+        # font_row_2_final.name = 'Sakkal Majalla'
+        # paragraph_row_2_final.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
 
-        row_Cells_final[2].width = Cm(2)
+        # row_Cells_final[2].width = Cm(2)
 
         path_docx = path_docx + '/EmployeeDocx_' + timestamp + ".docx"
         document.save(path_docx)
