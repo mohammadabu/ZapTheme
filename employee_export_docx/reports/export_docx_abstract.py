@@ -71,10 +71,10 @@ class ExportDocxAbstract(models.AbstractModel):
 
 
 
-        hdr_cells[1].width = Cm(0.44)
+        hdr_cells[1].width = Cm(0.67)
 
 
-        hdr_cells[2].width = Cm(9.73)
+        hdr_cells[2].width = Cm(9.5)
         hdr_cells[2].text = 'شهادة تعريف بالراتب'
         paragraph_1 = hdr_cells[2].paragraphs[0]
         run_1 = paragraph_1.runs
@@ -86,7 +86,7 @@ class ExportDocxAbstract(models.AbstractModel):
         
         row_Cells = menuTable.add_row().cells
 
-        row_Cells[0].width = Cm(8)
+        row_Cells[0].width = Cm(7.82)
         row_Cells[0].text = "To :\nWe, Axelerated Solutions Company for Information and Communication Technology certify that (Mr. Name by Odoo) Employed as (Iqama Number by Odoo ID) #: ********* is an active employee Iqama  job from Odoo since 0000/00 with breakdown."
         paragraph_row_0 = row_Cells[0].paragraphs[0]
         run_row_0 = paragraph_row_0.runs
@@ -94,16 +94,19 @@ class ExportDocxAbstract(models.AbstractModel):
         font_row_0.size= Pt(14)
         font_row_0.name = 'Calibri (Body)'
         paragraph_row_0.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-        row_Cells[1].width = Cm(0.44)
+        row_Cells[1].width = Cm(0.67)
         row_Cells[1].text = ""
         
 
-        row_Cells[2].width = Cm(9.55)
+        row_Cells[2].width = Cm(9.5)
         msg_text_ar = ":الى  \nالسلام عليكم ورحمة الله وبركاته وبعد"
         msg_text_ar  = msg_text_ar + "\n"
         msg_text_ar  = msg_text_ar + "فإننا شركة الحلول المتسارعة للاتصالات وتقنية المعلومات"
         msg_text_ar  = msg_text_ar + "\n"
-        msg_text_ar  = msg_text_ar + "نشهد ان محمد ابو صبحية رقم بطاقة ٩٩٩٢٩٩٣٩٩٢٩"
+        msg_text_ar  = msg_text_ar + "نشهد بأن محمد ابو صبحية رقم بطاقه "
+        msg_text_ar  = msg_text_ar + "٩٩٥١٠١٢٥٧٩"
+        msg_text_ar  = msg_text_ar + "\n"
+        msg_text_ar  = msg_text_ar + "على وظيفة مبرمج حاسوب "
         row_Cells[2].text = msg_text_ar
         paragraph_row_2 = row_Cells[2].paragraphs[0]
         run_row_2 = paragraph_row_2.runs
