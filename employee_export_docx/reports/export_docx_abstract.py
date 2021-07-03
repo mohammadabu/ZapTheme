@@ -99,7 +99,15 @@ class ExportDocxAbstract(models.AbstractModel):
         
 
         row_Cells[2].width = Cm(9.55)
-        row_Cells[2].text = ": الى"
+        row_Cells[2].text = """ 
+            الى : 
+            السلام عليكم ورحمة الله وبركاته	وبعد
+            فإننا شركة الحلول المتسارعة للاتصالات وتقنية المعلومات 
+            نشهد بأن محمد ابو صبحية رقم بطاقة 
+            ٩٩٣٧٣٨٣ على وظيفة مبرمج حاسوب
+            المعلومات لدى الشركة منذ ٢٠٢٠/٠٦
+        
+        """
         paragraph_row_2 = row_Cells[2].paragraphs[0]
         run_row_2 = paragraph_row_2.runs
         # run_row_2[0].font.rtl = True
