@@ -168,9 +168,9 @@ class ExportDocxAbstract(models.AbstractModel):
 
 
         row_Cells = menuTable.add_row().cells
-        row_Cells[0].width = Cm(7.82)
+        row_Cells[0].width = Cm(7.42)
         row_Cells[1].width = Cm(0.27)
-        row_Cells[2].width = Cm(9.9)
+        row_Cells[2].width = Cm(10.3)
         msg_text_final = "\n\n"
         msg_text_final = msg_text_final + "عبدالعزيز بن حسن العجيري"
         row_Cells[2].text = msg_text_final
