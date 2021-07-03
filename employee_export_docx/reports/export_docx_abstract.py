@@ -100,7 +100,7 @@ class ExportDocxAbstract(models.AbstractModel):
 
         row_Cells[2].width = Cm(9.5)
         msg_text_ar = "\n"
-        msg_text_ar = msg_text_ar + "\n:الى  \nالسلام عليكم ورحمة الله وبركاته وبعد"
+        msg_text_ar = msg_text_ar + ":الى  \nالسلام عليكم ورحمة الله وبركاته وبعد"
         msg_text_ar  = msg_text_ar + "\n"
         msg_text_ar  = msg_text_ar + "فإننا شركة الحلول المتسارعة للاتصالات وتقنية المعلومات"
         msg_text_ar  = msg_text_ar + "\n"
