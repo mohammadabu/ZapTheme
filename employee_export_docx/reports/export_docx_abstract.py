@@ -45,10 +45,6 @@ class ExportDocxAbstract(models.AbstractModel):
         path_docx = '/var/lib/odoo/.local/share/Odoo/'
 
 
-
-
-
-
         document = docx.Document()
         sections = document.sections
         for section in sections:
@@ -158,7 +154,6 @@ class ExportDocxAbstract(models.AbstractModel):
         msg_text_final = "\n"
         msg_text_final = msg_text_final + "         "
         msg_text_final = msg_text_final + "مدير الموارد البشرية"
-        # msg_text_final = msg_text_final + ""
         row_Cells[2].text = msg_text_final
         paragraph_row_2 = row_Cells[2].paragraphs[0]
         run_row_2 = paragraph_row_2.runs
@@ -183,31 +178,8 @@ class ExportDocxAbstract(models.AbstractModel):
         font_row_2.name = 'Sakkal Majalla'
         paragraph_row_2.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
-
-
-        # row_Cells_final = menuTable.add_row().cells
-        # row_Cells_final[0].width = Cm(2)
-
-
-        # row_Cells_final[1].width = Cm(10.3)
-        # msg_text_final = "\n\n"
-        # msg_text_final = msg_text_final + "عبدالعزيز بن حسن العجيري"
-        # row_Cells_final[1].text = msg_text_final
-        # paragraph_row_2_final = row_Cells_final[1].paragraphs[0]
-        # run_row_2_final = paragraph_row_2_final.runs
-        # font_row_2_final = run_row_2_final[0].font
-        # font_row_2_final.size= Pt(16)
-        # font_row_2_final.bold = True
-        # font_row_2_final.name = 'Sakkal Majalla'
-        # paragraph_row_2_final.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-
-
-        # row_Cells_final[2].width = Cm(2)
-
         path_docx = path_docx + '/EmployeeDocx_' + timestamp + ".docx"
         document.save(path_docx)
-
-
         
         report_doxc_path = path_docx
         with open(report_doxc_path, mode='rb') as file:
@@ -220,26 +192,26 @@ class ExportDocxAbstract(models.AbstractModel):
 
         return fileContent
 
-    def generate_variables(self, objs):
-        raise NotImplementedError()
+    # def generate_variables(self, objs):
+    #     raise NotImplementedError()
 
-    def get_report_name(self, objs):
-        raise NotImplementedError()
+    # def get_report_name(self, objs):
+    #     raise NotImplementedError()
 
-    def _save_file(self, template_path, data):
-        out_stream = open(template_path, 'wb')
-        try:
-            out_stream.write(data)
-        finally:
-            out_stream.close()
+    # def _save_file(self, template_path, data):
+    #     out_stream = open(template_path, 'wb')
+    #     try:
+    #         out_stream.write(data)
+    #     finally:
+    #         out_stream.close()
 
-    def get_partner_address(self, obj=None):
-        if not obj:
-            return ''
-        address = ''
-        address += f'{obj.street}' if obj.street else ''
-        address += f', {obj.street}' if obj.street2 else ''
-        address += f', {obj.city}' if obj.city else ''
-        address += f', {obj.state_id.name}' if obj.state_id else ''
-        address += f', {obj.country_id.name}' if obj.country_id else ''
-        return address
+    # def get_partner_address(self, obj=None):
+    #     if not obj:
+    #         return ''
+    #     address = ''
+    #     address += f'{obj.street}' if obj.street else ''
+    #     address += f', {obj.street}' if obj.street2 else ''
+    #     address += f', {obj.city}' if obj.city else ''
+    #     address += f', {obj.state_id.name}' if obj.state_id else ''
+    #     address += f', {obj.country_id.name}' if obj.country_id else ''
+    #     return address
