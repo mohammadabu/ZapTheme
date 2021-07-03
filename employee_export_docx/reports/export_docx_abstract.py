@@ -140,6 +140,10 @@ class ExportDocxAbstract(models.AbstractModel):
         msg_text_ar = msg_text_ar + "\n"
         msg_text_ar = msg_text_ar + "..."
         msg_text_ar = msg_text_ar + "مع أطيب التحايا"
+        msg_text_ar = msg_text_ar + "\n"
+        msg_text_ar = msg_text_ar + "١٤٤٢ ،"
+        msg_text_ar = msg_text_ar + "ذو القعدة "
+        msg_text_ar = msg_text_ar + "٢١"
         row_Cells[2].text = msg_text_ar
         paragraph_row_2 = row_Cells[2].paragraphs[0]
         run_row_2 = paragraph_row_2.runs
