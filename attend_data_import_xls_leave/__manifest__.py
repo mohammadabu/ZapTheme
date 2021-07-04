@@ -1,7 +1,7 @@
 {
     'name': 'Attend Data Import - XLS - Leave',
     'version': '13.0.0.1.0',
-    'depends': ["hr_holiday","web_notify"],
+    'depends': ['base_setup', 'hr_holidays',"web_notify"],
     'data': [
         # 'views/hr_attendance.xml',
         'wizard/import_leave_data_view.xml',
