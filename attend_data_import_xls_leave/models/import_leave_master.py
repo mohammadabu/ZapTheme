@@ -1,10 +1,10 @@
 from odoo import models, fields
 
 
-class ImportAttendancesMaster(models.Model):
+class ImportLeaveMaster(models.Model):
 
-    _name = 'import.attendances.master'
-    _description = "Import Attendances Status"
+    _name = 'import.leave.master'
+    _description = "Import Leave Status"
     _rec_name = 'file'
 
     file = fields.Binary('File')

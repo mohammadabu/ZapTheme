@@ -1,10 +1,10 @@
 from odoo import models, fields
 
 
-class ImportAttendancesHistory(models.Model):
+class ImportLeaveHistory(models.Model):
 
-    _name = 'import.attendances.history'
-    _description = "Import Attendances History"
+    _name = 'import.leave.history'
+    _description = "Import Leave History"
 
     total_success_count = fields.Integer('Success')
     total_failed_count = fields.Integer('Failed')

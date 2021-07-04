@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
-         <!--Form for Import Orders History tree view-->
-        <record id="import_attendances_history_tree_view" model="ir.ui.view">
-            <field name="name">import.attendances.history.tree</field>
-            <field name="model">import.attendances.history</field>
+        <record id="import_leave_history_tree_view" model="ir.ui.view">
+            <field name="name">import.leave.history.tree</field>
+            <field name="model">import.leave.history</field>
             <field name="arch" type="xml">
                 <tree create="false" import="false">
                     <field name="file_name" invisible="1"/>
@@ -21,10 +19,9 @@
             </field>
         </record>
 
-        <!--Form for Import Orders History-->
-        <record id="import_attendances_history_form_view" model="ir.ui.view">
-            <field name="name">import.attendances.history.form</field>
-            <field name="model">import.attendances.history</field>
+        <record id="import_leave_history_form_view" model="ir.ui.view">
+            <field name="name">import.leave.history.form</field>
+            <field name="model">import.leave.history</field>
             <field name="arch" type="xml">
                 <form create="false" import="false" edit="false">
                     <group>
@@ -47,15 +44,15 @@
         </record>
 
         <!--Action-->
-        <record id="action_import_attendances_history" model="ir.actions.act_window">
-            <field name="name">Imported Attendances History</field>
-            <field name="res_model">import.attendances.history</field>
+        <record id="action_import_leave_history" model="ir.actions.act_window">
+            <field name="name">Imported Leave History</field>
+            <field name="res_model">import.leave.history</field>
             <field name="view_mode">tree,form</field>
             <field name="target">current</field>
         </record>
 
-        <menuitem name="Import Attendances History" action="action_import_attendances_history" id="menu_import_attendances_history"
-                  sequence="30" parent="main_menu_import_attendances"/>
+        <menuitem name="Import Leave History" action="action_import_leave_history" id="menu_import_leave_history"
+                  sequence="30" parent="main_menu_import_leave"/>
 
     </data>
 </odoo>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="import_attendances_master_tree_view" model="ir.ui.view">
-            <field name="name">import.attendances.master.tree.view</field>
-            <field name="model">import.attendances.master</field>
+        <record id="import_leave_master_tree_view" model="ir.ui.view">
+            <field name="name">import.leave.master.tree.view</field>
+            <field name="model">import.leave.master</field>
             <field name="arch" type="xml">
                 <tree create="false" import="false">
                     <field name="filename"/>
@@ -14,9 +14,9 @@
             </field>
         </record>
 
-        <record id="import_attendances_master_form_view" model="ir.ui.view">
-            <field name="name">import.attendances.master.form.view</field>
-            <field name="model">import.attendances.master</field>
+        <record id="import_leave_master_form_view" model="ir.ui.view">
+            <field name="name">import.leave.master.form.view</field>
+            <field name="model">import.leave.master</field>
             <field name="arch" type="xml">
                 <form create="false" import="false" edit="false">
                     <group>
@@ -37,15 +37,15 @@
         </record>
 
         <!--Action-->
-        <record id="action_import_attendances_master" model="ir.actions.act_window">
-            <field name="name">Imported Attendances Status</field>
-            <field name="res_model">import.attendances.master</field>
+        <record id="action_import_leave_master" model="ir.actions.act_window">
+            <field name="name">Imported Leave Status</field>
+            <field name="res_model">import.leave.master</field>
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem name="Attendances Import Status" action="action_import_attendances_master" id="menu_import_attendances_master"
+        <menuitem name="Leave Import Status" action="action_import_leave_master" id="menu_import_leave_master"
                   sequence="29"
-                  parent="main_menu_import_attendances"/>
+                  parent="main_menu_import_leave"/>
 
     </data>
 </odoo>
