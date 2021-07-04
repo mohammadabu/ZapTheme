@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="add_custom_field_list_hr_attendance" model="ir.ui.view">
+            <field name="name">add.custom.field.list.hr.attendance</field>
+            <field name="model">hr.attendance</field>
+            <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='check_out']" position="after">
+                    <field name="notes"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

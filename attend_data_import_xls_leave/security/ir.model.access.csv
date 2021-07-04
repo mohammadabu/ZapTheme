@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_import_attendances_his,Access Import Attendances History,model_import_attendances_history,,1,1,1,1
+access_import_attendances_master,Access Import Attendances Master,model_import_attendances_master,,1,1,1,1
