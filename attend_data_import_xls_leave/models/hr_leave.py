@@ -98,8 +98,8 @@ class ImportHrLeave(models.Model):
                     # cleanr = re.compile('<.*?>')
                     # file_data = re.sub(cleanr, '', file_data)
 
-                    _logger.info("file_data")
-                    _logger.info(file_data)
+                    # _logger.info("file_data")
+                    # _logger.info(file_data)
 
                     fp = open(temp_path + '/xsl_file.xls', 'wb+')
                     fp.write(file_data)
@@ -107,6 +107,7 @@ class ImportHrLeave(models.Model):
                     data = pd.read_html(temp_path + '/xsl_file.xls')
                     for i, df in enumerate(data):
                         _logger.info(df)
+                        _logger.info(i)
                     # for i, df in enumerate(data):
                     #     _logger.info(df)
                     #     _logger.info(format(i))
