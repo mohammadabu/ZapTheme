@@ -107,7 +107,6 @@ class ImportHrLeave(models.Model):
                     data = pd.read_html(temp_path + '/xsl_file.xls')
                     for i, df in enumerate(data):
                         _logger.info(df)
-                        _logger.info(df.to_csv('table {}.csv'.format(i)))
                     # for i, df in enumerate(data):
                     #     _logger.info(df)
                     #     _logger.info(format(i))
