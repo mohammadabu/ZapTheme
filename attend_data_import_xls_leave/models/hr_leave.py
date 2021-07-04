@@ -3,6 +3,7 @@ from odoo import api, models, fields, exceptions, _
 import logging
 import base64
 from xlrd import open_workbook
+import tempfile
 _logger = logging.getLogger(__name__)
 class ImportHrLeave(models.Model):
     _inherit = 'hr.leave'        
