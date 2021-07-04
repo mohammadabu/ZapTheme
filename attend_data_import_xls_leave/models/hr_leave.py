@@ -105,7 +105,8 @@ class ImportHrLeave(models.Model):
                     fp.write(file_data)
                     fp.close()
                     data = pd.read_html(temp_path + '/xsl_file.xls')
-                    _logger.info(enumerate(data))
+                    for i, df in enumerate(data):
+                        _logger.info(df)
                     # for i, df in enumerate(data):
                     #     _logger.info(df)
                     #     _logger.info(format(i))
