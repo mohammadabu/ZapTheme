@@ -74,14 +74,14 @@ class ImportHrLeave(models.Model):
             leave_obj = self.env['hr.leave']
             try:
                 if not datafile or not \
-                        file_name.lower().endswith(('.xls', '.xlsx','.xltx')):
+                        file_name.lower().endswith(('.xls', '.xlsx')):
                     list_of_failed_record += "Please Select an .xls file to Import."
                     _logger.error(
                         "Please Select an .xls file to Import.")
                 _logger.info('part_master.filename')
                 _logger.info(part_master.type)        
                 if part_master.type == 'xlsx':
-                    if not datafile or not file_name.lower().endswith(('.xls', '.xlsx','.xltx')):
+                    if not datafile or not file_name.lower().endswith(('.xls', '.xlsx')):
                         list_of_failed_record += "Please Select an .xls or its compatible file to Import."
                         _logger.error(
                             "Please Select an .xls or its compatible file to Import.")
@@ -104,9 +104,9 @@ class ImportHrLeave(models.Model):
                     fp = open(temp_path + '/xsl_file.xls', 'wb+')
                     fp.write(file_data)
                     fp.close()
-                    data = pd.read_html(temp_path + '/xsl_file.xls')
-                    for i, df in enumerate(data):
-                        _logger.info(df.to_numpy())
+                    # data = pd.read_html(temp_path + '/xsl_file.xls')
+                    # for i, df in enumerate(data):
+                    #     _logger.info(df.to_numpy())
                     # for i, df in enumerate(data):
                     #     _logger.info(df)
                     #     _logger.info(format(i))
@@ -116,7 +116,7 @@ class ImportHrLeave(models.Model):
                     # _logger.info(temp_path)
                     # _logger.info(data)
                     # _logger.info(data.to_json(orient='records'))
-                    # wb = open_workbook(temp_path + '/xsl_file.xls')
+                    wb = open_workbook(temp_path + '/xsl_file.xls')
                     # data_list = []
                     # header_list = []
                     # headers_dict = {}
