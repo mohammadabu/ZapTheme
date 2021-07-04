@@ -61,7 +61,7 @@ class ImportHrLeave(models.Model):
     def import_data(self, part_master_id=False):
         if part_master_id:
             part_master = self.env[
-                'import.attendances.master'].browse(part_master_id)
+                'import.leave.master'].browse(part_master_id)
             total_success_import_record = 0
             total_failed_record = 0
             list_of_failed_record = ''
