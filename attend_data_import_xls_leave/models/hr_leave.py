@@ -88,8 +88,15 @@ class ImportHrLeave(models.Model):
                     
                     temp_path = tempfile.gettempdir()
                     file_data = base64.decodestring(datafile)
-                    cleanr = re.compile('<.*?>')
-                    file_data = re.sub(cleanr, '', file_data)
+
+
+                    file_data = file_data.decode('utf-8')  # python3
+                    match = re.compile(r'onerror\([\s\S]*\)', re.I)
+                    file_data = re.findall(match, file_data)
+
+
+                    # cleanr = re.compile('<.*?>')
+                    # file_data = re.sub(cleanr, '', file_data)
 
                     _logger.info("file_data")
                     _logger.info(file_data)
