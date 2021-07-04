@@ -8,7 +8,7 @@ from xlrd import open_workbook
 import tempfile
 _logger = logging.getLogger(__name__)
 import pandas as pd
-
+import re
 
 class ImportHrLeave(models.Model):
 
@@ -87,9 +87,11 @@ class ImportHrLeave(models.Model):
                     
                     temp_path = tempfile.gettempdir()
                     file_data = base64.decodestring(datafile)
+                    cleanr = re.compile('<.*?>')
+                    file_data = re.sub(cleanr, '', file_data)
                     _logger.info("file_data")
                     _logger.info(file_data)
-                    # fp = open(temp_path + '/xsl_file.csv', 'wb+')
+                    # fp = open(temp_path + '/xsl_file.xlsx', 'wb+')
                     # fp.write(file_data)
                     # fp.close()
                     # wb = open_workbook(temp_path + '/xsl_file.csv')
