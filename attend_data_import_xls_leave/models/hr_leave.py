@@ -78,11 +78,13 @@ class ImportHrLeave(models.Model):
                         "Please Select an .xls file to Import.")
                 _logger.info('part_master.filename')
                 _logger.info(part_master.type)        
-                # if part_master.type == 'xlsx':
-                #     if not datafile or not file_name.lower().endswith(('.xls', '.xlsx',)):
-                #         list_of_failed_record += "Please Select an .xls or its compatible file to Import."
-                #         _logger.error(
-                #             "Please Select an .xls or its compatible file to Import.")
+                if part_master.type == 'xlsx':
+                    if not datafile or not file_name.lower().endswith(('.xls', '.xlsx',)):
+                        list_of_failed_record += "Please Select an .xls or its compatible file to Import."
+                        _logger.error(
+                            "Please Select an .xls or its compatible file to Import.")
+                    else:
+                        _logger.info('successssssss')         
                 #     temp_path = tempfile.gettempdir()
                 #     file_data = base64.decodestring(datafile)
                 #     fp = open(temp_path + '/xsl_file.xls', 'wb+')
