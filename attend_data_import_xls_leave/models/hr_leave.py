@@ -90,15 +90,15 @@ class ImportHrLeave(models.Model):
                     file_data = file_data.decode("utf-8") 
                     # cleanr = re.compile('<.*?>')
                     # file_data = re.sub(cleanr, '', file_data)
-                    _logger.info("file_data")
-                    _logger.info(file_data)
-                    # fp = open(temp_path + '/xsl_file.xlsx', 'wb+')
-                    # fp.write(file_data)
-                    # fp.close()
-                    # wb = open_workbook(temp_path + '/xsl_file.csv')
-                    # data_list = []
-                    # header_list = []
-                    # headers_dict = {}
+                    # _logger.info("file_data")
+                    # _logger.info(file_data)
+                    fp = open(temp_path + '/xsl_file.xls', 'wb+')
+                    fp.write(file_data)
+                    fp.close()
+                    wb = open_workbook(temp_path + '/xsl_file.xls')
+                    data_list = []
+                    header_list = []
+                    headers_dict = {}
                     # for sheet in wb.sheets():
                     #     _logger.info(sheet.nrows)
                     #     first_row = 0
