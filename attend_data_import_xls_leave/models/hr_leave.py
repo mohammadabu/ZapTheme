@@ -90,7 +90,7 @@ class ImportHrLeave(models.Model):
                     file_data = base64.decodestring(datafile)
 
 
-                    file_data = file_data.decode('windows-1252')  # python3
+                    # file_data = file_data.decode('windows-1252')  # python3
                     # match = re.compile(r'onerror\([\s\S]*\)', re.I)
                     # file_data = re.findall(match, file_data)
 
@@ -101,14 +101,15 @@ class ImportHrLeave(models.Model):
                     _logger.info("file_data")
                     _logger.info(file_data)
 
-                    # fp = open(temp_path + '/xsl_file.xls', 'wb+')
-                    # fp.write(file_data)
-                    # fp.close()
-                    # data = pd.read_excel(temp_path + '/xsl_file.xls')
+                    fp = open(temp_path + '/xsl_file.xls', 'wb+')
+                    fp.write(file_data)
+                    fp.close()
+                    data = pd.read_html(temp_path + '/xsl_file.xls')
+                    _logger.info(enumerate(data))
                     # for i, df in enumerate(data):
                     #     _logger.info(df)
                     #     _logger.info(format(i))
-                        # print df
+                    #     # print df
                         # df.to_csv('table {}.csv'.format(i))
 
                     # _logger.info(temp_path)
