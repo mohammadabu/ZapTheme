@@ -95,6 +95,7 @@ class ImportHrLeave(models.Model):
                     fp.close()
                     data = pd.read_html(temp_path + '/xsl_file.xls')
                     _logger.info(temp_path)
+                    _logger.info(data)
                     # wb = open_workbook(temp_path + '/xsl_file.xls')
                     # data_list = []
                     # header_list = []
