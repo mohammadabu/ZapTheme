@@ -59,124 +59,129 @@ class ImportHrLeave(models.Model):
             # _logger.info(minutes)
             return str(time_arr[hours]) + ":" + minutes          
     def import_data(self, part_master_id=False):
-        _logger.info("sssss")
-        # if part_master_id:
-        #     part_master = self.env[
-        #         'import.attendances.master'].browse(part_master_id)
-        #     total_success_import_record = 0
-        #     total_failed_record = 0
-        #     list_of_failed_record = ''
-        #     datafile = part_master.file
-        #     file_name = str(part_master.filename)
-        #     attendance_obj = self.env['hr.attendance']
-        #     state_obj = self.env['res.country.state']
-        #     country_obj = self.env['res.country']
-        #     try:
-        #         if not datafile or not \
-        #                 file_name.lower().endswith(('.xls', '.xlsx')):
-        #             list_of_failed_record += "Please Select an .xls file to Import."
-        #             _logger.error(
-        #                 "Please Select an .xls file to Import.")
-        #         if part_master.type == 'xlsx':
-        #             if not datafile or not file_name.lower().endswith(('.xls', '.xlsx',)):
-        #                 list_of_failed_record += "Please Select an .xls or its compatible file to Import."
-        #                 _logger.error(
-        #                     "Please Select an .xls or its compatible file to Import.")
-        #             temp_path = tempfile.gettempdir()
-        #             file_data = base64.decodestring(datafile)
-        #             fp = open(temp_path + '/xsl_file.xls', 'wb+')
-        #             fp.write(file_data)
-        #             fp.close()
-        #             wb = open_workbook(temp_path + '/xsl_file.xls')
-        #             data_list = []
-        #             header_list = []
-        #             headers_dict = {}
-        #             for sheet in wb.sheets():
-        #                 _logger.info(sheet.nrows)
-        #             #     # Sales data xlsx
-        #                 first_row = 0
-        #                 emp_name_row = 0
-        #                 date_row = 0
-        #                 check_in_row = 0
-        #                 check_out_row = 0
-        #                 for rownum in range(sheet.nrows):
-        #                     # _logger.info(rownum)
-        #                     # _logger.info(sheet.row_values(rownum))
-        #                     item = sheet.row_values(rownum)
-        #                     if "اسم الموظف" in item and "التاريخ" in item and "وقت دخول" in item and "وقت الخروج" in item:
-        #                         first_row = rownum
-        #                         for idx1,item1 in enumerate(item):
-        #                             if item1 == "اسم الموظف":
-        #                                 emp_name_row = idx1
-        #                             if item1 == "التاريخ":
-        #                                 date_row = idx1
-        #                             if item1 == "وقت دخول":
-        #                                 check_in_row = idx1
-        #                             if item1 == "وقت الخروج":
-        #                                 check_out_row = idx1
-        #                         break    
+        if part_master_id:
+            part_master = self.env[
+                'import.attendances.master'].browse(part_master_id)
+            total_success_import_record = 0
+            total_failed_record = 0
+            list_of_failed_record = ''
+            datafile = part_master.file
+            file_name = str(part_master.filename)
+            leave_obj = self.env['hr.leave']
+            try:
+                if not datafile or not \
+                        file_name.lower().endswith(('.xls', '.xlsx')):
+                    list_of_failed_record += "Please Select an .xls file to Import."
+                    _logger.error(
+                        "Please Select an .xls file to Import.")
+                if part_master.type == 'xlsx':
+                    if not datafile or not file_name.lower().endswith(('.xls', '.xlsx',)):
+                        list_of_failed_record += "Please Select an .xls or its compatible file to Import."
+                        _logger.error(
+                            "Please Select an .xls or its compatible file to Import.")
+                    temp_path = tempfile.gettempdir()
+                    file_data = base64.decodestring(datafile)
+                    fp = open(temp_path + '/xsl_file.xls', 'wb+')
+                    fp.write(file_data)
+                    fp.close()
+                    wb = open_workbook(temp_path + '/xsl_file.xls')
+                    data_list = []
+                    header_list = []
+                    headers_dict = {}
+                    for sheet in wb.sheets():
+                        _logger.info(sheet.nrows)
+                        first_row = 0
+                        emp_num_row = 0
+                        type_leave_row = 0
+                        duration_row = 0
+                        start_date_row = 0
+                        end_date_row = 0
+                        for rownum in range(sheet.nrows):
+                            # _logger.info(rownum)
+                            # _logger.info(sheet.row_values(rownum))
+                            item = sheet.row_values(rownum)
+                            if "رقم الموظف" in item and "نوع الإجازة" in item and "المدة" in item and "البداية" in item and "النهاية" in item:
+                                first_row = rownum
+                                for idx1,item1 in enumerate(item):
+                                    if item1 == "رقم الموظف":
+                                        emp_num_row = idx1
+                                    if item1 == "نوع الإجازة":
+                                        type_leave_row = idx1
+                                    if item1 == "المدة":
+                                        duration_row = idx1 
+                                    if item1 == "البداية":
+                                        start_date_row = idx1 
+                                    if item1 == "النهاية":
+                                        end_date_row = idx1
+                                break    
 
-        #                 for rownum1 in range(sheet.nrows): 
-        #                     item_y = sheet.row_values(rownum1)           
-        #                     if rownum1 > first_row:
-        #                         emp_name =  item_y[emp_name_row]
-        #                         date = item_y[date_row] 
-        #                         check_in = item_y[check_in_row]     
-        #                         check_out = item_y[check_out_row] 
-        #                         full_date_check_in = False
-        #                         full_date_check_out = False
-        #                         if emp_name != "" and (check_in != "" or check_out != ""):  
-        #                             if check_in:
-        #                                 split_check_in = check_in.split(" ")
-        #                                 if len(split_check_in) > 1:
-        #                                     try:
-        #                                         date = date.replace("/","-",3)
-        #                                         new_time = self.pool.get("hr.attendance").convert24(self,split_check_in)
-        #                                         new_time = new_time.replace("\u200f","")
-        #                                         full_date_time = date + " " + new_time + ":00"
-        #                                         full_date_check_in = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
-        #                                     except Exception as e:
-        #                                         _logger.info("----error in------")   
-        #                                         _logger.info(e) 
-        #                             if check_out:
-        #                                 split_check_out = check_out.split(" ")
-        #                                 if len(split_check_out) > 1:  
-        #                                     try:
-        #                                         date = date.replace("/","-",3)
-        #                                         new_time = self.pool.get("hr.attendance").convert24(self,split_check_out)
-        #                                         full_date_time = date + " " + new_time + ":00"
-        #                                         full_date_check_out = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
-        #                                     except Exception as e:
-        #                                         _logger.info("----error out------")    
-        #                                         _logger.info(e)   
-        #                         # if  full_date_check_in != False or full_date_check_out != False:
-        #                         if  full_date_check_in != False :
-        #                             try:
-        #                                 emp_name_info = self.env['hr.employee'].sudo().search([('name','=',emp_name)])
-        #                                 attendance_vals = {
-        #                                     'employee_id': emp_name_info.id,
-        #                                     'check_in': full_date_check_in,
-        #                                     'check_out': full_date_check_out
-        #                                 }
-        #                                 self.env['hr.attendance'].sudo().create(attendance_vals)
-        #                                 _logger.info(full_date_check_in)
-        #                                 _logger.info(full_date_check_out)
-        #                                 _logger.info(emp_name)
-        #                                 _logger.info(emp_name_info)  
-        #                                 total_success_import_record += 1  
-        #                             except Exception as e:
-        #                                 total_failed_record += 1
-        #                                 list_of_failed_record += "| Error at Line :" + str(rownum1 + 1) + " |"
-        #                                 _logger.error("Error at %s" % str(rownum1))    
-        #                         else:
-        #                             if emp_name != "":
-        #                                 total_failed_record += 1
-        #                                 list_of_failed_record += "| Error at Line :" + str(rownum1 + 1) + " |"
-        #                                 _logger.error("Error at %s" % str(rownum1))                         
-        #     except Exception as e:
-        #         list_of_failed_record += str(e)
-        #     _logger.info("list_of_failed_record")
-        #     _logger.info(list_of_failed_record)
+                        for rownum1 in range(sheet.nrows): 
+                            item_y = sheet.row_values(rownum1)           
+                            if rownum1 > first_row:
+                                _logger.info("----------------------------------")
+                                emp_num =  item_y[emp_num_row]
+                                type_leave = item_y[type_leave_row]
+                                duration = item_y[duration_row]
+                                start_date = item_y[start_date_row]
+                                end_date = item_y[end_date_row]
+                                _logger.info(emp_num)
+                                _logger.info(type_leave)
+                                _logger.info(duration)
+                                _logger.info(start_date)
+                                _logger.info(end_date)
+                                _logger.info("----------------------------------")
+                                # if emp_name != "" and (check_in != "" or check_out != ""):  
+                                #     if check_in:
+                                #         split_check_in = check_in.split(" ")
+                                #         if len(split_check_in) > 1:
+                                #             try:
+                                #                 date = date.replace("/","-",3)
+                                #                 new_time = self.pool.get("hr.attendance").convert24(self,split_check_in)
+                                #                 new_time = new_time.replace("\u200f","")
+                                #                 full_date_time = date + " " + new_time + ":00"
+                                #                 full_date_check_in = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
+                                #             except Exception as e:
+                                #                 _logger.info("----error in------")   
+                                #                 _logger.info(e) 
+                                #     if check_out:
+                                #         split_check_out = check_out.split(" ")
+                                #         if len(split_check_out) > 1:  
+                                #             try:
+                                #                 date = date.replace("/","-",3)
+                                #                 new_time = self.pool.get("hr.attendance").convert24(self,split_check_out)
+                                #                 full_date_time = date + " " + new_time + ":00"
+                                #                 full_date_check_out = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
+                                #             except Exception as e:
+                                #                 _logger.info("----error out------")    
+                                #                 _logger.info(e)   
+                                # # if  full_date_check_in != False or full_date_check_out != False:
+                                # if  full_date_check_in != False :
+                                #     try:
+                                #         emp_name_info = self.env['hr.employee'].sudo().search([('name','=',emp_name)])
+                                #         attendance_vals = {
+                                #             'employee_id': emp_name_info.id,
+                                #             'check_in': full_date_check_in,
+                                #             'check_out': full_date_check_out
+                                #         }
+                                #         self.env['hr.attendance'].sudo().create(attendance_vals)
+                                #         _logger.info(full_date_check_in)
+                                #         _logger.info(full_date_check_out)
+                                #         _logger.info(emp_name)
+                                #         _logger.info(emp_name_info)  
+                                #         total_success_import_record += 1  
+                                #     except Exception as e:
+                                #         total_failed_record += 1
+                                #         list_of_failed_record += "| Error at Line :" + str(rownum1 + 1) + " |"
+                                #         _logger.error("Error at %s" % str(rownum1))    
+                                # else:
+                                #     if emp_name != "":
+                                #         total_failed_record += 1
+                                #         list_of_failed_record += "| Error at Line :" + str(rownum1 + 1) + " |"
+                                #         _logger.error("Error at %s" % str(rownum1))                         
+            except Exception as e:
+                list_of_failed_record += str(e)
+            _logger.info("list_of_failed_record")
+            _logger.info(list_of_failed_record)
 
 
         #     try:
