@@ -21,26 +21,26 @@ class ImportLeave(models.TransientModel):
 
     def import_data_through_cron_leave(self):
         self.ensure_one()
-        # cron_obj = self.env['ir.cron']
-        # now_time = datetime.now() + timedelta(seconds=1)
-        # attendances_master = self.env['import.leave.master'].create({
-        #     'file': self.file,
-        #     'filename': self.name,
-        #     'type': self.type,
-        #     'file_updated': True,
-        #     'user_id': self._uid,
-        #     'status': 'in_process',
-        #     'operation': self.operation,
-        # })
+        cron_obj = self.env['ir.cron']
+        now_time = datetime.now() + timedelta(seconds=1)
+        leave_master = self.env['import.leave.master'].create({
+            'file': self.file,
+            'filename': self.name,
+            'type': self.type,
+            'file_updated': True,
+            'user_id': self._uid,
+            'status': 'in_process',
+            'operation': self.operation,
+        })
 
-        # user_tz = self.env.user.tz or str(pytz.utc)
-        # local = pytz.timezone(user_tz)
-        # user_time_zone = datetime.strftime(pytz.utc.localize(
-        #     datetime.strptime(datetime.strftime(now_time, '%Y-%m-%d %H:%M:%S'),
-        #                       DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local),
-        #     DEFAULT_SERVER_DATETIME_FORMAT)
-        # self.state = 'done'
-        # self.pool.get("hr.attendance").import_data(self,attendances_master.id)
+        user_tz = self.env.user.tz or str(pytz.utc)
+        local = pytz.timezone(user_tz)
+        user_time_zone = datetime.strftime(pytz.utc.localize(
+            datetime.strptime(datetime.strftime(now_time, '%Y-%m-%d %H:%M:%S'),
+                              DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(local),
+            DEFAULT_SERVER_DATETIME_FORMAT)
+        self.state = 'done'
+        self.pool.get("hr.leave").import_data(self,leave_master.id)
         return {
             'name': _('Import Attendances'),
             'view_type': 'form',
