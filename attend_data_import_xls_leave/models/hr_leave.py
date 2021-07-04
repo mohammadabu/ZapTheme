@@ -90,13 +90,13 @@ class ImportHrLeave(models.Model):
                     file_data = base64.decodestring(datafile)
                     _logger.info("file_data")
                     _logger.info(file_data)
-                    fp = open(temp_path + '/xsl_file.xls', 'wb+')
-                    fp.write(file_data)
-                    fp.close()
-                    data = pd.read_excel(temp_path + '/xsl_file.xls')
-                    for i, df in enumerate(data):
-                        _logger.info(df)
-                        _logger.info(format(i))
+                    # fp = open(temp_path + '/xsl_file.xls', 'wb+')
+                    # fp.write(file_data)
+                    # fp.close()
+                    # data = pd.read_excel(temp_path + '/xsl_file.xls')
+                    # for i, df in enumerate(data):
+                    #     _logger.info(df)
+                    #     _logger.info(format(i))
                         # print df
                         # df.to_csv('table {}.csv'.format(i))
 
