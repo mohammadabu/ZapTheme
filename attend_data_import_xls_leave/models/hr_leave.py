@@ -91,7 +91,7 @@ class ImportHrLeave(models.Model):
                     _logger.info(file_data)
                     fp = open(temp_path + '/xsl_file.xls', 'wb+')
                     fp.write(file_data)
-                    # fp.close()
+                    fp.close()
                     # wb = open_workbook(temp_path + '/xsl_file.xls')
                     # data_list = []
                     # header_list = []
