@@ -76,6 +76,8 @@ class ImportHrLeave(models.Model):
                     list_of_failed_record += "Please Select an .xls file to Import."
                     _logger.error(
                         "Please Select an .xls file to Import.")
+                _logger.info('part_master.filename')
+                _logger.info(part_master.type)        
                 # if part_master.type == 'xlsx':
                 #     if not datafile or not file_name.lower().endswith(('.xls', '.xlsx',)):
                 #         list_of_failed_record += "Please Select an .xls or its compatible file to Import."
