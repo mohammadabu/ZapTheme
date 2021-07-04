@@ -42,11 +42,11 @@ class ImportLeave(models.TransientModel):
         self.state = 'done'
         self.pool.get("hr.leave").import_data(self,leave_master.id)
         return {
-            'name': _('Import Attendances'),
+            'name': _('Import Leave'),
             'view_type': 'form',
             'view_mode': 'form',
             'view_id': False,
-            'res_model': 'import.attendances',
+            'res_model': 'import.leave',
             'domain': [],
             'context': dict(self._context, active_ids=self.ids),
             'type': 'ir.actions.act_window',
