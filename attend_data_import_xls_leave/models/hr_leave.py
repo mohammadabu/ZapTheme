@@ -90,7 +90,7 @@ class ImportHrLeave(models.Model):
                     # file_data = file_data.decode("utf-8") 
                     # cleanr = re.compile('<.*?>')
                     # file_data = re.sub(cleanr, '', file_data)
-                    file_data = file_data.replace('<html dir="rtl">',"",100)
+                    # file_data = file_data.replace('<html dir="rtl">',"",100)
                     file_data = file_data.encode()
                     _logger.info("file_data")
                     _logger.info(file_data)
