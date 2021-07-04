@@ -91,7 +91,7 @@ class ImportHrLeave(models.Model):
                     # cleanr = re.compile('<.*?>')
                     # file_data = re.sub(cleanr, '', file_data)
                     # file_data = file_data.replace('<html dir="rtl">',"",100)
-                    file_data = file_data.encode()
+                    # file_data = file_data.encode()
                     _logger.info("file_data")
                     _logger.info(file_data)
                     # fp = open(temp_path + '/xsl_file.xls', 'wb+')
