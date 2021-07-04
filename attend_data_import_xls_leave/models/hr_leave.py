@@ -88,7 +88,7 @@ class ImportHrLeave(models.Model):
                     
                     temp_path = tempfile.gettempdir()
                     file_data = base64.decodestring(datafile)
-
+                    _logger.info(file_data)
 
                     # file_data = file_data.decode('windows-1252')  # python3
                     # match = re.compile(r'onerror\([\s\S]*\)', re.I)
