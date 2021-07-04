@@ -112,37 +112,37 @@ class ImportHrLeave(models.Model):
                             # _logger.info(sheet.row_values(rownum))
                             item = sheet.row_values(rownum)
                             _logger.info(item)
-                            # if "رقم الموظف" in item and "نوع الإجازة" in item and "المدة" in item and "البداية" in item and "النهاية " in item:
-                            #     first_row = rownum
-                            #     for idx1,item1 in enumerate(item):
-                            #         if item1 == "رقم الموظف":
-                            #             emp_num_row = idx1
-                            #         if item1 == "نوع الإجازة":
-                            #             type_leave_row = idx1
-                            #         if item1 == "المدة":
-                            #             duration_row = idx1 
-                            #         if item1 == "البداية":
-                            #             start_date_row = idx1 
-                            #         if item1 == "النهاية":
-                            #             end_date_row = idx1
-                            #     break    
+                            if "رقم الموظف" in item and "نوع الإجازة " in item and "المدة " in item and "البداية " in item and "النهاية " in item:
+                                first_row = rownum
+                                for idx1,item1 in enumerate(item):
+                                    if item1 == "رقم الموظف":
+                                        emp_num_row = idx1
+                                    if item1 == "نوع الإجازة ":
+                                        type_leave_row = idx1
+                                    if item1 == "المدة ":
+                                        duration_row = idx1 
+                                    if item1 == "البداية ":
+                                        start_date_row = idx1 
+                                    if item1 == "النهاية ":
+                                        end_date_row = idx1
+                                break    
 
-                        # for rownum1 in range(sheet.nrows): 
-                        #     item_y = sheet.row_values(rownum1)           
-                        #     if rownum1 > first_row:
-                        #         _logger.info("----------------------------------")
-                        #         emp_num =  item_y[emp_num_row]
-                        #         type_leave = item_y[type_leave_row]
-                        #         duration = item_y[duration_row]
-                        #         start_date = item_y[start_date_row]
-                        #         end_date = item_y[end_date_row]
-                        #         _logger.info(first_row)
-                        #         _logger.info(emp_num)
-                        #         _logger.info(type_leave)
-                        #         _logger.info(duration)
-                        #         _logger.info(start_date)
-                        #         _logger.info(end_date)
-                        #         _logger.info("----------------------------------")
+                        for rownum1 in range(sheet.nrows): 
+                            item_y = sheet.row_values(rownum1)           
+                            if rownum1 > first_row:
+                                _logger.info("----------------------------------")
+                                emp_num =  item_y[emp_num_row]
+                                type_leave = item_y[type_leave_row]
+                                duration = item_y[duration_row]
+                                start_date = item_y[start_date_row]
+                                end_date = item_y[end_date_row]
+                                _logger.info(first_row)
+                                _logger.info(emp_num)
+                                _logger.info(type_leave)
+                                _logger.info(duration)
+                                _logger.info(start_date)
+                                _logger.info(end_date)
+                                _logger.info("----------------------------------")
             except Exception as e:
                 list_of_failed_record += str(e)
                 _logger.info("--------------------------------------------")
