@@ -83,17 +83,16 @@ class ImportHrLeave(models.Model):
                         list_of_failed_record += "Please Select an .xls or its compatible file to Import."
                         _logger.error(
                             "Please Select an .xls or its compatible file to Import.")
-                    else:
-                        _logger.info('successssssss')         
-                #     temp_path = tempfile.gettempdir()
-                #     file_data = base64.decodestring(datafile)
-                #     fp = open(temp_path + '/xsl_file.xls', 'wb+')
-                #     fp.write(file_data)
-                #     fp.close()
-                #     wb = open_workbook(temp_path + '/xsl_file.xls')
-                #     data_list = []
-                #     header_list = []
-                #     headers_dict = {}
+                    
+                    temp_path = tempfile.gettempdir()
+                    file_data = base64.decodestring(datafile)
+                    fp = open(temp_path + '/xsl_file.xls', 'wb+')
+                    fp.write(file_data)
+                    fp.close()
+                    wb = open_workbook(temp_path + '/xsl_file.xls')
+                    data_list = []
+                    header_list = []
+                    headers_dict = {}
                     # for sheet in wb.sheets():
                     #     _logger.info(sheet.nrows)
                     #     first_row = 0
