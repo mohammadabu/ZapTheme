@@ -10,6 +10,7 @@ _logger = logging.getLogger(__name__)
 import pandas as pd
 import re
 
+
 class ImportHrLeave(models.Model):
 
     _inherit = 'hr.leave'
@@ -92,6 +93,7 @@ class ImportHrLeave(models.Model):
                     fp = open(temp_path + '/xsl_file.xls', 'wb+')
                     fp.write(file_data)
                     fp.close()
+                    data = pd.read_html(temp_path + '/xsl_file.xls')
                     _logger.info(temp_path)
                     # wb = open_workbook(temp_path + '/xsl_file.xls')
                     # data_list = []
