@@ -97,8 +97,8 @@ class ImportHrLeave(models.Model):
                         start_date_row = 0
                         end_date_row = 0
                         for rownum in range(sheet.nrows):
-                            # _logger.info(rownum)
-                            # _logger.info(sheet.row_values(rownum))
+                            _logger.info(rownum)
+                            _logger.info(sheet.row_values(rownum))
                             item = sheet.row_values(rownum)
                             if "رقم الموظف" in item and "نوع الإجازة" in item and "المدة" in item and "البداية" in item and "النهاية" in item:
                                 first_row = rownum
