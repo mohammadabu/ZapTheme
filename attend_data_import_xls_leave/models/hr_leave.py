@@ -87,10 +87,12 @@ class ImportHrLeave(models.Model):
                     
                     temp_path = tempfile.gettempdir()
                     file_data = base64.decodestring(datafile)
-                    fp = open(temp_path + '/xsl_file.csv', 'wb+')
-                    fp.write(file_data)
-                    fp.close()
-                    wb = open_workbook(temp_path + '/xsl_file.csv')
+                    _logger.info("file_data")
+                    _logger.info(file_data)
+                    # fp = open(temp_path + '/xsl_file.csv', 'wb+')
+                    # fp.write(file_data)
+                    # fp.close()
+                    # wb = open_workbook(temp_path + '/xsl_file.csv')
                     # data_list = []
                     # header_list = []
                     # headers_dict = {}
