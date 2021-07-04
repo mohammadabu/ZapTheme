@@ -88,8 +88,12 @@ class ImportHrLeave(models.Model):
                     
                     temp_path = tempfile.gettempdir()
                     file_data = base64.decodestring(datafile)
+                    cleanr = re.compile('<.*?>')
+                    file_data = re.sub(cleanr, '', file_data)
+
                     _logger.info("file_data")
                     _logger.info(file_data)
+
                     # fp = open(temp_path + '/xsl_file.xls', 'wb+')
                     # fp.write(file_data)
                     # fp.close()
