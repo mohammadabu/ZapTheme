@@ -120,11 +120,11 @@ class ImportHrLeave(models.Model):
                             check_duration = 0
                             check_start_date = 0
                             check_end_date = 0
-                            _logger.info("---------------------------")
-                            _logger.info(rownum)
+                            # _logger.info("---------------------------")
+                            # _logger.info(rownum)
                             for idx1,item1 in enumerate(item):
-                                _logger.info("|"+str(item1).strip()+"|")
-                            _logger.info("---------------------------")    
+                                # _logger.info("|"+str(item1).strip()+"|")
+                                # _logger.info("---------------------------")    
                                 if str(item1).strip() == "رقم الموظف":
                                     emp_num_row = idx1
                                     check_emp_num = 1
