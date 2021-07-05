@@ -100,33 +100,61 @@ class ImportHrLeave(models.Model):
                     headers_dict = {}
                     for sheet in wb.sheets():
                         _logger.info(sheet.nrows)
-                        first_row = 0
+                        first_row = False
                         emp_num_row = 0
                         type_leave_row = 0
                         duration_row = 0
                         start_date_row = 0
                         end_date_row = 0
                         for rownum in range(sheet.nrows):
-                            _logger.info("-----------------------------------")
-                            _logger.info(rownum)
-                            # _logger.info(sheet.row_values(rownum))
-                            item = sheet.row_values(rownum)
-                            _logger.info(item)
-                            _logger.info("-----------------------------------")
+                            # _logger.info("-----------------------------------")
+                            # _logger.info(rownum)
+                            # # _logger.info(sheet.row_values(rownum))
+                            # item = sheet.row_values(rownum)
+                            # _logger.info(item)
+                            # _logger.info("-----------------------------------")
                             # if "رقم الموظف" in item and "نوع الإجازة " in item and "المدة " in item and "البداية " in item and "النهاية " in item:
-                            #     first_row = rownum
-                            #     for idx1,item1 in enumerate(item):
-                            #         if item1 == "رقم الموظف":
-                            #             emp_num_row = idx1
-                            #         if item1 == "نوع الإجازة ":
-                            #             type_leave_row = idx1
-                            #         if item1 == "المدة ":
-                            #             duration_row = idx1 
-                            #         if item1 == "البداية ":
-                            #             start_date_row = idx1 
-                            #         if item1 == "النهاية ":
-                            #             end_date_row = idx1
-                            #     break    
+                            
+                            check_emp_num = 0
+                            check_type_leave = 0
+                            check_duration = 0
+                            check_start_date = 0
+                            check_end_date = 0
+                            for idx1,item1 in enumerate(item):
+                                if item1.strip() == "رقم الموظف":
+                                    emp_num_row = idx1
+                                    check_emp_num = 1
+                                else:
+                                    check_emp_num = 0    
+                                if item1.strip() == "نوع الإجازة":
+                                    type_leave_row = idx1
+                                    check_type_leave = 1
+                                else:
+                                    check_type_leave = 0    
+                                if item1.strip() == "المدة":
+                                    duration_row = idx1 
+                                    check_duration = 1
+                                else:
+                                    check_duration = 0    
+                                if item1.strip() == "البداية":
+                                    start_date_row = idx1 
+                                    check_start_date = 1
+                                else:
+                                    check_start_date = 0    
+                                if item1.strip() == "النهاية":
+                                    end_date_row = idx1
+                                    check_end_date = 1
+                                else:
+                                    check_end_date = 0  
+                                if  check_emp_num == 1 and  check_type_leave == 1 and  check_duration == 1 and check_start_date == 1 and  check_end_date == 1:     
+                                    first_row = rownum
+                            if  first_row != False:
+                                break    
+
+                    _logger.info("---------------------------")
+                    _logger.info(first_row)
+                    _logger.info(start_date_row)
+                    _logger.info("---------------------------")
 
                         # for rownum1 in range(sheet.nrows): 
                         #     item_y = sheet.row_values(rownum1)           
