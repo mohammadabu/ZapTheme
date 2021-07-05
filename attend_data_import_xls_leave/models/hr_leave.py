@@ -128,7 +128,7 @@ class ImportHrLeave(models.Model):
                                 if str(item1).strip() == "رقم الموظف":
                                     emp_num_row = idx1
                                     check_emp_num = 1
-                                if str(item1).strip() == "نوع الإجاز":
+                                if str(item1).strip() == "نوع الإجازة":
                                     type_leave_row = idx1
                                     check_type_leave = 1
                                 if str(item1).strip() == "المدة":
