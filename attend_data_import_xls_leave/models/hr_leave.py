@@ -154,7 +154,8 @@ class ImportHrLeave(models.Model):
                                     _logger.info(int(emp_num))
                                     _logger.info(type_leave)
                                     _logger.info(int(duration))
-                                    _logger.info(datetime.fromtimestamp(start_date).strftime('%Y-%m-%d'))
+                                    seconds = (start_date - 25569) * 86400.0
+                                    _logger.info(datetime.datetime.utcfromtimestamp(seconds))
                                     _logger.info(end_date)
                                 _logger.info("----------------------------------")
             except Exception as e:
