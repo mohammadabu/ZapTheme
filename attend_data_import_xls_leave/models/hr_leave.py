@@ -123,7 +123,7 @@ class ImportHrLeave(models.Model):
                             _logger.info("---------------------------")
                             _logger.info(rownum)
                             for idx1,item1 in enumerate(item):
-                                _logger.info(str(item1).strip())
+                                _logger.info("|"+str(item1).strip()+"|")
                             _logger.info("---------------------------")    
                             #     if str(item1).strip() == "رقم الموظف":
                             #         emp_num_row = idx1
