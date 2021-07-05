@@ -109,13 +109,15 @@ class ImportHrLeave(models.Model):
                     attendance_from = next((att for att in attendances if int(att.dayofweek) >= request_date_from.weekday()), attendances[0] if attendances else default_value)
                     # find last attendance coming before last_day
                     attendance_to = next((att for att in reversed(attendances) if int(att.dayofweek) <= request_date_to.weekday()), attendances[-1] if attendances else default_value)
-    
+
+                    hour_from = float_to_time(attendance_from.hour_from)
+                    hour_to = float_to_time(attendance_to.hour_to)
 
 
 
                     _logger.info("attendances")
-                    _logger.info(attendance_from)
-                    _logger.info(attendance_to)
+                    _logger.info(hour_from)
+                    _logger.info(hour_to)
                     data_list = []
                     header_list = []
                     headers_dict = {}
