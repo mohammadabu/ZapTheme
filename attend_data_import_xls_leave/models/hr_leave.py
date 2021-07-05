@@ -121,27 +121,27 @@ class ImportHrLeave(models.Model):
                             check_start_date = 0
                             check_end_date = 0
                             for idx1,item1 in enumerate(item):
-                                if item1.strip() == "رقم الموظف":
+                                if str(item1).strip() == "رقم الموظف":
                                     emp_num_row = idx1
                                     check_emp_num = 1
                                 else:
                                     check_emp_num = 0    
-                                if item1.strip() == "نوع الإجازة":
+                                if str(item1).strip() == "نوع الإجازة":
                                     type_leave_row = idx1
                                     check_type_leave = 1
                                 else:
                                     check_type_leave = 0    
-                                if item1.strip() == "المدة":
+                                if str(item1).strip() == "المدة":
                                     duration_row = idx1 
                                     check_duration = 1
                                 else:
                                     check_duration = 0    
-                                if item1.strip() == "البداية":
+                                if str(item1).strip() == "البداية":
                                     start_date_row = idx1 
                                     check_start_date = 1
                                 else:
                                     check_start_date = 0    
-                                if item1.strip() == "النهاية":
+                                if str(item1).strip() == "النهاية":
                                     end_date_row = idx1
                                     check_end_date = 1
                                 else:
