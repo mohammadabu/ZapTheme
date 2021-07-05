@@ -158,7 +158,7 @@ class ImportHrLeave(models.Model):
                                     valid_start_date = datetime.datetime.utcfromtimestamp(valid_start_date)
                                     _logger.info(valid_start_date)
                                     valid_end_date = (end_date - 25569) * 86400.0
-                                    valid_end_date = datetime.datetime.utcfromtimestamp(valid_start_date)
+                                    valid_end_date = datetime.datetime.utcfromtimestamp(valid_end_date)
                                     _logger.info(valid_end_date)
                                 _logger.info("----------------------------------")
             except Exception as e:
