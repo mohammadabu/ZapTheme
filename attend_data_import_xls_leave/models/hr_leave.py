@@ -19,13 +19,6 @@ DummyAttendance = namedtuple('DummyAttendance', 'hour_from, hour_to, dayofweek, 
 class ImportHrLeave(models.Model):
 
     _inherit = 'hr.leave'
-    tz = fields.Selection(_tz_get, compute='_compute_tz')
-
-    def _compute_tz(self):
-        for leave in self:
-            tz = None
-            tz = self.env.user.company_id.resource_calendar_id.tz or self.env.user.tz or 'UTC'
-            leave.tz = tz
 
 
 
@@ -120,8 +113,9 @@ class ImportHrLeave(models.Model):
                     attendance_to = next((att for att in reversed(attendances) if int(att.dayofweek) <= request_date_to.weekday()), attendances[-1] if attendances else default_value)
                     hour_from = float_to_time(attendance_from.hour_from)
                     hour_to = float_to_time(attendance_to.hour_to)
-                    date_from = timezone(self.tz).localize(datetime.combine(request_date_from, hour_from)).astimezone(UTC).replace(tzinfo=None)
-                    date_to = timezone(self.tz).localize(datetime.combine(request_date_to, hour_to)).astimezone(UTC).replace(tzinfo=None)
+                    tz = self.env.user.company_id.resource_calendar_id.tz or self.env.user.tz or 'UTC'
+                    date_from = timezone(tz).localize(datetime.combine(request_date_from, hour_from)).astimezone(UTC).replace(tzinfo=None)
+                    date_to = timezone(tz).localize(datetime.combine(request_date_to, hour_to)).astimezone(UTC).replace(tzinfo=None)
 
 
 
