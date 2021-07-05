@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 import pandas as pd
 import re
 import datetime
-
+DummyAttendance = namedtuple('DummyAttendance', 'hour_from, hour_to, dayofweek, day_period, week_type')
 class ImportHrLeave(models.Model):
 
     _inherit = 'hr.leave'
