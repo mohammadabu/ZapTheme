@@ -11,6 +11,7 @@ _logger = logging.getLogger(__name__)
 import pandas as pd
 import re
 import datetime
+from odoo.addons.resource.models.resource import float_to_time, HOURS_PER_DAY
 from collections import namedtuple
 DummyAttendance = namedtuple('DummyAttendance', 'hour_from, hour_to, dayofweek, day_period, week_type')
 class ImportHrLeave(models.Model):
