@@ -120,11 +120,7 @@ class ImportHrLeave(models.Model):
                             check_duration = 0
                             check_start_date = 0
                             check_end_date = 0
-                            # _logger.info("---------------------------")
-                            # _logger.info(rownum)
                             for idx1,item1 in enumerate(item):
-                                # _logger.info("|"+str(item1).strip()+"|")
-                                # _logger.info("---------------------------")    
                                 if str(item1).strip() == "رقم الموظف":
                                     emp_num_row = idx1
                                     check_emp_num = 1
@@ -144,28 +140,22 @@ class ImportHrLeave(models.Model):
                                     first_row = rownum
                             if  first_row != False:
                                 break    
-
-                    _logger.info("---------------------------")
-                    _logger.info(first_row)
-                    _logger.info(start_date_row)
-                    _logger.info("---------------------------")
-
-                        # for rownum1 in range(sheet.nrows): 
-                        #     item_y = sheet.row_values(rownum1)           
-                        #     if rownum1 > first_row:
-                        #         _logger.info("----------------------------------")
-                        #         emp_num =  item_y[emp_num_row]
-                        #         type_leave = item_y[type_leave_row]
-                        #         duration = item_y[duration_row]
-                        #         start_date = item_y[start_date_row]
-                        #         end_date = item_y[end_date_row]
-                        #         _logger.info(first_row)
-                        #         _logger.info(emp_num)
-                        #         _logger.info(type_leave)
-                        #         _logger.info(duration)
-                        #         _logger.info(start_date)
-                        #         _logger.info(end_date)
-                        #         _logger.info("----------------------------------")
+                        for rownum1 in range(sheet.nrows): 
+                            item_y = sheet.row_values(rownum1)           
+                            if rownum1 > first_row:
+                                _logger.info("----------------------------------")
+                                emp_num =  item_y[emp_num_row]
+                                type_leave = item_y[type_leave_row]
+                                duration = item_y[duration_row]
+                                start_date = item_y[start_date_row]
+                                end_date = item_y[end_date_row]
+                                _logger.info(first_row)
+                                _logger.info(emp_num)
+                                _logger.info(type_leave)
+                                _logger.info(duration)
+                                _logger.info(start_date)
+                                _logger.info(end_date)
+                                _logger.info("----------------------------------")
             except Exception as e:
                 list_of_failed_record += str(e)
                 _logger.info("--------------------------------------------")
