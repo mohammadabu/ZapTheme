@@ -97,13 +97,15 @@ class ImportHrLeave(models.Model):
 
                     employee_info = self.env['hr.employee'].sudo().search([('id','=',1)])
                     resource_calendar_id = employee_info.resource_calendar_id or self.env.company.resource_calendar_id
-                    _logger.info("resource_calendar_id")
-                    _logger.info(resource_calendar_id)
+                    domain = [('calendar_id', '=', resource_calendar_id.id), ('display_type', '=', False)]
+                    attendances = self.env['resource.calendar.attendance'].read_group(domain, ['ids:array_agg(id)', 'hour_from:min(hour_from)', 'hour_to:max(hour_to)', 'week_type', 'dayofweek', 'day_period'], ['week_type', 'dayofweek', 'day_period'], lazy=False)
+                    _logger.info("attendances")
+                    _logger.info(attendances)
                     data_list = []
                     header_list = []
                     headers_dict = {}
                     for sheet in wb.sheets():
-                        _logger.info(sheet.nrows)
+                        # _logger.info(sheet.nrows)
                         first_row = False
                         emp_num_row = 0
                         type_leave_row = 0
