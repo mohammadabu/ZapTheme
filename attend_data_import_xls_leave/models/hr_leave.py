@@ -234,23 +234,3 @@ class ImportHrLeave(models.Model):
 
 
 
-    # def _onchange_request_parameters(self):
-    #     if not self.request_date_from:
-    #         self.date_from = False
-    #         return
-
-    #     if self.request_unit_half or self.request_unit_hours:
-    #         self.request_date_to = self.request_date_from
-
-    #     if not self.request_date_to:
-    #         self.date_to = False
-    #         return
-
-    #     resource_calendar_id = self.employee_id.resource_calendar_id or self.env.company.resource_calendar_id
-    #     domain = [('calendar_id', '=', resource_calendar_id.id), ('display_type', '=', False)]
-    #     attendances = self.env['resource.calendar.attendance'].read_group(domain, ['ids:array_agg(id)', 'hour_from:min(hour_from)', 'hour_to:max(hour_to)', 'week_type', 'dayofweek', 'day_period'], ['week_type', 'dayofweek', 'day_period'], lazy=False)
-
-    #     # Must be sorted by dayofweek ASC and day_period DESC
-    #     attendances = sorted([DummyAttendance(group['hour_from'], group['hour_to'], group['dayofweek'], group['day_period'], group['week_type']) for group in attendances], key=lambda att: (att.dayofweek, att.day_period != 'morning'))
-
-    #     default_value = DummyAttendance(0, 0, 0, 'morning', False)
