@@ -34,39 +34,27 @@ class ImportHrLeave(models.Model):
             [('status', '=', 'imported')])
         imported_master_part.unlink()
     @api.model
-    def convert24(self,str1):
-        time_arr = {
-            "00":12,
-            "01":13,
-            "02":14,
-            "03":15,
-            "04":16,
-            "05":17,
-            "06":18,
-            "07":19,
-            "08":20,
-            "09":21,
-            "10":22,
-            "11":23,
-            "12":00
-        }
-        check_in_time = str1[0]
-        check_in_time = check_in_time.replace("\u200f","")
-        check_in_time_split = check_in_time.split(":")
-        hours = check_in_time_split[0]
-        minutes = check_in_time_split[1]
-        check_in_zone = str1[1]
-        if check_in_zone == "ص" and hours == "12":
-            return "00:"+minutes
-        elif check_in_zone == "ص":
-            return hours+":"+ minutes
-        elif check_in_zone == "م" and hours == "12":
-            return "12"+":"+ minutes
-        else:
-            
-            # _logger.info(time_arr[hours])
-            # _logger.info(minutes)
-            return str(time_arr[hours]) + ":" + minutes          
+    def getRequestDate(self,employee_id,request_date_from,request_date_to):
+        employee_info = self.env['hr.employee'].sudo().search([('id','=',employee_id)])
+        resource_calendar_id = employee_info.resource_calendar_id or self.env.company.resource_calendar_id
+        domain = [('calendar_id', '=', resource_calendar_id.id), ('display_type', '=', False)]
+        attendances = self.env['resource.calendar.attendance'].read_group(domain, ['ids:array_agg(id)', 'hour_from:min(hour_from)', 'hour_to:max(hour_to)', 'week_type', 'dayofweek', 'day_period'], ['week_type', 'dayofweek', 'day_period'], lazy=False)
+        attendances = sorted([DummyAttendance(group['hour_from'], group['hour_to'], group['dayofweek'], group['day_period'], group['week_type']) for group in attendances], key=lambda att: (att.dayofweek, att.day_period != 'morning'))
+        default_value = DummyAttendance(0, 0, 0, 'morning', False)
+        # request_date_from = datetime(2020, 5, 17)
+        # request_date_to = datetime(2020, 5, 23)    
+        attendance_from = next((att for att in attendances if int(att.dayofweek) >= request_date_from.weekday()), attendances[0] if attendances else default_value)
+        attendance_to = next((att for att in reversed(attendances) if int(att.dayofweek) <= request_date_to.weekday()), attendances[-1] if attendances else default_value)
+        hour_from = float_to_time(attendance_from.hour_from)
+        hour_to = float_to_time(attendance_to.hour_to)
+        tz = self.env.user.company_id.resource_calendar_id.tz or self.env.user.tz or 'UTC'
+        date_from = timezone(tz).localize(datetime.combine(request_date_from, hour_from)).replace(tzinfo=None)
+        date_to = timezone(tz).localize(datetime.combine(request_date_to, hour_to)).replace(tzinfo=None)
+        list_arr = []
+        list_arr['date_from'] = date_from
+        list_arr['date_to'] = date_to
+        return list_arr 
+
     def import_data(self, part_master_id=False):
         if part_master_id:
             part_master = self.env[
@@ -100,25 +88,6 @@ class ImportHrLeave(models.Model):
                     fp.write(file_data)
                     fp.close()
                     wb = open_workbook(temp_path + '/xsl_file.xls')
-
-                    employee_info = self.env['hr.employee'].sudo().search([('id','=',1)])
-                    resource_calendar_id = employee_info.resource_calendar_id or self.env.company.resource_calendar_id
-                    domain = [('calendar_id', '=', resource_calendar_id.id), ('display_type', '=', False)]
-                    attendances = self.env['resource.calendar.attendance'].read_group(domain, ['ids:array_agg(id)', 'hour_from:min(hour_from)', 'hour_to:max(hour_to)', 'week_type', 'dayofweek', 'day_period'], ['week_type', 'dayofweek', 'day_period'], lazy=False)
-                    attendances = sorted([DummyAttendance(group['hour_from'], group['hour_to'], group['dayofweek'], group['day_period'], group['week_type']) for group in attendances], key=lambda att: (att.dayofweek, att.day_period != 'morning'))
-                    default_value = DummyAttendance(0, 0, 0, 'morning', False)
-                    request_date_from = datetime(2020, 5, 17)
-                    request_date_to = datetime(2020, 5, 23)    
-                    attendance_from = next((att for att in attendances if int(att.dayofweek) >= request_date_from.weekday()), attendances[0] if attendances else default_value)
-                    attendance_to = next((att for att in reversed(attendances) if int(att.dayofweek) <= request_date_to.weekday()), attendances[-1] if attendances else default_value)
-                    hour_from = float_to_time(attendance_from.hour_from)
-                    hour_to = float_to_time(attendance_to.hour_to)
-                    tz = self.env.user.company_id.resource_calendar_id.tz or self.env.user.tz or 'UTC'
-                    date_from = timezone(tz).localize(datetime.combine(request_date_from, hour_from)).replace(tzinfo=None)
-                    date_to = timezone(tz).localize(datetime.combine(request_date_to, hour_to)).replace(tzinfo=None)
-
-
-
                     _logger.info("attendances")
                     _logger.info(date_from)
                     _logger.info(date_to)
@@ -134,14 +103,7 @@ class ImportHrLeave(models.Model):
                         start_date_row = 0
                         end_date_row = 0
                         for rownum in range(sheet.nrows):
-                            # _logger.info("-----------------------------------")
-                            # _logger.info(rownum)
-                            # # _logger.info(sheet.row_values(rownum))
-                            item = sheet.row_values(rownum)
-                            # _logger.info(item)
-                            # _logger.info("-----------------------------------")
-                            # if "رقم الموظف" in item and "نوع الإجازة " in item and "المدة " in item and "البداية " in item and "النهاية " in item:
-                            
+                            item = sheet.row_values(rownum)                            
                             check_emp_num = 0
                             check_type_leave = 0
                             check_duration = 0
@@ -177,20 +139,16 @@ class ImportHrLeave(models.Model):
                                 start_date = item_y[start_date_row]
                                 end_date = item_y[end_date_row]
                                 if emp_num != "" and duration != "":
-                                    # _logger.info(first_row)
-                                    # _logger.info(int(emp_num))
-                                    # _logger.info(type_leave)
-                                    # _logger.info(int(duration))
                                     valid_start_date = (start_date - 25569) * 86400.0
                                     valid_start_date = datetime.utcfromtimestamp(valid_start_date)
                                     valid_start_date = str(valid_start_date).split(' ')
                                     valid_start_date = valid_start_date[0].replace("-","/",3)
-                                    # _logger.info(valid_start_date)
                                     valid_end_date = (end_date - 25569) * 86400.0
                                     valid_end_date = datetime.utcfromtimestamp(valid_end_date)
                                     valid_end_date = str(valid_end_date).split(' ')
                                     valid_end_date = valid_end_date[0].replace("-","/",3)
-                                    # _logger.info(valid_end_date)
+                                    employee_info = self.env['hr.employee'].sudo().search([('id','=',employee_id)])
+
                                 # _logger.info("----------------------------------")
             except Exception as e:
                 list_of_failed_record += str(e)
