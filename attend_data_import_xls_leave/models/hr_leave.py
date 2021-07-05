@@ -13,6 +13,7 @@ import re
 import datetime
 from odoo.addons.resource.models.resource import float_to_time, HOURS_PER_DAY
 from collections import namedtuple
+from pytz import timezone, UTC
 DummyAttendance = namedtuple('DummyAttendance', 'hour_from, hour_to, dayofweek, day_period, week_type')
 class ImportHrLeave(models.Model):
 
@@ -103,22 +104,20 @@ class ImportHrLeave(models.Model):
                     attendances = self.env['resource.calendar.attendance'].read_group(domain, ['ids:array_agg(id)', 'hour_from:min(hour_from)', 'hour_to:max(hour_to)', 'week_type', 'dayofweek', 'day_period'], ['week_type', 'dayofweek', 'day_period'], lazy=False)
                     attendances = sorted([DummyAttendance(group['hour_from'], group['hour_to'], group['dayofweek'], group['day_period'], group['week_type']) for group in attendances], key=lambda att: (att.dayofweek, att.day_period != 'morning'))
                     default_value = DummyAttendance(0, 0, 0, 'morning', False)
-
                     request_date_from = datetime.datetime(2020, 5, 17)
                     request_date_to = datetime.datetime(2020, 5, 23)    
-                    # find first attendance coming after first_day
                     attendance_from = next((att for att in attendances if int(att.dayofweek) >= request_date_from.weekday()), attendances[0] if attendances else default_value)
-                    # find last attendance coming before last_day
                     attendance_to = next((att for att in reversed(attendances) if int(att.dayofweek) <= request_date_to.weekday()), attendances[-1] if attendances else default_value)
-
                     hour_from = float_to_time(attendance_from.hour_from)
                     hour_to = float_to_time(attendance_to.hour_to)
+                    date_from = timezone(self.tz).localize(datetime.combine(request_date_from, hour_from)).astimezone(UTC).replace(tzinfo=None)
+                    date_to = timezone(self.tz).localize(datetime.combine(request_date_to, hour_to)).astimezone(UTC).replace(tzinfo=None)
 
 
 
                     _logger.info("attendances")
-                    _logger.info(hour_from)
-                    _logger.info(hour_to)
+                    _logger.info(date_from)
+                    _logger.info(date_to)
                     data_list = []
                     header_list = []
                     headers_dict = {}
