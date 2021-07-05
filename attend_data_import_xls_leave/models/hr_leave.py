@@ -154,9 +154,12 @@ class ImportHrLeave(models.Model):
                                     _logger.info(int(emp_num))
                                     _logger.info(type_leave)
                                     _logger.info(int(duration))
-                                    seconds = (start_date - 25569) * 86400.0
-                                    _logger.info(datetime.datetime.utcfromtimestamp(seconds))
-                                    _logger.info(end_date)
+                                    valid_start_date = (start_date - 25569) * 86400.0
+                                    valid_start_date = datetime.datetime.utcfromtimestamp(valid_start_date)
+                                    _logger.info(valid_start_date)
+                                    valid_end_date = (end_date - 25569) * 86400.0
+                                    valid_end_date = datetime.datetime.utcfromtimestamp(valid_start_date)
+                                    _logger.info(valid_end_date)
                                 _logger.info("----------------------------------")
             except Exception as e:
                 list_of_failed_record += str(e)
