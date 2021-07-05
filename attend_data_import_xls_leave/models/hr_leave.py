@@ -153,8 +153,8 @@ class ImportHrLeave(models.Model):
                                     _logger.info(first_row)
                                     _logger.info(int(emp_num))
                                     _logger.info(type_leave)
-                                    _logger.info(duration)
-                                    _logger.info(start_date)
+                                    _logger.info(int(duration))
+                                    _logger.info(datetime.fromtimestamp(start_date).strftime('%Y-%m-%d'))
                                     _logger.info(end_date)
                                 _logger.info("----------------------------------")
             except Exception as e:
