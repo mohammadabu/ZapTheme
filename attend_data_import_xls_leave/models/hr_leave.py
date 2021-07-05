@@ -149,12 +149,13 @@ class ImportHrLeave(models.Model):
                                 duration = item_y[duration_row]
                                 start_date = item_y[start_date_row]
                                 end_date = item_y[end_date_row]
-                                _logger.info(first_row)
-                                _logger.info(int(emp_num))
-                                _logger.info(type_leave)
-                                _logger.info(duration)
-                                _logger.info(start_date)
-                                _logger.info(end_date)
+                                if emp_num != "" and duration != "":
+                                    _logger.info(first_row)
+                                    _logger.info(int(emp_num))
+                                    _logger.info(type_leave)
+                                    _logger.info(duration)
+                                    _logger.info(start_date)
+                                    _logger.info(end_date)
                                 _logger.info("----------------------------------")
             except Exception as e:
                 list_of_failed_record += str(e)
