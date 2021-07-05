@@ -110,7 +110,7 @@ class ImportHrLeave(models.Model):
                             # _logger.info("-----------------------------------")
                             # _logger.info(rownum)
                             # # _logger.info(sheet.row_values(rownum))
-                            # item = sheet.row_values(rownum)
+                            item = sheet.row_values(rownum)
                             # _logger.info(item)
                             # _logger.info("-----------------------------------")
                             # if "رقم الموظف" in item and "نوع الإجازة " in item and "المدة " in item and "البداية " in item and "النهاية " in item:
