@@ -4,6 +4,7 @@ import logging
 import base64
 from datetime import datetime
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
+from odoo.addons.base.models.res_partner import _tz_get
 import pytz
 from xlrd import open_workbook
 import tempfile
@@ -18,6 +19,15 @@ DummyAttendance = namedtuple('DummyAttendance', 'hour_from, hour_to, dayofweek, 
 class ImportHrLeave(models.Model):
 
     _inherit = 'hr.leave'
+    tz = fields.Selection(_tz_get, compute='_compute_tz')
+
+    def _compute_tz(self):
+        for leave in self:
+            tz = None
+            tz = self.env.user.company_id.resource_calendar_id.tz or self.env.user.tz or 'UTC'
+            leave.tz = tz
+
+
 
     def remove_finish_import_crons(self):
         master_partners = self.env['import.leave.master'].search(
