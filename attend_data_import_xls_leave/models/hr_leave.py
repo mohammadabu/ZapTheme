@@ -2,6 +2,7 @@
 from odoo import api, models, fields, exceptions, _
 import logging
 import base64
+import datetime
 from datetime import datetime, date, timedelta, time
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.addons.base.models.res_partner import _tz_get
@@ -11,7 +12,6 @@ import tempfile
 _logger = logging.getLogger(__name__)
 import pandas as pd
 import re
-# import datetime
 from odoo.addons.resource.models.resource import float_to_time, HOURS_PER_DAY
 from collections import namedtuple
 from pytz import timezone, UTC
