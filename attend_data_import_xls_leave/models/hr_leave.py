@@ -99,6 +99,7 @@ class ImportHrLeave(models.Model):
                     resource_calendar_id = employee_info.resource_calendar_id or self.env.company.resource_calendar_id
                     domain = [('calendar_id', '=', resource_calendar_id.id), ('display_type', '=', False)]
                     attendances = self.env['resource.calendar.attendance'].read_group(domain, ['ids:array_agg(id)', 'hour_from:min(hour_from)', 'hour_to:max(hour_to)', 'week_type', 'dayofweek', 'day_period'], ['week_type', 'dayofweek', 'day_period'], lazy=False)
+                    attendances = sorted([DummyAttendance(group['hour_from'], group['hour_to'], group['dayofweek'], group['day_period'], group['week_type']) for group in attendances], key=lambda att: (att.dayofweek, att.day_period != 'morning'))
                     _logger.info("attendances")
                     _logger.info(attendances)
                     data_list = []
