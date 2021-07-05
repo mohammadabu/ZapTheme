@@ -114,8 +114,8 @@ class ImportHrLeave(models.Model):
                     hour_from = float_to_time(attendance_from.hour_from)
                     hour_to = float_to_time(attendance_to.hour_to)
                     tz = self.env.user.company_id.resource_calendar_id.tz or self.env.user.tz or 'UTC'
-                    date_from = timezone(tz).localize(datetime.combine(request_date_from, hour_from)).astimezone(UTC).replace(tzinfo=None)
-                    date_to = timezone(tz).localize(datetime.combine(request_date_to, hour_to)).astimezone(UTC).replace(tzinfo=None)
+                    date_from = timezone(tz).localize(datetime.combine(request_date_from, hour_from)).replace(tzinfo=None)
+                    date_to = timezone(tz).localize(datetime.combine(request_date_to, hour_to)).replace(tzinfo=None)
 
 
 
