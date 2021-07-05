@@ -2,7 +2,7 @@
 from odoo import api, models, fields, exceptions, _
 import logging
 import base64
-import datetime
+# import datetime
 from datetime import datetime, date, timedelta, time
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.addons.base.models.res_partner import _tz_get
