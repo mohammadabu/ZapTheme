@@ -101,8 +101,21 @@ class ImportHrLeave(models.Model):
                     domain = [('calendar_id', '=', resource_calendar_id.id), ('display_type', '=', False)]
                     attendances = self.env['resource.calendar.attendance'].read_group(domain, ['ids:array_agg(id)', 'hour_from:min(hour_from)', 'hour_to:max(hour_to)', 'week_type', 'dayofweek', 'day_period'], ['week_type', 'dayofweek', 'day_period'], lazy=False)
                     attendances = sorted([DummyAttendance(group['hour_from'], group['hour_to'], group['dayofweek'], group['day_period'], group['week_type']) for group in attendances], key=lambda att: (att.dayofweek, att.day_period != 'morning'))
+                    default_value = DummyAttendance(0, 0, 0, 'morning', False)
+
+                    request_date_from = datetime.datetime(2020, 5, 17)
+                    request_date_to = datetime.datetime(2020, 5, 23)    
+                    # find first attendance coming after first_day
+                    attendance_from = next((att for att in attendances if int(att.dayofweek) >= request_date_from.weekday()), attendances[0] if attendances else default_value)
+                    # find last attendance coming before last_day
+                    attendance_to = next((att for att in reversed(attendances) if int(att.dayofweek) <= request_date_to.weekday()), attendances[-1] if attendances else default_value)
+    
+
+
+
                     _logger.info("attendances")
-                    _logger.info(attendances)
+                    _logger.info(attendance_from)
+                    _logger.info(attendance_to)
                     data_list = []
                     header_list = []
                     headers_dict = {}
